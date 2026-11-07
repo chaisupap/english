@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="referrer" content="no-referrer">
   <title>American English Pronunciation & Vocabulary | Sidebar Pathway (AME 1 - 8)</title>
   
   <!-- Google Fonts: Plus Jakarta Sans & Prompt -->
@@ -128,9 +129,9 @@
         <div class="flex items-center flex-wrap gap-2 justify-end">
           
           <!-- Audio Engine Selector Button -->
-          <button id="audioEngineToggleBtn" onclick="toggleAudioEngine()" class="hidden sm:flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 hover:bg-emerald-500/30 transition-all shadow-sm" title="คลิกเพื่อสลับระหว่างเสียงธรรมชาติ HD กับเสียงระบบ">
+          <button id="audioEngineToggleBtn" onclick="toggleAudioEngine()" class="flex items-center space-x-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 hover:bg-emerald-500/30 transition-all shadow-sm" title="คลิกเพื่อสลับระหว่างเสียงธรรมชาติ HD กับเสียงระบบ">
             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span id="audioEngineLabel">🌟 เสียงธรรมชาติ HD (Human Voice)</span>
+            <span id="audioEngineLabel">🌟 เสียงธรรมชาติ HD</span>
           </button>
 
           <!-- Speed Selector -->
@@ -638,8 +639,12 @@ TOPICS_DATA.forEach(t => {
 // Voice Synthesis Setup
 function initVoices() {
   if (!synth) return;
-  voices = synth.getVoices();
-  synth.onvoiceschanged = () => { voices = synth.getVoices(); };
+  const refreshVoices = () => {
+    voices = synth.getVoices();
+    updateAudioEngineUI();
+  };
+  refreshVoices();
+  synth.onvoiceschanged = refreshVoices;
 }
 initVoices();
 
@@ -655,13 +660,15 @@ function updateAudioEngineUI() {
   if (!btn || !label) return;
 
   if (audioEngine === 'natural') {
-    btn.className = 'flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 hover:bg-emerald-500/30 transition-all shadow-sm';
-    label.innerHTML = '🌟 เสียงธรรมชาติ HD (Human Voice)';
+    btn.className = 'flex items-center space-x-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 hover:bg-emerald-500/30 transition-all shadow-sm';
+    label.innerHTML = '🌟 เสียงธรรมชาติ HD';
     btn.title = 'กำลังใช้เสียงธรรมชาติคุณภาพสูงแบบมนุษย์ (Google Neural) คลิกเพื่อสลับเป็นเสียงระบบ';
   } else {
-    btn.className = 'flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-700/80 text-slate-300 border border-slate-600 hover:bg-slate-700 transition-all shadow-sm';
-    label.innerHTML = '🌐 เสียงระบบ (System TTS)';
-    btn.title = 'กำลังใช้เสียงเบราว์เซอร์ของระบบ คลิกเพื่อสลับเป็นเสียงธรรมชาติ HD';
+    const bestV = getBestUSFemaleVoice();
+    const voiceTag = bestV ? (bestV.name.includes('Jenny') ? 'Jenny Neural' : bestV.name.includes('Google') ? 'Google US' : bestV.name.includes('Samantha') ? 'Samantha' : 'System TTS') : 'System TTS';
+    btn.className = 'flex items-center space-x-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold bg-blue-500/20 text-blue-300 border border-blue-400/40 hover:bg-blue-500/30 transition-all shadow-sm';
+    label.innerHTML = `🎙️ ${voiceTag}`;
+    btn.title = `กำลังใช้เสียงระบบ (${bestV?.name || 'Default'}) คลิกเพื่อสลับเป็นเสียงธรรมชาติ HD`;
   }
 }
 
@@ -719,31 +726,79 @@ function playAudio(text, btnElement, onEndCallback) {
   }
 }
 
-function playNaturalHumanAudio(cleanText, rate, onComplete) {
-  const encoded = encodeURIComponent(cleanText);
-  const audioUrl = `https://translate.google.com/translate_tts?ie=UTF-8&tl=en-US&client=tw-ob&q=${encoded}`;
-  
-  const audio = new Audio(audioUrl);
-  audio.playbackRate = rate;
-  currentAudio = audio;
-
-  audio.onended = () => {
-    currentAudio = null;
-    onComplete();
-  };
-
-  audio.onerror = () => {
-    console.warn("Natural voice playback failed, falling back to System TTS...");
-    playSystemSpeech(cleanText, rate, onComplete);
-  };
-
-  const playPromise = audio.play();
-  if (playPromise !== undefined) {
-    playPromise.catch(err => {
-      console.warn("Audio autoplay policy or network error, fallback to System TTS:", err);
-      playSystemSpeech(cleanText, rate, onComplete);
-    });
+// Split long sentences into natural chunks (< 160 chars) so Google TTS never hits character limits or 400 Bad Request
+function chunkTextForTTS(text, maxLen = 160) {
+  if (!text) return [];
+  if (text.length <= maxLen) return [text];
+  const parts = [];
+  const clauseRegex = /[^,.;:!?—–]+[,.;:!?—–]*/g;
+  const clauses = text.match(clauseRegex) || [text];
+  let cur = '';
+  for (const c of clauses) {
+    if ((cur + c).length <= maxLen) {
+      cur += c;
+    } else {
+      if (cur.trim()) parts.push(cur.trim());
+      if (c.length <= maxLen) {
+        cur = c;
+      } else {
+        const words = c.split(' ');
+        for (const w of words) {
+          if ((cur + ' ' + w).length <= maxLen) {
+            cur = cur ? (cur + ' ' + w) : w;
+          } else {
+            if (cur.trim()) parts.push(cur.trim());
+            cur = w;
+          }
+        }
+      }
+    }
   }
+  if (cur.trim()) parts.push(cur.trim());
+  return parts.length > 0 ? parts : [text];
+}
+
+function playNaturalHumanAudio(cleanText, rate, onComplete) {
+  const chunks = chunkTextForTTS(cleanText, 160);
+  let chunkIdx = 0;
+
+  function playNextChunk() {
+    if (chunkIdx >= chunks.length) {
+      currentAudio = null;
+      onComplete();
+      return;
+    }
+
+    const part = chunks[chunkIdx++];
+    const encoded = encodeURIComponent(part);
+    // Google Translate TTS endpoint (high quality human neural voice)
+    const audioUrl = `https://translate.google.com/translate_tts?ie=UTF-8&tl=en-US&client=tw-ob&q=${encoded}`;
+    
+    const audio = new Audio();
+    audio.referrerPolicy = 'no-referrer';
+    audio.src = audioUrl;
+    audio.playbackRate = rate;
+    currentAudio = audio;
+
+    audio.onended = () => {
+      playNextChunk();
+    };
+
+    audio.onerror = (e) => {
+      console.warn("Natural voice stream error, seamlessly switching to System Neural voice:", e);
+      playSystemSpeech(cleanText, rate, onComplete);
+    };
+
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(err => {
+        console.warn("Autoplay or network block, switching to System voice:", err);
+        playSystemSpeech(cleanText, rate, onComplete);
+      });
+    }
+  }
+
+  playNextChunk();
 }
 
 function playSystemSpeech(cleanText, rate, onComplete) {
@@ -754,12 +809,14 @@ function playSystemSpeech(cleanText, rate, onComplete) {
   
   synth.cancel();
   const utter = new SpeechSynthesisUtterance(cleanText);
-  utter.rate = rate;
+  // Slightly relaxed rate for natural human cadence (not rushed robotic)
+  utter.rate = Math.max(0.7, Math.min(1.4, rate * 0.95));
+  utter.pitch = 1.0;
   utter.lang = 'en-US';
 
-  const femaleUSVoice = getBestUSFemaleVoice();
-  if (femaleUSVoice) {
-    utter.voice = femaleUSVoice;
+  const bestVoice = getBestUSFemaleVoice();
+  if (bestVoice) {
+    utter.voice = bestVoice;
   }
 
   utter.onend = () => { onComplete(); };
@@ -770,19 +827,35 @@ function playSystemSpeech(cleanText, rate, onComplete) {
 
 function getBestUSFemaleVoice() {
   if (!voices || voices.length === 0) voices = synth.getVoices();
-  const priority = [
-    v => v.lang === 'en-US' && /jenny|natural|neural/i.test(v.name),
-    v => v.lang === 'en-US' && /samantha|victoria|karen|susan|zira/i.test(v.name),
-    v => v.lang.startsWith('en') && /female/i.test(v.name),
-    v => v.lang === 'en-US',
+  if (!voices || voices.length === 0) return null;
+
+  const priorityRules = [
+    // 1. Microsoft Jenny Online (Natural) - Studio Grade Neural (Edge)
+    v => /jenny.*online.*natural/i.test(v.name),
+    v => /jenny/i.test(v.name) && /natural|neural/i.test(v.name),
+    // 2. Other Microsoft Online Natural voices (Guy, Aria, etc.)
+    v => /online.*natural/i.test(v.name) && (v.lang === 'en-US' || v.lang === 'en_US'),
+    // 3. Google US English (Chrome Neural Online Voice)
+    v => /google\s+us\s+english/i.test(v.name),
+    // 4. Apple Safari / iOS Natural Voices (Samantha, Ava, Siri)
+    v => /(samantha|ava)/i.test(v.name) && (v.lang === 'en-US' || v.lang === 'en_US'),
+    // 5. Any voice explicitly containing natural or neural
+    v => /natural|neural/i.test(v.name) && (v.lang === 'en-US' || v.lang === 'en_US'),
+    // 6. Generic en-US female voice (excluding old robotic Windows 'Desktop' voices like David / Zira)
+    v => (v.lang === 'en-US' || v.lang === 'en_US') && /female/i.test(v.name) && !/desktop/i.test(v.name),
+    // 7. Any en-US voice excluding old desktop SAPI voices
+    v => (v.lang === 'en-US' || v.lang === 'en_US') && !/desktop/i.test(v.name),
+    // 8. Fallback to any en-US
+    v => (v.lang === 'en-US' || v.lang === 'en_US'),
+    // 9. Fallback to any English
     v => v.lang.startsWith('en')
   ];
 
-  for (const p of priority) {
-    const found = voices.find(p);
+  for (const rule of priorityRules) {
+    const found = voices.find(rule);
     if (found) return found;
   }
-  return null;
+  return voices[0] || null;
 }
 
 function playAllSequence(word, s1, s2, btnElement) {
