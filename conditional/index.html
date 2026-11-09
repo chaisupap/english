@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="th" class="h-full bg-slate-50">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conditional Sentences - 200 ประโยคเงื่อนไขภาษาอังกฤษ</title>
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Prompt -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Prompt', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              200: '#c7d2fe',
+              300: '#a5b4fc',
+              400: '#818cf8',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              800: '#3730a3',
+              900: '#312e81',
+              950: '#1e1b4b',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', 'Prompt', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+    .audio-playing {
+      animation: pulse-ring 1.4s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+    }
+    @keyframes pulse-ring {
+      0% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(14, 165, 233, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0); }
+    }
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+    .transform-style-3d {
+      transform-style: preserve-3d;
+    }
+    .backface-hidden {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .rotate-y-180 {
+      transform: rotateY(180deg);
+    }
+    .hl-teal {
+      color: #0f766e;
+      background-color: #ccfbf1;
+      padding: 1px 6px;
+      border-radius: 6px;
+      font-weight: 700;
+    }
+    .hl-orange {
+      color: #c2410c;
+      background-color: #ffedd5;
+      padding: 1px 6px;
+      border-radius: 6px;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body class="h-full flex flex-col text-slate-800 bg-slate-50 antialiased overflow-hidden">
+
+  <!-- TOP APP HEADER -->
+  <header class="bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950 text-white border-b border-slate-800 shadow-md shrink-0 z-30">
+    <div class="w-full px-4 sm:px-6 lg:px-8 py-2.5">
+      <div class="flex items-center justify-between gap-3">
+        
+        <!-- Logo & Title -->
+        <div class="flex items-center space-x-3">
+          <button onclick="toggleSidebar()" class="md:hidden p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 transition" aria-label="เปิดเมนู">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+          
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-500 via-indigo-600 to-violet-600 flex items-center justify-center shadow-md shadow-indigo-500/20 text-white font-extrabold text-xl">
+            🔀
+          </div>
+          <div>
+            <div class="flex items-center space-x-2">
+              <h1 class="text-base sm:text-lg font-black tracking-tight text-white">Conditional Sentences</h1>
+              <span class="px-2 py-0.5 rounded-full text-[10px] font-black tracking-wider bg-teal-500/30 text-teal-300 border border-teal-400/30">200 SENTENCES</span>
+            </div>
+            <p class="text-xs text-slate-300 font-light hidden sm:block">คู่มือประโยคเงื่อนไขภาษาอังกฤษ 5 รูปแบบ • แยก If-clause & Main-clause • เสียงพากย์ธรรมชาติแท้ Studio HD ครบทุกส่วน</p>
+          </div>
+        </div>
+
+        <!-- Controls: Audio Toggle, Speed, Views, Grammar Rules Modal -->
+        <div class="flex items-center space-x-2 sm:space-x-3">
+          
+          <!-- Grammar Rules Button -->
+          <button onclick="openGrammarModal()" class="flex items-center space-x-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold bg-indigo-600/30 text-indigo-200 border border-indigo-400/40 hover:bg-indigo-600/50 hover:text-white transition shadow-sm" title="คลิกเพื่ออ่านสรุปหลักเกณฑ์ไวยากรณ์ 5 รูปแบบ">
+            <span>📖</span>
+            <span class="hidden md:inline">หลักเกณฑ์ไวยากรณ์</span>
+            <span class="md:hidden">หลักเกณฑ์</span>
+          </button>
+
+          <!-- Audio Engine Status Badge -->
+          <button id="audioEngineToggleBtn" onclick="toggleAudioEngine()" class="flex items-center space-x-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 hover:bg-emerald-500/30 transition-all shadow-sm" title="คลิกเพื่อสลับระหว่างเสียงธรรมชาติ Studio HD กับเสียงสังเคราะห์ระบบ">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span id="audioEngineLabel" class="hidden md:inline">🌟 เสียงธรรมชาติ Studio HD</span>
+            <span class="md:hidden">Studio HD</span>
+          </button>
+
+          <!-- Audio Speed Selector -->
+          <div class="hidden sm:flex items-center space-x-1 bg-slate-800/80 rounded-xl p-1 border border-slate-700/80">
+            <span class="text-[11px] text-slate-400 font-medium px-1.5">ความเร็ว:</span>
+            <select id="speedSelect" onchange="setSpeed(this.value)" class="bg-transparent text-xs font-bold text-slate-200 focus:outline-none cursor-pointer pr-1">
+              <option value="0.75" class="bg-slate-900 text-white">0.75x</option>
+              <option value="0.85" class="bg-slate-900 text-white">0.85x</option>
+              <option value="1.0" selected class="bg-slate-900 text-white">1.0x (ปกติ)</option>
+              <option value="1.1" class="bg-slate-900 text-white">1.1x</option>
+              <option value="1.25" class="bg-slate-900 text-white">1.25x</option>
+            </select>
+          </div>
+
+          <!-- View Switcher -->
+          <div class="flex bg-slate-800/80 rounded-xl p-1 border border-slate-700/80 text-xs">
+            <button onclick="setViewMode('grid')" data-view="grid" class="view-btn px-2.5 sm:px-3 py-1 rounded-lg transition-all bg-indigo-600 text-white font-bold flex items-center space-x-1">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+              <span class="hidden md:inline">การ์ด</span>
+            </button>
+            <button onclick="setViewMode('table')" data-view="table" class="view-btn px-2.5 sm:px-3 py-1 rounded-lg transition-all text-slate-300 hover:text-white flex items-center space-x-1">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              <span class="hidden md:inline">ตาราง</span>
+            </button>
+            <button onclick="setViewMode('flashcard')" data-view="flashcard" class="view-btn px-2.5 sm:px-3 py-1 rounded-lg transition-all text-slate-300 hover:text-white flex items-center space-x-1">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+              <span class="hidden md:inline">แฟลชการ์ด</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER WITH SIDEBAR -->
+  <div class="flex-1 flex overflow-hidden relative w-full">
+
+    <!-- Mobile Sidebar Drawer Backdrop -->
+    <div id="sidebar-backdrop" onclick="toggleSidebar()" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-40 hidden md:hidden transition-opacity"></div>
+
+    <!-- SIDEBAR (Search, Filters by Conditional Type & Poster Batch, Bookmarks) -->
+    <aside id="sidebar" class="fixed md:static inset-y-0 left-0 z-50 md:z-10 w-72 bg-white border-r border-slate-200 flex flex-col transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out shrink-0 shadow-lg md:shadow-none">
+      
+      <!-- Drawer Header on Mobile -->
+      <div class="p-3 border-b border-slate-100 flex items-center justify-between md:hidden bg-slate-50">
+        <div class="font-bold text-slate-800 text-xs flex items-center space-x-1.5">
+          <svg class="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+          <span>ตัวกรองและกลุ่มประโยค</span>
+        </div>
+        <button onclick="toggleSidebar()" class="p-1 rounded-lg text-slate-400 hover:text-slate-600">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Search & Controls in Sidebar -->
+      <div class="p-4 border-b border-slate-100 space-y-3">
+        
+        <!-- Search Input -->
+        <div class="relative">
+          <input type="text" id="searchInput" oninput="handleSearch(this.value)" placeholder="ค้นหาประโยค, คำแปล, ไวยากรณ์..." class="w-full pl-9 pr-8 py-2 rounded-xl bg-slate-100 hover:bg-slate-200/60 focus:bg-white text-xs text-slate-900 border border-transparent focus:border-indigo-400 focus:outline-none transition">
+          <svg class="w-4 h-4 text-slate-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute right-2.5 top-2.5 text-slate-400 hover:text-slate-600">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+
+        <!-- Conditional Type Filter Pills -->
+        <div>
+          <label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1.5">ประเภทประโยคเงื่อนไข (5 Types)</label>
+          <div class="grid grid-cols-2 gap-1.5 text-[11px]">
+            <button onclick="filterType('ALL')" id="typeBtn-ALL" class="type-btn py-1.5 px-2 text-left rounded-lg font-bold bg-indigo-50 text-indigo-700 border border-indigo-200 transition">
+              ทั้งหมด (200)
+            </button>
+            <button onclick="filterType('Zero Conditional')" id="typeBtn-Zero Conditional" class="type-btn py-1.5 px-2 text-left rounded-lg font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
+              0. Zero (40)
+            </button>
+            <button onclick="filterType('First Conditional')" id="typeBtn-First Conditional" class="type-btn py-1.5 px-2 text-left rounded-lg font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
+              1. First (40)
+            </button>
+            <button onclick="filterType('Second Conditional')" id="typeBtn-Second Conditional" class="type-btn py-1.5 px-2 text-left rounded-lg font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
+              2. Second (40)
+            </button>
+            <button onclick="filterType('Third Conditional')" id="typeBtn-Third Conditional" class="type-btn py-1.5 px-2 text-left rounded-lg font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
+              3. Third (40)
+            </button>
+            <button onclick="filterType('Mixed Conditional')" id="typeBtn-Mixed Conditional" class="type-btn py-1.5 px-2 text-left rounded-lg font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
+              4. Mixed (40)
+            </button>
+          </div>
+        </div>
+
+        <!-- Quick Filter Buttons & Clear Filter -->
+        <div class="space-y-1.5">
+          <div class="grid grid-cols-2 gap-2">
+            <button onclick="filterFavorites()" id="favFilterBtn" class="px-3 py-2 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-amber-50 text-slate-700 hover:text-amber-800 flex items-center justify-between border border-transparent hover:border-amber-200 transition">
+              <span class="flex items-center space-x-1">
+                <svg class="w-3.5 h-3.5 text-amber-500 fill-amber-500" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <span>ที่คั่นไว้</span>
+              </span>
+              <span id="favCountBadge" class="bg-amber-100 text-amber-800 text-[10px] px-1.5 py-0.5 rounded-full font-bold">0</span>
+            </button>
+
+            <!-- Clear Filter Button -->
+            <button onclick="clearAllFilters()" id="clearAllFiltersBtn" class="px-3 py-2 rounded-xl text-xs font-semibold bg-rose-50 text-rose-700 hover:bg-rose-100 border border-rose-200 flex items-center justify-center space-x-1 transition" title="รีเซ็ตตัวกรองทั้งหมด">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+              <span>ล้างตัวกรอง</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Poster Batch Filter Accordion (1-5 Batches) -->
+      <div class="px-4 py-2 border-b border-slate-100 bg-slate-50/70">
+        <label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1.5">แยกตามชุดโปสเตอร์ (5 ชุด)</label>
+        <div class="grid grid-cols-1 gap-1 text-[11px]" id="batchButtonsContainer">
+          <button onclick="filterBatch('ALL')" id="batchBtn-ALL" class="batch-btn py-1 px-2.5 text-left rounded-lg font-bold bg-indigo-50 text-indigo-700 border border-indigo-200 transition">
+            ✨ ทุกชุด (1-5) • 200 ประโยค
+          </button>
+          <button onclick="filterBatch(1)" id="batchBtn-1" class="batch-btn py-1 px-2.5 text-left rounded-lg font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
+            📂 ชุดที่ 1 (ข้อ 1 - 40) • Zero Conditional
+          </button>
+          <button onclick="filterBatch(2)" id="batchBtn-2" class="batch-btn py-1 px-2.5 text-left rounded-lg font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
+            📂 ชุดที่ 2 (ข้อ 41 - 80) • First Conditional
+          </button>
+          <button onclick="filterBatch(3)" id="batchBtn-3" class="batch-btn py-1 px-2.5 text-left rounded-lg font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
+            📂 ชุดที่ 3 (ข้อ 81 - 120) • Second Conditional
+          </button>
+          <button onclick="filterBatch(4)" id="batchBtn-4" class="batch-btn py-1 px-2.5 text-left rounded-lg font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
+            📂 ชุดที่ 4 (ข้อ 121 - 160) • Third Conditional
+          </button>
+          <button onclick="filterBatch(5)" id="batchBtn-5" class="batch-btn py-1 px-2.5 text-left rounded-lg font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">
+            📂 ชุดที่ 5 (ข้อ 161 - 200) • Mixed Conditional
+          </button>
+        </div>
+      </div>
+
+      <!-- Sidebar Footer Stats -->
+      <div class="mt-auto p-3 bg-slate-50 border-t border-slate-200 text-center text-xs text-slate-500">
+        <div class="flex items-center justify-around font-semibold text-slate-600">
+          <div><span class="text-indigo-600 font-extrabold text-sm">200</span> ประโยค</div>
+          <div><span class="text-teal-600 font-extrabold text-sm">5</span> รูปแบบ</div>
+          <div><span class="text-emerald-600 font-extrabold text-sm">600</span> เสียง HD</div>
+        </div>
+        <p class="text-[10px] text-slate-400 mt-1">100% JennyNeural Studio Audio</p>
+      </div>
+
+    </aside>
+
+    <!-- CONTENT WORKSPACE -->
+    <main class="flex-1 flex flex-col overflow-hidden bg-slate-100/60">
+      
+      <!-- SUB-HEADER BAR -->
+      <div class="bg-white border-b border-slate-200 px-4 sm:px-6 py-2.5 flex items-center justify-between gap-3 shrink-0">
+        
+        <div class="flex items-center space-x-2">
+          <span class="text-xs font-bold text-slate-400">กำลังแสดง:</span>
+          <span id="activeFilterName" class="text-xs font-extrabold text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-lg border border-indigo-100">ทั้งหมด (All Sentences)</span>
+          <span id="resultCountBadge" class="text-xs font-semibold text-slate-500">200 ประโยค</span>
+        </div>
+
+        <div class="flex items-center space-x-2">
+          <!-- Shuffle Button -->
+          <button onclick="shuffleData()" class="px-2.5 py-1 rounded-lg text-xs font-semibold text-slate-600 hover:text-indigo-700 bg-slate-100 hover:bg-indigo-50 border border-slate-200 transition flex items-center space-x-1" title="สุ่มลำดับเพื่อฝึกฝน">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+            <span class="hidden sm:inline">สุ่มลำดับ</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- SCROLLABLE VIEW CONTAINER -->
+      <div class="flex-1 overflow-y-auto custom-scrollbar p-4 sm:p-6" id="viewContainer">
+        
+        <!-- 1. GRID VIEW -->
+        <div id="gridView" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 pb-20 md:pb-6">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- 2. TABLE VIEW -->
+        <div id="tableView" class="hidden pb-20 md:pb-6">
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse text-xs">
+                <thead>
+                  <tr class="bg-slate-900 text-white uppercase text-[11px] font-bold tracking-wider sticky top-0 z-10 shadow-sm">
+                    <th class="py-3 px-3 text-center w-12 border-b border-slate-800">#</th>
+                    <th class="py-3 px-3 w-32 border-b border-slate-800">ประเภทเงื่อนไข</th>
+                    <th class="py-3 px-4 border-b border-slate-800">ประโยคเต็ม & ฟังเสียง</th>
+                    <th class="py-3 px-4 border-b border-slate-800">ส่วนเงื่อนไข (If-clause)</th>
+                    <th class="py-3 px-4 border-b border-slate-800">ส่วนผลลัพธ์ (Main-clause)</th>
+                    <th class="py-3 px-4 border-b border-slate-800">คำแปลภาษาไทย & หลักเกณฑ์</th>
+                    <th class="py-3 px-3 text-center w-20 border-b border-slate-800">คั่นหน้า</th>
+                  </tr>
+                </thead>
+                <tbody id="tableBody" class="divide-y divide-slate-100 font-sans">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. FLASHCARD VIEW -->
+        <div id="flashcardView" class="hidden flex flex-col items-center justify-center min-h-[500px] max-w-2xl mx-auto py-4 pb-20 md:pb-6">
+          
+          <!-- Card Progress & Navigation Header -->
+          <div class="w-full flex items-center justify-between mb-3 px-2">
+            <span id="fcProgressText" class="text-xs font-bold text-indigo-700 bg-indigo-50 px-3 py-1 rounded-full border border-indigo-200">ประโยคที่ 1 จาก 200</span>
+            <div class="flex items-center space-x-2">
+              <button onclick="prevFlashcard()" class="p-2 rounded-xl bg-white border border-slate-200 text-slate-600 hover:bg-slate-100 transition shadow-sm active:scale-95" title="ประโยคก่อนหน้า (ลูกศรซ้าย)">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+              </button>
+              <button onclick="flipFlashcard()" class="px-3 py-1.5 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-700 font-bold text-xs hover:bg-indigo-100 transition shadow-sm" title="พลิกการ์ด (Spacebar)">
+                พลิกการ์ด ↺
+              </button>
+              <button onclick="nextFlashcard()" class="p-2 rounded-xl bg-white border border-slate-200 text-slate-600 hover:bg-slate-100 transition shadow-sm active:scale-95" title="ประโยคถัดไป (ลูกศรขวา)">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- 3D Flippable Card -->
+          <div class="w-full perspective-1000 cursor-pointer" onclick="flipFlashcard()">
+            <div id="fcCardInner" class="relative w-full h-[400px] rounded-3xl shadow-xl transition-transform duration-500 transform-style-3d bg-white border border-slate-200/80">
+              
+              <!-- Front Face: English Conditional Sentence -->
+              <div class="absolute inset-0 backface-hidden p-6 sm:p-8 flex flex-col justify-between bg-gradient-to-br from-white via-indigo-50/20 to-teal-50/30 rounded-3xl">
+                <div>
+                  <div class="flex items-center justify-between">
+                    <span id="fcBadgeType" class="px-2.5 py-1 rounded-lg text-xs font-black uppercase tracking-wider bg-teal-100 text-teal-800">
+                      Zero Conditional
+                    </span>
+                    <span id="fcNumber" class="text-xs font-bold text-slate-400">#1</span>
+                  </div>
+
+                  <div class="mt-8 text-center">
+                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-2">Conditional Sentence</p>
+                    <p id="fcEnglishText" class="text-xl sm:text-2xl font-black text-slate-900 leading-snug">
+                      If you heat water, it boils.
+                    </p>
+                  </div>
+
+                  <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-2 text-xs">
+                    <span id="fcIfClausePill" class="px-3 py-1.5 rounded-xl bg-teal-50 border border-teal-200 text-teal-800 font-bold">
+                      If you heat water,
+                    </span>
+                    <span class="text-slate-400 font-bold">➔</span>
+                    <span id="fcMainClausePill" class="px-3 py-1.5 rounded-xl bg-orange-50 border border-orange-200 text-orange-800 font-bold">
+                      it boils.
+                    </span>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between pt-4 border-t border-slate-100 text-xs">
+                  <button onclick="event.stopPropagation(); playFcAudio();" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-indigo-600 text-white font-bold hover:bg-indigo-700 shadow-sm transition active:scale-95">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/></svg>
+                    <span>ฟังเสียงประโยคเต็ม</span>
+                  </button>
+                  <span class="text-slate-400 text-[11px]">💡 คลิกที่การ์ดเพื่อดูคำแปลไทย</span>
+                </div>
+              </div>
+
+              <!-- Back Face: Thai Meaning & Grammar Notes -->
+              <div class="absolute inset-0 backface-hidden rotate-y-180 p-6 sm:p-8 flex flex-col justify-between bg-gradient-to-br from-white via-amber-50/20 to-orange-50/30 rounded-3xl border-2 border-indigo-200">
+                <div>
+                  <div class="flex items-center justify-between">
+                    <span id="fcBackBadgeType" class="px-2.5 py-1 rounded-lg text-xs font-black uppercase tracking-wider bg-indigo-100 text-indigo-800">
+                      คำแปลและความหมาย
+                    </span>
+                    <span class="text-xs font-bold text-amber-600">คำแปล & หลักไวยากรณ์</span>
+                  </div>
+
+                  <div class="mt-8 text-center">
+                    <p class="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-2">คำแปลภาษาไทย</p>
+                    <p id="fcThaiText" class="text-lg sm:text-xl font-extrabold text-slate-900 leading-relaxed">
+                      ถ้าคุณต้มน้ำ น้ำก็จะเดือด
+                    </p>
+                  </div>
+
+                  <div class="mt-6 p-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-left text-xs space-y-1">
+                    <div class="font-bold text-indigo-900">📌 หลักเกณฑ์การใช้ (Grammar Rule):</div>
+                    <div id="fcNoteText" class="text-slate-600 leading-normal">
+                      ข้อเท็จจริงทางวิทยาศาสตร์ (Present Simple + Present Simple)
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between pt-4 border-t border-slate-100 text-xs">
+                  <button onclick="event.stopPropagation(); playFcAudio();" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-indigo-600 text-white font-bold hover:bg-indigo-700 shadow-sm transition active:scale-95">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/></svg>
+                    <span>ฟังเสียงอีกครั้ง</span>
+                  </button>
+                  <span class="text-slate-400 text-[11px]">💡 กด Spacebar เพื่อพลิกกลับ</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Shortcuts Hint -->
+          <div class="mt-4 text-[11px] text-slate-400 text-center">
+            ใช้คีย์บอร์ด: <kbd class="px-1.5 py-0.5 bg-white border border-slate-300 rounded shadow-xs text-slate-600 font-mono">Space</kbd> พลิกการ์ด | <kbd class="px-1.5 py-0.5 bg-white border border-slate-300 rounded shadow-xs text-slate-600 font-mono">←</kbd> <kbd class="px-1.5 py-0.5 bg-white border border-slate-300 rounded shadow-xs text-slate-600 font-mono">→</kbd> เปลี่ยนประโยค
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- GRAMMAR RULES MODAL -->
+  <div id="grammarModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm animate-fade-in">
+    <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden border border-slate-200">
+      
+      <!-- Modal Header -->
+      <div class="p-5 sm:p-6 bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-xl">
+            📖
+          </div>
+          <div>
+            <h2 class="text-base sm:text-lg font-black text-white">หลักเกณฑ์ไวยากรณ์ประโยคเงื่อนไข (Conditional Sentences)</h2>
+            <p class="text-xs text-indigo-200 font-light">สรุปโครงสร้าง 5 รูปแบบ วิธีการใช้ และข้อแตกต่าง</p>
+          </div>
+        </div>
+        <button onclick="closeGrammarModal()" class="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-5 sm:p-6 overflow-y-auto custom-scrollbar space-y-4 text-xs text-slate-700 leading-relaxed">
+        
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+          <h3 class="font-extrabold text-sm text-indigo-900 mb-1">0. Zero Conditional (ความจริงทั่วไป / กฎธรรมชาติ)</h3>
+          <p class="text-teal-700 font-bold mb-1 font-mono">โครงสร้าง: If + Present Simple (V.1), Present Simple (V.1)</p>
+          <p class="text-slate-600">ใช้เมื่อผลลัพธ์เป็นความจริงทางวิทยาศาสตร์ กฎธรรมชาติ หรือความจริงเสมอ เช่น <em>If you heat ice, it melts.</em> (ถ้าต้มน้ำแข็ง น้ำแข็งจะละลาย)</p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+          <h3 class="font-extrabold text-sm text-blue-900 mb-1">1. First Conditional (เป็นไปได้จริงในปัจจุบันหรืออนาคต)</h3>
+          <p class="text-blue-700 font-bold mb-1 font-mono">โครงสร้าง: If + Present Simple (V.1), Future Simple (will + V.1)</p>
+          <p class="text-slate-600">ใช้กับเหตุการณ์ที่มีโอกาสเกิดขึ้นจริงในชีวิตประจำวัน เช่น <em>If it rains, I will stay at home.</em> (ถ้าฝนตก ฉันจะอยู่บ้าน)</p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+          <h3 class="font-extrabold text-sm text-purple-900 mb-1">2. Second Conditional (เหตุการณ์สมมติในปัจจุบันหรืออนาคต)</h3>
+          <p class="text-purple-700 font-bold mb-1 font-mono">โครงสร้าง: If + Past Simple (V.2 / were), would + V.1</p>
+          <p class="text-slate-600">ใช้กับเหตุการณ์สมมติที่ตรงข้ามกับความจริงในปัจจุบัน หรือเป็นไปได้ยากมากในอนาคต (ใช้ <strong>were</strong> กับประธานทุกตัว) เช่น <em>If I were you, I would accept the offer.</em> (ถ้าฉันเป็นคุณ ฉันคงตอบรับข้อเสนอไปแล้ว)</p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+          <h3 class="font-extrabold text-sm text-rose-900 mb-1">3. Third Conditional (เหตุการณ์สมมติในอดีต / เสียดาย)</h3>
+          <p class="text-rose-700 font-bold mb-1 font-mono">โครงสร้าง: If + Past Perfect (had + V.3), would have + V.3</p>
+          <p class="text-slate-600">ใช้กับเหตุการณ์สมมติตรงข้ามกับความจริงในอดีต ซึ่งผ่านพ้นไปแล้วและไม่สามารถแก้ไขได้ มักใช้แสดงความเสียดาย เช่น <em>If I had studied hard, I would have passed the exam.</em> (ถ้าตอนนั้นตั้งใจเรียน ฉันคงสอบผ่านไปแล้ว)</p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+          <h3 class="font-extrabold text-sm text-amber-900 mb-1">4. Mixed Conditional (ประโยคเงื่อนไขแบบผสมข้ามกาลเวลา)</h3>
+          <div class="space-y-1.5 mt-1.5">
+            <div>
+              <span class="font-bold text-amber-800">แบบ A (ข้อ 161-180):</span> <span class="font-mono text-indigo-700 font-bold">If + Past Perfect, would + V.1 now</span>
+              <p class="text-slate-600 mt-0.5">สมมติอดีตที่ส่งผลกระทบต่อเนื่องถึงสภาพในปัจจุบัน เช่น <em>If I had studied medicine, I would be a doctor now.</em> (ถ้าตอนนั้นเรียนหมอ ตอนนี้ก็คงได้เป็นหมอแล้ว)</p>
+            </div>
+            <div class="pt-1.5 border-t border-slate-200">
+              <span class="font-bold text-amber-800">แบบ B (ข้อ 181-200):</span> <span class="font-mono text-indigo-700 font-bold">If + Past Simple (were), would have + V.3</span>
+              <p class="text-slate-600 mt-0.5">สมมติสภาพปัจจุบันหรืออุปนิสัยทั่วไป ที่ส่งผลต่อเหตุการณ์ในอดีต เช่น <em>If I were taller, I would have joined the basketball team.</em> (ถ้าฉันเป็นคนตัวสูง ตอนนั้นคงเข้าทีมบาสไปแล้ว)</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="p-4 bg-slate-100 border-t border-slate-200 flex justify-end">
+        <button onclick="closeGrammarModal()" class="px-5 py-2 rounded-xl bg-indigo-600 text-white font-bold hover:bg-indigo-700 transition">
+          เข้าใจแล้ว ปิดหน้าต่าง
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- APPLICATION JAVASCRIPT -->
+  <script>
+    const RAW_DATA = [{"num": 1, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If you heat water, it boils.", "if_clause": "If you heat water", "main_clause": "it boils", "thai": "ถ้าคุณต้มน้ำ น้ำก็จะเดือด", "note": "ข้อเท็จจริงทางวิทยาศาสตร์ (Present Simple + Present Simple)"}, {"num": 2, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If you freeze water, it turns into ice.", "if_clause": "If you freeze water", "main_clause": "it turns into ice", "thai": "ถ้าคุณแช่แข็งน้ำ น้ำจะกลายเป็นน้ำแข็ง", "note": "ข้อเท็จจริงทางวิทยาศาสตร์"}, {"num": 3, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If you touch fire, it burns.", "if_clause": "If you touch fire", "main_clause": "it burns", "thai": "ถ้าคุณแตะไฟ ไฟก็จะลวก (ไหม้)", "note": "ความจริงตามธรรมชาติ"}, {"num": 4, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If it rains, the ground gets wet.", "if_clause": "If it rains", "main_clause": "the ground gets wet", "thai": "ถ้าฝนตก พื้นดินก็จะเปียก", "note": "ปรากฏการณ์ธรรมชาติทั่วไป"}, {"num": 5, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If the sun sets, it gets dark.", "if_clause": "If the sun sets", "main_clause": "it gets dark", "thai": "ถ้าพระอาทิตย์ตกดิน ท้องฟ้าก็จะมืดลง", "note": "ปรากฏการณ์ธรรมชาติทั่วไป"}, {"num": 6, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If you mix red and blue, you get purple.", "if_clause": "If you mix red and blue", "main_clause": "you get purple", "thai": "ถ้าคุณผสมสีแดงกับสีน้ำเงิน คุณจะได้สีม่วง", "note": "ทฤษฎีสีและข้อเท็จจริง"}, {"num": 7, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If you heat ice, it melts.", "if_clause": "If you heat ice", "main_clause": "it melts", "thai": "ถ้าคุณให้ความร้อนกับน้ำแข็ง น้ำแข็งก็จะละลาย", "note": "ข้อเท็จจริงทางฟิสิกส์"}, {"num": 8, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If plants get water, they grow.", "if_clause": "If plants get water", "main_clause": "they grow", "thai": "ถ้าต้นไม้ได้รับน้ำ ต้นไม้ก็จะเจริญเติบโต", "note": "ความจริงทางชีววิทยา"}, {"num": 9, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If you don't eat, you feel hungry.", "if_clause": "If you don't eat", "main_clause": "you feel hungry", "thai": "ถ้าคุณไม่กินข้าว คุณก็จะรู้สึกหิว", "note": "กลไกตามธรรมชาติของร่างกาย"}, {"num": 10, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If you don't sleep, you feel tired.", "if_clause": "If you don't sleep", "main_clause": "you feel tired", "thai": "ถ้าคุณไม่ได้นอน คุณก็จะรู้สึกเหนื่อยล้า", "note": "กลไกตามธรรมชาติของร่างกาย"}, {"num": 11, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If you add sugar to tea, it tastes sweet.", "if_clause": "If you add sugar to tea", "main_clause": "it tastes sweet", "thai": "ถ้าคุณใส่น้ำตาลลงในชา ชาก็จะมีรสหวาน", "note": "ข้อเท็จจริงทั่วไป"}, {"num": 12, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If you boil an egg, it becomes hard.", "if_clause": "If you boil an egg", "main_clause": "it becomes hard", "thai": "ถ้าคุณต้มไข่ ไข่ก็จะแข็งตัว (สุก)", "note": "ข้อเท็จจริงทั่วไปในการทำอาหาร"}, {"num": 13, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If you drop glass, it breaks.", "if_clause": "If you drop glass", "main_clause": "it breaks", "thai": "ถ้าคุณทำแก้วตก แก้วก็จะแตก", "note": "คุณสมบัติทางกายภาพของวัตถุ"}, {"num": 14, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If you press this button, the machine starts.", "if_clause": "If you press this button", "main_clause": "the machine starts", "thai": "ถ้าคุณกดปุ่มนี้ เครื่องจักรก็จะเริ่มทำงาน", "note": "การทำงานของกลไกหรือคำสั่งเครื่องจักร"}, {"num": 15, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If you water flowers, they bloom.", "if_clause": "If you water flowers", "main_clause": "they bloom", "thai": "ถ้าคุณรดน้ำดอกไม้ ดอกไม้ก็จะเบ่งบาน", "note": "ความจริงตามธรรมชาติของพืช"}, {"num": 16, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If babies are hungry, they cry.", "if_clause": "If babies are hungry", "main_clause": "they cry", "thai": "ถ้าเด็กทารกหิว พวกเขาก็จะร้องไห้", "note": "พฤติกรรมตามธรรมชาติของทารก"}, {"num": 17, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If you heat metal, it expands.", "if_clause": "If you heat metal", "main_clause": "it expands", "thai": "ถ้าคุณให้ความร้อนแก่โลหะ โลหะก็จะขยายตัว", "note": "กฎทางฟิสิกส์และการขยายตัวจากความร้อน"}, {"num": 18, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If you cool water, it becomes cold.", "if_clause": "If you cool water", "main_clause": "it becomes cold", "thai": "ถ้าคุณทำให้น้ำเย็นลง น้ำก็จะเย็นขึ้น", "note": "ข้อเท็จจริงทั่วไป"}, {"num": 19, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If people exercise, they become stronger.", "if_clause": "If people exercise", "main_clause": "they become stronger", "thai": "ถ้าผู้คนออกกำลังกาย พวกเขาก็จะแข็งแรงขึ้น", "note": "ความจริงด้านสุขภาพและการออกกำลังกาย"}, {"num": 20, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If you don't water plants, they die.", "if_clause": "If you don't water plants", "main_clause": "they die", "thai": "ถ้าคุณไม่รดน้ำต้นไม้ ต้นไม้ก็จะตาย", "note": "ความจริงตามธรรมชาติของสิ่งมีชีวิต"}, {"num": 21, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If the temperature drops, water freezes.", "if_clause": "If the temperature drops", "main_clause": "water freezes", "thai": "ถ้าอุณหภูมิลดต่ำลง น้ำก็จะกลายเป็นน้ำแข็ง", "note": "จุดเยือกแข็งและกฎธรรมชาติ"}, {"num": 22, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If you mix yellow and blue, you get green.", "if_clause": "If you mix yellow and blue", "main_clause": "you get green", "thai": "ถ้าคุณผสมสีเหลืองกับสีน้ำเงิน คุณจะได้สีเขียว", "note": "ทฤษฎีสีและข้อเท็จจริง"}, {"num": 23, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If you cut onions, your eyes water.", "if_clause": "If you cut onions", "main_clause": "your eyes water", "thai": "ถ้าคุณหั่นหัวหอม น้ำตาของคุณก็จะไหล", "note": "ปฏิกิริยาเคมีต่อสารในหัวหอม (eyes water = น้ำตาไหล)"}, {"num": 24, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If you leave milk outside, it spoils.", "if_clause": "If you leave milk outside", "main_clause": "it spoils", "thai": "ถ้าคุณวางนมทิ้งไว้นอกตู้เย็น นมก็จะบูดเสีย", "note": "การเน่าเสียของอาหารตามธรรมชาติ"}, {"num": 25, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If you study regularly, you learn better.", "if_clause": "If you study regularly", "main_clause": "you learn better", "thai": "ถ้าคุณทบทวนบทเรียนเป็นประจำ คุณก็จะเรียนรู้ได้ดียิ่งขึ้น", "note": "หลักการเรียนรู้ตามธรรมชาติ"}, {"num": 26, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If you run fast, your heart beats faster.", "if_clause": "If you run fast", "main_clause": "your heart beats faster", "thai": "ถ้าคุณวิ่งเร็ว หัวใจของคุณก็จะเต้นเร็วขึ้น", "note": "สรีรวิทยาของร่างกายมนุษย์"}, {"num": 27, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If you eat too much, you feel full.", "if_clause": "If you eat too much", "main_clause": "you feel full", "thai": "ถ้าคุณกินมากเกินไป คุณก็จะรู้สึกอิ่มแน่น", "note": "การรับรู้ของร่างกาย"}, {"num": 28, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If you don't charge a phone, its battery runs out.", "if_clause": "If you don't charge a phone", "main_clause": "its battery runs out", "thai": "ถ้าคุณไม่ชาร์จโทรศัพท์ แบตเตอรี่ก็จะหมด", "note": "การทำงานของอุปกรณ์อิเล็กทรอนิกส์"}, {"num": 29, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If the sun shines, the weather becomes warm.", "if_clause": "If the sun shines", "main_clause": "the weather becomes warm", "thai": "ถ้าแดดออก อากาศก็จะอบอุ่นขึ้น", "note": "ปรากฏการณ์สภาพอากาศ"}, {"num": 30, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If you press the switch, the light turns on.", "if_clause": "If you press the switch", "main_clause": "the light turns on", "thai": "ถ้าคุณกดสวิตช์ ไฟก็จะเปิดสว่าง", "note": "การทำงานของวงจรไฟฟ้า"}, {"num": 31, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If you heat butter, it melts.", "if_clause": "If you heat butter", "main_clause": "it melts", "thai": "ถ้าคุณให้ความร้อนกับเนย เนยก็จะละลาย", "note": "จุดหลอมเหลวของอาหาร"}, {"num": 32, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If you put water in a freezer, it freezes.", "if_clause": "If you put water in a freezer", "main_clause": "it freezes", "thai": "ถ้าคุณเอาน้ำใส่ในช่องแช่แข็ง น้ำก็จะแข็งตัว", "note": "การเปลี่ยนสถานะของน้ำ"}, {"num": 33, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If you don't brush your teeth, they become dirty.", "if_clause": "If you don't brush your teeth", "main_clause": "they become dirty", "thai": "ถ้าคุณไม่แปรงฟัน ฟันของคุณก็จะสกปรก", "note": "สุขอนามัยส่วนบุคคล"}, {"num": 34, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If you boil water, it gets hot.", "if_clause": "If you boil water", "main_clause": "it gets hot", "thai": "ถ้าคุณต้มน้ำ น้ำก็จะร้อน", "note": "ความจริงทางวิทยาศาสตร์"}, {"num": 35, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If people drink water, they stay hydrated.", "if_clause": "If people drink water", "main_clause": "they stay hydrated", "thai": "ถ้าผู้คนดื่มน้ำ ร่างกายของพวกเขาก็จะไม่ขาดน้ำ", "note": "ความจริงทางชีววิทยา (hydrated = ร่างกายมีความชุ่มชื้นสมดุล)"}, {"num": 36, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If you add salt to food, it tastes salty.", "if_clause": "If you add salt to food", "main_clause": "it tastes salty", "thai": "ถ้าคุณใส่เกลือลงในอาหาร อาหารก็จะมีรสเค็ม", "note": "การรับรู้รสชาติ"}, {"num": 37, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If you don't practise, you make more mistakes.", "if_clause": "If you don't practise", "main_clause": "you make more mistakes", "thai": "ถ้าคุณไม่ฝึกฝน คุณก็จะทำผิดพลาดมากขึ้น", "note": "ความจริงเรื่องการฝึกทักษะ"}, {"num": 38, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If you shake a bottle, its contents move.", "if_clause": "If you shake a bottle", "main_clause": "its contents move", "thai": "ถ้าคุณเขย่าขวด สิ่งที่อยู่ข้างในขวดก็จะขยับเคลื่อนไหว", "note": "การเคลื่อนที่ทางกายภาพ"}, {"num": 39, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If you put paper in fire, it burns.", "if_clause": "If you put paper in fire", "main_clause": "it burns", "thai": "ถ้าคุณใส่กระดาษลงในกองไฟ กระดาษก็จะไหม้", "note": "การเผาไหม้ตามธรรมชาติ"}, {"num": 40, "type": "Zero Conditional", "type_th": "ความจริงทั่วไป / กฎธรรมชาติ", "sentence": "If the weather gets cold, people wear warm clothes.", "if_clause": "If the weather gets cold", "main_clause": "people wear warm clothes", "thai": "ถ้าอากาศหนาวเย็นลง ผู้คนก็จะสวมใส่เสื้อผ้าที่อบอุ่น", "note": "พฤติกรรมทั่วไปของมนุษย์ตามสภาพอากาศ"}, {"num": 41, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If I study hard, I will pass the exam.", "if_clause": "If I study hard", "main_clause": "I will pass the exam", "thai": "ถ้าฉันตั้งใจเรียน ฉันจะสอบผ่านแน่นอน", "note": "โครงสร้าง: If + Present Simple, will + V.1"}, {"num": 42, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If it rains, I will stay at home.", "if_clause": "If it rains", "main_clause": "I will stay at home", "thai": "ถ้าฝนตก ฉันจะอยู่บ้าน", "note": "การตัดสินใจหรือแผนการในอนาคต"}, {"num": 43, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If you work hard, you will succeed.", "if_clause": "If you work hard", "main_clause": "you will succeed", "thai": "ถ้าคุณขยันทำงาน คุณจะประสบความสำเร็จ", "note": "ผลลัพธ์ที่มีโอกาสเกิดขึ้นจริง"}, {"num": 44, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If he comes, I will meet him.", "if_clause": "If he comes", "main_clause": "I will meet him", "thai": "ถ้าเขามา ฉันจะไปพบเขา", "note": "แผนการที่จะทำเมื่อเงื่อนไขเกิดขึ้น"}, {"num": 45, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If she calls me, I will talk to her.", "if_clause": "If she calls me", "main_clause": "I will talk to her", "thai": "ถ้าเธอโทรมาหาฉัน ฉันจะคุยกับเธอ", "note": "การตอบสนองต่อเหตุการณ์ที่มีโอกาสเกิด"}, {"num": 46, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If I have time, I will visit you.", "if_clause": "If I have time", "main_clause": "I will visit you", "thai": "ถ้าฉันมีเวลาว่าง ฉันจะไปเยี่ยมคุณ", "note": "ความเป็นไปได้ในอนาคตอันใกล้"}, {"num": 47, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If you hurry, you will catch the bus.", "if_clause": "If you hurry", "main_clause": "you will catch the bus", "thai": "ถ้าคุณรีบหน่อย คุณจะขึ้นรถเมล์ทัน", "note": "คำแนะนำและผลลัพธ์ที่เป็นไปได้"}, {"num": 48, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If we leave now, we will reach on time.", "if_clause": "If we leave now", "main_clause": "we will reach on time", "thai": "ถ้าเราออกเดินทางตอนนี้ เราจะไปถึงตรงเวลา", "note": "reach on time = ไปถึงทันเวลาที่กำหนด"}, {"num": 49, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If he studies regularly, he will get good marks.", "if_clause": "If he studies regularly", "main_clause": "he will get good marks", "thai": "ถ้าเขาอ่านหนังสือสม่ำเสมอ เขาจะได้คะแนนดี", "note": "get good marks = ได้เกรดหรือคะแนนสอบที่ดี"}, {"num": 50, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If you help me, I will finish the work.", "if_clause": "If you help me", "main_clause": "I will finish the work", "thai": "ถ้าคุณช่วยฉัน ฉันจะทำงานนี้เสร็จเรียบร้อย", "note": "การขอความช่วยเหลือและผลลัพธ์"}, {"num": 51, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If I earn enough money, I will buy a new phone.", "if_clause": "If I earn enough money", "main_clause": "I will buy a new phone", "thai": "ถ้าฉันหาเงินได้มากพอ ฉันจะซื้อโทรศัพท์เครื่องใหม่", "note": "เป้าหมายและแผนการซื้อของ"}, {"num": 52, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If she invites me, I will attend the party.", "if_clause": "If she invites me", "main_clause": "I will attend the party", "thai": "ถ้าเธอชวนฉัน ฉันจะไปร่วมงานเลี้ยงแน่นอน", "note": "การตัดสินใจตามเงื่อนไขทางสังคม"}, {"num": 53, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If they arrive early, we will start the meeting.", "if_clause": "If they arrive early", "main_clause": "we will start the meeting", "thai": "ถ้าพวกเขามาถึงเร็ว เราจะเริ่มการประชุมกันเลย", "note": "กำหนดการและการประชุม"}, {"num": 54, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If you practise English, you will improve.", "if_clause": "If you practise English", "main_clause": "you will improve", "thai": "ถ้าคุณฝึกฝนภาษาอังกฤษ ทักษะของคุณจะพัฒนาขึ้น", "note": "การฝึกฝนและการพัฒนาทักษะ"}, {"num": 55, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If he apologises, I will forgive him.", "if_clause": "If he apologises", "main_clause": "I will forgive him", "thai": "ถ้าเขากล่าวขอโทษ ฉันจะให้อภัยเขา", "note": "การแสดงเจตจำนงในการให้อภัย"}, {"num": 56, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If you don't hurry, you will miss the train.", "if_clause": "If you don't hurry", "main_clause": "you will miss the train", "thai": "ถ้าคุณไม่รีบ คุณจะตกรถไฟนะ", "note": "คำเตือน (ในภาพสะกดผิดเป็น wiii ได้แก้ไขเป็น will)"}, {"num": 57, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If I see him, I will give him your message.", "if_clause": "If I see him", "main_clause": "I will give him your message", "thai": "ถ้าฉันเจอเขา ฉันจะบอกข้อความของคุณให้เขาทราบ", "note": "การฝากข้อความ"}, {"num": 58, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If the weather is good, we will go for a picnic.", "if_clause": "If the weather is good", "main_clause": "we will go for a picnic", "thai": "ถ้าอากาศดี พวกเราจะไปปิกนิกกัน", "note": "แผนการพักผ่อนหย่อนใจ"}, {"num": 59, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If you save money, you will buy a car.", "if_clause": "If you save money", "main_clause": "you will buy a car", "thai": "ถ้าคุณประหยัดเงิน คุณจะสามารถซื้อรถยนต์ได้", "note": "เป้าหมายทางการเงิน"}, {"num": 60, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If she works hard, she will become successful.", "if_clause": "If she works hard", "main_clause": "she will become successful", "thai": "ถ้าเธอขยันทำงาน เธอจะประสบความสำเร็จอย่างแน่นอน", "note": "การคาดคะเนอนาคตจากความพยายาม"}, {"num": 61, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If you eat too much, you will feel sick.", "if_clause": "If you eat too much", "main_clause": "you will feel sick", "thai": "ถ้าคุณกินมากเกินไป คุณจะรู้สึกคลื่นไส้ไม่สบายตัว", "note": "คำเตือนด้านสุขภาพ (feel sick = ไม่สบาย/คลื่นไส้)"}, {"num": 62, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If he tells the truth, I will believe him.", "if_clause": "If he tells the truth", "main_clause": "I will believe him", "thai": "ถ้าเขาพูดความจริง ฉันจะเชื่อเขา", "note": "เงื่อนไขความจริงใจ"}, {"num": 63, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If we win the match, we will celebrate.", "if_clause": "If we win the match", "main_clause": "we will celebrate", "thai": "ถ้าพวกเราชนะการแข่งขัน พวกเราจะฉลองกัน", "note": "แผนการหลังชัยชนะ"}, {"num": 64, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If you follow the rules, you will avoid trouble.", "if_clause": "If you follow the rules", "main_clause": "you will avoid trouble", "thai": "ถ้าคุณปฏิบัติตามกฎ คุณจะหลีกเลี่ยงปัญหาได้", "note": "การปฏิบัติตามกฎระเบียบ"}, {"num": 65, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If I get a holiday, I will visit Kolkata.", "if_clause": "If I get a holiday", "main_clause": "I will visit Kolkata", "thai": "ถ้าฉันได้วันหยุด ฉันจะไปเที่ยวเมืองโกลกาตา", "note": "แผนการท่องเที่ยว (Kolkata เมืองหลวงเก่าของอินเดีย)"}, {"num": 66, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If she finishes her homework, she will watch television.", "if_clause": "If she finishes her homework", "main_clause": "she will watch television", "thai": "ถ้าเธอทำการบ้านเสร็จ เธอจะได้ดูทีวี", "note": "เงื่อนไขในการทำกิจกรรมผ่อนคลาย"}, {"num": 67, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If you don't study, you will fail.", "if_clause": "If you don't study", "main_clause": "you will fail", "thai": "ถ้าคุณไม่อ่านหนังสือ คุณจะสอบตกนะ", "note": "คำเตือนผลกระทบโดยตรง"}, {"num": 68, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If they invite us, we will go.", "if_clause": "If they invite us", "main_clause": "we will go", "thai": "ถ้าพวกเขาเชิญพวกเรา พวกเราจะไป", "note": "การตอบรับคำเชิญ"}, {"num": 69, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If I find your book, I will return it.", "if_clause": "If I find your book", "main_clause": "I will return it", "thai": "ถ้าฉันพบหนังสือของคุณ ฉันจะเอาไปคืนให้", "note": "คำสัญญาในการคืนของ"}, {"num": 70, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If you speak politely, people will respect you.", "if_clause": "If you speak politely", "main_clause": "people will respect you", "thai": "ถ้าคุณพูดจาสุภาพ ผู้คนก็จะให้ความเคารพคุณ", "note": "มารยาททางสังคมและการตอบรับ"}, {"num": 71, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If he gets the job, he will move to Delhi.", "if_clause": "If he gets the job", "main_clause": "he will move to Delhi", "thai": "ถ้าเขาได้งานทำ เขาจะย้ายไปอยู่ที่เมืองเดลี", "note": "การย้ายถิ่นฐานตามหน้าที่การงาน (Delhi นครหลวงของอินเดีย)"}, {"num": 72, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If you take exercise, you will feel healthy.", "if_clause": "If you take exercise", "main_clause": "you will feel healthy", "thai": "ถ้าคุณออกกำลังกาย คุณจะรู้สึกมีสุขภาพที่ดี", "note": "take exercise = ออกกำลังกาย (สำนวนอังกฤษมาตรฐาน)"}, {"num": 73, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If my father agrees, I will join the course.", "if_clause": "If my father agrees", "main_clause": "I will join the course", "thai": "ถ้าคุณพ่อยินยอม ฉันจะลงเรียนหลักสูตรนี้", "note": "การขออนุญาตและการตัดสินใจเรียน"}, {"num": 74, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If she learns driving, she will buy a car.", "if_clause": "If she learns driving", "main_clause": "she will buy a car", "thai": "ถ้าเธอเรียนขับรถเป็นแล้ว เธอจะซื้อรถยนต์", "note": "learns driving = เรียนขับรถ"}, {"num": 75, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If you tell me the truth, I will help you.", "if_clause": "If you tell me the truth", "main_clause": "I will help you", "thai": "ถ้าคุณบอกความจริงกับฉัน ฉันจะช่วยคุณ", "note": "เงื่อนไขความจริงใจในการช่วยเหลือ"}, {"num": 76, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If we start early, we will reach before sunset.", "if_clause": "If we start early", "main_clause": "we will reach before sunset", "thai": "ถ้าเราออกเดินทางแต่เช้า เราจะไปถึงก่อนพระอาทิตย์ตกดิน", "note": "reach = ไปถึงจุดหมาย"}, {"num": 77, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If he doesn't work hard, he will lose his opportunity.", "if_clause": "If he doesn't work hard", "main_clause": "he will lose his opportunity", "thai": "ถ้าเขาไม่ขยันทำงาน เขาจะสูญเสียโอกาสที่ดีไป", "note": "คำเตือนถึงผลเสียที่จะเกิดขึ้น"}, {"num": 78, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If you drink enough water, you will feel better.", "if_clause": "If you drink enough water", "main_clause": "you will feel better", "thai": "ถ้าคุณดื่มน้ำให้เพียงพอ คุณจะรู้สึกกระปรี้กระเปร่าขึ้น", "note": "คำแนะนำสุขภาพ (ในภาพพิมพ์ผิดเป็น yoü ได้แก้ไขเป็น you)"}, {"num": 79, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If I pass the examination, I will celebrate.", "if_clause": "If I pass the examination", "main_clause": "I will celebrate", "thai": "ถ้าฉันสอบผ่าน ฉันจะจัดงานฉลองใหญ่", "note": "แผนการฉลองความสำเร็จ"}, {"num": 80, "type": "First Conditional", "type_th": "เป็นไปได้จริงในปัจจุบันหรืออนาคต", "sentence": "If you keep trying, you will achieve your goal.", "if_clause": "If you keep trying", "main_clause": "you will achieve your goal", "thai": "ถ้าคุณพยายามต่อไปเรื่อยๆ คุณจะบรรลุเป้าหมายได้อย่างแน่นอน", "note": "ประโยคให้กำลังใจและสร้างแรงบันดาลใจ"}, {"num": 81, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If I were rich, I would buy a big house.", "if_clause": "If I were rich", "main_clause": "I would buy a big house", "thai": "ถ้าฉันรวย ฉันคงจะซื้อบ้านหลังใหญ่โตไปแล้ว (แต่ตอนนี้ยังไม่รวย)", "note": "โครงสร้าง: If + Past Simple (were/V.2), would + V.1"}, {"num": 82, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If I had wings, I would fly in the sky.", "if_clause": "If I had wings", "main_clause": "I would fly in the sky", "thai": "ถ้าฉันมีปีก ฉันคงจะบินไปบนท้องฟ้า (จินตนาการที่เป็นไปไม่ได้จริง)", "note": "เหตุการณ์สมมติเหนือธรรมชาติ"}, {"num": 83, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If I were you, I would accept the offer.", "if_clause": "If I were you", "main_clause": "I would accept the offer", "thai": "ถ้าฉันเป็นคุณ ฉันคงจะตอบรับข้อเสนอนั้น (สำนวนการให้คำแนะนำ)", "note": "If I were you = ถ้าฉันเป็นคุณ (ใช้ให้คำแนะนำ)"}, {"num": 84, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If I had a car, I would travel everywhere.", "if_clause": "If I had a car", "main_clause": "I would travel everywhere", "thai": "ถ้าฉันมีรถยนต์ ฉันคงจะขับไปเที่ยวทุกที่ (ปัจจุบันไม่มีรถ)", "note": "สมมติตรงข้ามกับความจริงในปัจจุบัน"}, {"num": 85, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If he studied hard, he would pass the exam.", "if_clause": "If he studied hard", "main_clause": "he would pass the exam", "thai": "ถ้าเขาตั้งใจเรียนมากกว่านี้ เขาคงจะสอบผ่านได้ (แต่ตอนนี้เขาไม่ตั้งใจ)", "note": "สมมติพฤติกรรมในปัจจุบัน"}, {"num": 86, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If she were here, she would help us.", "if_clause": "If she were here", "main_clause": "she would help us", "thai": "ถ้าเธออยู่ที่นี่ตอนนี้ เธอคงจะช่วยพวกเราแล้ว (แต่ตอนนี้เธอไม่ได้อยู่ที่นี่)", "note": "สมมติสถานที่หรือการปรากฏตัวในปัจจุบัน"}, {"num": 87, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If I knew his address, I would visit him.", "if_clause": "If I knew his address", "main_clause": "I would visit him", "thai": "ถ้าฉันรู้ที่อยู่ของเขา ฉันคงจะแวะไปหาเขาแล้ว (แต่ตอนนี้ไม่รู้ที่อยู่)", "note": "สมมติข้อมูลที่ไม่รู้ในปัจจุบัน"}, {"num": 88, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If I had more money, I would help the poor.", "if_clause": "If I had more money", "main_clause": "I would help the poor", "thai": "ถ้าฉันมีเงินมากกว่านี้ ฉันคงจะได้ช่วยเหลือคนยากไร้", "note": "ความปรารถนาในปัจจุบัน"}, {"num": 89, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If I were a bird, I would fly freely.", "if_clause": "If I were a bird", "main_clause": "I would fly freely", "thai": "ถ้าฉันเป็นนก ฉันคงจะโผบินไปอย่างอิสระเสรี", "note": "จินตนาการเชิงเปรียบเทียบ"}, {"num": 90, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If he had a job, he would support his family.", "if_clause": "If he had a job", "main_clause": "he would support his family", "thai": "ถ้าเขามีงานทำ เขาคงจะจุนเจือครอบครัวได้ (ปัจจุบันยังว่างงาน)", "note": "สถานการณ์ตรงข้ามกับชีวิตจริง"}, {"num": 91, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If I lived in London, I would learn English.", "if_clause": "If I lived in London", "main_clause": "I would learn English", "thai": "ถ้าฉันอาศัยอยู่ในลอนดอน ฉันคงจะได้ฝึกภาษาอังกฤษทุกวัน", "note": "สมมติการย้ายถิ่นฐานในปัจจุบัน"}, {"num": 92, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If she knew the answer, she would tell us.", "if_clause": "If she knew the answer", "main_clause": "she would tell us", "thai": "ถ้าเธอรู้คำตอบ เธอคงจะบอกพวกเราไปแล้ว (แต่ตอนนี้เธอไม่รู้)", "note": "ข้อเท็จจริงในปัจจุบัน"}, {"num": 93, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If I were a teacher, I would teach children.", "if_clause": "If I were a teacher", "main_clause": "I would teach children", "thai": "ถ้าฉันเป็นครู ฉันคงจะสอนหนังสือให้เด็กๆ อย่างมีความสุข", "note": "สมมติอาชีพที่ไม่เป็นจริง"}, {"num": 94, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If we had enough time, we would visit the museum.", "if_clause": "If we had enough time", "main_clause": "we would visit the museum", "thai": "ถ้าพวกเรามีเวลาเพียงพอ พวกเราคงจะแวะไปชมพิพิธภัณฑ์", "note": "ข้อจำกัดเรื่องเวลาในปัจจุบัน"}, {"num": 95, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If I won the lottery, I would buy a house.", "if_clause": "If I won the lottery", "main_clause": "I would buy a house", "thai": "ถ้าฉันถูกลอตเตอรี่รางวัลใหญ่ ฉันคงจะซื้อบ้านสักหลัง", "note": "โอกาสเกิดขึ้นยากมากในอนาคต"}, {"num": 96, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If he were taller, he would play basketball.", "if_clause": "If he were taller", "main_clause": "he would play basketball", "thai": "ถ้าเขาตัวสูงกว่านี้ เขาคงจะไปเล่นบาสเกตบอลแล้ว", "note": "สมมติลักษณะทางกายภาพที่ไม่เป็นจริง"}, {"num": 97, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If I could speak French, I would work there.", "if_clause": "If I could speak French", "main_clause": "I would work there", "thai": "ถ้าฉันพูดภาษาฝรั่งเศสได้ ฉันคงจะไปทำงานที่นั่นแล้ว", "note": "สมมติความสามารถที่ไม่มีในปัจจุบัน"}, {"num": 98, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If she had a bicycle, she would ride to school.", "if_clause": "If she had a bicycle", "main_clause": "she would ride to school", "thai": "ถ้าเธอมีจักรยาน เธอคงจะปั่นไปโรงเรียนทุกวัน", "note": "สมมติสิ่งของที่ไม่มีในปัจจุบัน"}, {"num": 99, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If I were the principal, I would improve the school.", "if_clause": "If I were the principal", "main_clause": "I would improve the school", "thai": "ถ้าฉันเป็นผู้อำนวยการโรงเรียน ฉันคงจะพัฒนาโรงเรียนให้ดียิ่งขึ้น", "note": "สมมติตำแหน่งหน้าที่"}, {"num": 100, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If they lived nearby, we would meet daily.", "if_clause": "If they lived nearby", "main_clause": "we would meet daily", "thai": "ถ้าพวกเขาอาศัยอยู่ใกล้ๆ พวกเราคงจะได้เจอกันทุกวัน (แต่ตอนนี้อยู่ไกล)", "note": "ระยะทางและความเป็นจริงในปัจจุบัน"}, {"num": 101, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If I had a million dollars, I would start a business.", "if_clause": "If I had a million dollars", "main_clause": "I would start a business", "thai": "ถ้าฉันมีเงินสักหนึ่งล้านดอลลาร์ ฉันคงจะเปิดธุรกิจของตัวเอง", "note": "ความฝันและจินตนาการทางการเงิน"}, {"num": 102, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If he were honest, people would trust him.", "if_clause": "If he were honest", "main_clause": "people would trust him", "thai": "ถ้าเขาเป็นคนซื่อสัตย์ ผู้คนคงจะไว้วางใจเขา (แต่ความจริงเขาไม่ซื่อสัตย์)", "note": "สมมติอุปนิสัยใจคอ"}, {"num": 103, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If I knew her phone number, I would call her.", "if_clause": "If I knew her phone number", "main_clause": "I would call her", "thai": "ถ้าฉันรู้เบอร์โทรศัพท์ของเธอ ฉันคงจะโทรหาเธอแล้ว", "note": "ข้อมูลที่ขาดหายไปในปัจจุบัน"}, {"num": 104, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If she had a camera, she would take photos.", "if_clause": "If she had a camera", "main_clause": "she would take photos", "thai": "ถ้าเธอมีกล้องถ่ายรูป เธอคงจะถ่ายภาพเก็บไว้มากมาย", "note": "อุปกรณ์ที่ไม่มีในปัจจุบัน"}, {"num": 105, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If I were younger, I would travel the world.", "if_clause": "If I were younger", "main_clause": "I would travel the world", "thai": "ถ้าฉันอายุน้อยกว่านี้ ฉันคงจะออกเดินทางท่องเที่ยวรอบโลก", "note": "อายุและวัยที่เป็นความจริงเปลี่ยนแปลงไม่ได้"}, {"num": 106, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If we owned a farm, we would grow vegetables.", "if_clause": "If we owned a farm", "main_clause": "we would grow vegetables", "thai": "ถ้าพวกเราเป็นเจ้าของไร่ฟาร์ม พวกเราคงจะปลูกผักไว้กินเอง", "note": "การเป็นเจ้าของทรัพย์สิน"}, {"num": 107, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If he worked harder, he would be successful.", "if_clause": "If he worked harder", "main_clause": "he would be successful", "thai": "ถ้าเขาขยันทำงานมากกว่านี้ เขาคงจะประสบความสำเร็จไปแล้ว", "note": "การประเมินพฤติกรรมในปัจจุบัน"}, {"num": 108, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If I had free time, I would learn music.", "if_clause": "If I had free time", "main_clause": "I would learn music", "thai": "ถ้าฉันมีเวลาว่าง ฉันคงจะไปเรียนดนตรี", "note": "เวลาว่างและความสนใจส่วนตัว"}, {"num": 109, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If she were rich, she would donate money.", "if_clause": "If she were rich", "main_clause": "she would donate money", "thai": "ถ้าเธอร่ำรวย เธอคงจะบริจาคเงินเพื่อการกุศลมากมาย", "note": "เจตจำนงสมมติ"}, {"num": 110, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If I could swim, I would join the competition.", "if_clause": "If I could swim", "main_clause": "I would join the competition", "thai": "ถ้าฉันว่ายน้ำเป็น ฉันคงจะลงแข่งไปแล้ว (แต่ความจริงว่ายน้ำไม่เป็น)", "note": "ทักษะที่ไม่มีในปัจจุบัน"}, {"num": 111, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If you listened carefully, you would understand.", "if_clause": "If you listened carefully", "main_clause": "you would understand", "thai": "ถ้าคุณตั้งใจฟังดีๆ คุณก็คงจะเข้าใจ (แต่คุณไม่ตั้งใจฟัง)", "note": "คำตักเตือนในปัจจุบัน"}, {"num": 112, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If I had a bike, I would go to school by bike.", "if_clause": "If I had a bike", "main_clause": "I would go to school by bike", "thai": "ถ้าฉันมีรถมอเตอร์ไซค์/จักรยาน ฉันคงจะขี่ไปโรงเรียนเอง", "note": "พาหนะเดินทาง"}, {"num": 113, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If he knew English, he would get a better job.", "if_clause": "If he knew English", "main_clause": "he would get a better job", "thai": "ถ้าเขารู้ภาษาอังกฤษ เขาคงจะได้งานที่ดีกว่านี้ (แต่ปัจจุบันเขาไม่รู้)", "note": "ทักษะภาษาและการทำงาน"}, {"num": 114, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If I were invisible, I would explore the world.", "if_clause": "If I were invisible", "main_clause": "I would explore the world", "thai": "ถ้าฉันล่องหนได้ ฉันคงจะออกสำรวจโลกกว้างอย่างสนุกสนาน", "note": "จินตนาการเหนือจริง"}, {"num": 115, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If she lived here, we would play together.", "if_clause": "If she lived here", "main_clause": "we would play together", "thai": "ถ้าเธอพักอยู่ที่นี่ พวกเราคงจะได้เล่นด้วยกันบ่อยๆ", "note": "ที่พักอาศัยในปัจจุบัน"}, {"num": 116, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If I had a garden, I would grow flowers.", "if_clause": "If I had a garden", "main_clause": "I would grow flowers", "thai": "ถ้าฉันมีสวนดอกไม้ ฉันคงจะปลูกดอกไม้นานาพรรณ", "note": "งานอดิเรกและความฝัน"}, {"num": 117, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If they practised daily, they would win.", "if_clause": "If they practised daily", "main_clause": "they would win", "thai": "ถ้าพวกเขาฝึกซ้อมทุกวัน พวกเขาคงจะชนะได้อย่างแน่นอน", "note": "การซ้อมและผลการแข่งขัน"}, {"num": 118, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If I were a doctor, I would treat poor people.", "if_clause": "If I were a doctor", "main_clause": "I would treat poor people", "thai": "ถ้าฉันเป็นหมอ ฉันคงจะรักษาผู้ป่วยยากไร้โดยไม่คิดเงิน", "note": "เจตนารมณ์วิชาชีพแพทย์"}, {"num": 119, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If you were more careful, you would make fewer mistakes.", "if_clause": "If you were more careful", "main_clause": "you would make fewer mistakes", "thai": "ถ้าคุณรอบคอบมากกว่านี้ คุณคงจะไม่ทำผิดพลาดบ่อยขนาดนี้", "note": "คำแนะนำเรื่องความรอบคอบ"}, {"num": 120, "type": "Second Conditional", "type_th": "สมมติในปัจจุบัน/อนาคต (ตรงข้ามความจริง)", "sentence": "If I had the opportunity, I would study abroad.", "if_clause": "If I had the opportunity", "main_clause": "I would study abroad", "thai": "ถ้าฉันมีโอกาส ฉันคงจะไปศึกษาต่อต่างประเทศ", "note": "โอกาสทางการศึกษาในปัจจุบัน"}, {"num": 121, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If I had studied hard, I would have passed the exam.", "if_clause": "If I had studied hard", "main_clause": "I would have passed the exam", "thai": "ถ้าตอนนั้นฉันตั้งใจอ่านหนังสือ ฉันก็คงสอบผ่านไปแล้ว (แต่ความจริงไม่ได้ตั้งใจและสอบตก)", "note": "โครงสร้าง: If + Past Perfect (had + V.3), would have + V.3"}, {"num": 122, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If he had come, I would have met him.", "if_clause": "If he had come", "main_clause": "I would have met him", "thai": "ถ้าตอนนั้นเขามา ฉันก็คงได้พบเขาแล้ว (แต่เขาไม่ได้มา)", "note": "การพลาดโอกาสพบกันในอดีต"}, {"num": 123, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If she had called me, I would have talked to her.", "if_clause": "If she had called me", "main_clause": "I would have talked to her", "thai": "ถ้าตอนนั้นเธอโทรหาฉัน ฉันก็คงได้พูดคุยกับเธอแล้ว (แต่เธอไม่ได้โทรมา)", "note": "เหตุการณ์ในอดีตที่ไม่ได้เกิดขึ้น"}, {"num": 124, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If we had left early, we would have caught the train.", "if_clause": "If we had left early", "main_clause": "we would have caught the train", "thai": "ถ้าตอนนั้นพวกเราออกเดินทางเร็วขึ้น เราก็คงขึ้นรถไฟทันแล้ว (แต่ความจริงออกช้าจึงตกรถไฟ)", "note": "การตกรถไฟในอดีต"}, {"num": 125, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If you had worked hard, you would have succeeded.", "if_clause": "If you had worked hard", "main_clause": "you would have succeeded", "thai": "ถ้าตอนนั้นคุณขยันทำงาน คุณก็คงประสบความสำเร็จไปแล้ว", "note": "การแสดงความเสียดายในอดีต"}, {"num": 126, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If I had known the truth, I would have helped you.", "if_clause": "If I had known the truth", "main_clause": "I would have helped you", "thai": "ถ้าตอนนั้นฉันรู้ความจริง ฉันก็คงช่วยคุณไปแล้ว (แต่ตอนนั้นไม่รู้)", "note": "ความจริงที่เพิ่งมารู้ภายหลัง"}, {"num": 127, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If he had invited me, I would have attended the party.", "if_clause": "If he had invited me", "main_clause": "I would have attended the party", "thai": "ถ้าตอนนั้นเขาชวนฉัน ฉันก็คงไปร่วมงานเลี้ยงแล้ว (แต่เขาไม่ได้ชวน)", "note": "การไม่ได้ไปร่วมงานเลี้ยง"}, {"num": 128, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If she had studied regularly, she would have got good marks.", "if_clause": "If she had studied regularly", "main_clause": "she would have got good marks", "thai": "ถ้าตอนนั้นเธอทบทวนบทเรียนสม่ำเสมอ เธอคงได้คะแนนดีไปแล้ว", "note": "ผลสอบในอดีต (got = สำนวนอังกฤษมาตรฐาน)"}, {"num": 129, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If they had arrived earlier, they would have met us.", "if_clause": "If they had arrived earlier", "main_clause": "they would have met us", "thai": "ถ้าตอนนั้นพวกเขามาถึงเร็วกว่านี้ พวกเขาคงได้พบกับพวกเราแล้ว", "note": "การคลาดกันในอดีต"}, {"num": 130, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If I had saved money, I would have bought a car.", "if_clause": "If I had saved money", "main_clause": "I would have bought a car", "thai": "ถ้าตอนนั้นฉันเก็บออมเงินไว้ ฉันก็คงได้ซื้อรถยนต์ไปแล้ว (แต่ตอนนั้นไม่ได้เก็บ)", "note": "การเงินในอดีต"}, {"num": 131, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If you had told me, I would have helped you.", "if_clause": "If you had told me", "main_clause": "I would have helped you", "thai": "ถ้าตอนนั้นคุณบอกฉัน ฉันก็คงยื่นมือช่วยคุณไปแล้ว (แต่คุณไม่ได้บอก)", "note": "การบอกกล่าวในอดีต"}, {"num": 132, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If he had taken medicine, he would have recovered.", "if_clause": "If he had taken medicine", "main_clause": "he would have recovered", "thai": "ถ้าตอนนั้นเขากินยาตามแพทย์สั่ง เขาคงหายป่วยไปแล้ว", "note": "การรักษาและการฟื้นตัวจากโรค"}, {"num": 133, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If I had seen you, I would have spoken to you.", "if_clause": "If I had seen you", "main_clause": "I would have spoken to you", "thai": "ถ้าตอนนั้นฉันเห็นคุณ ฉันคงทักทายคุณไปแล้ว (แต่ตอนนั้นมองไม่เห็น)", "note": "การทักทายในอดีต"}, {"num": 134, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If she had worked harder, she would have passed.", "if_clause": "If she had worked harder", "main_clause": "she would have passed", "thai": "ถ้าตอนนั้นเธอพยายามให้มากกว่านี้ เธอคงจะสอบผ่านไปแล้ว", "note": "การประเมินความพยายามในอดีต"}, {"num": 135, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If we had booked tickets, we would have watched the movie.", "if_clause": "If we had booked tickets", "main_clause": "we would have watched the movie", "thai": "ถ้าตอนนั้นพวกเราจองตั๋วไว้ล่วงหน้า เราก็คงได้ดูหนังเรื่องนั้นแล้ว (แต่ไม่ได้จองจึงตั๋วหมด)", "note": "การจองตั๋วในอดีต"}, {"num": 136, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If you had listened to me, you would have avoided the mistake.", "if_clause": "If you had listened to me", "main_clause": "you would have avoided the mistake", "thai": "ถ้าตอนนั้นคุณเชื่อฟังฉัน คุณก็คงหลีกเลี่ยงความผิดพลาดนั้นได้แล้ว", "note": "การตักเตือนย้อนหลัง"}, {"num": 137, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If he had driven carefully, he would not have had an accident.", "if_clause": "If he had driven carefully", "main_clause": "he would not have had an accident", "thai": "ถ้าตอนนั้นเขาขับรถอย่างระมัดระวัง เขาคงไม่ประสบอุบัติเหตุ (แต่ความจริงขับประมาท)", "note": "อุบัติเหตุบนท้องถนนในอดีต"}, {"num": 138, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If I had had enough money, I would have bought that house.", "if_clause": "If I had had enough money", "main_clause": "I would have bought that house", "thai": "ถ้าตอนนั้นฉันมีเงินพอ ฉันคงจะซื้อบ้านหลังนั้นไปแล้ว (had had = Past Perfect)", "note": "โครงสร้าง had had = had (กริยาช่วย) + had (V.3 ของ have)"}, {"num": 139, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If they had practised more, they would have won the match.", "if_clause": "If they had practised more", "main_clause": "they would have won the match", "thai": "ถ้าตอนนั้นพวกเขาฝึกซ้อมมากกว่านี้ พวกเขาคงชนะการแข่งขันไปแล้ว", "note": "ผลการแข่งขันในอดีต"}, {"num": 140, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If she had reached on time, she would have joined the meeting.", "if_clause": "If she had reached on time", "main_clause": "she would have joined the meeting", "thai": "ถ้าตอนนั้นเธอไปถึงตรงเวลา เธอคงได้เข้าร่วมประชุมแล้ว", "note": "การไปประชุมสายในอดีต"}, {"num": 141, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If I had woken up early, I would have caught the bus.", "if_clause": "If I had woken up early", "main_clause": "I would have caught the bus", "thai": "ถ้าตอนนั้นฉันตื่นเช้า ฉันก็คงขึ้นรถเมล์ทันแล้ว (แต่ตื่นสาย)", "note": "การตกรถเมล์ในอดีต"}, {"num": 142, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If you had followed the instructions, you would have completed the task.", "if_clause": "If you had followed the instructions", "main_clause": "you would have completed the task", "thai": "ถ้าตอนนั้นคุณปฏิบัติตามคำแนะนำ คุณคงทำงานเสร็จสมบูรณ์ไปแล้ว", "note": "การปฏิบัติตามคำสั่ง"}, {"num": 143, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If he had apologised, I would have forgiven him.", "if_clause": "If he had apologised", "main_clause": "I would have forgiven him", "thai": "ถ้าตอนนั้นเขากล่าวขอโทษ ฉันก็คงให้อภัยเขาไปแล้ว (แต่เขาไม่ได้ขอโทษ)", "note": "ความสัมพันธ์ในอดีต"}, {"num": 144, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If we had taken an umbrella, we would not have got wet.", "if_clause": "If we had taken an umbrella", "main_clause": "we would not have got wet", "thai": "ถ้าตอนนั้นพวกเราพกร่มไปด้วย พวกเราก็คงไม่เปียกฝน (แต่ลืมพกจึงเปียก)", "note": "การโดนฝนในอดีต"}, {"num": 145, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If she had learned English, she would have got a better job.", "if_clause": "If she had learned English", "main_clause": "she would have got a better job", "thai": "ถ้าตอนนั้นเธอเรียนภาษาอังกฤษ เธอคงได้งานทำที่ดีกว่านี้ไปแล้ว", "note": "โอกาสการทำงานในอดีต"}, {"num": 146, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If I had remembered his birthday, I would have wished him.", "if_clause": "If I had remembered his birthday", "main_clause": "I would have wished him", "thai": "ถ้าตอนนั้นฉันจำวันเกิดของเขาได้ ฉันก็คงอวยพรเขาไปแล้ว (แต่วันนั้นลืม)", "note": "wished him = อวยพรวันเกิดให้เขา"}, {"num": 147, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If they had invited us, we would have gone to the wedding.", "if_clause": "If they had invited us", "main_clause": "we would have gone to the wedding", "thai": "ถ้าตอนนั้นพวกเขาเชิญเรา เราก็คงไปร่วมงานแต่งงานแล้ว (แต่ไม่ได้เชิญ)", "note": "งานแต่งงานในอดีต"}, {"num": 148, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If you had been careful, you would not have broken the glass.", "if_clause": "If you had been careful", "main_clause": "you would not have broken the glass", "thai": "ถ้าตอนนั้นคุณระมัดระวังกว่านี้ คุณคงไม่ทำแก้วแตกหรอก (แต่ทำแตกไปแล้ว)", "note": "อุบัติเหตุสิ่งของเสียหายในอดีต"}, {"num": 149, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If he had studied medicine, he would have become a doctor.", "if_clause": "If he had studied medicine", "main_clause": "he would have become a doctor", "thai": "ถ้าตอนนั้นเขาเลือกเรียนแพทย์ เขาก็คงได้เป็นหมอไปแล้ว (แต่ไปเรียนสาขาอื่น)", "note": "เส้นทางอาชีพในอดีต"}, {"num": 150, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If I had met her, I would have given her the message.", "if_clause": "If I had met her", "main_clause": "I would have given her the message", "thai": "ถ้าตอนนั้นฉันได้พบเธอ ฉันคงส่งต่อข้อความให้เธอไปแล้ว", "note": "การฝากส่งข้อความในอดีต"}, {"num": 151, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If she had cooked dinner, we would have eaten at home.", "if_clause": "If she had cooked dinner", "main_clause": "we would have eaten at home", "thai": "ถ้าตอนนั้นเธอทำอาหารเย็น พวกเราคงกินข้าวที่บ้านกันแล้ว (แต่ไม่ได้ทำเลยออกไปกินข้างนอก)", "note": "อาหารมื้อเย็นในอดีต"}, {"num": 152, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If we had started earlier, we would have finished the work.", "if_clause": "If we had started earlier", "main_clause": "we would have finished the work", "thai": "ถ้าตอนนั้นพวกเราเริ่มทำงานเร็วกว่านี้ งานก็คงเสร็จทันเวลาไปแล้ว", "note": "การบริหารเวลาในอดีต"}, {"num": 153, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If you had practised daily, you would have improved your English.", "if_clause": "If you had practised daily", "main_clause": "you would have improved your English", "thai": "ถ้าตอนนั้นคุณฝึกฝนทุกวัน ภาษาอังกฤษของคุณก็คงก้าวหน้าไปไกลแล้ว", "note": "การพัฒนาทักษะในอดีต"}, {"num": 154, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If he had taken a taxi, he would have reached on time.", "if_clause": "If he had taken a taxi", "main_clause": "he would have reached on time", "thai": "ถ้าตอนนั้นเขานั่งแท็กซี่ไป เขาก็คงไปถึงตรงเวลาแล้ว (แต่ขึ้นรถอื่นจึงไปสาย)", "note": "การเดินทางในอดีต"}, {"num": 155, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If I had known about the problem, I would have solved it.", "if_clause": "If I had known about the problem", "main_clause": "I would have solved it", "thai": "ถ้าตอนนั้นฉันรู้ว่ามีปัญหาเกิดขึ้น ฉันคงช่วยแก้ไขไปแล้ว", "note": "การแก้ปัญหาในอดีต"}, {"num": 156, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If they had played well, they would have won the game.", "if_clause": "If they had played well", "main_clause": "they would have won the game", "thai": "ถ้าตอนนั้นพวกเขาเล่นได้ดี พวกเขาคงชนะการแข่งขันไปแล้ว (แต่นัดนั้นเล่นแย่)", "note": "ผลการแข่งขันในอดีต"}, {"num": 157, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If she had accepted the offer, she would have got the job.", "if_clause": "If she had accepted the offer", "main_clause": "she would have got the job", "thai": "ถ้าตอนนั้นเธอตอบรับข้อเสนอ เธอคงได้งานทำไปแล้ว (แต่เธอปฏิเสธ)", "note": "การตอบรับข้อเสนอทำงาน"}, {"num": 158, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If I had brought my camera, I would have taken some pictures.", "if_clause": "If I had brought my camera", "main_clause": "I would have taken some pictures", "thai": "ถ้าตอนนั้นฉันพกกล้องไปด้วย ฉันคงได้ถ่ายรูปสวยๆ เก็บไว้มากมาย", "note": "การพลาดโอกาสถ่ายภาพ"}, {"num": 159, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If you had invited him, he would have come.", "if_clause": "If you had invited him", "main_clause": "he would have come", "thai": "ถ้าตอนนั้นคุณเอ่ยปากชวนเขา เขาก็คงมาร่วมงานแล้ว (แต่ไม่ได้ชวน)", "note": "การเชิญชวนในอดีต"}, {"num": 160, "type": "Third Conditional", "type_th": "สมมติตรงข้ามกับอดีต (แก้ไขไม่ได้แล้ว)", "sentence": "If we had checked the weather, we would have avoided the rain.", "if_clause": "If we had checked the weather", "main_clause": "we would have avoided the rain", "thai": "ถ้าตอนนั้นพวกเราเช็กพยากรณ์อากาศก่อน เราก็คงหลีกเลี่ยงการเจอฝนได้แล้ว", "note": "การตรวจสอบสภาพอากาศในอดีต"}, {"num": 161, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (อดีตส่งผลถึงปัจจุบัน)", "sentence": "If I had studied medicine, I would be a doctor now.", "if_clause": "If I had studied medicine", "main_clause": "I would be a doctor now", "thai": "ถ้าตอนนั้นฉันเลือกเรียนแพทย์ ตอนนี้ฉันก็คงได้เป็นหมอไปแล้ว (แต่อดีตไม่ได้เรียน ปัจจุบันจึงไม่ได้เป็น)", "note": "โครงสร้าง: If + Past Perfect, would + V.1 now"}, {"num": 162, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (อดีตส่งผลถึงปัจจุบัน)", "sentence": "If he had worked hard, he would be successful now.", "if_clause": "If he had worked hard", "main_clause": "he would be successful now", "thai": "ถ้าในอดีตเขาขยันทำงาน ตอนนี้เขาก็คงประสบความสำเร็จในชีวิตไปแล้ว", "note": "การกระทำในอดีตส่งผลถึงสถานะปัจจุบัน"}, {"num": 163, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (อดีตส่งผลถึงปัจจุบัน)", "sentence": "If I had saved money, I would be rich now.", "if_clause": "If I had saved money", "main_clause": "I would be rich now", "thai": "ถ้าในอดีตฉันรู้จักเก็บออมเงิน ตอนนี้ฉันก็คงร่ำรวยไปแล้ว", "note": "การออมเงินในอดีตส่งผลต่อความมั่งคั่งในปัจจุบัน"}, {"num": 164, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (อดีตส่งผลถึงปัจจุบัน)", "sentence": "If she had accepted the job, she would live in London now.", "if_clause": "If she had accepted the job", "main_clause": "she would live in London now", "thai": "ถ้าตอนนั้นเธอตอบรับงานนั้น ตอนนี้เธอก็คงอาศัยอยู่ในลอนดอนแล้ว", "note": "การตัดสินใจในอดีตส่งผลต่อถิ่นที่อยู่ในปัจจุบัน"}, {"num": 165, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (อดีตส่งผลถึงปัจจุบัน)", "sentence": "If I had gone to bed early, I wouldn't be tired now.", "if_clause": "If I had gone to bed early", "main_clause": "I wouldn't be tired now", "thai": "ถ้าเมื่อคืนฉันเข้านอนเร็ว ตอนนี้ฉันก็คงไม่รู้สึกง่วงเพลียขนาดนี้", "note": "การนอนดึกเมื่อคืนส่งผลต่อความเพลียในวันนี้"}, {"num": 166, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (อดีตส่งผลถึงปัจจุบัน)", "sentence": "If he had learned English, he would have a good job now.", "if_clause": "If he had learned English", "main_clause": "he would have a good job now", "thai": "ถ้าในอดีตเขาตั้งใจเรียนภาษาอังกฤษ ตอนนี้เขาก็คงมีงานที่ดีทำไปแล้ว", "note": "ทักษะที่ไม่ได้เรียนในอดีตส่งผลต่ออาชีพในปัจจุบัน"}, {"num": 167, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (อดีตส่งผลถึงปัจจุบัน)", "sentence": "If they had bought that house, they would own it now.", "if_clause": "If they had bought that house", "main_clause": "they would own it now", "thai": "ถ้าตอนนั้นพวกเขาตัดสินใจซื้อบ้านหลังนั้น ตอนนี้พวกเขาก็คงได้เป็นเจ้าของมันแล้ว", "note": "การซื้อทรัพย์สินในอดีตส่งผลต่อกรรมสิทธิ์ปัจจุบัน"}, {"num": 168, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (อดีตส่งผลถึงปัจจุบัน)", "sentence": "If I had taken your advice, I would be happy now.", "if_clause": "If I had taken your advice", "main_clause": "I would be happy now", "thai": "ถ้าตอนนั้นฉันเชื่อคำแนะนำของคุณ ตอนนี้ฉันก็คงมีความสุขไปแล้ว", "note": "การไม่ฟังคำเตือนในอดีตทำให้ไม่มีความสุขในปัจจุบัน"}, {"num": 169, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (อดีตส่งผลถึงปัจจุบัน)", "sentence": "If she had practised regularly, she would be a good singer now.", "if_clause": "If she had practised regularly", "main_clause": "she would be a good singer now", "thai": "ถ้าตอนนั้นเธอฝึกร้องเพลงสม่ำเสมอ ตอนนี้เธอคงเป็นนักร้องที่มีฝีมือไปแล้ว", "note": "การฝึกฝนในอดีตส่งผลต่อความเชี่ยวชาญปัจจุบัน"}, {"num": 170, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (อดีตส่งผลถึงปัจจุบัน)", "sentence": "If we had left earlier, we would be there now.", "if_clause": "If we had left earlier", "main_clause": "we would be there now", "thai": "ถ้าพวกเราออกเดินทางเร็วกว่านี้ ป่านนี้พวกเราก็คงไปถึงที่นั่นแล้ว", "note": "การออกเดินทางช้าในอดีตส่งผลให้ปัจจุบันยังไม่ถึงจุดหมาย"}, {"num": 171, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (อดีตส่งผลถึงปัจจุบัน)", "sentence": "If he had studied harder, he would have a better career now.", "if_clause": "If he had studied harder", "main_clause": "he would have a better career now", "thai": "ถ้าตอนนั้นเขาขยันเรียนมากกว่านี้ ตอนนี้เขาก็คงมีความก้าวหน้าในอาชีพที่ดีกว่านี้", "note": "การศึกษาในอดีตส่งผลต่ออาชีพการงานปัจจุบัน"}, {"num": 172, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (อดีตส่งผลถึงปัจจุบัน)", "sentence": "If I had learned to drive, I would drive to work now.", "if_clause": "If I had learned to drive", "main_clause": "I would drive to work now", "thai": "ถ้าตอนนั้นฉันหัดขับรถ ตอนนี้ฉันก็คงขับรถไปทำงานเองได้แล้ว", "note": "ทักษะในอดีตส่งผลต่อความสะดวกในปัจจุบัน"}, {"num": 173, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (อดีตส่งผลถึงปัจจุบัน)", "sentence": "If she had married him, she would live abroad now.", "if_clause": "If she had married him", "main_clause": "she would live abroad now", "thai": "ถ้าตอนนั้นเธอแต่งงานกับเขา ตอนนี้เธอก็คงอาศัยอยู่ต่างประเทศแล้ว", "note": "การตัดสินใจแต่งงานในอดีต"}, {"num": 174, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (อดีตส่งผลถึงปัจจุบัน)", "sentence": "If they had invested their money, they would be wealthy now.", "if_clause": "If they had invested their money", "main_clause": "they would be wealthy now", "thai": "ถ้าตอนนั้นพวกเขานำเงินไปลงทุน ตอนนี้พวกเขาก็คงร่ำรวยมั่งคั่งไปแล้ว", "note": "การลงทุนในอดีตส่งผลต่อฐานะปัจจุบัน"}, {"num": 175, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (อดีตส่งผลถึงปัจจุบัน)", "sentence": "If I had accepted that offer, I would work there now.", "if_clause": "If I had accepted that offer", "main_clause": "I would work there now", "thai": "ถ้าตอนนั้นฉันตอบรับข้อเสนอนั้น ตอนนี้ฉันก็คงได้ทำงานอยู่ที่นั่นแล้ว", "note": "การตอบรับโอกาสในอดีต"}, {"num": 176, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (อดีตส่งผลถึงปัจจุบัน)", "sentence": "If he had taken care of his health, he would be healthier now.", "if_clause": "If he had taken care of his health", "main_clause": "he would be healthier now", "thai": "ถ้าในอดีตเขาดูแลสุขภาพของตัวเองดีๆ ตอนนี้เขาก็คงมีสุขภาพที่แข็งแรงกว่านี้", "note": "การดูแลสุขภาพในอดีตส่งผลต่อร่างกายปัจจุบัน"}, {"num": 177, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (อดีตส่งผลถึงปัจจุบัน)", "sentence": "If I had bought a computer, I would use it for work now.", "if_clause": "If I had bought a computer", "main_clause": "I would use it for work now", "thai": "ถ้าตอนนั้นฉันซื้อคอมพิวเตอร์ไว้ ตอนนี้ฉันก็คงได้ใช้มันทำงานแล้ว", "note": "การซื้ออุปกรณ์ในอดีต"}, {"num": 178, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (อดีตส่งผลถึงปัจจุบัน)", "sentence": "If she had saved her salary, she would have enough money now.", "if_clause": "If she had saved her salary", "main_clause": "she would have enough money now", "thai": "ถ้าในอดีตเธอเก็บออมเงินเดือนไว้ ตอนนี้เธอก็คงมีเงินทองใช้อย่างเพียงพอ", "note": "วินัยทางการเงินในอดีตส่งผลต่อสภาพคล่องปัจจุบัน"}, {"num": 179, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (อดีตส่งผลถึงปัจจุบัน)", "sentence": "If we had moved to Delhi, we would live there now.", "if_clause": "If we had moved to Delhi", "main_clause": "we would live there now", "thai": "ถ้าตอนนั้นพวกเราย้ายไปเมืองเดลี ตอนนี้พวกเราก็คงอาศัยอยู่ที่นั่นแล้ว", "note": "การย้ายที่อยู่ในอดีต"}, {"num": 180, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (อดีตส่งผลถึงปัจจุบัน)", "sentence": "If he had listened to his parents, he would be happier now.", "if_clause": "If he had listened to his parents", "main_clause": "he would be happier now", "thai": "ถ้าตอนนั้นเขาเชื่อฟังพ่อแม่ ตอนนี้เขาก็คงมีความสุขมากกว่านี้", "note": "ในภาพพิมพ์ผิดเป็น would ti be ได้แก้ไขเป็น would be ให้ถูกต้อง"}, {"num": 181, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (สภาพปัจจุบันส่งผลต่ออดีต)", "sentence": "If I were taller, I would have joined the basketball team.", "if_clause": "If I were taller", "main_clause": "I would have joined the basketball team", "thai": "ถ้าฉันเป็นคนตัวสูง ตอนนั้นฉันก็คงเข้าร่วมทีมบาสเกตบอลไปแล้ว (แต่ความจริงเป็นคนตัวเตี้ย อดีตจึงไม่ได้เข้าทีม)", "note": "โครงสร้าง: If + Past Simple (were), would have + V.3"}, {"num": 182, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (สภาพปัจจุบันส่งผลต่ออดีต)", "sentence": "If she were more careful, she wouldn't have made that mistake.", "if_clause": "If she were more careful", "main_clause": "she wouldn't have made that mistake", "thai": "ถ้าเธอเป็นคนรอบคอบมากกว่านี้ ตอนนั้นเธอคงไม่ทำความผิดพลาดเช่นนั้นลงไป (แต่อุปนิสัยจริงไม่รอบคอบ)", "note": "อุปนิสัยทั่วไปส่งผลต่อการกระทำในอดีต"}, {"num": 183, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (สภาพปัจจุบันส่งผลต่ออดีต)", "sentence": "If he knew English, he would have got that job.", "if_clause": "If he knew English", "main_clause": "he would have got that job", "thai": "ถ้าเขารู้ภาษาอังกฤษ ตอนนั้นเขาก็คงได้งานนั้นไปแล้ว (แต่ความจริงเขาไม่รู้ภาษา จึงพลาดงานในอดีต)", "note": "ความรู้/ทักษะปัจจุบันส่งผลต่อผลลัพธ์ในอดีต"}, {"num": 184, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (สภาพปัจจุบันส่งผลต่ออดีต)", "sentence": "If I had more money, I would have bought that car.", "if_clause": "If I had more money", "main_clause": "I would have bought that car", "thai": "ถ้าฉันเป็นคนมีเงินมากกว่านี้ ตอนนั้นฉันคงซื้อรถคันนั้นไปแล้ว (แต่ฐานะปัจจุบันไม่ได้รวย)", "note": "ฐานะทางการเงินทั่วไปส่งผลต่อการตัดสินใจซื้อในอดีต"}, {"num": 185, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (สภาพปัจจุบันส่งผลต่ออดีต)", "sentence": "If they lived nearby, they would have attended the party.", "if_clause": "If they lived nearby", "main_clause": "they would have attended the party", "thai": "ถ้าพวกเขาอาศัยอยู่ใกล้ๆ แถวนี้ คืนนั้นพวกเขาก็คงมาร่วมงานเลี้ยงแล้ว (แต่ปกติอยู่ไกล จึงไม่ได้มา)", "note": "ที่พักอาศัยทั่วไปส่งผลต่อการมาร่วมงานในอดีต"}, {"num": 186, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (สภาพปัจจุบันส่งผลต่ออดีต)", "sentence": "If she were a doctor, she would have treated him.", "if_clause": "If she were a doctor", "main_clause": "she would have treated him", "thai": "ถ้าเธอเป็นหมอ ตอนนั้นเธอคงช่วยรักษาเขาไปแล้ว (แต่เธอไม่ได้เป็นหมอ จึงช่วยรักษาไม่ได้)", "note": "วิชาชีพส่งผลต่อการกระทำในอดีต"}, {"num": 187, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (สภาพปัจจุบันส่งผลต่ออดีต)", "sentence": "If I were more confident, I would have spoken at the meeting.", "if_clause": "If I were more confident", "main_clause": "I would have spoken at the meeting", "thai": "ถ้าฉันเป็นคนมีความมั่นใจในตัวเองมากกว่านี้ ตอนประชุมคราวนั้นฉันคงออกความคิดเห็นไปแล้ว", "note": "บุคลิกภาพส่งผลต่อการแสดงออกในอดีต"}, {"num": 188, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (สภาพปัจจุบันส่งผลต่ออดีต)", "sentence": "If he were a good driver, he wouldn't have caused the accident.", "if_clause": "If he were a good driver", "main_clause": "he wouldn't have caused the accident", "thai": "ถ้าเขาเป็นคนที่ขับรถเก่งและรอบคอบ ตอนนั้นเขาคงไม่ก่อให้เกิดอุบัติเหตุ", "note": "ทักษะการขับขี่ทั่วไปส่งผลต่ออุบัติเหตุในอดีต"}, {"num": 189, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (สภาพปัจจุบันส่งผลต่ออดีต)", "sentence": "If I knew his number, I would have called him yesterday.", "if_clause": "If I knew his number", "main_clause": "I would have called him yesterday", "thai": "ถ้าฉันรู้เบอร์ของเขา เมื่อวานนี้ฉันก็คงโทรหาเขาแล้ว (แต่ปกติไม่รู้เบอร์ เมื่อวานจึงไม่ได้โทร)", "note": "การรู้ข้อมูลส่งผลต่อการกระทำเมื่อวานนี้"}, {"num": 190, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (สภาพปัจจุบันส่งผลต่ออดีต)", "sentence": "If she had more experience, she would have got the position.", "if_clause": "If she had more experience", "main_clause": "she would have got the position", "thai": "ถ้าเธอเป็นคนมีประสบการณ์มากกว่านี้ ตอนสัมภาษณ์คราวนั้นเธอคงได้ตำแหน่งงานนั้นไปแล้ว", "note": "ประสบการณ์ทั่วไปส่งผลต่อการคัดเลือกในอดีต"}, {"num": 191, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (สภาพปัจจุบันส่งผลต่ออดีต)", "sentence": "If we had a bigger house, we would have invited more guests.", "if_clause": "If we had a bigger house", "main_clause": "we would have invited more guests", "thai": "ถ้าบ้านของเราหลังใหญ่กว่านี้ คราวนั้นพวกเราคงเชิญแขกมาร่วมงานมากกว่านี้แล้ว", "note": "ขนาดของบ้านทั่วไปส่งผลต่อจำนวนแขกที่เชิญในอดีต"}, {"num": 192, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (สภาพปัจจุบันส่งผลต่ออดีต)", "sentence": "If he were stronger, he would have lifted the box.", "if_clause": "If he were stronger", "main_clause": "he would have lifted the box", "thai": "ถ้าเขาเป็นคนแข็งแรงกว่านี้ ตอนนั้นเขาก็คงยกกล่องใบนั้นขึ้นได้แล้ว (แต่ความจริงแรงน้อย จึงยกไม่ไหว)", "note": "พละกำลังทางกายภาพส่งผลต่อการยกของในอดีต"}, {"num": 193, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (สภาพปัจจุบันส่งผลต่ออดีต)", "sentence": "If I were fluent in English, I would have answered the question.", "if_clause": "If I were fluent in English", "main_clause": "I would have answered the question", "thai": "ถ้าฉันพูดภาษาอังกฤษได้คล่องแคล่ว ตอนนั้นฉันคงตอบคำถามนั้นไปแล้ว (แต่ไม่คล่อง จึงไม่ได้ตอบ)", "note": "ความคล่องแคล่วทางภาษาส่งผลต่อการตอบคำถามในอดีต"}, {"num": 194, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (สภาพปัจจุบันส่งผลต่ออดีต)", "sentence": "If she were more responsible, she wouldn't have forgotten the appointment.", "if_clause": "If she were more responsible", "main_clause": "she wouldn't have forgotten the appointment", "thai": "ถ้าเธอเป็นคนมีความรับผิดชอบมากกว่านี้ เธอคงไม่ลืมนัดหมายสำคัญนั้นไปหรอก", "note": "ความรับผิดชอบส่งผลต่อการลืมนัดในอดีต"}, {"num": 195, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (สภาพปัจจุบันส่งผลต่ออดีต)", "sentence": "If I lived in Kolkata, I would have attended that event.", "if_clause": "If I lived in Kolkata", "main_clause": "I would have attended that event", "thai": "ถ้าฉันอาศัยอยู่ในเมืองโกลกาตา ตอนจัดงานคราวนั้นฉันก็คงไปร่วมงานแล้ว (แต่ไม่ได้อยู่ที่นั่น)", "note": "ถิ่นที่อยู่ส่งผลต่อการเข้าร่วมงานในอดีต"}, {"num": 196, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (สภาพปัจจุบันส่งผลต่ออดีต)", "sentence": "If he had better communication skills, he would have passed the interview.", "if_clause": "If he had better communication skills", "main_clause": "he would have passed the interview", "thai": "ถ้าเขาเป็นคนมีทักษะการสื่อสารที่ดีกว่านี้ ตอนนั้นเขาก็คงสอบสัมภาษณ์ผ่านไปแล้ว", "note": "ทักษะการสื่อสารส่งผลต่อผลการสัมภาษณ์งานในอดีต"}, {"num": 197, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (สภาพปัจจุบันส่งผลต่ออดีต)", "sentence": "If they were more careful, they wouldn't have lost the match.", "if_clause": "If they were more careful", "main_clause": "they wouldn't have lost the match", "thai": "ถ้าพวกเขาเป็นทีมที่มีความรอบคอบรัดกุมกว่านี้ ในการแข่งคราวนั้นพวกเขาคงไม่แพ้การแข่งขัน", "note": "ความรอบคอบของทีมส่งผลต่อผลแพ้ชนะในอดีต"}, {"num": 198, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (สภาพปัจจุบันส่งผลต่ออดีต)", "sentence": "If I were a teacher, I would have explained the lesson differently.", "if_clause": "If I were a teacher", "main_clause": "I would have explained the lesson differently", "thai": "ถ้าฉันเป็นครูผู้สอน ในคาบเรียนคราวนั้นฉันคงจะอธิบายบทเรียนในรูปแบบที่แตกต่างออกไป", "note": "ความเป็นครูส่งผลต่อวิธีการอธิบายในอดีต"}, {"num": 199, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (สภาพปัจจุบันส่งผลต่ออดีต)", "sentence": "If she knew the truth, she would have helped us.", "if_clause": "If she knew the truth", "main_clause": "she would have helped us", "thai": "ถ้าเธอเป็นคนที่รู้ความจริงเรื่องนั้น ในตอนนั้นเธอก็คงยื่นมือช่วยพวกเราไปแล้ว", "note": "การรับรู้ความจริงส่งผลต่อการช่วยเหลือในอดีต"}, {"num": 200, "type": "Mixed Conditional", "type_th": "ประโยคเงื่อนไขแบบผสม (สภาพปัจจุบันส่งผลต่ออดีต)", "sentence": "If he were more intelligent, he would have solved the problem.", "if_clause": "If he were more intelligent", "main_clause": "he would have solved the problem", "thai": "ถ้าเขาเป็นคนเฉลียวฉลาดรอบรู้มากกว่านี้ ในตอนนั้นเขาก็คงแก้ไขปัญหานั้นได้สำเร็จไปแล้ว", "note": "สติปัญญาทั่วไปส่งผลต่อการแก้ปัญหาในอดีต"}];
+
+    // State
+    let filteredData = [...RAW_DATA];
+    let currentViewMode = 'grid';
+    let activeType = 'ALL';
+    let activeBatch = 'ALL';
+    let searchQuery = '';
+    let isFavoritesOnly = false;
+    let playbackSpeed = 1.0;
+    let audioEngine = 'natural'; // 'natural' or 'system'
+    let favorites = new Set(JSON.parse(localStorage.getItem('conditional_favs') || '[]'));
+    let flashcardIndex = 0;
+    let currentAudio = null;
+    let playingBtnElement = null;
+
+    // Sound effect & fallback
+    function loadSystemVoices() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.getVoices();
+      }
+    }
+    loadSystemVoices();
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.onvoiceschanged = loadSystemVoices;
+    }
+
+    // Toggle Mobile Sidebar
+    function toggleSidebar() {
+      const sb = document.getElementById('sidebar');
+      const bd = document.getElementById('sidebar-backdrop');
+      const isClosed = sb.classList.contains('-translate-x-full');
+      if (isClosed) {
+        sb.classList.remove('-translate-x-full');
+        if (bd) bd.classList.remove('hidden');
+      } else {
+        sb.classList.add('-translate-x-full');
+        if (bd) bd.classList.add('hidden');
+      }
+    }
+
+    // Audio Engine Toggle
+    function toggleAudioEngine() {
+      audioEngine = audioEngine === 'natural' ? 'system' : 'natural';
+      updateAudioEngineUI();
+    }
+
+    function updateAudioEngineUI() {
+      const btn = document.getElementById('audioEngineToggleBtn');
+      const label = document.getElementById('audioEngineLabel');
+      if (audioEngine === 'natural') {
+        btn.className = "flex items-center space-x-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 hover:bg-emerald-500/30 transition-all shadow-sm";
+        label.textContent = "🌟 เสียงธรรมชาติ Studio HD";
+      } else {
+        btn.className = "flex items-center space-x-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-400/40 hover:bg-amber-500/30 transition-all shadow-sm";
+        label.textContent = "🔊 เสียงสังเคราะห์ระบบ (TTS)";
+      }
+    }
+
+    // Audio Playback
+    function playAudio(path, text, btnElement) {
+      // Reset currently playing animation
+      if (playingBtnElement) {
+        playingBtnElement.classList.remove('audio-playing', 'ring-2', 'ring-teal-400', 'bg-teal-600', 'text-white');
+      }
+
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio = null;
+      }
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+
+      if (btnElement) {
+        playingBtnElement = btnElement;
+        btnElement.classList.add('audio-playing', 'ring-2', 'ring-teal-400', 'bg-teal-600', 'text-white');
+      }
+
+      if (audioEngine === 'natural') {
+        const audio = new Audio(path);
+        audio.playbackRate = playbackSpeed;
+        currentAudio = audio;
+
+        audio.onended = () => {
+          if (playingBtnElement) {
+            playingBtnElement.classList.remove('audio-playing', 'ring-2', 'ring-teal-400', 'bg-teal-600', 'text-white');
+            playingBtnElement = null;
+          }
+        };
+
+        audio.onerror = () => {
+          console.warn('Audio file error, falling back to system TTS:', path);
+          playSystemTTS(text);
+        };
+
+        audio.play().catch(e => {
+          console.warn('Autoplay error, fallback to TTS:', e);
+          playSystemTTS(text);
+        });
+      } else {
+        playSystemTTS(text);
+      }
+    }
+
+    function playSystemTTS(text) {
+      if (!('speechSynthesis' in window)) {
+        if (playingBtnElement) {
+          playingBtnElement.classList.remove('audio-playing');
+          playingBtnElement = null;
+        }
+        return;
+      }
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'en-US';
+      utter.rate = playbackSpeed;
+
+      const voices = window.speechSynthesis.getVoices();
+      const usVoice = voices.find(v => v.lang === 'en-US' && (v.name.includes('Natural') || v.name.includes('Jenny') || v.name.includes('Google') || v.name.includes('Samantha')));
+      if (usVoice) utter.voice = usVoice;
+
+      utter.onend = () => {
+        if (playingBtnElement) {
+          playingBtnElement.classList.remove('audio-playing', 'ring-2', 'ring-teal-400', 'bg-teal-600', 'text-white');
+          playingBtnElement = null;
+        }
+      };
+      utter.onerror = () => {
+        if (playingBtnElement) {
+          playingBtnElement.classList.remove('audio-playing', 'ring-2', 'ring-teal-400', 'bg-teal-600', 'text-white');
+          playingBtnElement = null;
+        }
+      };
+
+      window.speechSynthesis.speak(utter);
+    }
+
+    function setSpeed(val) {
+      playbackSpeed = parseFloat(val);
+      if (currentAudio) {
+        currentAudio.playbackRate = playbackSpeed;
+      }
+    }
+
+    // Favorites
+    function toggleFavorite(num, event) {
+      if (event) event.stopPropagation();
+      if (favorites.has(num)) {
+        favorites.delete(num);
+      } else {
+        favorites.add(num);
+      }
+      localStorage.setItem('conditional_favs', JSON.stringify([...favorites]));
+      updateFavoritesUI();
+      if (isFavoritesOnly) {
+        applyFilters();
+      }
+    }
+
+    function updateFavoritesUI() {
+      const badge = document.getElementById('favCountBadge');
+      if (badge) badge.textContent = favorites.size;
+
+      // Update stars in DOM
+      document.querySelectorAll('.fav-star-btn').forEach(btn => {
+        const num = parseInt(btn.dataset.num);
+        if (favorites.has(num)) {
+          btn.innerHTML = `<svg class="w-4 h-4 text-amber-500 fill-amber-500" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>`;
+        } else {
+          btn.innerHTML = `<svg class="w-4 h-4 text-slate-300 hover:text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>`;
+        }
+      });
+    }
+
+    // Filter Handlers
+    function filterType(type) {
+      activeType = type;
+      isFavoritesOnly = false;
+      document.querySelectorAll('.type-btn').forEach(btn => {
+        btn.className = "type-btn py-1.5 px-2 text-left rounded-lg font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition";
+      });
+      const activeBtn = document.getElementById('typeBtn-' + type);
+      if (activeBtn) {
+        activeBtn.className = "type-btn py-1.5 px-2 text-left rounded-lg font-bold bg-indigo-50 text-indigo-700 border border-indigo-200 transition";
+      }
+      applyFilters();
+      if (window.innerWidth < 768) toggleSidebar();
+    }
+
+    function filterBatch(batch) {
+      activeBatch = batch;
+      isFavoritesOnly = false;
+      document.querySelectorAll('.batch-btn').forEach(btn => {
+        btn.className = "batch-btn py-1 px-2.5 text-left rounded-lg font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition";
+      });
+      const activeBtn = document.getElementById('batchBtn-' + batch);
+      if (activeBtn) {
+        activeBtn.className = "batch-btn py-1 px-2.5 text-left rounded-lg font-bold bg-indigo-50 text-indigo-700 border border-indigo-200 transition";
+      }
+      applyFilters();
+      if (window.innerWidth < 768) toggleSidebar();
+    }
+
+    function filterFavorites() {
+      isFavoritesOnly = !isFavoritesOnly;
+      const favBtn = document.getElementById('favFilterBtn');
+      if (isFavoritesOnly) {
+        favBtn.className = "px-3 py-2 rounded-xl text-xs font-bold bg-amber-50 text-amber-800 border border-amber-300 flex items-center justify-between transition";
+      } else {
+        favBtn.className = "px-3 py-2 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-amber-50 text-slate-700 hover:text-amber-800 flex items-center justify-between border border-transparent hover:border-amber-200 transition";
+      }
+      applyFilters();
+      if (window.innerWidth < 768) toggleSidebar();
+    }
+
+    function clearAllFilters() {
+      activeType = 'ALL';
+      activeBatch = 'ALL';
+      searchQuery = '';
+      isFavoritesOnly = false;
+      document.getElementById('searchInput').value = '';
+      document.getElementById('clearSearchBtn').classList.add('hidden');
+
+      document.querySelectorAll('.type-btn').forEach(btn => {
+        btn.className = "type-btn py-1.5 px-2 text-left rounded-lg font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition";
+      });
+      document.getElementById('typeBtn-ALL').className = "type-btn py-1.5 px-2 text-left rounded-lg font-bold bg-indigo-50 text-indigo-700 border border-indigo-200 transition";
+
+      document.querySelectorAll('.batch-btn').forEach(btn => {
+        btn.className = "batch-btn py-1 px-2.5 text-left rounded-lg font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition";
+      });
+      document.getElementById('batchBtn-ALL').className = "batch-btn py-1 px-2.5 text-left rounded-lg font-bold bg-indigo-50 text-indigo-700 border border-indigo-200 transition";
+
+      document.getElementById('favFilterBtn').className = "px-3 py-2 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-amber-50 text-slate-700 hover:text-amber-800 flex items-center justify-between border border-transparent hover:border-amber-200 transition";
+
+      applyFilters();
+    }
+
+    function handleSearch(val) {
+      searchQuery = val.trim().toLowerCase();
+      const clearBtn = document.getElementById('clearSearchBtn');
+      if (searchQuery) clearBtn.classList.remove('hidden');
+      else clearBtn.classList.add('hidden');
+      applyFilters();
+    }
+
+    function clearSearch() {
+      document.getElementById('searchInput').value = '';
+      searchQuery = '';
+      document.getElementById('clearSearchBtn').classList.add('hidden');
+      applyFilters();
+    }
+
+    function shuffleData() {
+      for (let i = filteredData.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [filteredData[i], filteredData[j]] = [filteredData[j], filteredData[i]];
+      }
+      flashcardIndex = 0;
+      renderViews();
+    }
+
+    function applyFilters() {
+      filteredData = RAW_DATA.filter(item => {
+        // Type filter
+        if (activeType !== 'ALL' && item.type !== activeType) {
+          return false;
+        }
+
+        // Batch filter (1-40, 41-80, 81-120, 121-160, 161-200)
+        if (activeBatch !== 'ALL') {
+          const batchNum = parseInt(activeBatch);
+          const minNum = (batchNum - 1) * 40 + 1;
+          const maxNum = batchNum * 40;
+          if (item.num < minNum || item.num > maxNum) {
+            return false;
+          }
+        }
+
+        // Favorites filter
+        if (isFavoritesOnly && !favorites.has(item.num)) {
+          return false;
+        }
+
+        // Search Query
+        if (searchQuery) {
+          const hay = `${item.num} ${item.type} ${item.sentence} ${item.if_clause} ${item.main_clause} ${item.thai} ${item.note}`.toLowerCase();
+          if (!hay.includes(searchQuery)) {
+            return false;
+          }
+        }
+
+        return true;
+      });
+
+      flashcardIndex = 0;
+      updateFilterSummaryUI();
+      renderViews();
+    }
+
+    function updateFilterSummaryUI() {
+      const label = document.getElementById('activeFilterName');
+      const count = document.getElementById('resultCountBadge');
+
+      let name = "ทั้งหมด (All Sentences)";
+      if (isFavoritesOnly) {
+        name = "รายการโปรดที่คั่นไว้";
+      } else if (activeType !== 'ALL') {
+        name = activeType;
+      } else if (activeBatch !== 'ALL') {
+        name = `ชุดที่ ${activeBatch}`;
+      } else if (searchQuery) {
+        name = `ค้นหา: "${searchQuery}"`;
+      }
+
+      label.textContent = name;
+      count.textContent = `${filteredData.length} ประโยค`;
+    }
+
+    // View Switching
+    function setViewMode(mode) {
+      currentViewMode = mode;
+      document.querySelectorAll('.view-btn').forEach(btn => {
+        if (btn.dataset.view === mode) {
+          btn.className = "view-btn px-2.5 sm:px-3 py-1 rounded-lg transition-all bg-indigo-600 text-white font-bold flex items-center space-x-1";
+        } else {
+          btn.className = "view-btn px-2.5 sm:px-3 py-1 rounded-lg transition-all text-slate-300 hover:text-white flex items-center space-x-1";
+        }
+      });
+
+      document.getElementById('gridView').classList.add('hidden');
+      document.getElementById('tableView').classList.add('hidden');
+      document.getElementById('flashcardView').classList.add('hidden');
+
+      if (mode === 'grid') document.getElementById('gridView').classList.remove('hidden');
+      else if (mode === 'table') document.getElementById('tableView').classList.remove('hidden');
+      else if (mode === 'flashcard') {
+        document.getElementById('flashcardView').classList.remove('hidden');
+        updateFlashcardUI();
+      }
+    }
+
+    // Type Badge Color Helper
+    function getTypeBadgeClass(type) {
+      if (type.includes('Zero')) return 'bg-teal-50 text-teal-800 border-teal-200';
+      if (type.includes('First')) return 'bg-blue-50 text-blue-800 border-blue-200';
+      if (type.includes('Second')) return 'bg-purple-50 text-purple-800 border-purple-200';
+      if (type.includes('Third')) return 'bg-rose-50 text-rose-800 border-rose-200';
+      return 'bg-amber-50 text-amber-800 border-amber-200';
+    }
+
+    // Render Views
+    function renderViews() {
+      renderGridView();
+      renderTableView();
+      updateFlashcardUI();
+      updateFavoritesUI();
+    }
+
+    function renderGridView() {
+      const container = document.getElementById('gridView');
+      if (filteredData.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full py-16 text-center text-slate-400">
+            <div class="text-4xl mb-2">🔍</div>
+            <p class="font-bold text-slate-600 text-sm">ไม่พบประโยคเงื่อนไขที่ตรงกับเงื่อนไขการค้นหา</p>
+            <p class="text-xs text-slate-400 mt-1">ลองเปลี่ยนคำค้นหา หรือคลิก "ล้างตัวกรอง" เพื่อดูประโยคทั้งหมด</p>
+            <button onclick="clearAllFilters()" class="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-xl text-xs font-bold hover:bg-indigo-700 transition">
+              ล้างตัวกรองทั้งหมด
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filteredData.map(item => {
+        const isFav = favorites.has(item.num);
+        const badgeColor = getTypeBadgeClass(item.type);
+        const batchNum = Math.ceil(item.num / 40);
+
+        return `
+          <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group">
+            
+            <!-- Card Header: Number, Type Badge, Poster, Star -->
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <div class="flex items-center space-x-1.5">
+                  <span class="text-xs font-black text-slate-400">#${item.num}</span>
+                  <span class="px-2 py-0.5 rounded-md text-[10px] font-extrabold uppercase border ${badgeColor}">
+                    ${item.type}
+                  </span>
+                </div>
+                
+                <div class="flex items-center space-x-1">
+                  <span class="text-[10px] font-semibold text-slate-400 bg-slate-100 px-2 py-0.5 rounded-full">
+                    ชุดที่ ${batchNum}
+                  </span>
+                  <button onclick="toggleFavorite(${item.num}, event)" class="fav-star-btn p-1 rounded-lg hover:bg-slate-100 transition" data-num="${item.num}" title="บันทึกรายการโปรด">
+                    ${isFav ? 
+                      `<svg class="w-4 h-4 text-amber-500 fill-amber-500" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>` : 
+                      `<svg class="w-4 h-4 text-slate-300 hover:text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>`
+                    }
+                  </button>
+                </div>
+              </div>
+
+              <!-- Main Sentence Box -->
+              <div class="p-3 bg-slate-50 border border-slate-200/80 rounded-xl mb-3 flex items-start justify-between gap-2 group-hover:bg-indigo-50/20 group-hover:border-indigo-200 transition">
+                <div class="flex-1">
+                  <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Conditional Sentence</div>
+                  <div class="text-sm sm:text-base font-extrabold text-slate-900 leading-snug">
+                    ${item.sentence}
+                  </div>
+                </div>
+                <button onclick="playAudio('audio/c_${item.num}.mp3', '${escapeQuotes(item.sentence)}', this)" class="p-2 rounded-xl bg-white border border-slate-200 text-indigo-600 hover:bg-indigo-600 hover:text-white shadow-xs transition active:scale-95 shrink-0" title="ฟังเสียงประโยคเต็ม">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/></svg>
+                </button>
+              </div>
+
+              <!-- Clause Breakdown: If-clause (Teal) + Main-clause (Orange) -->
+              <div class="space-y-1.5 mb-3">
+                <div class="flex items-center justify-between p-2 rounded-lg bg-teal-50/70 border border-teal-200/80 text-xs">
+                  <div class="flex items-center space-x-1.5">
+                    <span class="px-1.5 py-0.5 rounded text-[10px] font-black bg-teal-200 text-teal-900">IF</span>
+                    <span class="font-bold text-teal-900">${item.if_clause}</span>
+                  </div>
+                  <button onclick="playAudio('audio/if_${item.num}.mp3', '${escapeQuotes(item.if_clause)}', this)" class="p-1 rounded-md text-teal-700 hover:bg-teal-200/60 transition" title="ฟังเฉพาะส่วนเงื่อนไข">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                  </button>
+                </div>
+
+                <div class="flex items-center justify-between p-2 rounded-lg bg-orange-50/70 border border-orange-200/80 text-xs">
+                  <div class="flex items-center space-x-1.5">
+                    <span class="px-1.5 py-0.5 rounded text-[10px] font-black bg-orange-200 text-orange-900">MAIN</span>
+                    <span class="font-bold text-orange-950">${item.main_clause}</span>
+                  </div>
+                  <button onclick="playAudio('audio/main_${item.num}.mp3', '${escapeQuotes(item.main_clause)}', this)" class="p-1 rounded-md text-orange-700 hover:bg-orange-200/60 transition" title="ฟังเฉพาะส่วนผลลัพธ์">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Thai Meaning -->
+              <div class="text-xs text-slate-800 font-semibold mb-2 leading-relaxed">
+                <span class="text-slate-400 font-normal">คำแปล:</span> ${item.thai}
+              </div>
+            </div>
+
+            <!-- Grammar Usage Note Badge -->
+            <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+              <span class="text-indigo-900 font-medium truncate" title="${item.note}">💡 ${item.note}</span>
+            </div>
+
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderTableView() {
+      const tbody = document.getElementById('tableBody');
+      if (filteredData.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="7" class="py-8 text-center text-slate-400">ไม่พบข้อมูล</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = filteredData.map((item, idx) => {
+        const isFav = favorites.has(item.num);
+        const badgeColor = getTypeBadgeClass(item.type);
+        const isEven = idx % 2 === 0;
+
+        return `
+          <tr class="${isEven ? 'bg-white' : 'bg-slate-50/70'} hover:bg-indigo-50/40 transition">
+            <td class="py-3 px-3 text-center font-bold text-slate-400">${item.num}</td>
+            <td class="py-3 px-3">
+              <span class="px-2 py-0.5 rounded text-[10px] font-extrabold border ${badgeColor}">
+                ${item.type}
+              </span>
+            </td>
+            <td class="py-3 px-4 font-bold text-slate-900">
+              <div class="flex items-center justify-between gap-2">
+                <span>${item.sentence}</span>
+                <button onclick="playAudio('audio/c_${item.num}.mp3', '${escapeQuotes(item.sentence)}', this)" class="p-1 rounded-md text-indigo-600 hover:bg-indigo-100 transition shrink-0" title="ฟังเสียง">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/></svg>
+                </button>
+              </div>
+            </td>
+            <td class="py-3 px-4 text-teal-800 font-semibold">
+              <div class="flex items-center justify-between gap-1">
+                <span>${item.if_clause}</span>
+                <button onclick="playAudio('audio/if_${item.num}.mp3', '${escapeQuotes(item.if_clause)}', this)" class="p-1 rounded text-teal-600 hover:bg-teal-100 transition shrink-0">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                </button>
+              </div>
+            </td>
+            <td class="py-3 px-4 text-orange-900 font-semibold">
+              <div class="flex items-center justify-between gap-1">
+                <span>${item.main_clause}</span>
+                <button onclick="playAudio('audio/main_${item.num}.mp3', '${escapeQuotes(item.main_clause)}', this)" class="p-1 rounded text-orange-600 hover:bg-orange-100 transition shrink-0">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                </button>
+              </div>
+            </td>
+            <td class="py-3 px-4">
+              <div class="text-slate-800 font-medium">${item.thai}</div>
+              <div class="text-[10px] text-slate-400 mt-0.5">💡 ${item.note}</div>
+            </td>
+            <td class="py-3 px-3 text-center">
+              <button onclick="toggleFavorite(${item.num}, event)" class="fav-star-btn p-1 rounded-lg hover:bg-slate-100 transition" data-num="${item.num}">
+                ${isFav ? 
+                  `<svg class="w-4 h-4 text-amber-500 fill-amber-500 mx-auto" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>` : 
+                  `<svg class="w-4 h-4 text-slate-300 hover:text-amber-400 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>`
+                }
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    // Flashcard View Logic
+    function updateFlashcardUI() {
+      if (filteredData.length === 0) return;
+      if (flashcardIndex >= filteredData.length) flashcardIndex = 0;
+      if (flashcardIndex < 0) flashcardIndex = filteredData.length - 1;
+
+      const item = filteredData[flashcardIndex];
+      const inner = document.getElementById('fcCardInner');
+      inner.classList.remove('rotate-y-180');
+
+      document.getElementById('fcProgressText').textContent = `ประโยคที่ ${flashcardIndex + 1} จาก ${filteredData.length}`;
+      document.getElementById('fcNumber').textContent = `#${item.num}`;
+      document.getElementById('fcBadgeType').textContent = item.type;
+      document.getElementById('fcEnglishText').textContent = item.sentence;
+      document.getElementById('fcIfClausePill').textContent = item.if_clause;
+      document.getElementById('fcMainClausePill').textContent = item.main_clause;
+
+      document.getElementById('fcThaiText').textContent = item.thai;
+      document.getElementById('fcNoteText').textContent = item.note;
+    }
+
+    function flipFlashcard() {
+      const inner = document.getElementById('fcCardInner');
+      inner.classList.toggle('rotate-y-180');
+    }
+
+    function nextFlashcard() {
+      if (filteredData.length === 0) return;
+      flashcardIndex = (flashcardIndex + 1) % filteredData.length;
+      updateFlashcardUI();
+    }
+
+    function prevFlashcard() {
+      if (filteredData.length === 0) return;
+      flashcardIndex = (flashcardIndex - 1 + filteredData.length) % filteredData.length;
+      updateFlashcardUI();
+    }
+
+    function playFcAudio() {
+      if (filteredData.length === 0) return;
+      const item = filteredData[flashcardIndex];
+      playAudio(`audio/c_${item.num}.mp3`, item.sentence);
+    }
+
+    // Keyboard Shortcuts for Flashcard
+    window.addEventListener('keydown', (e) => {
+      if (currentViewMode !== 'flashcard') return;
+      if (document.activeElement.tagName === 'INPUT') return;
+
+      if (e.code === 'Space') {
+        e.preventDefault();
+        flipFlashcard();
+      } else if (e.code === 'ArrowRight') {
+        e.preventDefault();
+        nextFlashcard();
+      } else if (e.code === 'ArrowLeft') {
+        e.preventDefault();
+        prevFlashcard();
+      }
+    });
+
+    // Grammar Modal
+    function openGrammarModal() {
+      document.getElementById('grammarModal').classList.remove('hidden');
+    }
+
+    function closeGrammarModal() {
+      document.getElementById('grammarModal').classList.add('hidden');
+    }
+
+    // Helper
+    function escapeQuotes(str) {
+      return (str || '').replace(/'/g, "\\'");
+    }
+
+    // Initialize App
+    function initApp() {
+      updateFavoritesUI();
+      updateAudioEngineUI();
+      renderViews();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initApp);
+    } else {
+      initApp();
+    }
+
+  </script>
+</body>
+</html>
