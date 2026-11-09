@@ -97,16 +97,16 @@
   </style>
 </head>
 
-<body class="h-screen bg-slate-50 text-slate-800 flex flex-col antialiased selection:bg-brand-500 selection:text-white overflow-hidden">
+<body class="h-full flex flex-col text-slate-800 bg-slate-50 antialiased overflow-hidden selection:bg-brand-500 selection:text-white">
 
   <!-- TOP HEADER (Deep Navy & Slate) -->
   <header class="bg-gradient-to-r from-slate-950 via-slate-900 to-blue-950 text-white shadow-md z-40 border-b border-slate-800 shrink-0">
-    <div class="px-4 sm:px-6 py-2.5">
+    <div class="w-full px-4 sm:px-6 lg:px-8 py-2.5">
       <div class="flex items-center justify-between gap-3">
         
         <!-- Left: Mobile Menu Trigger + Brand & Title -->
         <div class="flex items-center space-x-3">
-          <button onclick="toggleSidebar()" class="lg:hidden p-2 rounded-xl bg-blue-900/60 hover:bg-blue-800 text-blue-200 hover:text-white border border-blue-400/30 flex items-center space-x-1.5 text-xs font-bold transition">
+          <button onclick="toggleSidebar()" class="md:hidden p-2 rounded-xl bg-blue-900/60 hover:bg-blue-800 text-blue-200 hover:text-white border border-blue-400/30 flex items-center space-x-1.5 text-xs font-bold transition">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/></svg>
             <span>หมวด A-Z</span>
           </button>
@@ -122,7 +122,7 @@
                 <span>497 คำหลัก • 100% IPA</span>
               </span>
             </div>
-            <p class="text-xs text-blue-200/90 hidden lg:block">จัดลำดับความเข้มข้น (Strongest → Weakest) พร้อม Antonyms, IPA ครบทุกคำ และเสียงพากย์ธรรมชาติ</p>
+            <p class="text-xs text-blue-200/90 hidden sm:block">จัดลำดับความเข้มข้น (Strongest → Weakest) พร้อม Antonyms, IPA ครบทุกคำ และเสียงพากย์ธรรมชาติ</p>
           </div>
         </div>
 
@@ -167,10 +167,13 @@
   </header>
 
   <!-- MAIN APP CONTAINER -->
-  <div class="flex-1 flex overflow-hidden relative">
+  <div class="flex-1 flex overflow-hidden relative w-full">
+
+    <!-- Mobile Sidebar Drawer Backdrop -->
+    <div id="sidebar-backdrop" onclick="toggleSidebar()" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-40 hidden md:hidden transition-opacity"></div>
 
     <!-- SIDEBAR (A-Z Letter Jumper & Filters) -->
-    <aside id="sidebar" class="fixed inset-y-0 left-0 z-30 w-64 bg-white border-r border-slate-200 transform -translate-x-full lg:translate-x-0 lg:static transition-transform duration-200 ease-in-out flex flex-col shadow-lg lg:shadow-none">
+    <aside id="sidebar" class="fixed md:static inset-y-0 left-0 z-50 md:z-10 w-72 bg-white border-r border-slate-200 flex flex-col transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out shrink-0 shadow-lg md:shadow-none">
       
       <!-- Sidebar Header -->
       <div class="p-4 border-b border-slate-100 flex items-center justify-between">
@@ -178,7 +181,7 @@
           <span class="text-xs font-bold uppercase tracking-wider text-slate-400">ตัวกรองหมวดอักษร</span>
           <span id="sidebarTotalBadge" class="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-blue-100 text-blue-800">497 คำ</span>
         </div>
-        <button onclick="toggleSidebar()" class="lg:hidden p-1 text-slate-400 hover:text-slate-600 rounded-lg">
+        <button onclick="toggleSidebar()" class="md:hidden p-1 text-slate-400 hover:text-slate-600 rounded-lg">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
       </div>
@@ -228,7 +231,7 @@
     </aside>
 
     <!-- CONTENT WRAPPER -->
-    <main class="flex-1 flex flex-col min-w-0 bg-slate-50 overflow-hidden">
+    <main class="flex-1 flex flex-col overflow-hidden bg-slate-100/60">
       
       <!-- SUB-BAR: Search & Active Filter Indicators -->
       <div class="bg-white border-b border-slate-200 px-4 sm:px-6 py-3 shrink-0 shadow-sm">
@@ -265,12 +268,12 @@
       <div class="flex-1 overflow-y-auto custom-scrollbar p-4 sm:p-6" id="viewsContainer">
         
         <!-- 1. GRID VIEW -->
-        <div id="gridView" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+        <div id="gridView" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 pb-20 md:pb-6">
           <!-- Rendered by JS -->
         </div>
 
         <!-- 2. TABLE VIEW -->
-        <div id="tableView" class="hidden">
+        <div id="tableView" class="hidden pb-20 md:pb-6">
           <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
             <div class="overflow-x-auto">
               <table class="w-full text-left text-xs border-collapse">
@@ -468,7 +471,15 @@
     // Toggle Mobile Sidebar
     function toggleSidebar() {
       const sb = document.getElementById('sidebar');
-      sb.classList.toggle('-translate-x-full');
+      const bd = document.getElementById('sidebar-backdrop');
+      const isClosed = sb.classList.contains('-translate-x-full');
+      if (isClosed) {
+        sb.classList.remove('-translate-x-full');
+        if (bd) bd.classList.remove('hidden');
+      } else {
+        sb.classList.add('-translate-x-full');
+        if (bd) bd.classList.add('hidden');
+      }
     }
 
     // Audio Engine Toggle
@@ -759,7 +770,7 @@
 
       applyFilters();
       // On mobile, close sidebar after selection
-      if (window.innerWidth < 1024) toggleSidebar();
+      if (window.innerWidth < 768) toggleSidebar();
     }
 
     // Live Search
