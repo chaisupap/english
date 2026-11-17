@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="th" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English Personality Vocabulary — Responsive Fullscreen Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Prompt:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Prompt', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', 'Prompt', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+    .audio-playing {
+      animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+      background-color: #2563eb !important;
+      color: #ffffff !important;
+    }
+    @keyframes pulse-ring {
+      0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.6); }
+      70% { box-shadow: 0 0 0 8px rgba(37, 99, 235, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+    }
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+    .transform-style-3d {
+      transform-style: preserve-3d;
+    }
+    .backface-hidden {
+      backface-visibility: hidden;
+    }
+    .rotate-y-180 {
+      transform: rotateY(180deg);
+    }
+    .hl-teal {
+      color: #0f766e;
+      font-weight: 700;
+      background-color: #ccfbf1;
+      padding: 0 4px;
+      border-radius: 4px;
+    }
+    .hl-orange {
+      color: #c2410c;
+      font-weight: 700;
+      background-color: #ffedd5;
+      padding: 0 4px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="h-screen bg-slate-50 text-slate-800 flex flex-col antialiased selection:bg-brand-500 selection:text-white overflow-hidden">
+
+  <!-- TOP HEADER (Deep Navy & Blue) -->
+  <header class="bg-gradient-to-r from-slate-950 via-slate-900 to-blue-950 text-white shadow-md z-40 border-b border-slate-800 shrink-0">
+    <div class="px-4 sm:px-6 py-2.5">
+      <div class="flex items-center justify-between gap-3">
+        
+        <!-- Left: Mobile Menu Trigger + Brand & Title -->
+        <div class="flex items-center space-x-3">
+          <button onclick="openMobileSidebar()" class="md:hidden p-2 rounded-xl bg-blue-900/60 hover:bg-blue-800 text-blue-200 hover:text-white border border-blue-400/30 flex items-center space-x-1.5 text-xs font-bold transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/></svg>
+            <span>หมวดหมู่</span>
+          </button>
+
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center shadow-md shadow-blue-500/30 flex-shrink-0">
+            <span class="text-sm font-black tracking-tight text-white">PERS</span>
+          </div>
+          <div>
+            <div class="flex items-center space-x-2">
+              <h1 class="text-base sm:text-lg font-extrabold tracking-tight text-white">English Personality Vocabulary</h1>
+              <span class="px-2 py-0.5 text-[10px] font-bold bg-blue-500/20 text-blue-300 border border-blue-400/30 rounded-full hidden sm:inline-flex items-center space-x-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
+                <span>201 คำบุคลิกภาพเอกลักษณ์</span>
+              </span>
+            </div>
+            <p class="text-xs text-blue-200/90 hidden lg:block">คลังคำศัพท์บุคลิกภาพพร้อมสัทอักษร (AmE IPA), คำแปลไทย, ตัวอย่าง 2 บริบท และระบบเสียงพากย์ Studio HD</p>
+          </div>
+        </div>
+
+        <!-- Right Controls: Audio Engine, Speed & View Mode -->
+        <div class="flex items-center flex-wrap gap-2 justify-end">
+          
+          <!-- Audio Engine Selector Button -->
+          <button id="audioEngineToggleBtn" onclick="toggleAudioEngine()" class="flex items-center space-x-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 hover:bg-emerald-500/30 transition-all shadow-sm" title="คลิกเพื่อสลับระหว่างเสียง Studio HD กับเสียงสังเคราะห์ระบบ">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span id="audioEngineLabel">🌟 Studio HD</span>
+          </button>
+
+          <!-- Speed Selector -->
+          <div class="flex items-center bg-slate-800/80 rounded-xl p-1 border border-slate-700 text-xs">
+            <span class="text-slate-400 px-2 font-medium hidden sm:inline">ความเร็ว:</span>
+            <select onchange="setSpeed(this.value)" class="bg-transparent text-white font-bold focus:outline-none cursor-pointer pr-1">
+              <option value="0.75" class="bg-slate-900 text-white">0.75x</option>
+              <option value="0.85" class="bg-slate-900 text-white" selected>0.85x</option>
+              <option value="1.0" class="bg-slate-900 text-white">1.0x</option>
+              <option value="1.1" class="bg-slate-900 text-white">1.1x</option>
+              <option value="1.25" class="bg-slate-900 text-white">1.25x</option>
+            </select>
+          </div>
+
+          <!-- View Mode Switcher -->
+          <div class="flex items-center bg-slate-800/90 rounded-xl p-1 border border-slate-700 text-xs">
+            <button onclick="setViewMode('grid')" class="view-btn px-2.5 sm:px-3 py-1 rounded-lg transition-all bg-blue-600 text-white font-bold" data-view="grid" title="มุมมองการ์ด">
+              Cards
+            </button>
+            <button onclick="setViewMode('table')" class="view-btn px-2.5 sm:px-3 py-1 rounded-lg transition-all text-slate-300 hover:text-white font-medium" data-view="table" title="มุมมองตาราง">
+              Table
+            </button>
+            <button onclick="setViewMode('flashcard')" class="view-btn px-2.5 sm:px-3 py-1 rounded-lg transition-all text-slate-300 hover:text-white font-medium" data-view="flashcard" title="การ์ดฝึกจำ 3D">
+              Flashcards
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- APP BODY (2-COLUMN: SIDEBAR + MAIN WORKSPACE) -->
+  <div class="flex-1 flex overflow-hidden relative">
+
+    <!-- Mobile Backdrop -->
+    <div id="mobileBackdrop" onclick="closeMobileSidebar()" class="fixed inset-0 bg-slate-950/60 z-40 md:hidden hidden transition-opacity"></div>
+
+    <!-- 1. LEFT SIDEBAR (Category Groups & Search) -->
+    <aside id="sidebar" class="fixed md:static inset-y-0 left-0 z-50 md:z-20 w-72 sm:w-80 bg-white border-r border-slate-200 flex flex-col transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out shrink-0 shadow-2xl md:shadow-none h-full">
+      
+      <!-- Sidebar Header -->
+      <div class="p-4 border-b border-slate-100 flex items-center justify-between bg-slate-50/70">
+        <div class="flex items-center space-x-2">
+          <div class="w-2.5 h-2.5 rounded-full bg-blue-600"></div>
+          <span class="text-xs font-bold uppercase tracking-wider text-slate-700">หมวดหมู่บุคลิกภาพ (Categories)</span>
+        </div>
+        <button onclick="closeMobileSidebar()" class="md:hidden p-1.5 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-200">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Category Filter List -->
+      <div class="flex-1 overflow-y-auto custom-scrollbar p-3 space-y-1">
+        
+        <!-- All Button -->
+        <button onclick="setCategoryFilter('ALL')" id="cat-ALL" class="cat-btn w-full text-left px-3 py-2.5 rounded-xl text-xs font-bold transition flex items-center justify-between bg-blue-50 text-blue-700 border border-blue-200 shadow-sm">
+          <div class="flex items-center space-x-2">
+            <span>📚</span>
+            <span>คำศัพท์ทั้งหมด (All Words)</span>
+          </div>
+          <span id="allCountBadge" class="text-[11px] font-mono bg-blue-200/60 text-blue-800 px-2 py-0.5 rounded-full font-extrabold">201</span>
+        </button>
+
+        <!-- Bookmarks Button -->
+        <button onclick="setCategoryFilter('FAVORITES')" id="cat-FAVORITES" class="cat-btn w-full text-left px-3 py-2.5 rounded-xl text-xs font-bold transition flex items-center justify-between text-slate-600 hover:bg-slate-100 border border-transparent">
+          <div class="flex items-center space-x-2">
+            <span class="text-amber-500">⭐</span>
+            <span>รายการโปรด (Bookmarks)</span>
+          </div>
+          <span id="favCountBadge" class="text-[11px] font-mono bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full font-extrabold">0</span>
+        </button>
+
+        <!-- Mastered Button -->
+        <button onclick="setCategoryFilter('MASTERED')" id="cat-MASTERED" class="cat-btn w-full text-left px-3 py-2.5 rounded-xl text-xs font-bold transition flex items-center justify-between text-slate-600 hover:bg-slate-100 border border-transparent">
+          <div class="flex items-center space-x-2">
+            <span class="text-emerald-500">🎓</span>
+            <span>จดจำได้แล้ว (Mastered)</span>
+          </div>
+          <span id="masteredCountBadge" class="text-[11px] font-mono bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-extrabold">0</span>
+        </button>
+
+        <div class="pt-3 pb-1 px-2 text-[10px] font-bold text-slate-400 uppercase tracking-wider">จำแนกตามลักษณะบุคลิกภาพ</div>
+
+        <!-- Trait Category Items -->
+        <div id="categoryButtonsContainer" class="space-y-1">
+          <!-- Populated by JS -->
+        </div>
+
+      </div>
+
+      <!-- Quick Summary Footer in Sidebar -->
+      <div class="p-3 border-t border-slate-100 bg-slate-50 text-xs text-slate-500 flex items-center justify-between">
+        <span>คลังคำศัพท์บุคลิกภาพ</span>
+        <span class="font-bold text-slate-700">201 คำ / 402 ตัวอย่าง</span>
+      </div>
+
+    </aside>
+
+    <!-- 2. MAIN CONTENT AREA -->
+    <main class="flex-1 flex flex-col min-w-0 bg-slate-50 overflow-hidden">
+      
+      <!-- SEARCH & FILTER TOOLBAR -->
+      <div class="bg-white border-b border-slate-200/80 p-3 sm:px-6 sm:py-3.5 shrink-0 shadow-sm">
+        <div class="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
+          
+          <!-- Search Input -->
+          <div class="relative flex-1">
+            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            </div>
+            <input type="text" id="searchInput" oninput="handleSearch(this.value)" placeholder="ค้นหาคำศัพท์ภาษาอังกฤษ, คำแปลไทย, สัทอักษร หรือคำในประโยคตัวอย่าง..." class="w-full pl-10 pr-10 py-2 rounded-xl text-xs sm:text-sm bg-slate-50 border border-slate-300 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+            <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+          </div>
+
+          <!-- Active Filter Badge & Status -->
+          <div class="flex items-center space-x-2 shrink-0">
+            <span id="activeFilterPill" class="px-3 py-1.5 rounded-xl bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold flex items-center space-x-1.5">
+              <span>กลุ่ม: คำศัพท์ทั้งหมด</span>
+              <span id="filteredCountBadge" class="bg-blue-600 text-white text-[10px] px-1.5 py-0.2 rounded-full font-mono">201</span>
+            </span>
+          </div>
+
+        </div>
+
+        <!-- A-Z Alphabet Jumper -->
+        <div class="mt-2.5 pt-2 border-t border-slate-100 flex items-center space-x-1 overflow-x-auto custom-scrollbar text-[11px] font-bold text-slate-500 py-0.5" id="alphabetContainer">
+          <!-- Populated by JS -->
+        </div>
+
+      </div>
+
+      <!-- VIEW CONTAINER (Grid / Table / Flashcard) -->
+      <div class="flex-1 overflow-y-auto custom-scrollbar p-3 sm:p-6" id="viewContainer">
+        
+        <!-- 1. GRID CARDS VIEW -->
+        <div id="gridView" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- 2. TABLE VIEW -->
+        <div id="tableView" class="hidden bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+          <div class="overflow-x-auto custom-scrollbar">
+            <table class="w-full text-left text-xs sm:text-sm">
+              <thead class="bg-slate-900 text-white font-bold border-b border-slate-800">
+                <tr>
+                  <th class="py-3 px-3 text-center w-12">#</th>
+                  <th class="py-3 px-4 w-48">คำศัพท์ & สัทอักษร & ความหมาย</th>
+                  <th class="py-3 px-4">ตัวอย่างที่ 1 (Daily Life Context)</th>
+                  <th class="py-3 px-4">ตัวอย่างที่ 2 (Workplace Context)</th>
+                  <th class="py-3 px-3 text-center w-28">ฟังเสียง</th>
+                </tr>
+              </thead>
+              <tbody id="tableBody" class="divide-y divide-slate-100 text-slate-700">
+                <!-- Populated by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 3. FLASHCARD VIEW -->
+        <div id="flashcardView" class="hidden flex flex-col items-center justify-center min-h-[500px] py-4">
+          
+          <div class="w-full max-w-xl perspective-1000">
+            <!-- 3D Card Inner -->
+            <div id="flashcardInner" onclick="flipFlashcard()" class="w-full min-h-[380px] bg-white rounded-3xl border border-slate-200 shadow-xl p-6 sm:p-8 cursor-pointer transform-style-3d transition-transform duration-500 relative flex flex-col justify-between">
+              
+              <!-- Front Face -->
+              <div id="fcFront" class="flex flex-col justify-between h-full backface-hidden">
+                <div class="flex items-center justify-between">
+                  <span id="fcNumber" class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-blue-50 text-blue-700 border border-blue-200">#1</span>
+                  <span id="fcCategory" class="text-xs font-bold px-2.5 py-1 rounded-full bg-slate-100 text-slate-600">adj.</span>
+                </div>
+                
+                <div class="text-center my-auto py-8">
+                  <h2 id="fcWord" class="text-3xl sm:text-4xl font-extrabold text-blue-950 mb-2 tracking-tight">Kind</h2>
+                  <p id="fcIpa" class="text-sm sm:text-base font-mono text-cyan-700 font-semibold mb-4">/kaɪnd/</p>
+                  <button onclick="playFcAudio(event)" class="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md transition">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                    <span>ฟังเสียงคำศัพท์</span>
+                  </button>
+                </div>
+
+                <div class="text-center text-xs text-slate-400 font-medium">
+                  💡 คลิกที่การ์ด หรือกด Spacebar เพื่อพลิกดูความหมายและตัวอย่างประโยค
+                </div>
+              </div>
+
+              <!-- Back Face -->
+              <div id="fcBack" class="hidden flex flex-col justify-between h-full backface-hidden">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+                  <div class="flex items-baseline space-x-2">
+                    <span id="fcBackTitle" class="text-base font-bold text-blue-950">Kind</span>
+                    <span id="fcBackIpa" class="text-xs font-mono text-cyan-700 font-semibold">/kaɪnd/</span>
+                  </div>
+                  <span id="fcBackCategory" class="text-xs font-bold px-2 py-0.5 rounded-md bg-blue-50 text-blue-700">adj.</span>
+                </div>
+
+                <div class="my-auto py-3 space-y-3">
+                  <div class="text-center font-bold text-base text-slate-800" id="fcMeaning">
+                    ใจดี, มีเมตตา, โอบอ้อมอารี
+                  </div>
+
+                  <!-- S1 -->
+                  <div class="p-3 rounded-xl bg-teal-50/60 border border-teal-100">
+                    <div class="flex items-start justify-between gap-2">
+                      <div class="text-xs sm:text-sm text-slate-800 leading-relaxed font-medium" id="fcS1">
+                        1. She is <span class="hl-teal">kind</span> to everyone.
+                      </div>
+                      <button id="btnFcEx1" onclick="playFcS1(event)" class="shrink-0 p-1.5 rounded-lg bg-teal-600 text-white hover:bg-teal-700 transition" title="ฟังเสียงประโยคที่ 1">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                      </button>
+                    </div>
+                    <p id="fcTh1" class="text-xs text-slate-500 mt-1 pl-4">• เธอมีน้ำใจและใจดีกับทุกคน</p>
+                  </div>
+
+                  <!-- S2 -->
+                  <div class="p-3 rounded-xl bg-orange-50/60 border border-orange-100">
+                    <div class="flex items-start justify-between gap-2">
+                      <div class="text-xs sm:text-sm text-slate-800 leading-relaxed font-medium" id="fcS2">
+                        2. Our team lead is always <span class="hl-orange">kind</span> and supportive.
+                      </div>
+                      <button id="btnFcEx2" onclick="playFcS2(event)" class="shrink-0 p-1.5 rounded-lg bg-orange-600 text-white hover:bg-orange-700 transition" title="ฟังเสียงประโยคที่ 2">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                      </button>
+                    </div>
+                    <p id="fcTh2" class="text-xs text-slate-500 mt-1 pl-4">• หัวหน้าทีมของเราใจดีและคอยให้การสนับสนุนเสมอ</p>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between text-xs text-slate-400 font-medium pt-2 border-t border-slate-100">
+                  <span>กดปุ่มลำโพงเพื่อฟังเสียงแต่ละประโยค</span>
+                  <button onclick="playFcSequence(event)" class="text-blue-600 hover:underline font-bold flex items-center space-x-1">
+                    <span>▶ เล่นครบ (Play All)</span>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Flashcard Controls -->
+          <div class="flex items-center space-x-3 mt-6">
+            <button onclick="prevFlashcard()" class="p-3 rounded-2xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 shadow-sm transition" title="ก่อนหน้า (ลูกศรซ้าย)">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+
+            <span id="fcProgress" class="text-xs font-mono font-bold px-3 py-1.5 rounded-xl bg-slate-200/80 text-slate-700">1 / 201</span>
+
+            <button onclick="nextFlashcard()" class="p-3 rounded-2xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 shadow-sm transition" title="ถัดไป (ลูกศรขวา)">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+
+            <button onclick="shuffleFlashcards()" class="p-3 rounded-2xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 shadow-sm transition ml-2 flex items-center space-x-1.5 text-xs font-bold" title="สุ่มลำดับคำศัพท์">
+              <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+              <span class="hidden sm:inline">สุ่มคำ</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- EMBEDDED MASTER DATA & APPLICATION SCRIPT -->
+  <script>
+    const RAW_DATA = [{"id": 1, "vocab": "Kind", "ipa": "/kaɪnd/", "pos": "adj.", "thai_vocab": "ใจดี, มีเมตตา, โอบอ้อมอารี", "ex1_en": "She is kind to everyone.", "ex1_hl": "kind", "ex1_th": "เธอมีน้ำใจและใจดีกับทุกคน", "ex2_en": "Our team lead is always kind and supportive whenever newcomers face technical challenges.", "ex2_hl": "kind", "ex2_th": "หัวหน้าทีมของเราใจดีและคอยให้การสนับสนุนเสมอเมื่อมีพนักงานใหม่เจอปัญหาทางเทคนิค", "category_id": "POSITIVE", "category_label": "ด้านบวก & คุณธรรม"}, {"id": 2, "vocab": "Honest", "ipa": "/ˈɑːnɪst/", "pos": "adj.", "thai_vocab": "ซื่อสัตย์, จริงใจ, ตรงไปตรงมา", "ex1_en": "He is an honest man.", "ex1_hl": "honest", "ex1_th": "เขาเป็นคนซื่อสัตย์", "ex2_en": "She appreciated her colleague's honest feedback during the project retrospective.", "ex2_hl": "honest", "ex2_th": "เธอรู้สึกขอบคุณสำหรับข้อเสนอแนะที่ตรงไปตรงมาและจริงใจจากเพื่อนร่วมงานในระหว่างการทบทวนผลงานโครงการ", "category_id": "POSITIVE", "category_label": "ด้านบวก & คุณธรรม"}, {"id": 3, "vocab": "Confident", "ipa": "/ˈkɑːnfɪdənt/", "pos": "adj.", "thai_vocab": "มั่นใจ, มีความเชื่อมั่นในตนเอง", "ex1_en": "She is confident about her abilities.", "ex1_hl": "confident", "ex1_th": "เธอมีความมั่นใจในความสามารถของตัวเอง", "ex2_en": "The keynote speaker sounded confident while presenting the quarterly financial results to stakeholders.", "ex2_hl": "confident", "ex2_th": "วิทยากรหลักพูดด้วยความมั่นใจขณะนำเสนอผลประกอบการประจำไตรมาสต่อผู้มีส่วนได้ส่วนเสีย", "category_id": "DRIVE", "category_label": "ความมุ่งมั่น & ความกล้า"}, {"id": 4, "vocab": "Polite", "ipa": "/pəˈlaɪt/", "pos": "adj.", "thai_vocab": "สุภาพ, มีมารยาท, อ่อนน้อม", "ex1_en": "He is always polite to others.", "ex1_hl": "polite", "ex1_th": "เขาสุภาพกับผู้อื่นอยู่เสมอ", "ex2_en": "Maintaining a polite and professional tone in client emails helps build long-term business partnerships.", "ex2_hl": "polite", "ex2_th": "การใช้น้ำเสียงที่สุภาพและเป็นมืออาชีพในอีเมลลูกค้าช่วยสร้างความสัมพันธ์ทางธุรกิจในระยะยาว", "category_id": "POSITIVE", "category_label": "ด้านบวก & คุณธรรม"}, {"id": 5, "vocab": "Humble", "ipa": "/ˈhʌmbl/", "pos": "adj.", "thai_vocab": "ถ่อมตน, อ่อนน้อมถ่อมตน, ไม่โอ้อวด", "ex1_en": "Despite his success, he remains humble.", "ex1_hl": "humble", "ex1_th": "แม้จะประสบความสำเร็จอย่างมาก เขาก็ยังคงอ่อนน้อมถ่อมตน", "ex2_en": "The senior researcher remained humble, generously crediting his lab assistants for the scientific breakthrough.", "ex2_hl": "humble", "ex2_th": "นักวิจัยอาวุโสยังคงถ่อมตนและให้เครดิตผู้ช่วยวิจัยในห้องแล็บอย่างเต็มที่สำหรับความสำเร็จครั้งสำคัญทางวิทยาศาสตร์", "category_id": "POSITIVE", "category_label": "ด้านบวก & คุณธรรม"}, {"id": 6, "vocab": "Generous", "ipa": "/ˈdʒenərəs/", "pos": "adj.", "thai_vocab": "ใจกว้าง, มีน้ำใจ, เอื้อเฟื้อเผื่อแผ่", "ex1_en": "My uncle is very generous.", "ex1_hl": "generous", "ex1_th": "คุณลุงของฉันเป็นคนใจกว้างและเอื้อเฟื้อเผื่อแผ่มาก", "ex2_en": "The company offered a generous relocation package to attract top engineering talent.", "ex2_hl": "generous", "ex2_th": "บริษัทได้เสนอแพ็กเกจย้ายถิ่นฐานการทำงานที่เอื้อเฟื้อและคุ้มค่าอย่างยิ่งเพื่อดึงดูดวิศวกรระดับหัวกะทิ", "category_id": "POSITIVE", "category_label": "ด้านบวก & คุณธรรม"}, {"id": 7, "vocab": "Friendly", "ipa": "/ˈfrendli/", "pos": "adj.", "thai_vocab": "เป็นมิตร, อัธยาศัยดี, เข้ากับคนง่าย", "ex1_en": "She is friendly with everyone.", "ex1_hl": "friendly", "ex1_th": "เธอเป็นมิตรและเข้ากับทุกคนได้ดี", "ex2_en": "A friendly onboarding mentor made the transition much smoother for international recruits.", "ex2_hl": "friendly", "ex2_th": "พี่เลี้ยงปฐมนิเทศที่เป็นมิตรช่วยให้การปรับตัวของพนักงานใหม่จากต่างประเทศราบรื่นขึ้นมาก", "category_id": "SOCIAL", "category_label": "มนุษยสัมพันธ์ & สังคม"}, {"id": 8, "vocab": "Brave", "ipa": "/breɪv/", "pos": "adj.", "thai_vocab": "กล้าหาญ, ไม่กลัวอันตราย", "ex1_en": "The brave boy saved the child.", "ex1_hl": "brave", "ex1_th": "เด็กชายผู้กล้าหาญได้ช่วยชีวิตเด็กคนนั้นไว้", "ex2_en": "It was a brave decision to pivot the startup's product strategy in the middle of a market downturn.", "ex2_hl": "brave", "ex2_th": "การตัดสินใจปรับเปลี่ยนกลยุทธ์ผลิตภัณฑ์ของสตาร์ตอัปท่ามกลางภาวะตลาดซบเซาถือเป็นการตัดสินใจที่กล้าหาญมาก", "category_id": "POSITIVE", "category_label": "ด้านบวก & คุณธรรม"}, {"id": 9, "vocab": "Patient", "ipa": "/ˈpeɪʃnt/", "pos": "adj.", "thai_vocab": "อดทน, ใจเย็น", "ex1_en": "My teacher is very patient.", "ex1_hl": "patient", "ex1_th": "คุณครูของฉันเป็นคนใจเย็นและอดทนมาก", "ex2_en": "Customer support agents must stay patient when handling frustrated or demanding clients.", "ex2_hl": "patient", "ex2_th": "เจ้าหน้าที่ฝ่ายสนับสนุนลูกค้าต้องใจเย็นอยู่เสมอเมื่อรับมือกับลูกค้าที่กำลังไม่พอใจหรือเรียกร้องสิ่งต่างๆ", "category_id": "POSITIVE", "category_label": "ด้านบวก & คุณธรรม"}, {"id": 10, "vocab": "Helpful", "ipa": "/ˈhelpfl/", "pos": "adj.", "thai_vocab": "ชอบช่วยเหลือ, มีประโยชน์, เกื้อกูล", "ex1_en": "He is always helpful to others.", "ex1_hl": "helpful", "ex1_th": "เขาพร้อมช่วยเหลือผู้อื่นอยู่เสมอ", "ex2_en": "The documentation contains helpful code snippets that accelerate onboarding for new software developers.", "ex2_hl": "helpful", "ex2_th": "เอกสารคู่มือประกอบด้วยโค้ดตัวอย่างที่เป็นประโยชน์อย่างยิ่ง ซึ่งช่วยเร่งการเรียนรู้งานของนักพัฒนาซอฟต์แวร์หน้าใหม่", "category_id": "POSITIVE", "category_label": "ด้านบวก & คุณธรรม"}, {"id": 11, "vocab": "Loyal", "ipa": "/ˈlɔɪəl/", "pos": "adj.", "thai_vocab": "ภักดี, ซื่อสัตย์, จงรักภักดี", "ex1_en": "She is loyal to her friends.", "ex1_hl": "loyal", "ex1_th": "เธอมีความซื่อสัตย์และภักดีต่อเพื่อนฝูง", "ex2_en": "The firm rewarded loyal employees who stayed committed throughout the corporate restructuring.", "ex2_hl": "loyal", "ex2_th": "บริษัทได้มอบรางวัลให้แก่พนักงานที่มีความภักดีและทุ่มเทอย่างต่อเนื่องตลอดช่วงการปรับโครงสร้างองค์กร", "category_id": "POSITIVE", "category_label": "ด้านบวก & คุณธรรม"}, {"id": 12, "vocab": "Cheerful", "ipa": "/ˈtʃɪrfl/", "pos": "adj.", "thai_vocab": "ร่าเริง, สดใส, เบิกบานใจ", "ex1_en": "He has a cheerful personality.", "ex1_hl": "cheerful", "ex1_th": "เขาเป็นคนที่มีบุคลิกร่าเริงแจ่มใส", "ex2_en": "Her cheerful disposition brightens up morning stand-up meetings even during high-pressure deadlines.", "ex2_hl": "cheerful", "ex2_th": "อารมณ์ที่ร่าเริงแจ่มใสของเธอช่วยสร้างบรรยากาศที่มีชีวิตชีวาในการประชุมยามเช้า แม้ในช่วงที่มีกำหนดส่งงานเร่งด่วน", "category_id": "SOCIAL", "category_label": "มนุษยสัมพันธ์ & สังคม"}, {"id": 13, "vocab": "Hardworking", "ipa": "/ˌhɑːrdˈwɜːrkɪŋ/", "pos": "adj.", "thai_vocab": "ขยัน, ทุ่มเททำงาน, มุมานะ", "ex1_en": "She is a hardworking student.", "ex1_hl": "hardworking", "ex1_th": "เธอเป็นนักเรียนที่ขยันหมั่นเพียร", "ex2_en": "Management recognized the hardworking logistics staff with an end-of-year performance bonus.", "ex2_hl": "hardworking", "ex2_th": "ฝ่ายบริหารเล็งเห็นถึงความมุมานะของพนักงานฝ่ายโลจิสติกส์ที่ทุ่มเททำงาน จึงมอบโบนัสผลการปฏิบัติงานปลายปีให้", "category_id": "WORK", "category_label": "การทำงาน & สติปัญญา"}, {"id": 14, "vocab": "Responsible", "ipa": "/rɪˈspɑːnsəbl/", "pos": "adj.", "thai_vocab": "มีความรับผิดชอบ, พึ่งพาได้", "ex1_en": "He is responsible for his family.", "ex1_hl": "responsible", "ex1_th": "เขามีความรับผิดชอบต่อครอบครัวของเขา", "ex2_en": "As lead architect, she is responsible for ensuring the system complies with international cybersecurity regulations.", "ex2_hl": "responsible", "ex2_th": "ในฐานะหัวหน้านักออกแบบระบบ เธอมีหน้าที่รับผิดชอบในการทำให้แน่ใจว่าระบบเป็นไปตามกฎระเบียบความปลอดภัยทางไซเบอร์ระดับสากล", "category_id": "WORK", "category_label": "การทำงาน & สติปัญญา"}, {"id": 15, "vocab": "Creative", "ipa": "/kriˈeɪtɪv/", "pos": "adj.", "thai_vocab": "สร้างสรรค์, มีความคิดสร้างสรรค์", "ex1_en": "She is a creative designer.", "ex1_hl": "creative", "ex1_th": "เธอเป็นนักออกแบบที่มีความคิดสร้างสรรค์", "ex2_en": "The marketing team implemented creative storytelling campaigns that significantly boosted brand engagement.", "ex2_hl": "creative", "ex2_th": "ทีมการตลาดนำแคมเปญการเล่าเรื่องที่สร้างสรรค์มาใช้ ซึ่งช่วยเพิ่มการมีส่วนร่วมกับแบรนด์ได้อย่างมีนัยสำคัญ", "category_id": "WORK", "category_label": "การทำงาน & สติปัญญา"}, {"id": 16, "vocab": "Optimistic", "ipa": "/ˌɑːptɪˈmɪstɪk/", "pos": "adj.", "thai_vocab": "มองโลกในแง่ดี, มีความหวัง", "ex1_en": "He is optimistic about his future.", "ex1_hl": "optimistic", "ex1_th": "เขามองอนาคตของตนเองในแง่ดี", "ex2_en": "Despite unpredictable market fluctuations, the chief executive remains optimistic about international expansion.", "ex2_hl": "optimistic", "ex2_th": "แม้ตลาดจะมีความผันผวนที่คาดเดาไม่ได้ แต่ประธานเจ้าหน้าที่บริหารยังคงมองการขยายธุรกิจไปต่างประเทศในแง่ดี", "category_id": "DRIVE", "category_label": "ความมุ่งมั่น & ความกล้า"}, {"id": 17, "vocab": "Sincere", "ipa": "/sɪnˈsɪr/", "pos": "adj.", "thai_vocab": "จริงใจ, บริสุทธิ์ใจ, แท้จริง", "ex1_en": "She is sincere in her work.", "ex1_hl": "sincere", "ex1_th": "เธอมีความจริงใจและทุ่มเทต่องานของเธอ", "ex2_en": "His sincere apology and prompt corrective actions quickly restored client trust after the delivery delay.", "ex2_hl": "sincere", "ex2_th": "คำขอโทษที่จริงใจและการแก้ไขปัญหาอย่างรวดเร็วของเขาช่วยฟื้นฟูความเชื่อมั่นของลูกค้ากลับมาได้หลังเกิดความล่าช้าในการส่งมอบ", "category_id": "POSITIVE", "category_label": "ด้านบวก & คุณธรรม"}, {"id": 18, "vocab": "Compassionate", "ipa": "/kəmˈpæʃənət/", "pos": "adj.", "thai_vocab": "มีความเห็นอกเห็นใจ, เมตตากรุณา, มีจิตใจการุณย์", "ex1_en": "He is compassionate towards poor people.", "ex1_hl": "compassionate", "ex1_th": "เขามีความเมตตากรุณาต่อผู้ยากไร้", "ex2_en": "Healthcare administrators should foster a compassionate workplace culture that supports staff mental well-being.", "ex2_hl": "compassionate", "ex2_th": "ผู้บริหารสถานพยาบาลควรส่งเสริมวัฒนธรรมการทำงานที่เปี่ยมด้วยความเห็นอกเห็นใจเพื่อสนับสนุนสุขภาวะทางจิตใจของบุคลากร", "category_id": "POSITIVE", "category_label": "ด้านบวก & คุณธรรม"}, {"id": 19, "vocab": "Ambitious", "ipa": "/æmˈbɪʃəs/", "pos": "adj.", "thai_vocab": "ทะเยอทะยาน, มุ่งมั่นสู่ความสำเร็จ, มีเป้าหมายสูง", "ex1_en": "She is ambitious about her career.", "ex1_hl": "ambitious", "ex1_th": "เธอมีความทะเยอทะยานและมุ่งมั่นในสายอาชีพของเธอ", "ex2_en": "The startup launched an ambitious sustainability roadmap aiming to achieve net-zero emissions by 2030.", "ex2_hl": "ambitious", "ex2_th": "สตาร์ตอัปแห่งนี้ได้เปิดตัวแผนงานด้านความยั่งยืนที่ทะเยอทะยานและท้าทาย โดยมุ่งสู่การปล่อยก๊าซเรือนกระจกสุทธิเป็นศูนย์ภายในปี 2030", "category_id": "DRIVE", "category_label": "ความมุ่งมั่น & ความกล้า"}, {"id": 20, "vocab": "Respectful", "ipa": "/rɪˈspektfl/", "pos": "adj.", "thai_vocab": "ให้ความเคารพ, นอบน้อม, แสดงความนับถือ", "ex1_en": "He is respectful towards elders.", "ex1_hl": "respectful", "ex1_th": "เขาแสดงความเคารพและนอบน้อมต่อผู้อาวุโส", "ex2_en": "During heated negotiations, maintaining a respectful attitude prevented talks from breaking down.", "ex2_hl": "respectful", "ex2_th": "ในระหว่างการเจรจาอันดุเดือด การรักษาท่าทีที่ให้ความเคารพซึ่งกันและกันช่วยป้องกันไม่ให้การเจรจาล้มเหลว", "category_id": "POSITIVE", "category_label": "ด้านบวก & คุณธรรม"}, {"id": 21, "vocab": "Reliable", "ipa": "/rɪˈlaɪəbl/", "pos": "adj.", "thai_vocab": "พึ่งพาได้, ไว้วางใจได้, น่าเชื่อถือ", "ex1_en": "You can depend on him because he is reliable.", "ex1_hl": "reliable", "ex1_th": "คุณสามารถพึ่งพาเขาได้เพราะเขาเป็นคนไว้ใจได้", "ex2_en": "Having a reliable cloud infrastructure is essential for fintech applications processing real-time transactions.", "ex2_hl": "reliable", "ex2_th": "การมีโครงสร้างพื้นฐานระบบคลาวด์ที่เชื่อถือและพึ่งพาได้ถือเป็นสิ่งสำคัญยิ่งสำหรับแอปพลิเคชันฟินเทคที่ประมวลผลธุรกรรมแบบเรียลไทม์", "category_id": "WORK", "category_label": "การทำงาน & สติปัญญา"}, {"id": 22, "vocab": "Determined", "ipa": "/dɪˈtɜːrmɪnd/", "pos": "adj.", "thai_vocab": "มุ่งมั่น, แน่วแน่, เด็ดเดี่ยว", "ex1_en": "She is determined to succeed.", "ex1_hl": "determined", "ex1_th": "เธอมีความมุ่งมั่นและแน่วแน่ที่จะประสบความสำเร็จ", "ex2_en": "Despite multiple experiment failures, the determined research team finally isolated the targeted enzyme.", "ex2_hl": "determined", "ex2_th": "แม้จะล้มเหลวในการทดลองหลายครั้ง แต่ทีมวิจัยที่มีความมุ่งมั่นแน่วแน่ก็สามารถแยกเอนไซม์เป้าหมายได้สำเร็จในที่สุด", "category_id": "DRIVE", "category_label": "ความมุ่งมั่น & ความกล้า"}, {"id": 23, "vocab": "Disciplined", "ipa": "/ˈdɪsəplɪnd/", "pos": "adj.", "thai_vocab": "มีวินัย, เคร่งครัดในระเบียบวินัย", "ex1_en": "He is a disciplined person.", "ex1_hl": "disciplined", "ex1_th": "เขาเป็นคนที่มีระเบียบวินัยในตนเอง", "ex2_en": "A disciplined investment strategy focuses on long-term value rather than chasing volatile market trends.", "ex2_hl": "disciplined", "ex2_th": "กลยุทธ์การลงทุนที่มีวินัยจะมุ่งเน้นไปที่มูลค่าระยะยาวมากกว่าการไล่ตามกระแสความผันผวนของตลาด", "category_id": "WORK", "category_label": "การทำงาน & สติปัญญา"}, {"id": 24, "vocab": "Mature", "ipa": "/məˈtʃʊr/", "pos": "adj.", "thai_vocab": "มีความเป็นผู้ใหญ่, วุฒิภาวะสูง", "ex1_en": "She handles problems in a mature way.", "ex1_hl": "mature", "ex1_th": "เธอจัดการกับปัญหาต่างๆ อย่างมีวุฒิภาวะ", "ex2_en": "The young executive showed a mature perspective by welcoming constructive criticism from senior board members.", "ex2_hl": "mature", "ex2_th": "ผู้บริหารรุ่นใหม่แสดงให้เห็นถึงมุมมองที่มีความเป็นผู้ใหญ่และมีวุฒิภาวะสูง ด้วยการน้อมรับคำวิจารณ์เชิงสร้างสรรค์จากคณะกรรมการอาวุโส", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 25, "vocab": "Adaptable", "ipa": "/əˈdæptəbl/", "pos": "adj.", "thai_vocab": "ปรับตัวเก่ง, ยืดหยุ่นได้ดี", "ex1_en": "He is adaptable to new situations.", "ex1_hl": "adaptable", "ex1_th": "เขาเป็นคนที่ปรับตัวเข้ากับสถานการณ์ใหม่ๆ ได้ดี", "ex2_en": "Modern organizations prioritize hiring adaptable professionals who can thrive amid rapid digital transformation.", "ex2_hl": "adaptable", "ex2_th": "องค์กรสมัยใหม่ให้ความสำคัญกับการจ้างบุคลากรที่ปรับตัวเก่ง ซึ่งสามารถเติบโตได้ดีท่ามกลางการเปลี่ยนผ่านสู่ยุคดิจิทัลอย่างรวดเร็ว", "category_id": "WORK", "category_label": "การทำงาน & สติปัญญา"}, {"id": 26, "vocab": "Open-Minded", "ipa": "/ˌoʊpən ˈmaɪndɪd/", "pos": "adj.", "thai_vocab": "เปิดใจกว้าง, รับฟังความคิดเห็นผู้อื่น", "ex1_en": "She is open-minded about other cultures.", "ex1_hl": "open-minded", "ex1_th": "เธอเป็นคนเปิดใจกว้างต่อวัฒนธรรมอื่นๆ", "ex2_en": "An open-minded leader actively encourages team members from diverse backgrounds to voice differing viewpoints.", "ex2_hl": "open-minded", "ex2_th": "ผู้นำที่เปิดใจกว้างจะกระตุ้นให้สมาชิกในทีมจากภูมิหลังที่หลากหลายได้แสดงความคิดเห็นและมุมมองที่แตกต่างกันอย่างเต็มที่", "category_id": "POSITIVE", "category_label": "ด้านบวก & คุณธรรม"}, {"id": 27, "vocab": "Independent", "ipa": "/ˌɪndɪˈpendənt/", "pos": "adj.", "thai_vocab": "พึ่งพาตนเองได้, มีความเป็นอิสระ", "ex1_en": "He is financially independent.", "ex1_hl": "independent", "ex1_th": "เขาสามารถพึ่งพาตนเองทางการเงินได้", "ex2_en": "Graduate students are expected to conduct independent research while demonstrating rigorous analytical thinking.", "ex2_hl": "independent", "ex2_th": "นักศึกษาระดับบัณฑิตศึกษาได้รับการคาดหวังให้ทำวิจัยได้อย่างเป็นอิสระและพึ่งพาตนเองได้ พร้อมทั้งแสดงให้เห็นถึงการคิดวิเคราะห์อย่างรอบคอบรัดกุม", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 28, "vocab": "Witty", "ipa": "/ˈwɪti/", "pos": "adj.", "thai_vocab": "มีไหวพริบ, ฉลาดหลักแหลม, มีอารมณ์ขันคมคาย", "ex1_en": "My friend is very witty.", "ex1_hl": "witty", "ex1_th": "เพื่อนของฉันเป็นคนมีไหวพริบและอารมณ์ขันคมคายมาก", "ex2_en": "The copywriter crafted witty social media headlines that immediately captured the public's attention.", "ex2_hl": "witty", "ex2_th": "นักเขียนคำโฆษณาได้สร้างสรรค์พาดหัวสื่อโซเชียลที่มีไหวพริบเฉียบคมและน่าติดตาม ซึ่งดึงดูดความสนใจของผู้คนได้ในทันที", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 29, "vocab": "Observant", "ipa": "/əbˈzɜːrvənt/", "pos": "adj.", "thai_vocab": "ช่างสังเกต, รอบคอบ, ไวต่อสิ่งรอบข้าง", "ex1_en": "She is an observant person.", "ex1_hl": "observant", "ex1_th": "เธอเป็นคนช่างสังเกต", "ex2_en": "An observant quality assurance analyst quickly caught subtle software defects before the global product launch.", "ex2_hl": "observant", "ex2_th": "นักวิเคราะห์ตรวจสอบคุณภาพที่ช่างสังเกตสามารถตรวจพบข้อบกพร่องเล็กๆ น้อยๆ ของซอฟต์แวร์ได้อย่างรวดเร็วก่อนเปิดตัวผลิตภัณฑ์ทั่วโลก", "category_id": "WORK", "category_label": "การทำงาน & สติปัญญา"}, {"id": 30, "vocab": "Courageous", "ipa": "/kəˈreɪdʒəs/", "pos": "adj.", "thai_vocab": "กล้าหาญ, อาจหาญ, ใจเด็ด", "ex1_en": "He made a courageous decision.", "ex1_hl": "courageous", "ex1_th": "เขาได้ตัดสินใจอย่างกล้าหาญ", "ex2_en": "The whistleblower took a courageous stand to expose financial misconduct within the corporation.", "ex2_hl": "courageous", "ex2_th": "ผู้แจ้งเบาะแสได้แสดงจุดยืนอย่างกล้าหาญเพื่อเปิดโปงการประพฤติมิชอบทางการเงินภายในองค์กร", "category_id": "DRIVE", "category_label": "ความมุ่งมั่น & ความกล้า"}, {"id": 31, "vocab": "Forgiving", "ipa": "/fərˈɡɪvɪŋ/", "pos": "adj.", "thai_vocab": "รู้จักให้อภัย, มีใจกว้างไม่ผูกใจเจ็บ", "ex1_en": "She is forgiving towards others.", "ex1_hl": "forgiving", "ex1_th": "เธอเป็นคนที่รู้จักให้อภัยผู้อื่นเสมอ", "ex2_en": "A healthy workplace culture is forgiving of honest mistakes, treating them as valuable learning opportunities.", "ex2_hl": "forgiving", "ex2_th": "วัฒนธรรมการทำงานที่ดีจะเปิดใจให้อภัยต่อความผิดพลาดโดยสุจริต และมองสิ่งเหล่านั้นเป็นโอกาสอันมีค่าในการเรียนรู้", "category_id": "POSITIVE", "category_label": "ด้านบวก & คุณธรรม"}, {"id": 32, "vocab": "Tolerant", "ipa": "/ˈtɑːlərənt/", "pos": "adj.", "thai_vocab": "ใจกว้าง, อดกลั้น, ยอมรับความแตกต่าง", "ex1_en": "He is tolerant of different opinions.", "ex1_hl": "tolerant", "ex1_th": "เขาเป็นคนใจกว้างและยอมรับความคิดเห็นที่แตกต่าง", "ex2_en": "Global companies benefit greatly from building tolerant teams that respect diverse cultural perspectives.", "ex2_hl": "tolerant", "ex2_th": "บริษัทระดับโลกได้รับประโยชน์อย่างมากจากการสร้างทีมงานที่ยอมรับความแตกต่างและเคารพมุมมองทางวัฒนธรรมที่หลากหลาย", "category_id": "POSITIVE", "category_label": "ด้านบวก & คุณธรรม"}, {"id": 33, "vocab": "Thoughtful", "ipa": "/ˈθɔːtfl/", "pos": "adj.", "thai_vocab": "เกรงใจ, ใส่ใจผู้อื่น, มีน้ำใจนึกถึงคนรอบข้าง", "ex1_en": "That was a thoughtful gesture.", "ex1_hl": "thoughtful", "ex1_th": "นั่นเป็นการกระทำที่แสดงถึงความใส่ใจและนึกถึงผู้อื่นมาก", "ex2_en": "The department manager sent thoughtful handwritten appreciation notes to each team member after project completion.", "ex2_hl": "thoughtful", "ex2_th": "ผู้จัดการแผนกได้ส่งการ์ดขอบคุณที่เขียนด้วยลายมืออันเปี่ยมด้วยความใส่ใจถึงสมาชิกทุกคนในทีมหลังจากโครงการเสร็จสิ้น", "category_id": "POSITIVE", "category_label": "ด้านบวก & คุณธรรม"}, {"id": 34, "vocab": "Enthusiastic", "ipa": "/ɪnˌθuːziˈæstɪk/", "pos": "adj.", "thai_vocab": "กระตือรือร้น, มีชีวิตชีวา, กระฉับกระเฉง", "ex1_en": "She is enthusiastic about learning English.", "ex1_hl": "enthusiastic", "ex1_th": "เธอกระตือรือร้นอย่างมากในการเรียนภาษาอังกฤษ", "ex2_en": "The interview panel was impressed by the candidate's enthusiastic approach to solving complex engineering problems.", "ex2_hl": "enthusiastic", "ex2_th": "คณะกรรมการสัมภาษณ์ประทับใจในทัศนคติที่กระตือรือร้นของผู้สมัครในการแก้ไขปัญหาทางวิศวกรรมที่ซับซ้อน", "category_id": "DRIVE", "category_label": "ความมุ่งมั่น & ความกล้า"}, {"id": 35, "vocab": "Sociable", "ipa": "/ˈsoʊʃəbl/", "pos": "adj.", "thai_vocab": "ชอบเข้าสังคม, อัธยาศัยดี, เป็นมิตรเข้ากับผู้อื่นง่าย", "ex1_en": "He is a sociable person.", "ex1_hl": "sociable", "ex1_th": "เขาเป็นคนที่ชอบเข้าสังคมและมนุษยสัมพันธ์ดี", "ex2_en": "Her sociable personality helps her network effortlessly with international delegates at academic conferences.", "ex2_hl": "sociable", "ex2_th": "บุคลิกที่ชอบเข้าสังคมและอัธยาศัยดีช่วยให้เธอสร้างเครือข่ายกับผู้แทนจากนานาชาติในงานประชุมวิชาการได้อย่างง่ายดาย", "category_id": "SOCIAL", "category_label": "มนุษยสัมพันธ์ & สังคม"}, {"id": 36, "vocab": "Down-to-Earth", "ipa": "/ˌdaʊn tu ˈɜːrθ/", "pos": "adj.", "thai_vocab": "ติดดิน, ไม่ถือตัว, เรียบง่าย", "ex1_en": "Despite his wealth, he is down-to-earth.", "ex1_hl": "down-to-earth", "ex1_th": "แม้จะร่ำรวย แต่เขาก็เป็นคนติดดินและไม่ถือตัว", "ex2_en": "Clients appreciate the senior consultant's down-to-earth communication style and practical recommendations.", "ex2_hl": "down-to-earth", "ex2_th": "ลูกค้าชื่นชอบรูปแบบการสื่อสารที่เรียบง่ายติดดินและคำแนะนำที่นำไปปฏิบัติได้จริงของที่ปรึกษาอาวุโส", "category_id": "POSITIVE", "category_label": "ด้านบวก & คุณธรรม"}, {"id": 37, "vocab": "Selfless", "ipa": "/ˈselfləs/", "pos": "adj.", "thai_vocab": "ไม่เห็นแก่ตัว, เห็นแก่ประโยชน์ส่วนรวม, เสียสละ", "ex1_en": "She is a selfless woman.", "ex1_hl": "selfless", "ex1_th": "เธอเป็นผู้หญิงที่ไม่เห็นแก่ตัวและพร้อมเสียสละ", "ex2_en": "The disaster relief coordinator was praised for her selfless dedication to helping affected rural communities.", "ex2_hl": "selfless", "ex2_th": "ผู้ประสานงานบรรเทาสาธารณภัยได้รับการยกย่องจากความทุ่มเทอย่างไม่เห็นแก่ตัวเพื่อช่วยเหลือชุมชนชนบทที่ได้รับผลกระทบ", "category_id": "POSITIVE", "category_label": "ด้านบวก & คุณธรรม"}, {"id": 38, "vocab": "Versatile", "ipa": "/ˈvɜːrsətl/", "pos": "adj.", "thai_vocab": "มีความสามารถรอบด้าน, ปรับใช้ได้หลากหลาย, อเนกประสงค์", "ex1_en": "He is a versatile employee.", "ex1_hl": "versatile", "ex1_th": "เขาเป็นพนักงานที่มีความสามารถรอบด้าน", "ex2_en": "Having versatile developers who understand both frontend architecture and data pipelines gives startups a competitive edge.", "ex2_hl": "versatile", "ex2_th": "การมีนักพัฒนาที่มีความสามารถรอบด้านซึ่งเข้าใจทั้งสถาปัตยกรรมฟรอนต์เอนด์และไปป์ไลน์ข้อมูลช่วยให้สตาร์ตอัปมีความได้เปรียบในการแข่งขัน", "category_id": "WORK", "category_label": "การทำงาน & สติปัญญา"}, {"id": 39, "vocab": "Tactful", "ipa": "/ˈtæktfl/", "pos": "adj.", "thai_vocab": "มีไหวพริบในการพูด, รู้จักกาลเทศะ, ถนอมน้ำใจ", "ex1_en": "She gave a tactful reply.", "ex1_hl": "tactful", "ex1_th": "เธอให้คำตอบอย่างมีไหวพริบและรู้จักกาลเทศะ", "ex2_en": "A tactful manager knows how to deliver constructive criticism without demoralizing team members.", "ex2_hl": "tactful", "ex2_th": "ผู้จัดการที่รู้จักกาลเทศะและมีศิลปะในการพูดจะรู้วิธีให้คำวิจารณ์เชิงสร้างสรรค์โดยไม่ทำให้สมาชิกในทีมเสียกำลังใจ", "category_id": "SOCIAL", "category_label": "มนุษยสัมพันธ์ & สังคม"}, {"id": 40, "vocab": "Approachable", "ipa": "/əˈproʊtʃəbl/", "pos": "adj.", "thai_vocab": "เข้าถึงง่าย, เป็นกันเอง, เข้าหาง่าย", "ex1_en": "Our manager is very approachable.", "ex1_hl": "approachable", "ex1_th": "ผู้จัดการของเราเป็นคนเข้าถึงง่ายและเป็นกันเองมาก", "ex2_en": "Professors who maintain an approachable demeanor during office hours encourage students to seek guidance.", "ex2_hl": "approachable", "ex2_th": "อาจารย์ที่มีท่าทีเป็นกันเองและเข้าถึงง่ายในช่วงเวลาให้คำปรึกษาช่วยกระตุ้นให้นักศึกษากล้าเข้ามาขอคำแนะนำ", "category_id": "SOCIAL", "category_label": "มนุษยสัมพันธ์ & สังคม"}, {"id": 41, "vocab": "Arrogant", "ipa": "/ˈærəɡənt/", "pos": "adj.", "thai_vocab": "เย่อหยิ่ง, จองหอง, อวดดี", "ex1_en": "He is too arrogant to accept advice.", "ex1_hl": "arrogant", "ex1_th": "เขาเย่อหยิ่งเกินกว่าจะยอมรับคำแนะนำ", "ex2_en": "Despite his technical brilliance, his arrogant attitude alienated several key team members during the project.", "ex2_hl": "arrogant", "ex2_th": "แม้เขาจะมีความเชี่ยวชาญด้านเทคนิคเป็นเลิศ แต่ทัศนคติที่เย่อหยิ่งก็ทำให้สมาชิกคนสำคัญในทีมหลายคนตีตัวออกห่างระหว่างการทำโครงการ", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 42, "vocab": "Selfish", "ipa": "/ˈsɛlfɪʃ/", "pos": "adj.", "thai_vocab": "เห็นแก่ตัว", "ex1_en": "She is selfish and never shares.", "ex1_hl": "selfish", "ex1_th": "เธอเห็นแก่ตัวและไม่เคยแบ่งปันอะไรให้ใครเลย", "ex2_en": "Taking sole credit for a collaborative presentation was seen as a selfish move by the entire committee.", "ex2_hl": "selfish", "ex2_th": "การฮุบเอาความดีความชอบของการนำเสนองานกลุ่มไว้เพียงคนเดียว ถูกคณะกรรมการมองว่าเป็นการกระทำที่เห็นแก่ตัว", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 43, "vocab": "Rude", "ipa": "/ruːd/", "pos": "adj.", "thai_vocab": "หยาบคาย, ไร้มารยาท", "ex1_en": "He was rude to the waiter.", "ex1_hl": "rude", "ex1_th": "เขาทำตัวหยาบคายใส่พนักงานเสิร์ฟ", "ex2_en": "Interrupting clients during their formal briefings is not only unprofessional but also exceptionally rude.", "ex2_hl": "rude", "ex2_th": "การพูดแทรกระหว่างที่ลูกค้ากำลังสรุปข้อมูลอย่างเป็นทางการ ไม่เพียงแต่ไม่เป็นมืออาชีพ แต่ยังถือว่าไร้มารยาทเป็นอย่างยิ่ง", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 44, "vocab": "Lazy", "ipa": "/ˈleɪzi/", "pos": "adj.", "thai_vocab": "ขี้เกียจ", "ex1_en": "My brother is lazy sometimes.", "ex1_hl": "lazy", "ex1_th": "บางครั้งน้องชายของฉันก็ขี้เกียจ", "ex2_en": "Relying on outdated templates without conducting fresh research makes the team look lazy and uncommitted.", "ex2_hl": "lazy", "ex2_th": "การพึ่งพาแต่เทมเพลตเก่าๆ โดยไม่ทำการค้นคว้าวิจัยใหม่ ทำให้ทีมดูขี้เกียจและขาดความทุ่มเท", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 45, "vocab": "Greedy", "ipa": "/ˈɡriːdi/", "pos": "adj.", "thai_vocab": "โลภ, ละโมบ", "ex1_en": "The greedy man wanted more money.", "ex1_hl": "greedy", "ex1_th": "ชายผู้ละโมบต้องการเงินมากขึ้นเรื่อยๆ", "ex2_en": "The company's reputation suffered greatly when executives made greedy financial decisions at the expense of employee benefits.", "ex2_hl": "greedy", "ex2_th": "ชื่อเสียงของบริษัทเสียหายอย่างหนักเมื่อผู้บริหารตัดสินใจทางการเงินด้วยความละโมบจนกระทบต่อสวัสดิการของพนักงาน", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 46, "vocab": "Jealous", "ipa": "/ˈdʒɛləs/", "pos": "adj.", "thai_vocab": "อิจฉา, ริษยา, ขี้หึง", "ex1_en": "She is jealous of her friend's success.", "ex1_hl": "jealous", "ex1_th": "เธออิจฉาความสำเร็จของเพื่อนเธอ", "ex2_en": "Instead of feeling jealous of his colleague's promotion, David used it as motivation to improve his leadership skills.", "ex2_hl": "jealous", "ex2_th": "แทนที่จะรู้สึกอิจฉาการเลื่อนตำแหน่งของเพื่อนร่วมงาน เดวิดกลับใช้เรื่องนี้เป็นแรงผลักดันในการพัฒนาทักษะความเป็นผู้นำของตนเอง", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 47, "vocab": "Stubborn", "ipa": "/ˈstʌbərn/", "pos": "adj.", "thai_vocab": "ดื้อรั้น, หัวแข็ง", "ex1_en": "He is too stubborn to listen.", "ex1_hl": "stubborn", "ex1_th": "เขาหัวแข็งเกินกว่าที่จะยอมรับฟัง", "ex2_en": "Her stubborn refusal to adopt the new project management software slowed down the departmental transition.", "ex2_hl": "stubborn", "ex2_th": "การที่เธอดื้อดึงไม่ยอมปรับมาใช้ซอฟต์แวร์บริหารโครงการตัวใหม่ ทำให้การเปลี่ยนผ่านระบบของแผนกล่าช้าลง", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 48, "vocab": "Dishonest", "ipa": "/dɪsˈɑːnɪst/", "pos": "adj.", "thai_vocab": "ไม่ซื่อสัตย์, คดโกง, หลอกลวง", "ex1_en": "A dishonest person cannot be trusted.", "ex1_hl": "dishonest", "ex1_th": "คนที่ไม่ซื่อสัตย์ย่อมไม่สามารถได้รับความไว้วางใจ", "ex2_en": "The internal audit revealed dishonest accounting practices that had gone unnoticed for several quarters.", "ex2_hl": "dishonest", "ex2_th": "การตรวจสอบภายในเผยให้เห็นแนวทางการทำบัญชีที่ไม่ซื่อสัตย์ซึ่งไม่มีใครสังเกตเห็นมาหลายไตรมาส", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 49, "vocab": "Cruel", "ipa": "/ˈkruːəl/", "pos": "adj.", "thai_vocab": "โหดร้าย, ใจร้าย, ทารุณ", "ex1_en": "It was cruel to hurt the animal.", "ex1_hl": "cruel", "ex1_th": "มันเป็นการกระทำที่โหดร้ายที่ไปทำร้ายสัตว์", "ex2_en": "Dismissing dedicated employees without severance pay or advance notice was widely condemned as a cruel management decision.", "ex2_hl": "cruel", "ex2_th": "การเลิกจ้างพนักงานที่ทุ่มเทโดยไม่มีเงินชดเชยหรือการแจ้งล่วงหน้า ถูกประณามอย่างกว้างขวางว่าเป็นการตัดสินใจของผู้บริหารที่ไร้ความปรานี", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 50, "vocab": "Impatient", "ipa": "/ɪmˈpeɪʃnt/", "pos": "adj.", "thai_vocab": "ใจร้อน, ไม่อดทน", "ex1_en": "He becomes impatient very quickly.", "ex1_hl": "impatient", "ex1_th": "เขาเป็นคนใจร้อนขึ้นมาอย่างรวดเร็วมาก", "ex2_en": "Effective negotiators never become impatient during protracted discussions, knowing that patience yields better terms.", "ex2_hl": "impatient", "ex2_th": "นักเจรจาต่อรองที่มีประสิทธิภาพจะไม่ใจร้อนในระหว่างการหารือที่ยืดเยื้อ เพราะตระหนักดีว่าความอดทนจะนำมาซึ่งข้อตกลงที่ดีกว่า", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 51, "vocab": "Moody", "ipa": "/ˈmuːdi/", "pos": "adj.", "thai_vocab": "อารมณ์แปรปรวน, หงุดหงิดง่าย", "ex1_en": "She is sometimes moody.", "ex1_hl": "moody", "ex1_th": "บางครั้งเธอก็อารมณ์แปรปรวน", "ex2_en": "Working under a moody supervisor made it difficult for team members to predict how their proposals would be received.", "ex2_hl": "moody", "ex2_th": "การทำงานภายใต้หัวหน้าที่อารมณ์แปรปรวนทำให้สมาชิกในทีมคาดเดาได้ยากว่าข้อเสนอของตนจะได้รับการตอบรับเช่นไร", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 52, "vocab": "Cowardly", "ipa": "/ˈkaʊərdli/", "pos": "adj.", "thai_vocab": "ขี้ขลาด, ตาขาว", "ex1_en": "His cowardly behavior disappointed us.", "ex1_hl": "cowardly", "ex1_th": "พฤติกรรมที่ขี้ขลาดของเขาทำให้พวกเราผิดหวัง", "ex2_en": "Blaming junior staff for a strategic blunder was considered a cowardly act by the senior director.", "ex2_hl": "cowardly", "ex2_th": "การโยนความผิดให้พนักงานระดับล่างสำหรับความผิดพลาดเชิงกลยุทธ์ถือเป็นการกระทำที่ขี้ขลาดของผู้อำนวยการอาวุโส", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 53, "vocab": "Aggressive", "ipa": "/əˈɡrɛsɪv/", "pos": "adj.", "thai_vocab": "ก้าวร้าว, ดุดัน, เชิงรุก", "ex1_en": "He becomes aggressive during arguments.", "ex1_hl": "aggressive", "ex1_th": "เขามักจะมีท่าทีก้าวร้าวเวลามีการโต้เถียงกัน", "ex2_en": "While an aggressive sales strategy boosted quarterly revenue, it strained relationships with long-standing enterprise clients.", "ex2_hl": "aggressive", "ex2_th": "แม้กลยุทธ์การขายเชิงรุกที่ดุดันจะช่วยเพิ่มรายได้ประจำไตรมาส แต่ก็ทำให้ความสัมพันธ์กับลูกค้าระดับองค์กรระยะยาวเกิดความตึงเครียด", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 54, "vocab": "Pessimistic", "ipa": "/ˌpɛsəˈmɪstɪk/", "pos": "adj.", "thai_vocab": "มองโลกในแง่ร้าย", "ex1_en": "She is pessimistic about everything.", "ex1_hl": "pessimistic", "ex1_th": "เธอมองโลกในแง่ร้ายไปเสียทุกเรื่อง", "ex2_en": "Although the market analysis was pessimistic, the startup founder identified several niche opportunities for growth.", "ex2_hl": "pessimistic", "ex2_th": "แม้บทวิเคราะห์ตลาดจะมองภาพรวมในแง่ร้าย แต่ผู้ก่อตั้งสตาร์ทอัพก็สามารถมองเห็นโอกาสการเติบโตเฉพาะกลุ่มได้หลายด้าน", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 55, "vocab": "Irritable", "ipa": "/ˈɪrɪtəbl/", "pos": "adj.", "thai_vocab": "หงุดหงิดง่าย, อารมณ์เสียบ่อย", "ex1_en": "He becomes irritable when tired.", "ex1_hl": "irritable", "ex1_th": "เขามักจะหงุดหงิดง่ายเวลาเหนื่อยล้า", "ex2_en": "Chronic sleep deprivation made the project manager irritable, leading to tense interactions during morning stand-ups.", "ex2_hl": "irritable", "ex2_th": "การอดนอนเรื้อรังทำให้ผู้จัดการโครงการหงุดหงิดง่าย จนส่งผลให้เกิดความตึงเครียดระหว่างการประชุมสรุปงานช่วงเช้า", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 56, "vocab": "Bossy", "ipa": "/ˈbɔːsi/", "pos": "adj.", "thai_vocab": "ชอบสั่ง, เจ้ากี้เจ้าการ", "ex1_en": "My colleague is very bossy.", "ex1_hl": "bossy", "ex1_th": "เพื่อนร่วมงานของฉันชอบสั่งและเจ้ากี้เจ้าการมาก", "ex2_en": "A true leader inspires collaboration rather than adopting a bossy demeanor that alienates peers.", "ex2_hl": "bossy", "ex2_th": "ผู้นำที่แท้จริงจะสร้างแรงบันดาลใจให้เกิดความร่วมมือ แทนที่จะวางท่าชอบออกคำสั่งซึ่งทำให้เพื่อนร่วมงานรู้สึกอึดอัดและตีตัวออกห่าง", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 57, "vocab": "Careless", "ipa": "/ˈkɛrləs/", "pos": "adj.", "thai_vocab": "สะเพร่า, ประมาท, ไม่ระมัดระวัง", "ex1_en": "He is careless with his belongings.", "ex1_hl": "careless", "ex1_th": "เขาไม่ระมัดระวังข้าวของเครื่องใช้ของตนเองเลย", "ex2_en": "A careless mistake in the financial model led to an inaccurate revenue projection for the fiscal year.", "ex2_hl": "careless", "ex2_th": "ความผิดพลาดจากความสะเพร่าในแบบจำลองทางการเงิน ส่งผลให้การคาดการณ์รายได้ประจำปีงบประมาณคลาดเคลื่อน", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 58, "vocab": "Narrow-Minded", "ipa": "/ˌnæroʊˈmaɪndɪd/", "pos": "adj.", "thai_vocab": "ใจแคบ, วิสัยทัศน์คับแคบ", "ex1_en": "Don't be narrow-minded.", "ex1_hl": "narrow-minded", "ex1_th": "อย่าทำตัวใจแคบไปหน่อยเลย", "ex2_en": "The board criticized the executive team for maintaining a narrow-minded approach toward digital transformation.", "ex2_hl": "narrow-minded", "ex2_th": "คณะกรรมการวิพากษ์วิจารณ์ทีมผู้บริหารที่มีมุมมองคับแคบต่อการปรับเปลี่ยนองค์กรสู่ระบบดิจิทัล", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 59, "vocab": "Suspicious", "ipa": "/səˈspɪʃəs/", "pos": "adj.", "thai_vocab": "ระแวง, ขี้สงสัย, น่าสงสัย", "ex1_en": "She is suspicious of strangers.", "ex1_hl": "suspicious", "ex1_th": "เธอคอยระแวดระวังคนแปลกหน้าอยู่เสมอ", "ex2_en": "Cybersecurity specialists remain suspicious of unsolicited emails requesting internal credentials.", "ex2_hl": "suspicious", "ex2_th": "ผู้เชี่ยวชาญด้านความปลอดภัยทางไซเบอร์ยังคงสงสัยและระแวงอีเมลที่ไม่ได้ร้องขอซึ่งส่งมาสอบถามข้อมูลรหัสผ่านภายใน", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 60, "vocab": "Deceitful", "ipa": "/dɪˈsiːtfl/", "pos": "adj.", "thai_vocab": "หลอกลวง, ปลิ้นปล้อน, ไม่จริงใจ", "ex1_en": "He is a deceitful person.", "ex1_hl": "deceitful", "ex1_th": "เขาเป็นคนหลอกลวงปลิ้นปล้อน", "ex2_en": "The company faced severe legal sanctions after publishing deceitful statements regarding its product safety tests.", "ex2_hl": "deceitful", "ex2_th": "บริษัทถูกลงโทษทางกฎหมายอย่างรุนแรงหลังเผยแพร่ข้อความหลอกลวงเกี่ยวกับการทดสอบความปลอดภัยของผลิตภัณฑ์", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 61, "vocab": "Vain", "ipa": "/veɪn/", "pos": "adj.", "thai_vocab": "หลงตัวเอง, ทะนงตน", "ex1_en": "She is vain about her looks.", "ex1_hl": "vain", "ex1_th": "เธอหลงใหลในรูปร่างหน้าตาของตนเองอย่างมาก", "ex2_en": "Too vain to seek feedback, the designer ignored constructive criticism from the senior design panel.", "ex2_hl": "vain", "ex2_th": "ด้วยความหลงตัวเองเกินกว่าจะขอความคิดเห็น นักออกแบบจึงเพิกเฉยต่อข้อเสนอแนะเชิงสร้างสรรค์จากคณะกรรมการออกแบบอาวุโส", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 62, "vocab": "Insensitive", "ipa": "/ɪnˈsɛnsətɪv/", "pos": "adj.", "thai_vocab": "ไม่นึกถึงจิตใจผู้อื่น, ด้านชา, ไร้ความรู้สึก", "ex1_en": "His insensitive comments hurt me.", "ex1_hl": "insensitive", "ex1_th": "คำพูดที่ไม่คำนึงถึงความรู้สึกของเขาทำร้ายจิตใจฉัน", "ex2_en": "Making jokes about employee layoffs during an all-hands meeting was shockingly insensitive.", "ex2_hl": "insensitive", "ex2_th": "การหยิบยกเรื่องการเลิกจ้างพนักงานมาพูดเล่นในการประชุมใหญ่ของบริษัท ถือเป็นการกระทำที่ไม่นึกถึงจิตใจผู้อื่นอย่างน่าตกใจ", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 63, "vocab": "Manipulative", "ipa": "/məˈnɪpjəleɪtɪv/", "pos": "adj.", "thai_vocab": "เจ้าเล่ห์, ชอบชักใย, ชอบบงการ", "ex1_en": "He uses manipulative behavior.", "ex1_hl": "manipulative", "ex1_th": "เขาใช้พฤติกรรมเจ้าเล่ห์เพื่อชักใยผู้อื่น", "ex2_en": "HR intervened after several employees reported a manipulative coworker who withheld critical project data to undermine colleagues.", "ex2_hl": "manipulative", "ex2_th": "ฝ่ายทรัพยากรบุคคลเข้าแทรกแซงหลังพนักงานหลายคนรายงานว่ามีเพื่อนร่วมงานที่ชอบบงการและปกปิดข้อมูลโครงการสำคัญเพื่อขัดแข้งขัดขาเพื่อนร่วมงาน", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 64, "vocab": "Domineering", "ipa": "/ˌdɑːmɪˈnɪrɪŋ/", "pos": "adj.", "thai_vocab": "ชอบใช้อำนาจครอบงำ, บ้าอำนาจ, เจ้าบงการ", "ex1_en": "She has a domineering personality.", "ex1_hl": "domineering", "ex1_th": "เธอมีบุคลิกภาพที่ชอบใช้อำนาจครอบงำผู้อื่น", "ex2_en": "His domineering management style stifled innovation and prompted top talent to leave the department.", "ex2_hl": "domineering", "ex2_th": "รูปแบบการบริหารที่ชอบใช้อำนาจครอบงำของเขาได้ปิดกั้นความคิดสร้างสรรค์และผลักดันให้บุคลากรที่มีความสามารถลาออกจากแผนก", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 65, "vocab": "Impulsive", "ipa": "/ɪmˈpʌlsɪv/", "pos": "adj.", "thai_vocab": "หุนหันพลันแล่น, ใจเร็ว, ขาดความยั้งคิด", "ex1_en": "He makes impulsive decisions.", "ex1_hl": "impulsive", "ex1_th": "เขาชอบตัดสินใจอย่างหุนหันพลันแล่น", "ex2_en": "Financial advisers caution against impulsive trading during periods of high stock market volatility.", "ex2_hl": "impulsive", "ex2_th": "ที่ปรึกษาทางการเงินเตือนไม่ให้ซื้อขายสินทรัพย์อย่างหุนหันพลันแล่นในช่วงที่ตลาดหุ้นมีความผันผวนสูง", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 66, "vocab": "Grumpy", "ipa": "/ˈɡrʌmpi/", "pos": "adj.", "thai_vocab": "อารมณ์เสีย, บึ้งตึง, ขี้บ่น", "ex1_en": "My grandfather gets grumpy sometimes.", "ex1_hl": "grumpy", "ex1_th": "บางครั้งคุณปู่ของฉันก็อารมณ์เสียและขี้หงุดหงิด", "ex2_en": "Despite coming across as grumpy early in the morning, the lab supervisor is actually very patient when training interns.", "ex2_hl": "grumpy", "ex2_th": "แม้จะดูหน้าบึ้งตึงและขี้หงุดหงิดในตอนเช้าตรู่ แต่จริงๆ แล้วหัวหน้าห้องปฏิบัติการคนนี้มีความอดทนสูงมากเวลาสอนงานนักศึกษาฝึกงาน", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 67, "vocab": "Boastful", "ipa": "/ˈboʊstfl/", "pos": "adj.", "thai_vocab": "ขี้คุย, ขี้โม้, ชอบอวดอ้าง", "ex1_en": "He is boastful about his achievements.", "ex1_hl": "boastful", "ex1_th": "เขาชอบคุยโม้โอ้อวดเกี่ยวกับความสำเร็จของตนเอง", "ex2_en": "Rather than sounding boastful, confident executives highlight the collective effort of their teams during industry conferences.", "ex2_hl": "boastful", "ex2_th": "แทนที่จะพูดจาโอ้อวด ผู้บริหารที่มีความมั่นใจจริงมักเน้นย้ำถึงความพยายามร่วมกันของทีมในการประชุมระดับอุตสาหกรรม", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 68, "vocab": "Judgmental", "ipa": "/dʒʌdʒˈmɛntl/", "pos": "adj.", "thai_vocab": "ชอบตัดสินผู้อื่น, ตัดสินคนเร็ว", "ex1_en": "Don't be judgmental towards people.", "ex1_hl": "judgmental", "ex1_th": "อย่าไปด่วนตัดสินคนอื่นนักเลย", "ex2_en": "A skilled mentor maintains an open mind and avoids being judgmental when mentees share their career struggles.", "ex2_hl": "judgmental", "ex2_th": "ที่ปรึกษาที่มีทักษะสูงจะเปิดใจกว้างและหลีกเลี่ยงการด่วนตัดสินเมื่อผู้รับคำปรึกษาแบ่งปันอุปสรรคในเส้นทางอาชีพของตน", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 69, "vocab": "Unreliable", "ipa": "/ˌʌnrɪˈlaɪəbl/", "pos": "adj.", "thai_vocab": "ไว้ใจไม่ได้, พึ่งพาไม่ได้, ไม่น่าเชื่อถือ", "ex1_en": "He is unreliable when it comes to work.", "ex1_hl": "unreliable", "ex1_th": "เขาเป็นคนที่พึ่งพาไม่ได้เมื่อเป็นเรื่องงาน", "ex2_en": "Repeatedly missing critical deliverables made the vendor look unreliable, prompting the enterprise to terminate the contract.", "ex2_hl": "unreliable", "ex2_th": "การส่งมอบงานสำคัญล่าช้าซ้ำแล้วซ้ำเล่าทำให้ผู้รับจ้างดูไม่น่าเชื่อถือ จนส่งผลให้บริษัทตัดสินใจบอกเลิกสัญญา", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 70, "vocab": "Vindictive", "ipa": "/vɪnˈdɪktɪv/", "pos": "adj.", "thai_vocab": "คิดพยาบาท, เจ้าคิดเจ้าแค้น, มุ่งร้าย", "ex1_en": "He has a vindictive nature.", "ex1_hl": "vindictive", "ex1_th": "เขาเป็นคนมีนิสัยเจ้าคิดเจ้าแค้น", "ex2_en": "Stripping the researcher of lab access after a policy disagreement was widely viewed as a vindictive move by the dean.", "ex2_hl": "vindictive", "ex2_th": "การระงับสิทธิ์เข้าใช้ห้องปฏิบัติการของนักวิจัยหลังมีความเห็นต่างด้านนโยบาย ถูกมองว่าเป็นความจงใจแก้แค้นเอาคืนของคณบดี", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 71, "vocab": "Introverted", "ipa": "/ˈɪntrəvɜːrtɪd/", "pos": "adj.", "thai_vocab": "เก็บตัว, ชอบอยู่เงียบๆ คนเดียว", "ex1_en": "She is introverted and enjoys reading.", "ex1_hl": "introverted", "ex1_th": "เธอเป็นคนชอบเก็บตัวและรักการอ่านหนังสือ", "ex2_en": "Although introverted, our lead software architect communicates with remarkable precision during technical design reviews.", "ex2_hl": "introverted", "ex2_th": "แม้จะมีบุคลิกเก็บตัว แต่หัวหน้าสถาปนิกซอฟต์แวร์ของเราสื่อสารได้อย่างแม่นยำชัดเจนเป็นพิเศษในระหว่างการทบทวนการออกแบบทางเทคนิค", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 72, "vocab": "Extroverted", "ipa": "/ˈɛkstrəvɜːrtɪd/", "pos": "adj.", "thai_vocab": "เปิดเผย, ชอบเข้าสังคม, ชอบสังสรรค์", "ex1_en": "He is extroverted and loves parties.", "ex1_hl": "extroverted", "ex1_th": "เขาเป็นคนชอบเข้าสังคมและชอบไปงานปาร์ตี้", "ex2_en": "Her extroverted personality and dynamic presentation skills make her an ideal ambassador at global tech expos.", "ex2_hl": "extroverted", "ex2_th": "บุคลิกภาพที่เปิดเผยชอบเข้าสังคมและทักษะการนำเสนอที่น่าประทับใจ ทำให้เธอเป็นตัวแทนที่ยอดเยี่ยมในงานจัดแสดงเทคโนโลยีระดับโลก", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 73, "vocab": "Outgoing", "ipa": "/ˈaʊtˌɡoʊɪŋ/", "pos": "adj.", "thai_vocab": "เข้ากับคนง่าย, เป็นมิตร, เข้าสังคมเก่ง", "ex1_en": "My sister is very outgoing.", "ex1_hl": "outgoing", "ex1_th": "พี่สาวของฉันเป็นคนเข้ากับคนง่ายและเข้าสังคมเก่งมาก", "ex2_en": "An outgoing demeanor enables sales representatives to build rapport effortlessly with international stakeholders.", "ex2_hl": "outgoing", "ex2_th": "ท่าทีที่เป็นมิตรและเข้ากับคนง่ายช่วยให้ตัวแทนฝ่ายขายสร้างสัมพันธภาพอันดีกับผู้มีส่วนได้ส่วนเสียในระดับสากลได้อย่างราบรื่น", "category_id": "SOCIAL", "category_label": "มนุษยสัมพันธ์ & สังคม"}, {"id": 74, "vocab": "Shy", "ipa": "/ʃaɪ/", "pos": "adj.", "thai_vocab": "ขี้อาย, ขัดเขิน", "ex1_en": "The shy girl rarely speaks in class.", "ex1_hl": "shy", "ex1_th": "เด็กสาวขี้อายแทบจะไม่พูดเลยในชั้นเรียน", "ex2_en": "Initially shy in front of large audiences, the researcher gained immense confidence after leading multiple panel discussions.", "ex2_hl": "shy", "ex2_th": "แม้นักวิจัยจะรู้สึกขี้อายเมื่ออยู่ต่อหน้าผู้ฟังจำนวนมากในตอนแรก แต่เธอก็มีความมั่นใจเพิ่มขึ้นอย่างมากหลังจากได้เป็นผู้นำการอภิปรายหลายครั้ง", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 75, "vocab": "Talkative", "ipa": "/ˈtɔːkətɪv/", "pos": "adj.", "thai_vocab": "ช่างพูด, ช่างคุย", "ex1_en": "He is a talkative person.", "ex1_hl": "talkative", "ex1_th": "เขาเป็นคนช่างพูดช่างคุย", "ex2_en": "The moderator politely steered the conversation back on schedule when a talkative panelist exceeded the allocated time.", "ex2_hl": "talkative", "ex2_th": "ผู้ดำเนินรายการได้ดึงบทสนทนากลับเข้าสู่กำหนดการอย่างสุภาพ เมื่อผู้ร่วมอภิปรายที่ช่างพูดใช้เวลาเกินกว่าที่กำหนดไว้", "category_id": "SOCIAL", "category_label": "มนุษยสัมพันธ์ & สังคม"}, {"id": 76, "vocab": "Reserved", "ipa": "/rɪˈzɜːrvd/", "pos": "adj.", "thai_vocab": "สงวนท่าที, สุขุม, ไม่ค่อยพูด", "ex1_en": "She is reserved around strangers.", "ex1_hl": "reserved", "ex1_th": "เธอมักสงวนท่าทีเมื่ออยู่ท่ามกลางคนแปลกหน้า", "ex2_en": "Although naturally reserved, the senior partner delivered an impassioned defense during the closing arguments.", "ex2_hl": "reserved", "ex2_th": "แม้ว่าโดยธรรมชาติแล้วเขาจะเป็นคนสุขุมและสงวนท่าที แต่หุ้นส่วนอาวุโสกลับกล่าวคำแถลงปิดคดีด้วยความหนักแน่นและเปี่ยมไปด้วยพลัง", "category_id": "SOCIAL", "category_label": "มนุษยสัมพันธ์ & สังคม"}, {"id": 77, "vocab": "Sensitive", "ipa": "/ˈsɛnsətɪv/", "pos": "adj.", "thai_vocab": "อ่อนไหวง่าย, ไวต่อความรู้สึก, เข้าอกเข้าใจ", "ex1_en": "He is sensitive to criticism.", "ex1_hl": "sensitive", "ex1_th": "เขาเป็นคนที่อ่อนไหวง่ายต่อคำวิพากษ์วิจารณ์", "ex2_en": "A sensitive manager can detect subtle team friction before it escalates into an unproductive departmental conflict.", "ex2_hl": "sensitive", "ex2_th": "ผู้จัดการที่มีความละเอียดอ่อนและเข้าอกเข้าใจผู้อื่น สามารถสัมผัสได้ถึงความขัดแย้งเล็กๆ ในทีมก่อนที่จะลุกลามกลายเป็นปัญหาใหญ่ของแผนก", "category_id": "SOCIAL", "category_label": "มนุษยสัมพันธ์ & สังคม"}, {"id": 78, "vocab": "Emotional", "ipa": "/ɪˈmoʊʃənl/", "pos": "adj.", "thai_vocab": "เจ้าอารมณ์, มีอารมณ์ร่วมสูง, อ่อนไหว", "ex1_en": "She is an emotional person.", "ex1_hl": "emotional", "ex1_th": "เธอเป็นคนที่อ่อนไหวและเจ้าอารมณ์", "ex2_en": "During crisis communications, leaders must remain calm and avoid making emotional statements that could panic investors.", "ex2_hl": "emotional", "ex2_th": "ในระหว่างการสื่อสารในภาวะวิกฤต บรรดาผู้นำต้องรักษาความสุขุมและหลีกเลี่ยงการแถลงการณ์ที่ใช้อารมณ์ซึ่งอาจทำให้นักลงทุนตื่นตระหนก", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 79, "vocab": "Easygoing", "ipa": "/ˌiːziˈɡoʊɪŋ/", "pos": "adj.", "thai_vocab": "สบายๆ, เรียบง่าย, ไม่เรื่องมาก", "ex1_en": "My boss is very easygoing.", "ex1_hl": "easygoing", "ex1_th": "เจ้านายของฉันเป็นคนสบายๆ ไม่เรื่องมาก", "ex2_en": "Her easygoing leadership style created a relaxed yet highly productive work environment for the creative department.", "ex2_hl": "easygoing", "ex2_th": "รูปแบบความเป็นผู้นำที่สบายๆ เป็นกันเองของเธอ ช่วยสร้างบรรยากาศการทำงานที่ผ่อนคลายแต่มีประสิทธิผลสูงอย่างยิ่งให้กับแผนกครีเอทีฟ", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 80, "vocab": "Adventurous", "ipa": "/ədˈvɛntʃərəs/", "pos": "adj.", "thai_vocab": "ชอบการผจญภัย, ชอบความท้าทาย, กล้าได้กล้าเสีย", "ex1_en": "He is adventurous and loves traveling.", "ex1_hl": "adventurous", "ex1_th": "เขาเป็นคนชอบการผจญภัยและรักการเดินทางท่องเที่ยว", "ex2_en": "The venture capital firm took an adventurous approach by backing disruptive green energy startups before they became mainstream.", "ex2_hl": "adventurous", "ex2_th": "บริษัทร่วมทุนใช้แนวทางที่กล้าได้กล้าเสียและท้าทาย โดยการให้การสนับสนุนสตาร์ทอัพด้านพลังงานสะอาดก่อนที่จะกลายมาเป็นกระแสหลัก", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 81, "vocab": "Curious", "ipa": "/ˈkjʊriəs/", "pos": "adj.", "thai_vocab": "อยากรู้อยากเห็น, ช่างสงสัย, ใฝ่รู้", "ex1_en": "Children are naturally curious.", "ex1_hl": "curious", "ex1_th": "เด็ก ๆ มักจะมีความอยากรู้อยากเห็นตามธรรมชาติ", "ex2_en": "A curious mind is essential for researchers looking to uncover groundbreaking scientific discoveries.", "ex2_hl": "curious", "ex2_th": "จิตใจที่ใฝ่รู้เป็นสิ่งจำเป็นสำหรับนักวิจัยที่ต้องการค้นพบทางวิทยาศาสตร์อันล้ำสมัย", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 82, "vocab": "Serious", "ipa": "/ˈsɪriəs/", "pos": "adj.", "thai_vocab": "จริงจัง, เคร่งขรึม, ขึงขัง", "ex1_en": "He is serious about his career.", "ex1_hl": "serious", "ex1_th": "เขาจริงจังกับหน้าที่การงานของเขามาก", "ex2_en": "The executive maintained a serious demeanor while presenting the quarterly financial risk report.", "ex2_hl": "serious", "ex2_th": "ผู้บริหารยังคงมีท่าทีสุขุมจริงจังขณะนำเสนอรายงานความเสี่ยงทางการเงินประจำไตรมาส", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 83, "vocab": "Funny", "ipa": "/ˈfʌni/", "pos": "adj.", "thai_vocab": "ตลก, มีอารมณ์ขัน, ขบขัน", "ex1_en": "My cousin is really funny.", "ex1_hl": "funny", "ex1_th": "ลูกพี่ลูกน้องของฉันเป็นคนตลกมากจริง ๆ", "ex2_en": "He shared a funny anecdote during his keynote presentation to ease tension and engage the audience.", "ex2_hl": "funny", "ex2_th": "เขาเล่าเรื่องขบขันสั้น ๆ ในระหว่างการบรรยายปาฐกถาเพื่อผ่อนคลายความตึงเครียดและดึงดูดผู้ฟัง", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 84, "vocab": "Practical", "ipa": "/ˈpræktɪkl/", "pos": "adj.", "thai_vocab": "เน้นการปฏิบัติจริง, มองโลกตามความจริง, มีไหวพริบในทางปฏิบัติ", "ex1_en": "She is practical in difficult situations.", "ex1_hl": "practical", "ex1_th": "เธอเน้นแก้ปัญหาอย่างเป็นรูปธรรมเมื่อต้องเผชิญกับสถานการณ์ที่ยากลำบาก", "ex2_en": "Our project manager proposed a practical solution that resolved the system bottleneck within our budget limits.", "ex2_hl": "practical", "ex2_th": "ผู้จัดการโครงการของเราเสนอแนวทางแก้ไขที่เป็นรูปธรรมและปฏิบัติได้จริง ซึ่งช่วยแก้ปัญหาคอขวดของระบบได้ภายในงบประมาณที่จำกัด", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 85, "vocab": "Frank", "ipa": "/fræŋk/", "pos": "adj.", "thai_vocab": "ตรงไปตรงมา, เปิดเผย, ไม่อ้อมค้อม", "ex1_en": "He is frank about his opinions.", "ex1_hl": "frank", "ex1_th": "เขาเป็นคนตรงไปตรงมาเสมอเกี่ยวกับความคิดเห็นของเขา", "ex2_en": "The senior consultant gave a frank assessment of the startup's operational shortcomings during the board review.", "ex2_hl": "frank", "ex2_th": "ที่ปรึกษาอาวุโสได้ประเมินข้อบกพร่องด้านการดำเนินงานของสตาร์ตอัปอย่างตรงไปตรงมาระหว่างการประชุมคณะกรรมการ", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 86, "vocab": "Diplomatic", "ipa": "/ˌdɪpləˈmætɪk/", "pos": "adj.", "thai_vocab": "มีชั้นเชิงทางการทูต, บัวไม่ให้ช้ำน้ำไม่ให้ขุ่น, ประนีประนอม", "ex1_en": "She is diplomatic when solving conflicts.", "ex1_hl": "diplomatic", "ex1_th": "เธอมีวาทศิลป์และการประนีประนอมที่ยอดเยี่ยมเมื่อต้องคลี่คลายความขัดแย้ง", "ex2_en": "Handling cross-departmental disputes requires a diplomatic leader who can balance conflicting stakeholder interests.", "ex2_hl": "diplomatic", "ex2_th": "การจัดการข้อพิพาทระหว่างแผนกต้องอาศัยผู้นำที่มีชั้นเชิงทางการทูต ซึ่งสามารถประสานผลประโยชน์ที่ขัดแย้งกันของผู้มีส่วนได้ส่วนเสียได้อย่างลงตัว", "category_id": "SOCIAL", "category_label": "มนุษยสัมพันธ์ & สังคม"}, {"id": 87, "vocab": "Competitive", "ipa": "/kəmˈpetətɪv/", "pos": "adj.", "thai_vocab": "ชอบการแข่งขัน, มุ่งมั่นเอาชนะ, ทะเยอทะยาน", "ex1_en": "He is highly competitive in sports.", "ex1_hl": "competitive", "ex1_th": "เขาเป็นคนชอบเอาชนะและมุ่งมั่นมากในการเล่นกีฬา", "ex2_en": "Her competitive drive pushed the entire sales team to surpass their quarterly revenue targets.", "ex2_hl": "competitive", "ex2_th": "ความมุ่งมั่นเอาชนะของเธอได้กระตุ้นให้ทีมฝ่ายขายทั้งหมดสามารถทำยอดขายเกินเป้าหมายรายได้ประจำไตรมาส", "category_id": "DRIVE", "category_label": "ความมุ่งมั่น & ความกล้า"}, {"id": 88, "vocab": "Perfectionist", "ipa": "/pərˈfekʃənɪst/", "pos": "n., adj.", "thai_vocab": "คนรักความสมบูรณ์แบบ, คนที่ชอบความไร้ที่ติ", "ex1_en": "She is a perfectionist at work.", "ex1_hl": "perfectionist", "ex1_th": "เธอเป็นคนรักความสมบูรณ์แบบมากในการทำงาน", "ex2_en": "While being a perfectionist guarantees top-tier code quality, it can sometimes delay product deployment.", "ex2_hl": "perfectionist", "ex2_th": "แม้ว่าการเป็นคนรักความสมบูรณ์แบบจะช่วยรับประกันคุณภาพโค้ดระดับแนวหน้า แต่บางครั้งก็อาจทำให้การส่งมอบผลิตภัณฑ์ล่าช้าได้", "category_id": "DRIVE", "category_label": "ความมุ่งมั่น & ความกล้า"}, {"id": 89, "vocab": "Charismatic", "ipa": "/ˌkærɪzˈmætɪk/", "pos": "adj.", "thai_vocab": "มีเสน่ห์ดึงดูดใจ, มีบารมี, มีเสน่ห์ความเป็นผู้นำ", "ex1_en": "He is a charismatic leader.", "ex1_hl": "charismatic", "ex1_th": "เขาเป็นผู้นำที่มีเสน่ห์ดึงดูดใจและเปี่ยมด้วยบารมี", "ex2_en": "The charismatic speaker captivated the audience and inspired thousands to support renewable energy initiatives.", "ex2_hl": "charismatic", "ex2_th": "นักพูดผู้เปี่ยมด้วยเสน่ห์สามารถสะกดผู้ฟังและสร้างแรงบันดาลใจให้ผู้คนนับพันร่วมสนับสนุนโครงการพลังงานหมุนเวียน", "category_id": "SOCIAL", "category_label": "มนุษยสัมพันธ์ & สังคม"}, {"id": 90, "vocab": "Assertive", "ipa": "/əˈsɜːrtɪv/", "pos": "adj.", "thai_vocab": "กล้าแสดงออก, มั่นใจในตัวเอง, แสดงจุดยืนชัดเจน", "ex1_en": "She is assertive but respectful.", "ex1_hl": "assertive", "ex1_th": "เธอเป็นคนกล้าแสดงจุดยืนอย่างมั่นใจ แต่ยังคงให้เกียรติผู้อื่นเสมอ", "ex2_en": "Effective project managers need to be assertive when negotiating project timelines and resource allocations.", "ex2_hl": "assertive", "ex2_th": "ผู้จัดการโครงการที่มีประสิทธิภาพจำเป็นต้องกล้าแสดงจุดยืนอย่างมั่นคงเมื่อต้องเจรจาต่อรองเรื่องกรอบเวลาและการจัดสรรทรัพยากร", "category_id": "DRIVE", "category_label": "ความมุ่งมั่น & ความกล้า"}, {"id": 91, "vocab": "Sensitive-Hearted", "ipa": "/ˌsensətɪv ˈhɑːrtɪd/", "pos": "adj.", "thai_vocab": "จิตใจอ่อนไหวง่าย, ใจบาง, ไวต่อความรู้สึก", "ex1_en": "He is sensitive-hearted and caring.", "ex1_hl": "sensitive-hearted", "ex1_th": "เขาเป็นคนที่มีจิตใจอ่อนโยนและคอยห่วงใยผู้อื่นเสมอ", "ex2_en": "Her sensitive-hearted nature makes her an exceptional mentor who readily empathizes with struggling students.", "ex2_hl": "sensitive-hearted", "ex2_th": "ธรรมชาติที่เป็นคนจิตใจอ่อนโยนและเข้าอกเข้าใจผู้อื่น ทำให้เธอเป็นอาจารย์ที่ปรึกษาที่ยอดเยี่ยมซึ่งเข้าใจความรู้สึกของนักศึกษาที่กำลังประสบปัญหาได้อย่างลึกซึ้ง", "category_id": "SOCIAL", "category_label": "มนุษยสัมพันธ์ & สังคม"}, {"id": 92, "vocab": "Absent-Minded", "ipa": "/ˌæbsənt ˈmaɪndɪd/", "pos": "adj.", "thai_vocab": "ใจลอย, ขี้ลืม, เหม่อลอย", "ex1_en": "My father is sometimes absent-minded.", "ex1_hl": "absent-minded", "ex1_th": "บางครั้งพ่อของฉันก็ชอบใจลอยและขี้ลืม", "ex2_en": "The brilliant professor was notoriously absent-minded, often misplacing his research notes right before lectures.", "ex2_hl": "absent-minded", "ex2_th": "ศาสตราจารย์ผู้ปราดเปรื่องขึ้นชื่อเรื่องความใจลอยขี้ลืม เขามักจะวางสมุดบันทึกงานวิจัยผิดที่อยู่บ่อยครั้งก่อนเริ่มการบรรยาย", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 93, "vocab": "Carefree", "ipa": "/ˈkerfriː/", "pos": "adj.", "thai_vocab": "ไร้กังวล, สบายใจ, สบาย ๆ ไร้ความกังวล", "ex1_en": "She has a carefree attitude.", "ex1_hl": "carefree", "ex1_th": "เธอมีทัศนคติที่สบาย ๆ ไร้ความกังวล", "ex2_en": "After submitting their final thesis, the graduate students enjoyed a carefree weekend trip to the coast.", "ex2_hl": "carefree", "ex2_th": "หลังส่งวิทยานิพนธ์ฉบับสมบูรณ์ นักศึกษาปริญญาโทต่างเพลิดเพลินกับการเดินทางท่องเที่ยวพักผ่อนริมชายฝั่งอย่างสบายใจไร้กังวลตลอดวันหยุดสุดสัปดาห์", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 94, "vocab": "Soft-Spoken", "ipa": "/ˌsɔːft ˈspoʊkən/", "pos": "adj.", "thai_vocab": "พูดจานุ่มนวล, พูดเสียงเบาอ่อนหวาน, สุภาพนุ่มนวล", "ex1_en": "Our teacher is soft-spoken.", "ex1_hl": "soft-spoken", "ex1_th": "คุณครูของเราเป็นคนพูดจานุ่มนวลสุภาพ", "ex2_en": "Despite being soft-spoken, the lead architect commanded great respect through his insightful design solutions.", "ex2_hl": "soft-spoken", "ex2_th": "แม้จะเป็นคนพูดจานุ่มนวล แต่สถาปนิกหัวหน้าโครงการก็ได้รับความเคารพอย่างสูงจากแนวทางการออกแบบที่เฉียบคมลึกซึ้ง", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 95, "vocab": "Strong-Willed", "ipa": "/ˌstrɔːŋ ˈwɪld/", "pos": "adj.", "thai_vocab": "เจตจำนงแน่วแน่, จิตใจเด็ดเดี่ยว, ไม่ยอมแพ้อะไรง่าย ๆ", "ex1_en": "She is a strong-willed woman.", "ex1_hl": "strong-willed", "ex1_th": "เธอเป็นผู้หญิงที่มีความมุ่งมั่นเด็ดเดี่ยวและไม่ยอมแพ้ใคร", "ex2_en": "A strong-willed founder is crucial for steering an enterprise through severe market downturns.", "ex2_hl": "strong-willed", "ex2_th": "ผู้ก่อตั้งที่มีความเด็ดเดี่ยวแน่วแน่มีความสำคัญอย่างยิ่งต่อการนำพาองค์กรฝ่าฟันภาวะเศรษฐกิจตกต่ำรุนแรง", "category_id": "DRIVE", "category_label": "ความมุ่งมั่น & ความกล้า"}, {"id": 96, "vocab": "Self-Conscious", "ipa": "/ˌself ˈkɑːnʃəs/", "pos": "adj.", "thai_vocab": "ประหม่า, ขาดความมั่นใจในตัวเอง, พะวักพะวงกับสายตาคนอื่น", "ex1_en": "He feels self-conscious in public.", "ex1_hl": "self-conscious", "ex1_th": "เขารู้สึกประหม่าและขาดความมั่นใจเมื่ออยู่ต่อหน้าสาธารณชน", "ex2_en": "Junior analysts often feel self-conscious when presenting financial models to the board of directors.", "ex2_hl": "self-conscious", "ex2_th": "นักวิเคราะห์รุ่นใหม่มักรู้สึกประหม่าและไม่มั่นใจเมื่อต้องนำเสนอแบบจำลองทางการเงินต่อคณะกรรมการบริหาร", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 97, "vocab": "Level-Headed", "ipa": "/ˌlevl ˈhedɪd/", "pos": "adj.", "thai_vocab": "สุขุมรอบคอบ, มีสติมั่นคง, ไม่ตื่นตระหนก", "ex1_en": "She remains level-headed in emergencies.", "ex1_hl": "level-headed", "ex1_th": "เธอยังคงมีสติสุขุมมั่นคงเสมอในยามเกิดเหตุฉุกเฉิน", "ex2_en": "His level-headed leadership prevented panic among investors during the sudden market crash.", "ex2_hl": "level-headed", "ex2_th": "ความเป็นผู้นำที่สุขุมรอบคอบของเขาช่วยป้องกันไม่ให้นักลงทุนเกิดความตื่นตระหนกระหว่างที่ตลาดหุ้นดิ่งลงกะทันหัน", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 98, "vocab": "Mischievous", "ipa": "/ˈmɪstʃɪvəs/", "pos": "adj.", "thai_vocab": "ซุกซน, ขี้เล่น, เจ้าเล่ห์แสนกล", "ex1_en": "The mischievous boy hid my pen.", "ex1_hl": "mischievous", "ex1_th": "เด็กชายจอมซุกซนแอบเอาปากกาของฉันไปซ่อน", "ex2_en": "With a mischievous smile, the creative director revealed an unconventional marketing concept that stunned the client.", "ex2_hl": "mischievous", "ex2_th": "ด้วยรอยยิ้มขี้เล่นอย่างมีเลศนัย ผู้อำนวยการฝ่ายสร้างสรรค์ได้เปิดตัวแนวคิดทางการตลาดที่แหวกแนวซึ่งสร้างความตื่นตาตื่นใจให้แก่ลูกค้า", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 99, "vocab": "Affectionate", "ipa": "/əˈfekʃənət/", "pos": "adj.", "thai_vocab": "แสดงความรักความอบอุ่น, อบอุ่นอ่อนโยน, เสน่หา", "ex1_en": "She is affectionate towards her family.", "ex1_hl": "affectionate", "ex1_th": "เธอแสดงความรักและความอบอุ่นต่อครอบครัวของเธอเสมอ", "ex2_en": "The pediatrician greeted each nervous child with a warm smile and an affectionate tone of voice.", "ex2_hl": "affectionate", "ex2_th": "กุมารแพทย์ทักทายเด็กทุกคนที่รู้สึกกังวลด้วยรอยยิ้มอันอบอุ่นและน้ำเสียงที่เปี่ยมด้วยความเมตตาเอ็นดู", "category_id": "SOCIAL", "category_label": "มนุษยสัมพันธ์ & สังคม"}, {"id": 100, "vocab": "Spontaneous", "ipa": "/spɑːnˈteɪniəs/", "pos": "adj.", "thai_vocab": "ทำตามสัญชาตญาณ, ไม่ต้องวางแผนล่วงหน้า, เป็นไปตามธรรมชาติ", "ex1_en": "He is spontaneous and loves surprises.", "ex1_hl": "spontaneous", "ex1_th": "เขาเป็นคนชอบทำอะไรตามใจอยากโดยไม่ต้องวางแผนล่วงหน้าและชอบเรื่องเซอร์ไพรส์", "ex2_en": "During the workshop, the team held a spontaneous brainstorming session that generated several innovative product ideas.", "ex2_hl": "spontaneous", "ex2_th": "ในระหว่างการสัมมนาเชิงปฏิบัติการ ทีมงานได้เปิดการระดมสมองแบบสด ๆ โดยไม่ได้นัดหมายล่วงหน้า ซึ่งก่อให้เกิดแนวคิดนวัตกรรมผลิตภัณฑ์ใหม่ ๆ หลายรายการ", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 101, "vocab": "Analytical", "ipa": "/ˌænəˈlɪtɪkl/", "pos": "adj.", "thai_vocab": "เชิงวิเคราะห์, คิดวิเคราะห์เป็นระบบ, ช่างวิเคราะห์", "ex1_en": "She has an analytical approach to problems.", "ex1_hl": "analytical", "ex1_th": "เธอมีแนวทางในการจัดการกับปัญหาต่าง ๆ อย่างเป็นระบบและเชิงวิเคราะห์", "ex2_en": "Data scientists rely on strong analytical skills to extract actionable business intelligence from massive datasets.", "ex2_hl": "analytical", "ex2_th": "นักวิทยาศาสตร์ข้อมูลต้องพึ่งพาทักษะการคิดวิเคราะห์อันเฉียบคมเพื่อสกัดข้อมูลเชิงลึกทางธุรกิจที่นำไปปฏิบัติได้จริงจากชุดข้อมูลขนาดใหญ่", "category_id": "WORK", "category_label": "การทำงาน & สติปัญญา"}, {"id": 102, "vocab": "Attentive", "ipa": "/əˈtentɪv/", "pos": "adj.", "thai_vocab": "ตั้งใจฟัง, ใส่ใจ, คอยดูแลเอาใจใส่", "ex1_en": "The attentive student listens carefully.", "ex1_hl": "attentive", "ex1_th": "นักเรียนที่ตั้งใจเรียนจะฟังอย่างจดจ่อรอบคอบ", "ex2_en": "Our customer support team received praise for providing prompt and attentive service to international clients.", "ex2_hl": "attentive", "ex2_th": "ทีมฝ่ายสนับสนุนลูกค้าของเราได้รับคำชื่นชมจากการให้บริการที่รวดเร็วและใส่ใจดูแลลูกค้าต่างประเทศอย่างทั่วถึง", "category_id": "WORK", "category_label": "การทำงาน & สติปัญญา"}, {"id": 103, "vocab": "Balanced", "ipa": "/ˈbælənst/", "pos": "adj.", "thai_vocab": "มีสมดุล, รอบด้าน, เป็นกลางและรอบคอบ", "ex1_en": "He has a balanced personality.", "ex1_hl": "balanced", "ex1_th": "เขาเป็นคนที่มีบุคลิกภาพที่สมดุลและลงตัว", "ex2_en": "The committee published a balanced report addressing both the environmental and economic impacts of the new highway.", "ex2_hl": "balanced", "ex2_th": "คณะกรรมการได้เผยแพร่รายงานที่รอบด้านและเป็นกลาง ซึ่งครอบคลุมทั้งผลกระทบด้านสิ่งแวดล้อมและเศรษฐกิจของทางหลวงสายใหม่", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 104, "vocab": "Big-Hearted", "ipa": "/ˌbɪɡ ˈhɑːrtɪd/", "pos": "adj.", "thai_vocab": "ใจกว้าง, มีน้ำใจเอื้อเฟื้อ, โอบอ้อมอารี", "ex1_en": "My grandmother is big-hearted and generous.", "ex1_hl": "big-hearted", "ex1_th": "คุณย่าของฉันเป็นคนใจกว้างและมีน้ำใจเอื้อเฟื้อเผื่อแผ่มาก", "ex2_en": "A big-hearted donor contributed five million dollars to build a new medical research center for underprivileged communities.", "ex2_hl": "big-hearted", "ex2_th": "ผู้บริจาคใจกว้างท่านหนึ่งได้มอบเงินทุน 5 ล้านดอลลาร์เพื่อสร้างศูนย์วิจัยทางการแพทย์แห่งใหม่สำหรับชุมชนผู้ด้อยโอกาส", "category_id": "POSITIVE", "category_label": "ด้านบวก & คุณธรรม"}, {"id": 105, "vocab": "Calm", "ipa": "/kɑːm/", "pos": "adj.", "thai_vocab": "สงบ, ใจเย็น, ไม่ตื่นตระหนก", "ex1_en": "She stays calm under pressure.", "ex1_hl": "calm", "ex1_th": "เธอยังคงสงบนิ่งและใจเย็นได้แม้อยู่ภายใต้แรงกดดัน", "ex2_en": "The airline captain delivered a calm announcement over the intercom, reassuring passengers during intense turbulence.", "ex2_hl": "calm", "ex2_th": "กัปตันเครื่องบินได้ประกาศผ่านระบบเสียงด้วยน้ำเสียงที่สงบนิ่ง ช่วยให้ผู้โดยสารคลายความกังวลระหว่างเผชิญสภาพอากาศแปรปรวนรุนแรง", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 106, "vocab": "Candid", "ipa": "/ˈkændɪd/", "pos": "adj.", "thai_vocab": "ตรงไปตรงมา, เปิดอกพูดจริง, ไม่อ้อมค้อม", "ex1_en": "He is candid about his mistakes.", "ex1_hl": "candid", "ex1_th": "เขาเป็นคนเปิดอกพูดตรง ๆ เกี่ยวกับความผิดพลาดของตนเองเสมอ", "ex2_en": "In a candid interview with financial analysts, the CEO acknowledged the supply chain setbacks and outlined recovery measures.", "ex2_hl": "candid", "ex2_th": "ในการสัมภาษณ์อย่างเปิดอกตรงไปตรงมากับเหล่านักวิเคราะห์การเงิน ซีอีโอยอมรับถึงปัญหาในห่วงโซ่อุปทานและเสนอแนวทางฟื้นฟูอย่างชัดเจน", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 107, "vocab": "Capable", "ipa": "/ˈkeɪpəbl/", "pos": "adj.", "thai_vocab": "มีความสามารถ, เก่งรอบตัว, พึ่งพาฝีมือได้", "ex1_en": "She is capable of leading the team.", "ex1_hl": "capable", "ex1_th": "เธอมีความสามารถเพียงพอที่จะเป็นผู้นำทีมได้", "ex2_en": "Our department recruited several capable software engineers to accelerate the deployment of the cloud platform.", "ex2_hl": "capable", "ex2_th": "แผนกของเราได้รับสมัครวิศวกรซอฟต์แวร์ที่มีความสามารถหลายท่าน เพื่อเร่งรัดการเปิดใช้งานแพลตฟอร์มคลาวด์ให้เร็วยิ่งขึ้น", "category_id": "WORK", "category_label": "การทำงาน & สติปัญญา"}, {"id": 108, "vocab": "Careful", "ipa": "/ˈkerfl/", "pos": "adj.", "thai_vocab": "ระมัดระวัง, รอบคอบ, ใส่ใจความรู้สึก", "ex1_en": "He is careful with other people's feelings.", "ex1_hl": "careful", "ex1_th": "เขาเป็นคนที่ระมัดระวังและใส่ใจความรู้สึกของคนอื่นเสมอ", "ex2_en": "After careful review of the audit findings, the compliance officer updated the internal financial safeguards.", "ex2_hl": "careful", "ex2_th": "หลังจากการตรวจสอบผลการตรวจสอบอย่างรอบคอบ เจ้าหน้าที่ฝ่ายกำกับดูแลได้ปรับปรุงมาตรการคุ้มครองทางการเงินภายในองค์กรใหม่", "category_id": "WORK", "category_label": "การทำงาน & สติปัญญา"}, {"id": 109, "vocab": "Cautious", "ipa": "/ˈkɔːʃəs/", "pos": "adj.", "thai_vocab": "รอบคอบระมัดระวัง, ระแวดระวัง, ไม่ประมาท", "ex1_en": "She is cautious when meeting strangers.", "ex1_hl": "cautious", "ex1_th": "เธอเป็นคนรอบคอบระมัดระวังตัวเมื่อต้องพบเจอกับคนแปลกหน้า", "ex2_en": "The investment committee adopted a cautious stance toward volatile overseas real estate acquisitions.", "ex2_hl": "cautious", "ex2_th": "คณะกรรมการการลงทุนมีท่าทีที่ระมัดระวังและรอบคอบต่อการเข้าซื้ออสังหาริมทรัพย์ในต่างประเทศที่มีความผันผวนสูง", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 110, "vocab": "Considerate", "ipa": "/kənˈsɪdərət/", "pos": "adj.", "thai_vocab": "เห็นอกเห็นใจผู้อื่น, นึกถึงใจผู้อื่น, มีน้ำใจเกรงใจ", "ex1_en": "He is considerate of everyone.", "ex1_hl": "considerate", "ex1_th": "เขาเป็นคนที่นึกถึงใจคนอื่นและคอยใส่ใจทุกคนเสมอ", "ex2_en": "It was considerate of the workshop organizer to schedule regular breaks and provide vegetarian dining options.", "ex2_hl": "considerate", "ex2_th": "เป็นความใส่ใจและนึกถึงผู้อื่นอย่างยิ่งที่ผู้จัดสัมมนาจัดให้มีช่วงพักสม่ำเสมอและเตรียมอาหารมังสวิรัติไว้รองรับ", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 111, "vocab": "Cooperative", "ipa": "/koʊˈɑːpərətɪv/", "pos": "adj.", "thai_vocab": "ให้ความร่วมมือดี, ร่วมแรงร่วมใจ, ปรองดอง", "ex1_en": "The cooperative child shares toys.", "ex1_hl": "cooperative", "ex1_th": "เด็กที่รู้จักให้ความร่วมมือยอมแบ่งปันของเล่นกับเพื่อน ๆ", "ex2_en": "Fostering a cooperative work atmosphere enables multidisciplinary teams to innovate and resolve complex bugs quickly.", "ex2_hl": "cooperative", "ex2_th": "การสร้างบรรยากาศการทำงานที่มุ่งเน้นการร่วมแรงร่วมใจ ช่วยให้ทีมสหสาขาวิชาชีพสามารถสร้างสรรค์นวัตกรรมและแก้ไขข้อบกพร่องที่ซับซ้อนได้อย่างรวดเร็ว", "category_id": "SOCIAL", "category_label": "มนุษยสัมพันธ์ & สังคม"}, {"id": 112, "vocab": "Courteous", "ipa": "/ˈkɜːrtiəs/", "pos": "adj.", "thai_vocab": "สุภาพเรียบร้อย, มีสัมมาคารวะ, มีมารยาทดี", "ex1_en": "She is courteous to visitors.", "ex1_hl": "courteous", "ex1_th": "เธอปฏิบัติตนอย่างสุภาพและมีมารยาทดีต่อแขกผู้มาเยือนเสมอ", "ex2_en": "Front desk staff are trained to remain courteous and helpful, even when handling demanding hotel guests.", "ex2_hl": "courteous", "ex2_th": "พนักงานต้อนรับส่วนหน้าได้รับการฝึกอบรมให้คงความสุภาพอ่อนน้อมและพร้อมช่วยเหลือเสมอ แม้จะต้องรับมือกับแขกของโรงแรมที่มีข้อเรียกร้องมากมายก็ตาม", "category_id": "SOCIAL", "category_label": "มนุษยสัมพันธ์ & สังคม"}, {"id": 113, "vocab": "Decisive", "ipa": "/dɪˈsaɪsɪv/", "pos": "adj.", "thai_vocab": "เด็ดขาด, ตัดสินใจฉับไว, แน่วแน่", "ex1_en": "Our manager is decisive in difficult situations.", "ex1_hl": "decisive", "ex1_th": "ผู้จัดการของเราเป็นคนเด็ดขาดและตัดสินใจได้ฉับไวเมื่อเผชิญสถานการณ์ที่ยากลำบาก", "ex2_en": "Taking decisive action during the early hours of the PR crisis protected the company's brand reputation.", "ex2_hl": "decisive", "ex2_th": "การตัดสินใจอย่างเด็ดขาดและรวดเร็วในช่วงชั่วโมงแรก ๆ ของวิกฤตการประชาสัมพันธ์ ช่วยปกป้องชื่อเสียงของแบรนด์บริษัทไว้ได้", "category_id": "WORK", "category_label": "การทำงาน & สติปัญญา"}, {"id": 114, "vocab": "Dependable", "ipa": "/dɪˈpendəbl/", "pos": "adj.", "thai_vocab": "พึ่งพาได้, ไว้ใจได้, น่าเชื่อถือ", "ex1_en": "He is a dependable friend.", "ex1_hl": "dependable", "ex1_th": "เขาเป็นเพื่อนที่พึ่งพาและไว้วางใจได้เสมอ", "ex2_en": "Clients trust our firm because our engineering team delivers dependable results ahead of strict project deadlines.", "ex2_hl": "dependable", "ex2_th": "ลูกค้าไว้วางใจบริษัทของเราเพราะทีมวิศวกรส่งมอบผลงานที่เชื่อถือได้และมีคุณภาพก่อนถึงกำหนดเวลาอันเข้มงวดเสมอ", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 115, "vocab": "Diligent", "ipa": "/ˈdɪlɪdʒənt/", "pos": "adj.", "thai_vocab": "ขยันหมั่นเพียร, ละเอียดรอบคอบ, ทุ่มเทเอาใจใส่", "ex1_en": "The diligent worker checks every detail.", "ex1_hl": "diligent", "ex1_th": "คนทำงานที่ขยันและใส่ใจจะตรวจตราทุกรายละเอียดอย่างรอบคอบ", "ex2_en": "Through diligent laboratory research, the doctoral candidate discovered a compound that inhibits bacterial resistance.", "ex2_hl": "diligent", "ex2_th": "ด้วยการทำวิจัยในห้องปฏิบัติการอย่างขยันขันแข็งและทุ่มเท นักศึกษาปริญญาเอกได้ค้นพบสารประกอบที่ช่วยยับยั้งการดื้อยาของแบคทีเรีย", "category_id": "WORK", "category_label": "การทำงาน & สติปัญญา"}, {"id": 116, "vocab": "Discreet", "ipa": "/dɪˈskriːt/", "pos": "adj.", "thai_vocab": "สุขุมรอบคอบ, เก็บความลับได้ดี, รู้จักกาลเทศะ", "ex1_en": "He is discreet about private matters.", "ex1_hl": "discreet", "ex1_th": "เขาเป็นคนที่รู้จักกาลเทศะและเก็บความลับเรื่องส่วนตัวได้เป็นอย่างดี", "ex2_en": "Executive assistants must be entirely discreet when handling proprietary merger negotiations and executive payroll data.", "ex2_hl": "discreet", "ex2_th": "ผู้ช่วยผู้บริหารต้องเป็นคนที่เก็บความลับและระมัดระวังอย่างยิ่งยวดเมื่อต้องจัดการกับการเจรจาควบรวมกิจการและข้อมูลบัญชีเงินเดือนของผู้บริหาร", "category_id": "WORK", "category_label": "การทำงาน & สติปัญญา"}, {"id": 117, "vocab": "Empathetic", "ipa": "/ˌempəˈθetɪk/", "pos": "adj.", "thai_vocab": "เข้าอกเข้าใจผู้อื่น, มีความเห็นอกเห็นใจ, เอาใจใส่ความรู้สึก", "ex1_en": "She is empathetic towards people in need.", "ex1_hl": "empathetic", "ex1_th": "เธอมีความเข้าอกเข้าใจและเห็นใจผู้ที่กำลังเดือดร้อนเสมอ", "ex2_en": "An empathetic manager listens attentively to employee burnout concerns and implements sustainable workload adjustments.", "ex2_hl": "empathetic", "ex2_th": "ผู้จัดการที่เข้าอกเข้าใจลูกน้องจะรับฟังข้อกังวลเรื่องภาวะหมดไฟในการทำงานอย่างตั้งใจ พร้อมทั้งปรับลดภาระงานให้อยู่ในระดับที่เหมาะสมและยั่งยืน", "category_id": "SOCIAL", "category_label": "มนุษยสัมพันธ์ & สังคม"}, {"id": 118, "vocab": "Energetic", "ipa": "/ˌenərˈdʒetɪk/", "pos": "adj.", "thai_vocab": "กระฉับกระเฉง, มีพลังวังชา, คล่องแคล่วว่องไว", "ex1_en": "The energetic boy loves outdoor games.", "ex1_hl": "energetic", "ex1_th": "เด็กชายผู้กระฉับกระเฉงชอบเล่นเกมนอกบ้านเป็นชีวิตจิตใจ", "ex2_en": "Her energetic facilitation energized the entire conference hall and sparked productive cross-functional dialogues.", "ex2_hl": "energetic", "ex2_th": "การดำเนินรายการอย่างมีพลังและกระฉับกระเฉงของเธอช่วยปลุกเร้าทั้งห้องประชุม และจุดประกายให้เกิดการแลกเปลี่ยนพูดคุยข้ามสายงานอย่างมีประสิทธิผล", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 119, "vocab": "Fair-Minded", "ipa": "/ˌfer ˈmaɪndɪd/", "pos": "adj.", "thai_vocab": "ยุติธรรม, ใจกว้างเป็นธรรม, ไม่ลำเอียง", "ex1_en": "A fair-minded teacher treats students equally.", "ex1_hl": "fair-minded", "ex1_th": "ครูที่มีใจเป็นธรรมและไม่ลำเอียงจะปฏิบัติต่อลูกศิษย์ทุกคนอย่างเท่าเทียม", "ex2_en": "The dispute was resolved swiftly because both parties trusted the arbitrator to deliver a fair-minded judgment.", "ex2_hl": "fair-minded", "ex2_th": "ข้อพิพาทได้รับการแก้ไขอย่างรวดเร็วเนื่องจากทั้งสองฝ่ายต่างไว้วางใจให้อนุญาโตตุลาการเป็นผู้วินิจฉัยอย่างเป็นกลางและยุติธรรม", "category_id": "POSITIVE", "category_label": "ด้านบวก & คุณธรรม"}, {"id": 120, "vocab": "Flexible", "ipa": "/ˈfleksəbl/", "pos": "adj.", "thai_vocab": "ยืดหยุ่น, ปรับตัวง่าย, ไม่ยึดติด", "ex1_en": "He is flexible when plans change.", "ex1_hl": "flexible", "ex1_th": "เขาเป็นคนที่ยืดหยุ่นและปรับตัวได้ดีเมื่อแผนการเปลี่ยนแปลง", "ex2_en": "Modern technology companies offer flexible working hours and remote options to attract top global talent.", "ex2_hl": "flexible", "ex2_th": "บริษัทเทคโนโลยียุคใหม่เสนอเวลาทำงานที่ยืดหยุ่นและทางเลือกการทำงานจากระยะไกล เพื่อดึงดูดผู้มีความสามารถระดับแนวหน้าจากทั่วโลก", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 121, "vocab": "Focused", "ipa": "/ˈfoʊkəst/", "pos": "adj.", "thai_vocab": "มีสมาธิจดจ่อ, แน่วแน่, มีเป้าหมายชัดเจน", "ex1_en": "She remains focused on her studies.", "ex1_hl": "focused", "ex1_th": "เธอยังคงมีสมาธิจดจ่ออยู่กับการเรียนของเธอ", "ex2_en": "Even during high-pressure product launches, the lead engineer stayed focused on resolving critical server bottlenecks.", "ex2_hl": "focused", "ex2_th": "แม้ในช่วงเปิดตัวผลิตภัณฑ์ที่มีความกดดันสูง หัวหน้าวิศวกรก็ยังคงมุ่งมั่นจดจ่ออยู่กับการแก้ไขปัญหาคอขวดของเซิร์ฟเวอร์ตัวสำคัญ", "category_id": "WORK", "category_label": "การทำงาน & สติปัญญา"}, {"id": 122, "vocab": "Genuine", "ipa": "/ˈdʒɛnjuɪn/", "pos": "adj.", "thai_vocab": "จริงใจ, ไม่เสแสร้ง, แท้จริง", "ex1_en": "She is a genuine and sincere person.", "ex1_hl": "genuine", "ex1_th": "เธอเป็นคนจริงใจและซื่อตรง ไม่เสแสร้ง", "ex2_en": "Her genuine empathy for user feedback guided the product design team to create far more accessible software.", "ex2_hl": "genuine", "ex2_th": "ความใส่ใจอย่างจริงใจที่เธอมีต่อข้อเสนอแนะของผู้ใช้ช่วยชี้นำให้ทีมออกแบบพัฒนาซอฟต์แวร์ที่เข้าถึงง่ายขึ้นมาก", "category_id": "POSITIVE", "category_label": "ด้านบวก & คุณธรรม"}, {"id": 123, "vocab": "Gentle", "ipa": "/ˈdʒɛntl/", "pos": "adj.", "thai_vocab": "อ่อนโยน, สุภาพ, นุ่มนวล", "ex1_en": "The gentle nurse comforted the child.", "ex1_hl": "gentle", "ex1_th": "พยาบาลผู้อ่อนโยนช่วยปลอบประโลมเด็กน้อยให้คลายกังวล", "ex2_en": "The mentor offered gentle guidance rather than harsh criticism, helping junior developers build technical confidence.", "ex2_hl": "gentle", "ex2_th": "ที่ปรึกษาให้คำแนะนำอย่างนุ่มนวลแทนการวิจารณ์อย่างรุนแรง ซึ่งช่วยให้นักพัฒนารุ่นใหม่สร้างความมั่นใจในทักษะทางเทคนิคได้ดีขึ้น", "category_id": "SOCIAL", "category_label": "มนุษยสัมพันธ์ & สังคม"}, {"id": 124, "vocab": "Good-Natured", "ipa": "/ˌɡʊdˈneɪtʃərd/", "pos": "adj.", "thai_vocab": "อารมณ์ดี, จิตใจดี, อัธยาศัยดี", "ex1_en": "He is good-natured and rarely gets angry.", "ex1_hl": "good-natured", "ex1_th": "เขาเป็นคนอัธยาศัยดีและแทบจะไม่เคยโมโหใครเลย", "ex2_en": "Despite several challenging project revisions, his good-natured attitude kept team morale high throughout the quarter.", "ex2_hl": "good-natured", "ex2_th": "แม้จะต้องแก้ไขงานที่ท้าทายหลายรอบ ทัศนคติที่อารมณ์ดีของเขาก็ช่วยรักษาขวัญและกำลังใจของทีมไว้ได้ตลอดไตรมาส", "category_id": "SOCIAL", "category_label": "มนุษยสัมพันธ์ & สังคม"}, {"id": 125, "vocab": "Gracious", "ipa": "/ˈɡreɪʃəs/", "pos": "adj.", "thai_vocab": "มีมารยาทงดงาม, โอบอ้อมอารี, มีน้ำใจนักกีฬา", "ex1_en": "She was gracious to her guests.", "ex1_hl": "gracious", "ex1_th": "เธอให้การต้อนรับแขกเหรื่ออย่างอบอุ่นและเปี่ยมด้วยมารยาทอันงดงาม", "ex2_en": "The executive was remarkably gracious in defeat, warmly congratulating the rival firm on securing the research grant.", "ex2_hl": "gracious", "ex2_th": "ผู้บริหารแสดงสปิริตอย่างสง่างามเมื่อพ่ายแพ้ โดยกล่าวแสดงความยินดีจากใจจริงแก่บริษัทคู่แข่งที่ได้รับทุนวิจัยไป", "category_id": "SOCIAL", "category_label": "มนุษยสัมพันธ์ & สังคม"}, {"id": 126, "vocab": "Gregarious", "ipa": "/ɡrɪˈɡɛriəs/", "pos": "adj.", "thai_vocab": "ชอบเข้าสังคม, รักความสนุกสนานเฮฮา, มนุษยสัมพันธ์ดี", "ex1_en": "My uncle is gregarious and enjoys meeting people.", "ex1_hl": "gregarious", "ex1_th": "คุณลุงของฉันชอบเข้าสังคมและสนุกกับการได้พบปะผู้คนใหม่ ๆ เสมอ", "ex2_en": "Her gregarious personality made her an exceptional account executive who excelled at international networking events.", "ex2_hl": "gregarious", "ex2_th": "บุคลิกที่ชอบเข้าสังคมและเข้ากับคนง่ายทำให้เธอเป็นผู้บริหารฝ่ายดูแลลูกค้าที่โดดเด่นในงานสัมมนาสร้างเครือข่ายระดับนานาชาติ", "category_id": "SOCIAL", "category_label": "มนุษยสัมพันธ์ & สังคม"}, {"id": 127, "vocab": "Imaginative", "ipa": "/ɪˈmædʒɪnətɪv/", "pos": "adj.", "thai_vocab": "เปี่ยมด้วยจินตนาการ, ช่างคิดช่างประดิษฐ์, มีความคิดสร้างสรรค์", "ex1_en": "The imaginative child tells wonderful stories.", "ex1_hl": "imaginative", "ex1_th": "เด็กน้อยผู้เปี่ยมด้วยจินตนาการมักเล่านิทานที่น่ามหัศจรรย์เสมอ", "ex2_en": "The creative director proposed an imaginative marketing campaign that completely transformed the brand's public image.", "ex2_hl": "imaginative", "ex2_th": "ผู้อำนวยการฝ่ายสร้างสรรค์ได้นำเสนอแคมเปญการตลาดที่เปี่ยมด้วยจินตนาการ ซึ่งพลิกโฉมภาพลักษณ์ของแบรนด์ไปอย่างสิ้นเชิง", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 128, "vocab": "Impartial", "ipa": "/ɪmˈpɑːrʃl/", "pos": "adj.", "thai_vocab": "เป็นกลาง, ยุติธรรม, ไม่เข้าข้างฝ่ายใด", "ex1_en": "A judge must be impartial.", "ex1_hl": "impartial", "ex1_th": "ผู้พิพากษาจะต้องมีความเป็นกลางและยุติธรรม", "ex2_en": "To ensure academic integrity, the university appointed an impartial committee to investigate the plagiarism allegations.", "ex2_hl": "impartial", "ex2_th": "เพื่อรักษาความโปร่งใสทางวิชาการ มหาวิทยาลัยจึงแต่งตั้งคณะกรรมการที่เป็นกลางเข้ามาตรวจสอบข้อกล่าวหาเรื่องการคัดลอกผลงาน", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 129, "vocab": "Industrious", "ipa": "/ɪnˈdʌstriəs/", "pos": "adj.", "thai_vocab": "ขยันขันแข็ง, มานะบากบั่น, ตรากตรำทำงาน", "ex1_en": "She is industrious and always finishes her work.", "ex1_hl": "industrious", "ex1_th": "เธอเป็นคนขยันขันแข็งและทำงานเสร็จเรียบร้อยอยู่เสมอ", "ex2_en": "Thanks to an industrious team of data analysts, the comprehensive audit was delivered two weeks ahead of schedule.", "ex2_hl": "industrious", "ex2_th": "ด้วยความขยันขันแข็งของทีมนักวิเคราะห์ข้อมูล รายงานการตรวจสอบอย่างละเอียดจึงเสร็จสมบูรณ์ก่อนกำหนดถึงสองสัปดาห์", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 130, "vocab": "Insightful", "ipa": "/ˈɪnsaɪtfl/", "pos": "adj.", "thai_vocab": "ลึกซึ้ง, มีวิสัยทัศน์เฉียบคม, มองการณ์ไกล", "ex1_en": "His insightful comments helped the team.", "ex1_hl": "insightful", "ex1_th": "ความคิดเห็นอันลึกซึ้งและเฉียบคมของเขาช่วยทีมได้เป็นอย่างมาก", "ex2_en": "The senior economist provided an insightful analysis of emerging market trends during the annual leadership summit.", "ex2_hl": "insightful", "ex2_th": "นักเศรษฐศาสตร์อาวุโสได้นำเสนอการวิเคราะห์แนวโน้มตลาดเกิดใหม่อย่างเฉียบคมลึกซึ้งในการประชุมสุดยอดผู้นำประจำปี", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 131, "vocab": "Intuitive", "ipa": "/ɪnˈtuːɪtɪv/", "pos": "adj.", "thai_vocab": "มีสัญชาตญาณเฉียบแหลม, เข้าใจได้โดยสัญชาตญาณ, หยั่งรู้ได้เอง", "ex1_en": "She is intuitive about people's feelings.", "ex1_hl": "intuitive", "ex1_th": "เธอมีสัญชาตญาณที่ไวและเข้าใจความรู้สึกของผู้คนได้ดีเป็นพิเศษ", "ex2_en": "Her intuitive grasp of client expectations allowed her to anticipate project roadblocks before they escalated.", "ex2_hl": "intuitive", "ex2_th": "สัญชาตญาณที่เฉียบคมในการทำความเข้าใจความคาดหวังของลูกค้า ทำให้เธอสามารถคาดการณ์อุปสรรคของโครงการได้ล่วงหน้าก่อนที่จะบานปลาย", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 132, "vocab": "Kind-Hearted", "ipa": "/ˌkaɪndˈhɑːrtɪd/", "pos": "adj.", "thai_vocab": "ใจดี, มีเมตตากรุณา, จิตใจโอบอ้อมอารี", "ex1_en": "He is kind-hearted towards animals.", "ex1_hl": "kind-hearted", "ex1_th": "เขาเป็นคนจิตใจดีและมีความเมตตาต่อสัตว์เสมอ", "ex2_en": "The kind-hearted department head consistently made time to mentor struggling interns and support their career growth.", "ex2_hl": "kind-hearted", "ex2_th": "หัวหน้าแผนกผู้มีน้ำใจโอบอ้อมอารีมักสละเวลามาคอยให้คำแนะนำแก่นักศึกษาฝึกงานที่กำลังปรับตัวเพื่อช่วยส่งเสริมความก้าวหน้าในอาชีพ", "category_id": "POSITIVE", "category_label": "ด้านบวก & คุณธรรม"}, {"id": 133, "vocab": "Logical", "ipa": "/ˈlɑːdʒɪkl/", "pos": "adj.", "thai_vocab": "มีเหตุผล, คิดอย่างเป็นระบบและสมเหตุสมผล", "ex1_en": "He is logical when making decisions.", "ex1_hl": "logical", "ex1_th": "เขาเป็นคนมีเหตุมีผลเสมอเมื่อต้องทำการตัดสินใจ", "ex2_en": "She presented a logical, data-driven argument that convinced the board of directors to approve the expansion budget.", "ex2_hl": "logical", "ex2_th": "เธอได้นำเสนอข้อโต้แย้งที่มีเหตุผลและอิงข้อมูลเชิงประจักษ์ จนโน้มน้าวให้คณะกรรมการบริหารอนุมัติงบประมาณขยายธุรกิจได้สำเร็จ", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 134, "vocab": "Meticulous", "ipa": "/məˈtɪkjələs/", "pos": "adj.", "thai_vocab": "พิถีพิถัน, ละเอียดรอบคอบ, ประณีตทุกกระเบียดนิ้ว", "ex1_en": "The meticulous artist notices every detail.", "ex1_hl": "meticulous", "ex1_th": "ศิลปินผู้พิถีพิถันสังเกตเห็นทุกรายละเอียดเล็ก ๆ น้อย ๆ เสมอ", "ex2_en": "Through meticulous code reviews and automated testing, the quality assurance engineer eliminated critical security bugs.", "ex2_hl": "meticulous", "ex2_th": "ด้วยการตรวจทานโค้ดอย่างละเอียดรอบคอบและการทดสอบระบบอัตโนมัติ วิศวกรฝ่ายควบคุมคุณภาพจึงสามารถกำจัดช่องโหว่ความปลอดภัยที่สำคัญได้หมดสิ้น", "category_id": "WORK", "category_label": "การทำงาน & สติปัญญา"}, {"id": 135, "vocab": "Modest", "ipa": "/ˈmɑːdɪst/", "pos": "adj.", "thai_vocab": "ถ่อมตัว, ไม่โอ้อวด, เรียบง่ายไม่ถือตัว", "ex1_en": "Despite winning, she remains modest.", "ex1_hl": "modest", "ex1_th": "แม้จะได้รับชัยชนะ แต่เธอก็ยังคงถ่อมตนและไม่ถือตัว", "ex2_en": "Although she pioneered the breakthrough algorithm, the modest researcher credited the entire lab during the award ceremony.", "ex2_hl": "modest", "ex2_th": "แม้ว่าเธอจะเป็นผู้คิดค้นอัลกอริทึมชิ้นสำคัญ แต่นักวิจัยผู้ถ่อมตนท่านนี้กลับยกย่องทีมงานทุกคนในห้องปฏิบัติการระหว่างพิธีรับรางวัล", "category_id": "POSITIVE", "category_label": "ด้านบวก & คุณธรรม"}, {"id": 136, "vocab": "Orderly", "ipa": "/ˈɔːrdərli/", "pos": "adj.", "thai_vocab": "เป็นระเบียบเรียบร้อย, มีแบบแผน, รักความมีระเบียบ", "ex1_en": "She is orderly and keeps her desk tidy.", "ex1_hl": "orderly", "ex1_th": "เธอเป็นคนมีระเบียบวินัยและดูแลโต๊ะทำงานให้สะอาดเรียบร้อยอยู่เสมอ", "ex2_en": "The operations manager established an orderly workflow that dramatically streamlined supply chain logistics.", "ex2_hl": "orderly", "ex2_th": "ผู้จัดการฝ่ายปฏิบัติการได้วางระบบขั้นตอนการทำงานอย่างเป็นระเบียบแบบแผน ซึ่งช่วยเพิ่มประสิทธิภาพของระบบโลจิสติกส์ได้อย่างมหาศาล", "category_id": "WORK", "category_label": "การทำงาน & สติปัญญา"}, {"id": 137, "vocab": "Passionate", "ipa": "/ˈpæʃənət/", "pos": "adj.", "thai_vocab": "เปี่ยมด้วยความหลงใหล, กระตือรือร้น, มีใจรักอย่างแรงกล้า", "ex1_en": "He is passionate about teaching.", "ex1_hl": "passionate", "ex1_th": "เขามีใจรักและเปี่ยมด้วยความหลงใหลในอาชีพการสอนอย่างแท้จริง", "ex2_en": "She gave a passionate keynote presentation on renewable energy that inspired hundreds of delegates to take immediate action.", "ex2_hl": "passionate", "ex2_th": "เธอได้กล่าวปาฐกถาเรื่องพลังงานหมุนเวียนด้วยความมุ่งมั่นและแรงกล้า ซึ่งสร้างแรงบันดาลใจให้ผู้เข้าร่วมประชุมหลายร้อยคนลงมือทำทันที", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 138, "vocab": "Persistent", "ipa": "/pərˈsɪstənt/", "pos": "adj.", "thai_vocab": "ไม่ย่อท้อ, มุ่งมั่นพากเพียร, ดื้อรั้นไม่ยอมแพ้", "ex1_en": "The persistent learner never gives up.", "ex1_hl": "persistent", "ex1_th": "ผู้เรียนที่มีความเพียรพยายามมุ่งมั่นจะไม่ยอมแพ้ง่าย ๆ", "ex2_en": "After months of persistent negotiation, the procurement team secured substantial enterprise discounts from the vendor.", "ex2_hl": "persistent", "ex2_th": "หลังจากการเจรจาอย่างไม่ย่อท้ออยู่นานหลายเดือน ทีมจัดซื้อก็สามารถต่อรองขอส่วนลดระดับองค์กรก้อนใหญ่จากคู่ค้าได้สำเร็จ", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 139, "vocab": "Plucky", "ipa": "/ˈplʌki/", "pos": "adj.", "thai_vocab": "ใจเด็ด, กล้าหาญชาญชัย, สู้ไม่ถอย", "ex1_en": "The plucky girl faced the challenge.", "ex1_hl": "plucky", "ex1_th": "เด็กหญิงใจเด็ดกล้าเผชิญหน้ากับความท้าทายโดยไม่หวาดหวั่น", "ex2_en": "The plucky tech startup successfully challenged established industry giants by introducing disruptive AI solutions.", "ex2_hl": "plucky", "ex2_th": "สตาร์ทอัพเทคโนโลยีใจเด็ดกล้าเปิดศึกท้าชนยักษ์ใหญ่ในอุตสาหกรรมด้วยการเปิดตัวนวัตกรรม AI ที่เข้ามาเปลี่ยนวงการ", "category_id": "DRIVE", "category_label": "ความมุ่งมั่น & ความกล้า"}, {"id": 140, "vocab": "Principled", "ipa": "/ˈprɪnsəpld/", "pos": "adj.", "thai_vocab": "มีหลักการมั่นคง, ยึดมั่นในคุณธรรม, ซื่อสัตย์ในอุดมการณ์", "ex1_en": "She is principled and always tells the truth.", "ex1_hl": "principled", "ex1_th": "เธอเป็นคนมีหลักการและพูดความจริงเสมอ", "ex2_en": "The principled CFO resigned rather than endorse financial statements that contained misleading accounting practices.", "ex2_hl": "principled", "ex2_th": "ประธานเจ้าหน้าที่ฝ่ายการเงินผู้ยึดมั่นในหลักการยอมลาออกจากตำแหน่ง แทนที่จะลงนามรับรองงบการเงินที่มีการตกแต่งบัญชีที่ไม่โปร่งใส", "category_id": "POSITIVE", "category_label": "ด้านบวก & คุณธรรม"}, {"id": 141, "vocab": "Proactive", "ipa": "/proʊˈæktɪv/", "pos": "adj.", "thai_vocab": "เชิงรุก, ชิงลงมือก่อน, กระตือรือร้นแก้ปัญหาล่วงหน้า", "ex1_en": "He is proactive about solving problems.", "ex1_hl": "proactive", "ex1_th": "เขาเป็นคนทำงานเชิงรุกที่คอยมองหาทางแก้ไขปัญหาก่อนที่มันจะเกิด", "ex2_en": "A proactive compliance officer identifies regulatory risks before government auditors issue formal penalties.", "ex2_hl": "proactive", "ex2_th": "เจ้าหน้าที่ฝ่ายกำกับดูแลการปฏิบัติงานที่ทำงานเชิงรุกจะตรวจจับความเสี่ยงด้านกฎระเบียบได้ล่วงหน้า ก่อนที่หน่วยงานรัฐจะสั่งปรับเงิน", "category_id": "WORK", "category_label": "การทำงาน & สติปัญญา"}, {"id": 142, "vocab": "Resourceful", "ipa": "/ˈriːsɔːrsfl/", "pos": "adj.", "thai_vocab": "ฉลาดแก้ปัญหา, มีไหวพริบปฏิภาณ, พลิกแพลงแก้ไขสถานการณ์ได้ดี", "ex1_en": "The resourceful student found a solution.", "ex1_hl": "resourceful", "ex1_th": "นักเรียนผู้ฉลาดแก้ปัญหาและรู้จักพลิกแพลงสามารถค้นพบทางออกได้สำเร็จ", "ex2_en": "When supply chain disruptions delayed vital parts, the resourceful lab technician repurposed existing components to keep experiments running.", "ex2_hl": "resourceful", "ex2_th": "เมื่อปัญหาห่วงโซ่อุปทานทำให้ชิ้นส่วนสำคัญล่าช้า นักเทคนิคห้องปฏิบัติการผู้มีไหวพริบจึงนำอุปกรณ์เดิมมาดัดแปลงเพื่อให้การทดลองดำเนินต่อไปได้", "category_id": "WORK", "category_label": "การทำงาน & สติปัญญา"}, {"id": 143, "vocab": "Self-Disciplined", "ipa": "/ˌsɛlfˈdɪsəplɪnd/", "pos": "adj.", "thai_vocab": "มีวินัยในตนเอง, ควบคุมตนเองได้ดี", "ex1_en": "She is self-disciplined with her routine.", "ex1_hl": "self-disciplined", "ex1_th": "เธอเป็นคนมีวินัยในตนเองอย่างยิ่งในการปฏิบัติตามกิจวัตรประจำวัน", "ex2_en": "Remote professionals must remain highly self-disciplined to balance flexible working hours with strict project deadlines.", "ex2_hl": "self-disciplined", "ex2_th": "คนทำงานทางไกลจำเป็นต้องมีวินัยในตนเองสูงมาก เพื่อรักษาสมดุลระหว่างเวลาทำงานที่ยืดหยุ่นกับกำหนดส่งงานที่เข้มงวด", "category_id": "WORK", "category_label": "การทำงาน & สติปัญญา"}, {"id": 144, "vocab": "Envious", "ipa": "/ˈɛnviəs/", "pos": "adj.", "thai_vocab": "อิจฉา, ริษยา, ตาร้อน", "ex1_en": "She is envious of others.", "ex1_hl": "envious", "ex1_th": "เธอมักรู้สึกอิจฉาและเปรียบเทียบตัวเองกับผู้อื่น", "ex2_en": "Colleagues grew envious of his rapid promotion, unaware of the countless overtime hours he had invested behind the scenes.", "ex2_hl": "envious", "ex2_th": "เพื่อนร่วมงานเริ่มรู้สึกอิจฉาการเลื่อนตำแหน่งอันรวดเร็วของเขา โดยไม่รู้เลยว่าเขาต้องทุ่มเททำงานล่วงเวลาอยู่เบื้องหลังมากมายเพียงใด", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 145, "vocab": "Faithful", "ipa": "/ˈfeɪθfl/", "pos": "adj.", "thai_vocab": "ซื่อสัตย์ภักดี, รักษาคำพูด, ไว้ใจได้", "ex1_en": "He is faithful to his promises.", "ex1_hl": "faithful", "ex1_th": "เขาเป็นคนรักษาคำพูดและซื่อตรงต่อคำสัญญาเสมอ", "ex2_en": "She remained a faithful mentor to her former students, regularly reviewing their research proposals even after they graduated.", "ex2_hl": "faithful", "ex2_th": "เธอยังคงเป็นอาจารย์ที่ปรึกษาที่ซื่อสัตย์และทุ่มเทให้แก่ลูกศิษย์เสมอ โดยคอยตรวจข้อเสนอโครงการวิจัยให้เป็นประจำแม้พวกเขาจะสำเร็จการศึกษาไปแล้ว", "category_id": "POSITIVE", "category_label": "ด้านบวก & คุณธรรม"}, {"id": 146, "vocab": "Realistic", "ipa": "/ˌriːəˈlɪstɪk/", "pos": "adj.", "thai_vocab": "มองโลกตามความเป็นจริง, สมจริง, อิงความจริง", "ex1_en": "She is realistic and knows the truth.", "ex1_hl": "realistic", "ex1_th": "เธอเป็นคนมองโลกตามความเป็นจริงและยอมรับข้อเท็จจริงเสมอ", "ex2_en": "Setting realistic project timelines prevents team burnout and ensures consistent software quality.", "ex2_hl": "realistic", "ex2_th": "การกำหนดกรอบเวลาการทำงานที่สอดคล้องกับความเป็นจริงช่วยป้องกันไม่ให้ทีมงานหมดไฟ และทำให้ซอฟต์แวร์มีคุณภาพสม่ำเสมอ", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 147, "vocab": "Dreamer", "ipa": "/ˈdriːmər/", "pos": "n.", "thai_vocab": "นักฝัน, ช่างฝัน, ผู้มีจินตนาการกว้างไกล", "ex1_en": "He is a dreamer and loves big dreams.", "ex1_hl": "dreamer", "ex1_th": "เขาเป็นคนช่างฝันและมักวาดฝันถึงเป้าหมายที่ยิ่งใหญ่เสมอ", "ex2_en": "While skeptics labeled him an impractical dreamer, his bold vision eventually laid the groundwork for commercial space travel.", "ex2_hl": "dreamer", "ex2_th": "แม้ผู้คนที่ไม่เห็นด้วยจะมองว่าเขาเป็นแค่นักฝันที่เพ้อเจ้อ แต่วิสัยทัศน์ที่กล้าหาญของเขากลับกลายเป็นรากฐานของการเดินทางสู่อวกาศเชิงพาณิชย์ในที่สุด", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 148, "vocab": "Idealistic", "ipa": "/ˌaɪdiəˈlɪstɪk/", "pos": "adj.", "thai_vocab": "ยึดมั่นในอุดมคติ, มองโลกในอุดมคติ", "ex1_en": "He is idealistic and believes in ideals.", "ex1_hl": "idealistic", "ex1_th": "เขาเป็นคนยึดมั่นในอุดมคติและเชื่อมั่นในความถูกต้องดีงาม", "ex2_en": "Although critics warned that her environmental policy was overly idealistic, she successfully negotiated carbon reduction targets with local industries.", "ex2_hl": "idealistic", "ex2_th": "แม้ผู้วิจารณ์จะเตือนว่านโยบายสิ่งแวดล้อมของเธอดูเป็นอุดมคติมากเกินไป แต่เธอก็สามารถเจรจาเป้าหมายการลดคาร์บอนกับภาคอุตสาหกรรมในท้องถิ่นได้สำเร็จ", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 149, "vocab": "Reckless", "ipa": "/ˈrɛkləs/", "pos": "adj.", "thai_vocab": "มุทะลุ, บุ่มบ่าม, ไม่ระมัดระวัง, สะเพร่า", "ex1_en": "He is reckless and takes risks.", "ex1_hl": "reckless", "ex1_th": "เขาเป็นคนบุ่มบ่ามมุทะลุและชอบเสี่ยงโดยไม่ระมัดระวัง", "ex2_en": "The board ousted the CEO after a series of reckless financial gambles nearly drove the investment firm into bankruptcy.", "ex2_hl": "reckless", "ex2_th": "คณะกรรมการมีมติปลดประธานเจ้าหน้าที่บริหาร หลังจากที่การตัดสินใจทางการเงินที่เสี่ยงบุ่มบ่ามหลายครั้งเกือบทำให้บริษัทการลงทุนต้องล้มละลาย", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 150, "vocab": "Daring", "ipa": "/ˈdɛrɪŋ/", "pos": "adj.", "thai_vocab": "กล้าได้กล้าเสีย, กล้าหาญ, ท้าทาย", "ex1_en": "She is daring and never afraid.", "ex1_hl": "daring", "ex1_th": "เธอเป็นคนกล้าได้กล้าเสียและไม่เคยเกรงกลัวต่อสิ่งใด", "ex2_en": "The startup adopted a daring business model by offering open-source enterprise software while charging solely for premium support.", "ex2_hl": "daring", "ex2_th": "สตาร์ทอัพแห่งนี้ใช้โมเดลธุรกิจที่กล้าได้กล้าเสีย ด้วยการแจกซอฟต์แวร์ระดับองค์กรแบบโอเพนซอร์สฟรี แล้วคิดค่าบริการเฉพาะการซัพพอร์ตระดับพรีเมียมเท่านั้น", "category_id": "DRIVE", "category_label": "ความมุ่งมั่น & ความกล้า"}, {"id": 151, "vocab": "Bold", "ipa": "/boʊld/", "pos": "adj.", "thai_vocab": "กล้าหาญ, มั่นใจเด็ดเดี่ยว, โดดเด่นกล้าแสดงออก", "ex1_en": "He is bold and speaks his mind.", "ex1_hl": "bold", "ex1_th": "เขาเป็นคนกล้าหาญเด็ดเดี่ยวและกล้าพูดสิ่งที่คิดอย่างตรงไปตรงมา", "ex2_en": "The young architect made a bold design proposal that challenged traditional conventions and won international acclaim.", "ex2_hl": "bold", "ex2_th": "สถาปนิกหนุ่มได้นำเสนอแบบอาคารอันกล้าหาญที่ท้าทายขนบเดิม ๆ จนคว้ารางวัลยกย่องระดับนานาชาติมาครองได้", "category_id": "DRIVE", "category_label": "ความมุ่งมั่น & ความกล้า"}, {"id": 152, "vocab": "Tough", "ipa": "/tʌf/", "pos": "adj.", "thai_vocab": "เข้มแข็ง, ทรหด, อึด, แข็งแกร่ง", "ex1_en": "He is tough and never gives up.", "ex1_hl": "tough", "ex1_th": "เขาเป็นคนเข้มแข็งทรหดและไม่เคยยอมแพ้ต่อความยากลำบาก", "ex2_en": "As a tough and experienced negotiator, she secured favorable contract terms despite intense pressure from foreign suppliers.", "ex2_hl": "tough", "ex2_th": "ในฐานะนักเจรจาที่เข้มแข็งและเคี่ยวกรำประสบการณ์ เธอสามารถคว้าเงื่อนไขสัญญาที่ได้เปรียบมาได้แม้จะเผชิญแรงกดดันอย่างหนักจากคู่ค้าต่างชาติ", "category_id": "DRIVE", "category_label": "ความมุ่งมั่น & ความกล้า"}, {"id": 153, "vocab": "Democratic", "ipa": "/ˌdɛməˈkrætɪk/", "pos": "adj.", "thai_vocab": "เปิดกว้างรับฟัง, ประชาธิปไตย, ยึดเสียงส่วนใหญ่", "ex1_en": "She is democratic in her decisions.", "ex1_hl": "democratic", "ex1_th": "เธอเปิดกว้างรับฟังความคิดเห็นและใช้กระบวนการมีส่วนร่วมในการตัดสินใจเสมอ", "ex2_en": "The department fostered a democratic workplace culture where junior researchers freely voted on lab policies alongside senior professors.", "ex2_hl": "democratic", "ex2_th": "ภาควิชาได้ส่งเสริมวัฒนธรรมการทำงานที่เปิดกว้างและเป็นประชาธิปไตย ซึ่งนักวิจัยรุ่นใหม่สามารถร่วมออกเสียงกำหนดนโยบายห้องปฏิบัติการเคียงบ่าเคียงไหล่กับอาจารย์อาวุโส", "category_id": "POSITIVE", "category_label": "ด้านบวก & คุณธรรม"}, {"id": 154, "vocab": "Dynamic", "ipa": "/daɪˈnæmɪk/", "pos": "adj.", "thai_vocab": "กระฉับกระเฉง, คล่องแคล่วเปี่ยมพลัง, ไม่หยุดนิ่ง", "ex1_en": "She is dynamic and full of energy.", "ex1_hl": "dynamic", "ex1_th": "เธอเป็นคนกระฉับกระเฉง คล่องแคล่ว และเปี่ยมล้นไปด้วยพลังงาน", "ex2_en": "Our company requires a dynamic product manager capable of pivoting product strategies quickly in an evolving digital market.", "ex2_hl": "dynamic", "ex2_th": "บริษัทของเราต้องการผู้จัดการฝ่ายผลิตภัณฑ์ที่คล่องแคล่วและตื่นตัวอยู่เสมอ เพื่อปรับเปลี่ยนกลยุทธ์สินค้าได้อย่างรวดเร็วในตลาดยุคดิจิทัลที่มีการเปลี่ยนแปลงตลอดเวลา", "category_id": "DRIVE", "category_label": "ความมุ่งมั่น & ความกล้า"}, {"id": 155, "vocab": "Eager", "ipa": "/ˈiːɡər/", "pos": "adj.", "thai_vocab": "กระตือรือร้น, ใคร่รู้, มีความปรารถนาอย่างแรงกล้า", "ex1_en": "He is eager to learn new things.", "ex1_hl": "eager", "ex1_th": "เขามีความกระตือรือร้นอย่างยิ่งที่จะเรียนรู้สิ่งใหม่ ๆ อยู่เสมอ", "ex2_en": "The newly hired analysts were eager to contribute to the financial forecasting model during their first week on the trading desk.", "ex2_hl": "eager", "ex2_th": "นักวิเคราะห์ที่เพิ่งรับเข้ามาใหม่ต่างกระตือรือร้นที่จะมีส่วนร่วมในการพัฒนาแบบจำลองการคาดการณ์ทางการเงินตั้งแต่สัปดาห์แรกของการทำงาน", "category_id": "DRIVE", "category_label": "ความมุ่งมั่น & ความกล้า"}, {"id": 156, "vocab": "Earnest", "ipa": "/ˈɜːrnɪst/", "pos": "adj.", "thai_vocab": "จริงจัง, ตั้งอกตั้งใจ, ซื่อตรงจริงใจ", "ex1_en": "She is earnest in her work.", "ex1_hl": "earnest", "ex1_th": "เธอมีความจริงจังและตั้งอกตั้งใจในการทำงานอยู่เสมอ", "ex2_en": "His earnest dedication to community outreach earned him the respect of neighborhood leaders and city council members alike.", "ex2_hl": "earnest", "ex2_th": "ความทุ่มเทอย่างจริงจังและจริงใจในการทำงานร่วมกับชุมชน ทำให้เขาได้รับความเคารพนับถือจากทั้งผู้นำชุมชนและสมาชิกสภาเมือง", "category_id": "DRIVE", "category_label": "ความมุ่งมั่น & ความกล้า"}, {"id": 157, "vocab": "Efficient", "ipa": "/ɪˈfɪʃnt/", "pos": "adj.", "thai_vocab": "มีประสิทธิภาพ, ทำงานคล่องและได้ผลคุ้มค่า, จัดการเวลาได้ยอดเยี่ยม", "ex1_en": "He is efficient and saves time.", "ex1_hl": "efficient", "ex1_th": "เขาทำงานได้อย่างมีประสิทธิภาพและประหยัดเวลาได้มากเสมอ", "ex2_en": "By automating repetitive accounting tasks, the efficient financial controller cut quarterly reporting time in half.", "ex2_hl": "efficient", "ex2_th": "ด้วยการเปลี่ยนขั้นตอนงานบัญชีที่ซ้ำซากให้เป็นระบบอัตโนมัติ ผู้ควบคุมฝ่ายการเงินที่มีประสิทธิภาพจึงลดเวลาทำรายงานประจำไตรมาสลงได้ถึงครึ่งหนึ่ง", "category_id": "WORK", "category_label": "การทำงาน & สติปัญญา"}, {"id": 158, "vocab": "Elusive", "ipa": "/ɪˈluːsɪv/", "pos": "adj.", "thai_vocab": "ลึกลับจับตัวยาก, เข้าถึงยาก, เอาแน่เอานอนไม่ได้", "ex1_en": "He is elusive and hard to catch.", "ex1_hl": "elusive", "ex1_th": "เขาเป็นคนลึกลับจับตัวยากและเข้าถึงตัวได้ไม่ง่ายเลย", "ex2_en": "The elusive lead researcher rarely attended social conferences, preferring to spend all his hours sequestered in the particle physics lab.", "ex2_hl": "elusive", "ex2_th": "หัวหน้านักวิจัยผู้รักสันโดษและเข้าถึงตัวได้ยากแทบไม่เคยเข้าร่วมงานสังสรรค์ทางวิชาการเลย เพราะชอบเก็บตัวทำงานวิจัยอยู่ในห้องปฏิบัติการฟิสิกส์อนุภาคมากกว่า", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 159, "vocab": "Equitable", "ipa": "/ˈɛkwɪtəbl/", "pos": "adj.", "thai_vocab": "เป็นธรรม, เสมอภาค, ยุติธรรมทั่วถึง", "ex1_en": "He is equitable in his judgment.", "ex1_hl": "equitable", "ex1_th": "เขาเป็นคนเที่ยงธรรมและให้ความยุติธรรมเสมอในการตัดสิน", "ex2_en": "The human resources director implemented an equitable compensation framework that bridged historical wage gaps across all regional offices.", "ex2_hl": "equitable", "ex2_th": "ผู้อำนวยการฝ่ายทรัพยากรบุคคลได้นำโครงสร้างค่าตอบแทนที่เป็นธรรมและเสมอภาคมาใช้ เพื่อลดช่องว่างความเหลื่อมล้ำของเงินเดือนระหว่างสำนักงานทุกภูมิภาค", "category_id": "POSITIVE", "category_label": "ด้านบวก & คุณธรรม"}, {"id": 160, "vocab": "Extraverted", "ipa": "/ˈɛkstrəvɜːrtɪd/", "pos": "adj.", "thai_vocab": "เปิดเผย, ชอบเข้าสังคม, เปิดใจรับผู้อื่น (Extrovert)", "ex1_en": "She is extraverted and outgoing.", "ex1_hl": "extraverted", "ex1_th": "เธอเป็นคนเปิดเผยและชอบเข้าสังคมอย่างมาก", "ex2_en": "His extraverted nature and effortless charisma helped him build robust partnerships with prospective investors across Southeast Asia.", "ex2_hl": "extraverted", "ex2_th": "บุคลิกภาพที่เปิดเผย ชอบเข้าสังคม และมีเสน่ห์อย่างเป็นธรรมชาติช่วยให้เขาสร้างความสัมพันธ์พันธมิตรที่แข็งแกร่งกับว่าที่นักลงทุนทั่วภูมิภาคเอเชียตะวันออกเฉียงใต้ได้สำเร็จ", "category_id": "SOCIAL", "category_label": "มนุษยสัมพันธ์ & สังคม"}, {"id": 161, "vocab": "Fearless", "ipa": "/ˈfɪrləs/", "pos": "adj.", "thai_vocab": "กล้าหาญ, ไม่เกรงกลัว, ไร้ความกลัว", "ex1_en": "She is fearless in facing challenges.", "ex1_hl": "fearless", "ex1_th": "เธอเป็นคนกล้าหาญและไม่เคยเกรงกลัวในการเผชิญหน้ากับความท้าทาย", "ex2_en": "The fearless investigative journalist uncovered corporate corruption despite facing severe legal threats.", "ex2_hl": "fearless", "ex2_th": "นักข่าวสืบสวนสอบสวนผู้กล้าหาญเปิดโปงการทุจริตในองค์กร แม้จะต้องเผชิญกับการข่มขู่ทางกฎหมายอย่างหนักก็ตาม", "category_id": "DRIVE", "category_label": "ความมุ่งมั่น & ความกล้า"}, {"id": 162, "vocab": "Innovative", "ipa": "/ˈɪnəveɪtɪv/", "pos": "adj.", "thai_vocab": "มีความคิดสร้างสรรค์, ล้ำสมัย, ช่างคิดค้นสิ่งใหม่", "ex1_en": "He is innovative and creative.", "ex1_hl": "innovative", "ex1_th": "เขาเป็นคนช่างคิดค้นสิ่งใหม่และมีความคิดสร้างสรรค์", "ex2_en": "Our research department relies on innovative engineering techniques to reduce industrial waste by forty percent.", "ex2_hl": "innovative", "ex2_th": "แผนกวิจัยของเราพึ่งพาเทคนิคทางวิศวกรรมที่ล้ำสมัย เพื่อลดปริมาณของเสียจากกระบวนการผลิตทางอุตสาหกรรมลงถึงสี่สิบเปอร์เซ็นต์", "category_id": "WORK", "category_label": "การทำงาน & สติปัญญา"}, {"id": 163, "vocab": "Intelligent", "ipa": "/ɪnˈtelɪdʒənt/", "pos": "adj.", "thai_vocab": "ฉลาด, มีไหวพริบ, มีสติปัญญาเฉียบแหลม", "ex1_en": "She is intelligent and quick-witted.", "ex1_hl": "intelligent", "ex1_th": "เธอเป็นคนฉลาดและมีไหวพริบปฏิภาณที่รวดเร็ว", "ex2_en": "She is an intelligent strategist who accurately anticipates regulatory shifts and market trends.", "ex2_hl": "intelligent", "ex2_th": "เธอเป็นนักวางกลยุทธ์ที่เฉลียวฉลาด ซึ่งสามารถคาดการณ์การเปลี่ยนแปลงของกฎระเบียบและแนวโน้มตลาดได้อย่างแม่นยำ", "category_id": "WORK", "category_label": "การทำงาน & สติปัญญา"}, {"id": 164, "vocab": "Joyful", "ipa": "/ˈdʒɔɪfl/", "pos": "adj.", "thai_vocab": "ร่าเริง, เบิกบานใจ, เปี่ยมด้วยความสุข", "ex1_en": "He is joyful and spreads happiness.", "ex1_hl": "joyful", "ex1_th": "เขาเป็นคนร่าเริงและมักส่งต่อความสุขให้แก่ผู้อื่นเสมอ", "ex2_en": "Her joyful presence and contagious enthusiasm boosted team morale during long collaborative workshops.", "ex2_hl": "joyful", "ex2_th": "บุคลิกที่สดใสร่าเริงและความกระตือรือร้นที่ส่งถึงกันได้ของเธอ ช่วยสร้างขวัญกำลังใจให้แก่ทีมในระหว่างการประชุมเชิงปฏิบัติการที่ยาวนาน", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 165, "vocab": "Motivated", "ipa": "/ˈmoʊtɪveɪtɪd/", "pos": "adj.", "thai_vocab": "มีแรงจูงใจ, กระตือรือร้น, มีแรงผลักดัน", "ex1_en": "He is motivated to achieve more.", "ex1_hl": "motivated", "ex1_th": "เขามีแรงจูงใจและมุ่งมั่นที่จะประสบความสำเร็จให้มากยิ่งขึ้น", "ex2_en": "The university honors program recruits highly motivated students who are eager to conduct independent scientific research.", "ex2_hl": "motivated", "ex2_th": "โครงการเกียรตินิยมของมหาวิทยาลัยเปิดรับนักศึกษาที่มีแรงจูงใจสูงและกระตือรือร้นที่จะทำวิจัยทางวิทยาศาสตร์อย่างอิสระ", "category_id": "DRIVE", "category_label": "ความมุ่งมั่น & ความกล้า"}, {"id": 166, "vocab": "Nurturing", "ipa": "/ˈnɜːrtʃərɪŋ/", "pos": "adj.", "thai_vocab": "เอาใจใส่ดูแล, คอยเกื้อหนุน, ส่งเสริมและทะนุถนอม", "ex1_en": "She is nurturing towards her family.", "ex1_hl": "nurturing", "ex1_th": "เธอคอยดูแลเอาใจใส่และทะนุถนอมครอบครัวของเธอเป็นอย่างดี", "ex2_en": "The laboratory director established a nurturing environment where junior scientists felt encouraged to propose bold experiments.", "ex2_hl": "nurturing", "ex2_th": "ผู้อำนวยการห้องปฏิบัติการสร้างบรรยากาศที่เกื้อหนุนและส่งเสริม ทำให้นักวิทยาศาสตร์รุ่นใหม่กล้าเสนอแนวคิดการทดลองที่ท้าทาย", "category_id": "SOCIAL", "category_label": "มนุษยสัมพันธ์ & สังคม"}, {"id": 167, "vocab": "Organized", "ipa": "/ˈɔːrɡənaɪzd/", "pos": "adj.", "thai_vocab": "มีระเบียบ, จัดการเป็นระบบ, มีแบบแผน", "ex1_en": "She is organized and well-planned.", "ex1_hl": "organized", "ex1_th": "เธอเป็นคนมีระเบียบและวางแผนการทำงานอย่างรอบคอบ", "ex2_en": "Being organized enabled the event coordinator to manage dozens of international guest speakers without scheduling conflicts.", "ex2_hl": "organized", "ex2_th": "การทำงานอย่างมีระเบียบแบบแผนช่วยให้ผู้ประสานงานสามารถจัดการตารางวิทยากรรับเชิญจากต่างประเทศหลายสิบท่านได้โดยไม่มีเวลาชนกัน", "category_id": "WORK", "category_label": "การทำงาน & สติปัญญา"}, {"id": 168, "vocab": "Self-Assured", "ipa": "/ˌself əˈʃʊrd/", "pos": "adj.", "thai_vocab": "เชื่อมั่นในตนเอง, มั่นใจในตัวเอง, สุขุมมั่นคง", "ex1_en": "She is self-assured and confident.", "ex1_hl": "self-assured", "ex1_th": "เธอเป็นคนเชื่อมั่นในตนเองและเต็มไปด้วยความมั่นใจ", "ex2_en": "His self-assured presentation style helped persuade senior executives to approve the ambitious expansion plan.", "ex2_hl": "self-assured", "ex2_th": "ลีลาการนำเสนอที่สุขุมและเชื่อมั่นในตนเองของเขาช่วยโน้มน้าวให้ผู้บริหารระดับสูงอนุมัติแผนการขยายธุรกิจที่ท้าทายนี้", "category_id": "DRIVE", "category_label": "ความมุ่งมั่น & ความกล้า"}, {"id": 169, "vocab": "Warm-Hearted", "ipa": "/ˌwɔːrm ˈhɑːrtɪd/", "pos": "adj.", "thai_vocab": "มีน้ำใจ, อบอุ่น, โอบอ้อมอารี", "ex1_en": "She is warm-hearted and caring.", "ex1_hl": "warm-hearted", "ex1_th": "เธอเป็นคนมีน้ำใจอบอุ่นและคอยดูแลเอาใจใส่ผู้อื่น", "ex2_en": "The community leader is known as a warm-hearted advocate who regularly organizes food drives for displaced families.", "ex2_hl": "warm-hearted", "ex2_th": "ผู้นำชุมชนท่านนี้เป็นที่รู้จักในฐานะผู้มีจิตใจโอบอ้อมอารีและมักจัดกิจกรรมระดมอาหารเพื่อช่วยเหลือครอบครัวผู้พลัดถิ่นอยู่เสมอ", "category_id": "SOCIAL", "category_label": "มนุษยสัมพันธ์ & สังคม"}, {"id": 170, "vocab": "Composed", "ipa": "/kəmˈpoʊzd/", "pos": "adj.", "thai_vocab": "สุขุม, นิ่งสงบ, ควบคุมสติอารมณ์ได้ดี", "ex1_en": "He is composed in difficult situations.", "ex1_hl": "composed", "ex1_th": "เขายังคงสุขุมและนิ่งสงบได้ดีในสถานการณ์ที่ยากลำบาก", "ex2_en": "The chief negotiator remained composed during hours of intense bargaining, ensuring that talks did not break down.", "ex2_hl": "composed", "ex2_th": "หัวหน้าคณะเจรจายังคงสุขุมและมีสติตลอดการต่อรองอันตึงเครียดนานหลายชั่วโมง ซึ่งช่วยให้การพูดคุยไม่ล้มเหลวลงกลางคัน", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 171, "vocab": "Accommodating", "ipa": "/əˈkɑːmədeɪtɪŋ/", "pos": "adj.", "thai_vocab": "โอนอ่อนผ่อนตาม, ชอบช่วยเหลือ, พร้อมปรับตัวอำนวยความสะดวก", "ex1_en": "He is accommodating to others.", "ex1_hl": "accommodating", "ex1_th": "เขาเป็นคนชอบช่วยเหลือและพร้อมปรับตัวอำนวยความสะดวกแก่ผู้อื่นอยู่เสมอ", "ex2_en": "The project manager was very accommodating, readily shifting deadlines to support team members facing family emergencies.", "ex2_hl": "accommodating", "ex2_th": "ผู้จัดการโครงการมีความโอบอ้อมอารีและยืดหยุ่นช่วยเหลือ โดยยินดีเลื่อนกำหนดส่งงานเพื่อสนับสนุนสมาชิกในทีมที่ติดธุระฉุกเฉินทางครอบครัว", "category_id": "SOCIAL", "category_label": "มนุษยสัมพันธ์ & สังคม"}, {"id": 172, "vocab": "Neat", "ipa": "/niːt/", "pos": "adj.", "thai_vocab": "เรียบร้อย, สะอาดสะอ้าน, เป็นระเบียบ", "ex1_en": "She is neat and well-groomed.", "ex1_hl": "neat", "ex1_th": "เธอแต่งกายเรียบร้อยและดูสะอาดสะอ้านหมดจด", "ex2_en": "His neat data tables and comprehensive documentation made technical handoffs between shifts remarkably seamless.", "ex2_hl": "neat", "ex2_th": "ตารางข้อมูลที่เป็นระเบียบเรียบร้อยและเอกสารประกอบที่ครอบคลุมของเขา ช่วยให้การส่งต่องานทางเทคนิคระหว่างกะเป็นไปอย่างราบรื่นไร้รอยต่อ", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 173, "vocab": "Progressive", "ipa": "/prəˈɡresɪv/", "pos": "adj.", "thai_vocab": "หัวก้าวหน้า, พัฒนาก้าวหน้า, เปิดรับความเปลี่ยนแปลง", "ex1_en": "She is progressive and welcomes change.", "ex1_hl": "progressive", "ex1_th": "เธอเป็นคนหัวก้าวหน้าและพร้อมเปิดรับความเปลี่ยนแปลงใหม่ๆ เสมอ", "ex2_en": "The university adopted progressive hiring standards that prioritize multidisciplinary expertise and inclusive research mentorship.", "ex2_hl": "progressive", "ex2_th": "มหาวิทยาลัยได้นำเกณฑ์การจ้างงานที่ก้าวหน้ามาใช้ โดยให้ความสำคัญกับความเชี่ยวชาญแบบสหวิทยาการและการให้คำปรึกษางานวิจัยที่เปิดกว้าง", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 174, "vocab": "Alert", "ipa": "/əˈlɜːrt/", "pos": "adj.", "thai_vocab": "ตื่นตัว, ระมัดระวัง, ไวต่อการรับรู้", "ex1_en": "She is alert to the danger.", "ex1_hl": "alert", "ex1_th": "เธอมีความตื่นตัวและคอยระมัดระวังต่ออันตรายอยู่เสมอ", "ex2_en": "Cybersecurity specialists must stay alert to subtle anomalies in server traffic to thwart malicious intrusions.", "ex2_hl": "alert", "ex2_th": "ผู้เชี่ยวชาญด้านความปลอดภัยทางไซเบอร์ต้องตื่นตัวต่อความผิดปกติเล็กๆ น้อยๆ ในการรับส่งข้อมูลบนเซิร์ฟเวอร์ เพื่อสกัดกั้นการบุกรุกที่เป็นอันตราย", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 175, "vocab": "Humorous", "ipa": "/ˈhjuːmərəs/", "pos": "adj.", "thai_vocab": "มีอารมณ์ขัน, ตลกขบขัน, ชวนหัวเราะ", "ex1_en": "He is humorous and kind.", "ex1_hl": "humorous", "ex1_th": "เขาเป็นคนมีอารมณ์ขันและมีน้ำใจ", "ex2_en": "The keynote speaker shared humorous anecdotes from his early career to make the complex economics seminar more relatable.", "ex2_hl": "humorous", "ex2_th": "วิทยากรหลักได้แบ่งปันเรื่องเล่าขำขันจากช่วงเริ่มต้นอาชีพ เพื่อช่วยให้การสัมมนาเศรษฐศาสตร์ที่ซับซ้อนเข้าถึงและเข้าใจได้ง่ายขึ้น", "category_id": "SOCIAL", "category_label": "มนุษยสัมพันธ์ & สังคม"}, {"id": 176, "vocab": "Strong-Minded", "ipa": "/ˌstrɔːŋ ˈmaɪndɪd/", "pos": "adj.", "thai_vocab": "เด็ดเดี่ยว, จิตใจเข้มแข็ง, มีจุดยืนมั่นคง", "ex1_en": "She is strong-minded in her goals.", "ex1_hl": "strong-minded", "ex1_th": "เธอเป็นคนเด็ดเดี่ยวและมีจุดยืนที่แน่วแน่มั่นคงต่อเป้าหมายของตนเอง", "ex2_en": "The director commended her strong-minded stance when she insisted on adhering to rigorous environmental safety protocols.", "ex2_hl": "strong-minded", "ex2_th": "ผู้อำนวยการกล่าวชื่นชมจุดยืนที่เด็ดเดี่ยวของเธอ เมื่อเธอยืนกรานที่จะปฏิบัติตามระเบียบปฏิบัติด้านความปลอดภัยสิ่งแวดล้อมอย่างเข้มงวด", "category_id": "DRIVE", "category_label": "ความมุ่งมั่น & ความกล้า"}, {"id": 177, "vocab": "Trustworthy", "ipa": "/ˈtrʌstwɜːrði/", "pos": "adj.", "thai_vocab": "น่าเชื่อถือ, ไว้วางใจได้, ซื่อตรง", "ex1_en": "He is trustworthy to his friends.", "ex1_hl": "trustworthy", "ex1_th": "เขาเป็นคนที่น่าเชื่อถือและไว้วางใจได้สำหรับเพื่อนๆ เสมอ", "ex2_en": "Clients seek trustworthy wealth managers who consistently put their clients' long-term interests before short-term commission gains.", "ex2_hl": "trustworthy", "ex2_th": "ลูกค้าต่างมองหาผู้บริหารความมั่งคั่งที่ไว้วางใจได้ ซึ่งยึดผลประโยชน์ระยะยาวของลูกค้ามาก่อนผลตอบแทนค่านายหน้าในระยะสั้นเสมอ", "category_id": "POSITIVE", "category_label": "ด้านบวก & คุณธรรม"}, {"id": 178, "vocab": "Generous-Hearted", "ipa": "/ˌdʒenərəs ˈhɑːrtɪd/", "pos": "adj.", "thai_vocab": "ใจกว้าง, โอบอ้อมอารี, มีจิตใจเอื้อเฟื้อ", "ex1_en": "He is generous-hearted to others.", "ex1_hl": "generous-hearted", "ex1_th": "เขาเป็นคนมีจิตใจเอื้อเฟื้อเผื่อแผ่และโอบอ้อมอารีต่อผู้อื่น", "ex2_en": "The generous-hearted philanthropist endowed a scholarship fund to support promising medical students from rural areas.", "ex2_hl": "generous-hearted", "ex2_th": "นักการกุศลผู้มีจิตใจเอื้อเฟื้อเผื่อแผ่ได้บริจาคเงินตั้งกองทุนทุนการศึกษา เพื่อสนับสนุนนักศึกษาแพทย์ที่มีแววจากพื้นที่ชนบท", "category_id": "SOCIAL", "category_label": "มนุษยสัมพันธ์ & สังคม"}, {"id": 179, "vocab": "Devoted", "ipa": "/dɪˈvoʊtɪd/", "pos": "adj.", "thai_vocab": "อุทิศตน, ทุ่มเท, จงรักภักดี", "ex1_en": "He is devoted to his work.", "ex1_hl": "devoted", "ex1_th": "เขาเป็นคนทุ่มเทและอุทิศตนให้กับการทำงานอย่างเต็มที่", "ex2_en": "She is a devoted mentor who spends extra hours helping graduate students polish their dissertation defenses.", "ex2_hl": "devoted", "ex2_th": "เธอเป็นอาจารย์ที่ปรึกษาที่ทุ่มเทอุทิศตน โดยสละเวลาทำงานเพิ่มเติมเพื่อช่วยนักศึกษาระดับบัณฑิตศึกษาขัดเกลาการสอบป้องกันวิทยานิพนธ์", "category_id": "POSITIVE", "category_label": "ด้านบวก & คุณธรรม"}, {"id": 180, "vocab": "Mindful", "ipa": "/ˈmaɪndfl/", "pos": "adj.", "thai_vocab": "มีสติ, รอบคอบ, ใส่ใจตระหนักรู้", "ex1_en": "He is mindful of his actions.", "ex1_hl": "mindful", "ex1_th": "เขาเป็นคนมีสติและคิดไตร่ตรองถึงการกระทำของตนเองอยู่เสมอ", "ex2_en": "Effective managers remain mindful of team capacity when assigning deliverables to prevent burnout during critical project phases.", "ex2_hl": "mindful", "ex2_th": "ผู้จัดการที่มีประสิทธิภาพจะคอยใส่ใจตระหนักถึงขีดความสามารถของทีมเสมอเมื่อมอบหมายงาน เพื่อป้องกันภาวะหมดไฟในช่วงสำคัญของโครงการ", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 181, "vocab": "Peaceful", "ipa": "/ˈpiːsfl/", "pos": "adj.", "thai_vocab": "สงบสุข, รักสงบ, สุขุมเยือกเย็น", "ex1_en": "She is peaceful in her nature.", "ex1_hl": "peaceful", "ex1_th": "เธอเป็นคนมีอุปนิสัยรักความสงบสุขโดยธรรมชาติ", "ex2_en": "The mediation team brokered a peaceful compromise that satisfied both community residents and urban developers.", "ex2_hl": "peaceful", "ex2_th": "ทีมผู้ไกล่เกลี่ยสามารถประนีประนอมข้อตกลงอย่างสันติวิธี ซึ่งสร้างความพึงพอใจให้แก่ทั้งชาวบ้านในชุมชนและกลุ่มผู้พัฒนาเมือง", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 182, "vocab": "Grateful", "ipa": "/ˈɡreɪtfl/", "pos": "adj.", "thai_vocab": "รู้สึกขอบคุณ, ซาบซึ้งในบุญคุณ, รู้คุณ", "ex1_en": "He is grateful for the help.", "ex1_hl": "grateful", "ex1_th": "เขารู้สึกขอบคุณและซาบซึ้งสำหรับความช่วยเหลือที่ได้รับ", "ex2_en": "The startup founder was deeply grateful to the angel investors whose initial backing kept the venture solvent.", "ex2_hl": "grateful", "ex2_th": "ผู้ก่อตั้งสตาร์ตอัปรู้สึกซาบซึ้งในบุญคุณของเหล่านักลงทุนเทวดาเป็นอย่างยิ่ง ซึ่งการสนับสนุนในระยะแรกเริ่มช่วยให้ธุรกิจยังคงดำเนินต่อไปได้", "category_id": "POSITIVE", "category_label": "ด้านบวก & คุณธรรม"}, {"id": 183, "vocab": "Positive", "ipa": "/ˈpɑːzətɪv/", "pos": "adj.", "thai_vocab": "มองโลกในแง่ดี, คิดบวก, สร้างสรรค์", "ex1_en": "She is positive in her attitude.", "ex1_hl": "positive", "ex1_th": "เธอเป็นคนมีทัศนคติที่มองโลกในแง่ดี", "ex2_en": "Maintaining a positive mindset during organizational restructuring helped the staff embrace modern operational workflows.", "ex2_hl": "positive", "ex2_th": "การรักษาทัศนคติเชิงบวกระหว่างการปรับโครงสร้างองค์กร ช่วยให้พนักงานเปิดใจยอมรับขั้นตอนการทำงานสมัยใหม่ได้ดียิ่งขึ้น", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 184, "vocab": "Supportive", "ipa": "/səˈpɔːrtɪv/", "pos": "adj.", "thai_vocab": "ให้การสนับสนุน, คอยช่วยเหลือ, เกื้อกูล", "ex1_en": "She is supportive to her friends.", "ex1_hl": "supportive", "ex1_th": "เธอคอยให้การสนับสนุนและช่วยเหลือเพื่อนๆ ของเธอเสมอ", "ex2_en": "A supportive executive sponsor ensures that innovative pilot projects receive the necessary budget and cross-departmental resources.", "ex2_hl": "supportive", "ex2_th": "ผู้บริหารระดับสูงที่คอยสนับสนุนจะช่วยดูแลให้โครงการนำร่องที่สร้างสรรค์ได้รับงบประมาณและทรัพยากรข้ามแผนกที่จำเป็นอย่างเพียงพอ", "category_id": "SOCIAL", "category_label": "มนุษยสัมพันธ์ & สังคม"}, {"id": 185, "vocab": "Understanding", "ipa": "/ˌʌndərˈstændɪŋ/", "pos": "adj.", "thai_vocab": "เข้าใจผู้อื่น, มีความเห็นอกเห็นใจ, โอบอ้อมอารี", "ex1_en": "He is understanding and kind.", "ex1_hl": "understanding", "ex1_th": "เขาเป็นคนเข้าอกเข้าใจผู้อื่นและมีจิตใจที่เมตตา", "ex2_en": "The department chair was understanding when faculty members requested course reassignments to manage urgent caregiving duties.", "ex2_hl": "understanding", "ex2_th": "หัวหน้าภาควิชามีความเข้าใจและเห็นอกเห็นใจเป็นอย่างยิ่ง เมื่อคณาจารย์ขอปรับเปลี่ยนตารางการสอนเพื่อไปดูแลคนในครอบครัวที่มีเหตุจำเป็นเร่งด่วน", "category_id": "SOCIAL", "category_label": "มนุษยสัมพันธ์ & สังคม"}, {"id": 186, "vocab": "Loving", "ipa": "/ˈlʌvɪŋ/", "pos": "adj.", "thai_vocab": "เปี่ยมด้วยความรัก, เมตตา, อบอุ่นอ่อนโยน", "ex1_en": "She is loving and spreads happiness.", "ex1_hl": "loving", "ex1_th": "เธอเป็นคนเปี่ยมด้วยความรักและมักส่งต่อความสุขให้แก่คนรอบข้าง", "ex2_en": "The pediatric nurse brought a loving and empathetic presence to the ward, easing the children's anxieties before medical procedures.", "ex2_hl": "loving", "ex2_th": "พยาบาลแผนกกุมารเวชกรรมมอบการดูแลที่เปี่ยมด้วยความรักและความเห็นอกเห็นใจในหอผู้ป่วย ช่วยคลายความกังวลของเด็กๆ ก่อนทำหัตถการทางการแพทย์", "category_id": "SOCIAL", "category_label": "มนุษยสัมพันธ์ & สังคม"}, {"id": 187, "vocab": "Persuasive", "ipa": "/pərˈsweɪsɪv/", "pos": "adj.", "thai_vocab": "โน้มน้าวใจเก่ง, มีคารมคมคาย, ชักจูงใจได้ดี", "ex1_en": "He is persuasive in his talk.", "ex1_hl": "persuasive", "ex1_th": "เขาเป็นคนที่มีทักษะการพูดโน้มน้าวใจผู้อื่นได้ดีมาก", "ex2_en": "The sales consultant prepared a persuasive pitch deck that highlighted demonstrable return on investment for prospective clients.", "ex2_hl": "persuasive", "ex2_th": "ที่ปรึกษาฝ่ายขายได้เตรียมชุดนำเสนอที่โน้มน้าวใจและทรงพลัง ซึ่งชี้ให้เห็นถึงผลตอบแทนจากการลงทุนที่ชัดเจนแก่ว่าที่ลูกค้า", "category_id": "SOCIAL", "category_label": "มนุษยสัมพันธ์ & สังคม"}, {"id": 188, "vocab": "Self-Reliant", "ipa": "/ˌself rɪˈlaɪənt/", "pos": "adj.", "thai_vocab": "พึ่งพาตนเองได้, เชื่อมั่นในตนเอง, พึ่งลำแข้งตนเอง", "ex1_en": "He is self-reliant and strong.", "ex1_hl": "self-reliant", "ex1_th": "เขาเป็นคนที่พึ่งพาตนเองได้และมีความเข้มแข็ง", "ex2_en": "Working as an independent remote consultant requires becoming completely self-reliant in project scheduling and client communications.", "ex2_hl": "self-reliant", "ex2_th": "การทำงานเป็นที่ปรึกษาอิสระแบบทำงานทางไกล จำเป็นต้องพึ่งพาตนเองอย่างเต็มรูปแบบ ทั้งในเรื่องการจัดตารางโครงการและการติดต่อสื่อสารกับลูกค้า", "category_id": "WORK", "category_label": "การทำงาน & สติปัญญา"}, {"id": 189, "vocab": "Tranquil", "ipa": "/ˈtræŋkwɪl/", "pos": "adj.", "thai_vocab": "สงบนิ่ง, เยือกเย็น, ผ่อนคลายไม่วุ่นวาย", "ex1_en": "She is tranquil and calm.", "ex1_hl": "tranquil", "ex1_th": "เธอเป็นคนสงบนิ่งและเยือกเย็น", "ex2_en": "The seasoned portfolio strategist maintained a tranquil disposition even as market indexes fluctuated wildly.", "ex2_hl": "tranquil", "ex2_th": "นักกลยุทธ์พอร์ตการลงทุนผู้มีประสบการณ์สูงยังคงรักษาท่าทีอันสงบนิ่งและเยือกเย็นเอาไว้ได้ แม้ว่าดัชนีตลาดจะผันผวนอย่างรุนแรงก็ตาม", "category_id": "TEMPERAMENT", "category_label": "อารมณ์ & บุคลิกเฉพาะ"}, {"id": 190, "vocab": "Resilient", "ipa": "/rɪˈzɪliənt/", "pos": "adj.", "thai_vocab": "ยืดหยุ่นปรับตัวได้ดี, ฟื้นตัวเร็ว, อดทนไม่ยอมแพ้", "ex1_en": "She is resilient in tough times.", "ex1_hl": "resilient", "ex1_th": "เธอเป็นคนที่มีความอดทนไม่ยอมแพ้และฟื้นตัวได้เร็วในยามที่เผชิญช่วงเวลาที่ยากลำบาก", "ex2_en": "The organization proved remarkably resilient, overhauling its supply logistics within weeks of international trade disruptions.", "ex2_hl": "resilient", "ex2_th": "องค์กรแห่งนี้ได้พิสูจน์ให้เห็นถึงความยืดหยุ่นในการปรับตัวที่ยอดเยี่ยม โดยสามารถยกเครื่องระบบโลจิสติกส์การจัดส่งได้ภายในเวลาเพียงไม่กี่สัปดาห์หลังเกิดปัญหาการค้าระหว่างประเทศ", "category_id": "DRIVE", "category_label": "ความมุ่งมั่น & ความกล้า"}, {"id": 191, "vocab": "Persevering", "ipa": "/ˌpɜːrsəˈvɪrɪŋ/", "pos": "adj.", "thai_vocab": "พากเพียร, มุมานะ, บากบั่นไม่ย่อท้อ", "ex1_en": "He is persevering to achieve his goals.", "ex1_hl": "persevering", "ex1_th": "เขามีความพากเพียรมุมานะเพื่อที่จะบรรลุเป้าหมายของตนเอง", "ex2_en": "Through persevering laboratory trials and rigorous peer scrutiny, the oncology team discovered a novel biomarker.", "ex2_hl": "persevering", "ex2_th": "ด้วยการทดลองในห้องปฏิบัติการอย่างพากเพียรมุมานะและการตรวจสอบทางวิชาการอย่างเข้มข้น ทีมวิจัยด้านเนื้องอกวิทยาจึงค้นพบตัวบ่งชี้ทางชีวภาพตัวใหม่ได้สำเร็จ", "category_id": "DRIVE", "category_label": "ความมุ่งมั่น & ความกล้า"}, {"id": 192, "vocab": "Self-Confident", "ipa": "/ˌself ˈkɑːnfɪdənt/", "pos": "adj.", "thai_vocab": "มั่นใจในตนเอง, เชื่อมั่นในความสามารถของตน", "ex1_en": "He is self-confident in his skills.", "ex1_hl": "self-confident", "ex1_th": "เขามีความเชื่อมั่นในตนเองและมั่นใจในทักษะความสามารถของตน", "ex2_en": "Her self-confident handling of difficult questions from the audit panel reassured investors about the company's fiscal governance.", "ex2_hl": "self-confident", "ex2_th": "การตอบคำถามที่ยากและตรงไปตรงมาจากคณะกรรมการตรวจสอบอย่างมั่นใจในตนเองของเธอ ช่วยสร้างความมั่นใจให้แก่ผู้ลงทุนเกี่ยวกับธรรมาภิบาลทางการเงินของบริษัท", "category_id": "DRIVE", "category_label": "ความมุ่งมั่น & ความกล้า"}, {"id": 193, "vocab": "Expressive", "ipa": "/ɪkˈspresɪv/", "pos": "adj.", "thai_vocab": "สื่ออารมณ์ความรู้สึกได้ดี, แสดงออกอย่างมีชีวิตชีวา, สื่อความหมายชัดเจน", "ex1_en": "She is expressive in her feelings.", "ex1_hl": "expressive", "ex1_th": "เธอเป็นคนที่แสดงออกทางอารมณ์ความรู้สึกได้อย่างชัดเจนและเปิดเผย", "ex2_en": "The creative director utilized expressive typography and bold visual metaphors to rebrand the lifestyle publication.", "ex2_hl": "expressive", "ex2_th": "ผู้อำนวยการฝ่ายสร้างสรรค์ได้นำการจัดวางตัวอักษรที่สื่ออารมณ์ความรู้สึกและภาพเชิงเปรียบเทียบที่โดดเด่นมาใช้ในการปรับภาพลักษณ์ใหม่ของนิตยสารไลฟ์สไตล์", "category_id": "SOCIAL", "category_label": "มนุษยสัมพันธ์ & สังคม"}, {"id": 194, "vocab": "Encouraging", "ipa": "/ɪnˈkɜːrɪdʒɪŋ/", "pos": "adj.", "thai_vocab": "ให้กำลังใจ, เสริมสร้างกำลังใจ, ชวนให้มีความหวัง", "ex1_en": "He is encouraging in difficult times.", "ex1_hl": "encouraging", "ex1_th": "เขาคอยให้กำลังใจผู้อื่นอยู่เสมอในยามที่ต้องเผชิญกับช่วงเวลาที่ยากลำบาก", "ex2_en": "The senior mentor provided encouraging feedback during performance reviews, motivating team members to tackle ambitious goals.", "ex2_hl": "encouraging", "ex2_th": "ที่ปรึกษารุ่นพี่ให้ข้อคิดเห็นที่เสริมสร้างกำลังใจในระหว่างการประเมินผลการปฏิบัติงาน ซึ่งกระตุ้นให้สมาชิกในทีมกล้าที่จะมุ่งสู่เป้าหมายที่ท้าทายยิ่งขึ้น", "category_id": "SOCIAL", "category_label": "มนุษยสัมพันธ์ & สังคม"}, {"id": 195, "vocab": "Altruistic", "ipa": "/ˌæltruˈɪstɪk/", "pos": "adj.", "thai_vocab": "เห็นแก่ประโยชน์ส่วนรวม, เสียสละเพื่อผู้อื่น, มีจิตสาธารณะ", "ex1_en": "She is altruistic and helps others.", "ex1_hl": "altruistic", "ex1_th": "เธอเป็นคนมีจิตสาธารณะ เสียสละเพื่อผู้อื่น และพร้อมยื่นมือเข้าช่วยเหลือเสมอ", "ex2_en": "The venture partner proved his altruistic commitment by waiving management fees for all non-profit educational initiatives.", "ex2_hl": "altruistic", "ex2_th": "หุ้นส่วนธุรกิจร่วมลงทุนได้พิสูจน์ให้เห็นถึงความมุ่งมั่นที่เห็นแก่ประโยชน์ส่วนรวมอย่างแท้จริง โดยการสละสิทธิ์ค่าธรรมเนียมการบริหารจัดการทั้งหมดสำหรับโครงการริเริ่มทางการศึกษาที่ไม่แสวงหากำไร", "category_id": "POSITIVE", "category_label": "ด้านบวก & คุณธรรม"}, {"id": 196, "vocab": "Driven", "ipa": "/ˈdrɪvn/", "pos": "adj.", "thai_vocab": "มุ่งมั่นขับเคลื่อน, มุ่งมั่นสู่ความสำเร็จ, ทะเยอทะยานอย่างมีเป้าหมาย", "ex1_en": "He is driven by his dreams.", "ex1_hl": "driven", "ex1_th": "เขาเป็นคนที่ถูกขับเคลื่อนด้วยความฝันและความมุ่งมั่นสู่ความสำเร็จ", "ex2_en": "The technology firm actively seeks driven product managers capable of turning complex engineering insights into commercial successes.", "ex2_hl": "driven", "ex2_th": "บริษัทเทคโนโลยีเปิดรับสมัครผู้จัดการผลิตภัณฑ์ที่มีความมุ่งมั่นขับเคลื่อนสูง ซึ่งสามารถเปลี่ยนมุมมองทางวิศวกรรมที่ซับซ้อนให้กลายเป็นความสำเร็จเชิงพาณิชย์ได้", "category_id": "DRIVE", "category_label": "ความมุ่งมั่น & ความกล้า"}, {"id": 197, "vocab": "Initiative", "ipa": "/ɪˈnɪʃətɪv/", "pos": "n.", "thai_vocab": "ความคิดริเริ่ม, ความกระตือรือร้นริเริ่มทำสิ่งใหม่, การชิงลงมือทำก่อน", "ex1_en": "He shows initiative in his work.", "ex1_hl": "initiative", "ex1_th": "เขาแสดงให้เห็นถึงความคิดริเริ่มและความกระตือรือร้นในการทำงานอยู่เสมอ", "ex2_en": "The executive committee rewarded the junior developer for taking the initiative to automate the weekly security compliance audit.", "ex2_hl": "initiative", "ex2_th": "คณะกรรมการบริหารได้มอบรางวัลแก่นักพัฒนารุ่นใหม่ที่ริเริ่มลงมือพัฒนาระบบอัตโนมัติ เพื่อตรวจสอบการปฏิบัติตามมาตรฐานความปลอดภัยประจำสัปดาห์ด้วยตนเอง", "category_id": "WORK", "category_label": "การทำงาน & สติปัญญา"}, {"id": 198, "vocab": "Goal-Oriented", "ipa": "/ˌɡoʊl ˈɔːriəntɪd/", "pos": "adj.", "thai_vocab": "มุ่งเน้นเป้าหมาย, ยึดผลสำเร็จเป็นหลัก, มีเป้าหมายชัดเจน", "ex1_en": "She is goal-oriented and works hard.", "ex1_hl": "goal-oriented", "ex1_th": "เธอเป็นคนมุ่งเน้นเป้าหมายและทำงานอย่างทุ่มเทขยันขันแข็ง", "ex2_en": "A goal-oriented product team aligns daily sprint backlogs directly with long-term strategic milestones.", "ex2_hl": "goal-oriented", "ex2_th": "ทีมผลิตภัณฑ์ที่มุ่งเน้นเป้าหมายจะจัดลำดับงานย่อยประจำวันให้สอดคล้องกับหมุดหมายเชิงกลยุทธ์ระยะยาวขององค์กรโดยตรง", "category_id": "DRIVE", "category_label": "ความมุ่งมั่น & ความกล้า"}, {"id": 199, "vocab": "Pragmatic", "ipa": "/præɡˈmætɪk/", "pos": "adj.", "thai_vocab": "เน้นการปฏิบัติจริง, ยึดหลักความเป็นจริง, อิงประโยชน์ใช้สอย", "ex1_en": "She is pragmatic and practical.", "ex1_hl": "pragmatic", "ex1_th": "เธอเป็นคนเน้นการปฏิบัติจริงและยึดถือความเป็นไปได้ในโลกแห่งความเป็นจริง", "ex2_en": "The software architect took a pragmatic approach, choosing a proven relational database over untested bleeding-edge alternatives.", "ex2_hl": "pragmatic", "ex2_th": "สถาปนิกซอฟต์แวร์เลือกใช้วิธีการที่เน้นการปฏิบัติจริง โดยเลือกฐานข้อมูลเชิงสัมพันธ์ที่ผ่านการพิสูจน์แล้ว แทนที่จะใช้เทคโนโลยีใหม่ล่าสุดที่ยังไม่ได้รับการทดสอบอย่างเพียงพอ", "category_id": "WORK", "category_label": "การทำงาน & สติปัญญา"}, {"id": 200, "vocab": "Critical", "ipa": "/ˈkrɪtɪkl/", "pos": "adj.", "thai_vocab": "ช่างคิดวิเคราะห์, คิดเชิงวิพากษ์, ช่างประเมินและตั้งคำถาม", "ex1_en": "He is critical and thinks deeply.", "ex1_hl": "critical", "ex1_th": "เขาเป็นคนช่างคิดเชิงวิพากษ์และใคร่ครวญสิ่งต่างๆ อย่างลึกซึ้งรอบด้าน", "ex2_en": "Mastering critical thinking enables data analysts to challenge questionable assumptions and extract meaningful business insights.", "ex2_hl": "critical", "ex2_th": "การเชี่ยวชาญการคิดเชิงวิพากษ์ช่วยให้นักวิเคราะห์ข้อมูลสามารถตั้งคำถามต่อข้อสมมติที่น่าสงสัย และดึงข้อมูลเชิงลึกทางธุรกิจที่มีคุณค่าออกมาได้", "category_id": "CHALLENGING", "category_label": "ข้อจำกัด & ด้านลบ"}, {"id": 201, "vocab": "Objective", "ipa": "/əbˈdʒektɪv/", "pos": "adj.", "thai_vocab": "เป็นกลาง, ยึดข้อเท็จจริง, ปราศจากอคติ", "ex1_en": "She is objective and unbiased.", "ex1_hl": "objective", "ex1_th": "เธอเป็นคนที่เป็นกลาง ปราศจากอคติ และยึดข้อเท็จจริงเป็นสำคัญ", "ex2_en": "Peer reviewers are instructed to provide objective assessments based strictly on methodological rigor and experimental evidence.", "ex2_hl": "objective", "ex2_th": "ผู้ทรงคุณวุฒิได้รับการกำชับให้ประเมินผลงานอย่างเป็นกลาง โดยยึดตามความรัดกุมของระเบียบวิธีวิจัยและหลักฐานจากการทดลองอย่างเคร่งครัด", "category_id": "WORK", "category_label": "การทำงาน & สติปัญญา"}];
+    const CATEGORIES = [{"id": "ALL", "label": "คำศัพท์ทั้งหมด", "icon": "📚"}, {"id": "FAVORITES", "label": "รายการที่บันทึก", "icon": "⭐"}, {"id": "MASTERED", "label": "จดจำได้แล้ว", "icon": "🎓"}, {"id": "POSITIVE", "label": "ด้านบวก & คุณธรรม", "icon": "🌟"}, {"id": "WORK", "label": "การทำงาน & สติปัญญา", "icon": "💼"}, {"id": "SOCIAL", "label": "มนุษยสัมพันธ์ & สังคม", "icon": "🤝"}, {"id": "DRIVE", "label": "ความมุ่งมั่น & ความกล้า", "icon": "🔥"}, {"id": "TEMPERAMENT", "label": "อารมณ์ & บุคลิกเฉพาะ", "icon": "🧘"}, {"id": "CHALLENGING", "label": "ข้อจำกัด & ด้านลบ", "icon": "⚠️"}];
+
+    // Calculate Category Counts
+    const CAT_COUNTS = {};
+    RAW_DATA.forEach(d => {
+      CAT_COUNTS[d.category_id] = (CAT_COUNTS[d.category_id] || 0) + 1;
+    });
+
+    // Application State
+    let filteredData = [...RAW_DATA];
+    let currentCategory = 'ALL';
+    let currentLetter = 'ALL';
+    let searchQuery = '';
+    let currentView = 'grid'; // 'grid' | 'table' | 'flashcard'
+    let currentSpeed = 0.85;
+    let audioEngine = 'hd'; // 'hd' | 'system'
+    let favorites = new Set(JSON.parse(localStorage.getItem('personality_favs_v2') || '[]'));
+    let mastered = new Set(JSON.parse(localStorage.getItem('personality_mastered_v2') || '[]'));
+
+    // Robust Audio Playback References
+    let currentAudio = null;
+    let sequenceActiveId = null;
+    let sequenceTimeoutId = null;
+    let singleAudioBtn = null;
+
+    // Flashcard State
+    let fcIndex = 0;
+    let fcFlipped = false;
+    let fcShuffledList = [...RAW_DATA];
+
+    // Speech Synthesis
+    const synth = window.speechSynthesis;
+
+    // --- INITIALIZATION ---
+    window.addEventListener('DOMContentLoaded', () => {
+      renderSidebarCategories();
+      renderAlphabetJumper();
+      updateBadges();
+      applyFilters();
+
+      // Keyboard navigation for Flashcards
+      document.addEventListener('keydown', (e) => {
+        if (currentView === 'flashcard') {
+          if (e.code === 'Space') {
+            e.preventDefault();
+            flipFlashcard();
+          } else if (e.code === 'ArrowRight') {
+            nextFlashcard();
+          } else if (e.code === 'ArrowLeft') {
+            prevFlashcard();
+          }
+        }
+      });
+    });
+
+    // --- RENDER SIDEBAR & CONTROLS ---
+    function renderSidebarCategories() {
+      const container = document.getElementById('categoryButtonsContainer');
+      if (!container) return;
+
+      const traitCats = CATEGORIES.filter(c => !['ALL', 'FAVORITES', 'MASTERED'].includes(c.id));
+      container.innerHTML = traitCats.map(cat => {
+        const count = CAT_COUNTS[cat.id] || 0;
+        return `
+          <button onclick="setCategoryFilter('${cat.id}')" id="cat-${cat.id}" class="cat-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold transition flex items-center justify-between text-slate-600 hover:bg-slate-100 border border-transparent">
+            <div class="flex items-center space-x-2 truncate">
+              <span>${cat.icon}</span>
+              <span class="truncate">${cat.label}</span>
+            </div>
+            <span class="text-[11px] font-mono bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded-full font-bold">${count}</span>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function renderAlphabetJumper() {
+      const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+      const container = document.getElementById('alphabetContainer');
+      if (!container) return;
+
+      let html = `
+        <span class="text-slate-400 mr-1 shrink-0">ตัวอักษร:</span>
+        <button onclick="setLetterFilter('ALL')" class="letter-btn px-2 py-0.5 rounded-md bg-blue-600 text-white font-extrabold shrink-0" data-letter="ALL">ALL</button>
+      `;
+
+      letters.forEach(letter => {
+        html += `
+          <button onclick="setLetterFilter('${letter}')" class="letter-btn px-1.5 py-0.5 rounded-md hover:bg-slate-200 shrink-0" data-letter="${letter}">${letter}</button>
+        `;
+      });
+
+      container.innerHTML = html;
+    }
+
+    // --- VIEW SWITCHING ---
+    function setViewMode(mode) {
+      currentView = mode;
+      document.querySelectorAll('.view-btn').forEach(b => {
+        if (b.getAttribute('data-view') === mode) {
+          b.className = 'view-btn px-2.5 sm:px-3 py-1 rounded-lg transition-all bg-blue-600 text-white font-bold';
+        } else {
+          b.className = 'view-btn px-2.5 sm:px-3 py-1 rounded-lg transition-all text-slate-300 hover:text-white font-medium';
+        }
+      });
+
+      const gv = document.getElementById('gridView');
+      const tv = document.getElementById('tableView');
+      const fv = document.getElementById('flashcardView');
+
+      if (mode === 'grid') {
+        gv.classList.remove('hidden');
+        tv.classList.add('hidden');
+        fv.classList.add('hidden');
+        renderGridCards();
+      } else if (mode === 'table') {
+        gv.classList.add('hidden');
+        tv.classList.remove('hidden');
+        fv.classList.add('hidden');
+        renderTable();
+      } else if (mode === 'flashcard') {
+        gv.classList.add('hidden');
+        tv.classList.add('hidden');
+        fv.classList.remove('hidden');
+        updateFlashcardUI();
+      }
+    }
+
+    // --- FILTERING & SEARCH ---
+    function setCategoryFilter(catId) {
+      currentCategory = catId;
+      closeMobileSidebar();
+
+      document.querySelectorAll('.cat-btn').forEach(b => {
+        b.className = 'cat-btn w-full text-left px-3 py-2.5 rounded-xl text-xs font-bold transition flex items-center justify-between text-slate-600 hover:bg-slate-100 border border-transparent';
+      });
+
+      const activeBtn = document.getElementById(`cat-${catId}`);
+      if (activeBtn) {
+        activeBtn.className = 'cat-btn w-full text-left px-3 py-2.5 rounded-xl text-xs font-bold transition flex items-center justify-between bg-blue-50 text-blue-700 border border-blue-200 shadow-sm';
+      }
+
+      applyFilters();
+    }
+
+    function clearCategoryFilter(e) {
+      if (e) e.stopPropagation();
+      setCategoryFilter('ALL');
+    }
+
+    function setLetterFilter(letter) {
+      currentLetter = letter;
+      document.querySelectorAll('.letter-btn').forEach(b => {
+        if (b.getAttribute('data-letter') === letter) {
+          b.className = 'letter-btn px-2 py-0.5 rounded-md bg-blue-600 text-white font-extrabold shrink-0';
+        } else {
+          b.className = 'letter-btn px-1.5 py-0.5 rounded-md hover:bg-slate-200 shrink-0';
+        }
+      });
+      applyFilters();
+    }
+
+    function handleSearch(val) {
+      searchQuery = val.trim().toLowerCase();
+      document.getElementById('clearSearchBtn').classList.toggle('hidden', searchQuery === '');
+      applyFilters();
+    }
+
+    function clearSearch() {
+      document.getElementById('searchInput').value = '';
+      searchQuery = '';
+      document.getElementById('clearSearchBtn').classList.add('hidden');
+      applyFilters();
+    }
+
+    function clearCategoryFilter(e) {
+      if (e) e.stopPropagation();
+      setCategoryFilter('ALL');
+    }
+
+    function applyFilters() {
+      filteredData = RAW_DATA.filter(item => {
+        // Category
+        if (currentCategory === 'FAVORITES' && !favorites.has(item.id)) return false;
+        if (currentCategory === 'MASTERED' && !mastered.has(item.id)) return false;
+        if (!['ALL', 'FAVORITES', 'MASTERED'].includes(currentCategory) && item.category_id !== currentCategory) return false;
+
+        // Letter
+        if (currentLetter !== 'ALL' && !item.vocab.toUpperCase().startsWith(currentLetter)) return false;
+
+        // Search Query
+        if (searchQuery) {
+          const q = searchQuery;
+          const matchV = item.vocab.toLowerCase().includes(q);
+          const matchTh = (item.thai_vocab || '').toLowerCase().includes(q);
+          const matchIpa = (item.ipa || '').toLowerCase().includes(q);
+          const matchS1 = (item.ex1_en || '').toLowerCase().includes(q) || (item.ex1_th || '').toLowerCase().includes(q);
+          const matchS2 = (item.ex2_en || '').toLowerCase().includes(q) || (item.ex2_th || '').toLowerCase().includes(q);
+          const matchId = ('#' + item.id).includes(q);
+          if (!matchV && !matchTh && !matchIpa && !matchS1 && !matchS2 && !matchId) return false;
+        }
+
+        return true;
+      });
+
+      // Update Filter Pill Label
+      const pill = document.getElementById('activeFilterPill');
+      if (pill) {
+        let catLabel = 'คำศัพท์ทั้งหมด';
+        const isFiltered = currentCategory !== 'ALL';
+
+        if (currentCategory === 'FAVORITES') catLabel = 'รายการโปรด';
+        else if (currentCategory === 'MASTERED') catLabel = 'จดจำได้แล้ว';
+        else if (currentCategory !== 'ALL') {
+          const catObj = CATEGORIES.find(c => c.id === currentCategory);
+          if (catObj) catLabel = catObj.label;
+        }
+
+        if (isFiltered) {
+          pill.className = 'px-2.5 py-1.5 rounded-xl bg-blue-100/90 border border-blue-300 text-blue-900 text-xs font-bold flex items-center space-x-1.5 shadow-2xs transition-all';
+          pill.innerHTML = `
+            <button id="clearCategoryBtn" onclick="clearCategoryFilter(event)" class="w-4 h-4 rounded-full bg-blue-200/90 hover:bg-rose-500 hover:text-white text-blue-800 flex items-center justify-center transition shrink-0 shadow-2xs cursor-pointer mr-0.5" title="ยกเลิกการเลือกกลุ่ม (กลับไปแสดงทั้งหมด)">
+              <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <span>กลุ่ม: ${catLabel}</span>
+            <span id="filteredCountBadge" class="bg-blue-600 text-white text-[10px] px-1.5 py-0.2 rounded-full font-mono">${filteredData.length}</span>
+          `;
+        } else {
+          pill.className = 'px-3 py-1.5 rounded-xl bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold flex items-center space-x-1.5 transition-all';
+          pill.innerHTML = `
+            <span>กลุ่ม: ${catLabel}</span>
+            <span id="filteredCountBadge" class="bg-blue-600 text-white text-[10px] px-1.5 py-0.2 rounded-full font-mono">${filteredData.length}</span>
+          `;
+        }
+      }
+
+      // Re-render active view
+      if (currentView === 'grid') renderGridCards();
+      else if (currentView === 'table') renderTable();
+      else if (currentView === 'flashcard') {
+        fcShuffledList = [...filteredData];
+        fcIndex = 0;
+        updateFlashcardUI();
+      }
+    }
+
+    function updateBadges() {
+      document.getElementById('allCountBadge').innerText = RAW_DATA.length;
+      document.getElementById('favCountBadge').innerText = favorites.size;
+      document.getElementById('masteredCountBadge').innerText = mastered.size;
+    }
+
+    // --- FAVORITES & MASTERED ---
+    function toggleFavorite(id, e) {
+      if (e) e.stopPropagation();
+      if (favorites.has(id)) favorites.delete(id);
+      else favorites.add(id);
+      localStorage.setItem('personality_favs_v2', JSON.stringify([...favorites]));
+      updateBadges();
+
+      if (currentCategory === 'FAVORITES') applyFilters();
+      else if (currentView === 'grid') renderGridCards();
+    }
+
+    function toggleMastered(id, e) {
+      if (e) e.stopPropagation();
+      if (mastered.has(id)) mastered.delete(id);
+      else mastered.add(id);
+      localStorage.setItem('personality_mastered_v2', JSON.stringify([...mastered]));
+      updateBadges();
+
+      if (currentCategory === 'MASTERED') applyFilters();
+      else if (currentView === 'grid') renderGridCards();
+    }
+
+    // --- TEXT HIGHLIGHTER ---
+    function highlightWord(text, hlWord, cssClass) {
+      if (!hlWord || !text) return text;
+      const regex = new RegExp(`\\b(${hlWord})\\b`, 'gi');
+      return text.replace(regex, `<span class="${cssClass}">$1</span>`);
+    }
+
+    // --- RENDER 1: GRID CARDS (EXACT MATCH TO prepositionalPhrases/index.html) ---
+    function renderGridCards() {
+      const container = document.getElementById('gridView');
+      if (!container) return;
+
+      if (filteredData.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full py-16 text-center text-slate-400">
+            <svg class="w-12 h-12 mx-auto mb-3 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <p class="font-bold text-sm">ไม่พบคำศัพท์บุคลิกภาพที่ตรงกับเงื่อนไขการค้นหา</p>
+            <p class="text-xs mt-1">ลองเปลี่ยนคำค้นหา หรือคลิกดู "คำศัพท์ทั้งหมด"</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filteredData.map(item => {
+        const isFav = favorites.has(item.id);
+        const isMastered = mastered.has(item.id);
+
+        const s1_html = highlightWord(item.ex1_en, item.ex1_hl || item.vocab, 'hl-teal');
+        const s2_html = highlightWord(item.ex2_en, item.ex2_hl || item.vocab, 'hl-orange');
+
+        return `
+          <div id="card-${item.id}" class="bg-white rounded-2xl border border-slate-200/90 hover:border-blue-400/60 shadow-sm hover:shadow-md transition-all flex flex-col justify-between overflow-hidden group">
+            
+            <!-- Card Header -->
+            <div class="p-4 pb-2 border-b border-slate-100 bg-slate-50/50">
+              <div class="flex items-center justify-between mb-1.5">
+                <div class="flex items-center space-x-2">
+                  <span class="text-xs font-mono font-bold px-2 py-0.5 rounded-lg bg-blue-100/70 text-blue-800">#${item.id}</span>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-200/80 text-slate-700">${item.category_label || item.pos || 'adj.'}</span>
+                </div>
+                <div class="flex items-center space-x-1">
+                  <!-- Mastered Checkbox -->
+                  <button onclick="toggleMastered(${item.id}, event)" class="p-1 rounded-lg text-slate-300 hover:text-emerald-500 transition" title="${isMastered ? 'ยกเลิกการจดจำ' : 'ทำเครื่องหมายว่าจดจำได้แล้ว'}">
+                    <svg class="w-5 h-5 ${isMastered ? 'text-emerald-500 fill-emerald-100' : 'fill-none'}" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  </button>
+                  <!-- Favorite Bookmark -->
+                  <button onclick="toggleFavorite(${item.id}, event)" class="p-1 rounded-lg text-slate-300 hover:text-amber-500 transition" title="${isFav ? 'ลบออกจากรายการโปรด' : 'บันทึกเป็นรายการโปรด'}">
+                    <svg class="w-5 h-5 ${isFav ? 'text-amber-400 fill-amber-400' : 'fill-none'}" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Vocab Title & Meaning + AUDIO BUTTON AT END OF VOCAB (USER REQUIREMENT) -->
+              <div class="flex items-center justify-between gap-2">
+                <div>
+                  <h3 class="text-lg font-extrabold text-blue-950 tracking-tight group-hover:text-blue-600 transition-colors">
+                    ${item.vocab} <span class="text-xs font-mono text-cyan-700 font-semibold">${item.ipa || ''}</span>
+                  </h3>
+                  <p class="text-xs font-bold text-slate-600 mt-0.5">(${item.thai_vocab || ''})</p>
+                </div>
+                <button id="btnVocab-${item.id}" onclick="playAudioDirect(${item.id}, 'vocab', this)" class="p-2 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white transition shadow-sm shrink-0" title="ฟังเสียงคำศัพท์">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Card Sentences: PLAY ICONS AT END OF EACH SENTENCE (USER REQUIREMENT) -->
+            <div class="p-4 space-y-3 flex-1 flex flex-col justify-center">
+              
+              <!-- S1 (Daily Life Context) -->
+              <div id="boxEx1-${item.id}" class="p-2.5 rounded-xl bg-teal-50/50 border border-teal-100">
+                <div class="flex items-start justify-between gap-2">
+                  <div class="text-xs text-slate-800 leading-relaxed font-medium">
+                    <span class="font-bold text-teal-800">1.</span> ${s1_html}
+                  </div>
+                  <button id="btnEx1-${item.id}" onclick="playAudioDirect(${item.id}, 'ex1', this)" class="shrink-0 p-1 rounded-lg text-teal-700 hover:bg-teal-200/60 transition" title="ฟังเสียงประโยค 1">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                  </button>
+                </div>
+                <p class="text-[11px] text-slate-500 mt-1 pl-3.5">• ${item.ex1_th || ''}</p>
+              </div>
+
+              <!-- S2 (Workplace Context) -->
+              <div id="boxEx2-${item.id}" class="p-2.5 rounded-xl bg-orange-50/50 border border-orange-100">
+                <div class="flex items-start justify-between gap-2">
+                  <div class="text-xs text-slate-800 leading-relaxed font-medium">
+                    <span class="font-bold text-orange-800">2.</span> ${s2_html}
+                  </div>
+                  <button id="btnEx2-${item.id}" onclick="playAudioDirect(${item.id}, 'ex2', this)" class="shrink-0 p-1 rounded-lg text-orange-700 hover:bg-orange-200/60 transition" title="ฟังเสียงประโยค 2">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                  </button>
+                </div>
+                <p class="text-[11px] text-slate-500 mt-1 pl-3.5">• ${item.ex2_th || ''}</p>
+              </div>
+
+            </div>
+
+            <!-- Card Footer: PLAY-ALL PLACED AT VERY BOTTOM (USER REQUIREMENT) -->
+            <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs">
+              <span class="text-[11px] text-slate-400 font-medium">เล่นคำศัพท์และประโยค</span>
+              <button id="btnPlayAll-${item.id}" onclick="playAllSequential(${item.id}, this)" class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-xl bg-slate-200/80 hover:bg-blue-600 hover:text-white text-slate-700 font-bold transition shadow-xs" title="เล่นคำศัพท์และประโยคทั้ง 2 ต่อเนื่อง">
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/></svg>
+                <span id="labelPlayAll-${item.id}">เล่นครบ (Play All)</span>
+              </button>
+            </div>
+
+          </div>
+        `;
+      }).join('');
+    }
+
+    // --- RENDER 2: TABLE VIEW ---
+    function renderTable() {
+      const tbody = document.getElementById('tableBody');
+      if (!tbody) return;
+
+      if (filteredData.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" class="py-12 text-center text-slate-400">ไม่พบรายการที่ตรงกับเงื่อนไข</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = filteredData.map(item => {
+        const s1_html = highlightWord(item.ex1_en, item.ex1_hl || item.vocab, 'hl-teal');
+        const s2_html = highlightWord(item.ex2_en, item.ex2_hl || item.vocab, 'hl-orange');
+
+        return `
+          <tr class="hover:bg-slate-50/80 transition-colors">
+            <td class="py-3 px-3 text-center font-mono font-bold text-slate-400">#${item.id}</td>
+            <td class="py-3 px-4">
+              <div class="font-extrabold text-blue-900">${item.vocab} <span class="text-xs font-mono text-cyan-700">[${item.ipa || ''}]</span></div>
+              <div class="text-xs text-slate-500 mt-0.5">${item.thai_vocab || ''}</div>
+            </td>
+            <td class="py-3 px-4">
+              <div class="leading-relaxed">${s1_html}</div>
+              <div class="text-xs text-slate-500 mt-0.5">• ${item.ex1_th || ''}</div>
+            </td>
+            <td class="py-3 px-4">
+              <div class="leading-relaxed">${s2_html}</div>
+              <div class="text-xs text-slate-500 mt-0.5">• ${item.ex2_th || ''}</div>
+            </td>
+            <td class="py-3 px-3 text-center">
+              <div class="flex items-center justify-center space-x-1.5">
+                <button id="btnTablePlayAll-${item.id}" onclick="playAllSequential(${item.id}, this)" class="px-2 py-1 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition" title="เล่นครบ">
+                  ▶ ทั้งหมด
+                </button>
+                <button onclick="playAudioDirect(${item.id}, 'vocab', this)" class="p-1.5 rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white transition" title="ฟังเฉพาะคำศัพท์">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                </button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    // --- RENDER 3: 3D FLASHCARD VIEW ---
+    function updateFlashcardUI() {
+      if (!fcShuffledList.length) return;
+      if (fcIndex >= fcShuffledList.length) fcIndex = 0;
+      const item = fcShuffledList[fcIndex];
+
+      fcFlipped = false;
+      document.getElementById('fcFront').classList.remove('hidden');
+      document.getElementById('fcBack').classList.add('hidden');
+      document.getElementById('flashcardInner').classList.remove('rotate-y-180');
+
+      document.getElementById('fcNumber').innerText = `#${item.id}`;
+      document.getElementById('fcCategory').innerText = item.category_label || item.pos || 'adj.';
+      document.getElementById('fcWord').innerText = item.vocab;
+      document.getElementById('fcIpa').innerText = item.ipa || '';
+
+      document.getElementById('fcBackTitle').innerText = item.vocab;
+      document.getElementById('fcBackIpa').innerText = item.ipa || '';
+      document.getElementById('fcBackCategory').innerText = item.category_label || item.pos || 'adj.';
+      document.getElementById('fcMeaning').innerText = item.thai_vocab || '';
+
+      const s1_html = highlightWord(item.ex1_en, item.ex1_hl || item.vocab, 'hl-teal');
+      const s2_html = highlightWord(item.ex2_en, item.ex2_hl || item.vocab, 'hl-orange');
+
+      document.getElementById('fcS1').innerHTML = `1. ${s1_html}`;
+      document.getElementById('fcTh1').innerText = `• ${item.ex1_th || ''}`;
+      document.getElementById('fcS2').innerHTML = `2. ${s2_html}`;
+      document.getElementById('fcTh2').innerText = `• ${item.ex2_th || ''}`;
+
+      document.getElementById('fcProgress').innerText = `${fcIndex + 1} / ${fcShuffledList.length}`;
+    }
+
+    function flipFlashcard() {
+      fcFlipped = !fcFlipped;
+      const inner = document.getElementById('flashcardInner');
+      const front = document.getElementById('fcFront');
+      const back = document.getElementById('fcBack');
+
+      if (fcFlipped) {
+        inner.classList.add('rotate-y-180');
+        setTimeout(() => {
+          front.classList.add('hidden');
+          back.classList.remove('hidden');
+        }, 200);
+      } else {
+        inner.classList.remove('rotate-y-180');
+        setTimeout(() => {
+          front.classList.remove('hidden');
+          back.classList.add('hidden');
+        }, 200);
+      }
+    }
+
+    function nextFlashcard() {
+      stopAllAudio();
+      if (fcIndex < fcShuffledList.length - 1) fcIndex++;
+      else fcIndex = 0;
+      updateFlashcardUI();
+    }
+
+    function prevFlashcard() {
+      stopAllAudio();
+      if (fcIndex > 0) fcIndex--;
+      else fcIndex = fcShuffledList.length - 1;
+      updateFlashcardUI();
+    }
+
+    function shuffleFlashcards() {
+      stopAllAudio();
+      fcShuffledList.sort(() => Math.random() - 0.5);
+      fcIndex = 0;
+      updateFlashcardUI();
+    }
+
+    function playFcAudio(e) {
+      if (e) e.stopPropagation();
+      const item = fcShuffledList[fcIndex];
+      if (item) playAudioDirect(item.id, 'vocab');
+    }
+
+    function playFcS1(e) {
+      if (e) e.stopPropagation();
+      const item = fcShuffledList[fcIndex];
+      if (item) playAudioDirect(item.id, 'ex1', document.getElementById('btnFcEx1'));
+    }
+
+    function playFcS2(e) {
+      if (e) e.stopPropagation();
+      const item = fcShuffledList[fcIndex];
+      if (item) playAudioDirect(item.id, 'ex2', document.getElementById('btnFcEx2'));
+    }
+
+    function playFcSequence(e) {
+      if (e) e.stopPropagation();
+      const item = fcShuffledList[fcIndex];
+      if (!item) return;
+      if (!fcFlipped) flipFlashcard();
+      playAllSequential(item.id);
+    }
+
+    // --- MOBILE SIDEBAR DRAWER ---
+    function openMobileSidebar() {
+      document.getElementById('sidebar').classList.remove('-translate-x-full');
+      document.getElementById('mobileBackdrop').classList.remove('hidden');
+    }
+
+    function closeMobileSidebar() {
+      document.getElementById('sidebar').classList.add('-translate-x-full');
+      document.getElementById('mobileBackdrop').classList.add('hidden');
+    }
+
+    // --- ROBUST AUDIO ENGINE ---
+    function setSpeed(rate) {
+      currentSpeed = parseFloat(rate);
+      if (currentAudio) currentAudio.playbackRate = currentSpeed;
+    }
+
+    function toggleAudioEngine() {
+      audioEngine = audioEngine === 'hd' ? 'system' : 'hd';
+      const label = document.getElementById('audioEngineLabel');
+      if (audioEngine === 'hd') {
+        label.innerText = '🌟 Studio HD';
+      } else {
+        label.innerText = '🔊 เสียงระบบ';
+      }
+    }
+
+    function stopAllAudio() {
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+        currentAudio = null;
+      }
+      if (synth) {
+        synth.cancel();
+      }
+      if (sequenceTimeoutId) {
+        clearTimeout(sequenceTimeoutId);
+        sequenceTimeoutId = null;
+      }
+      sequenceActiveId = null;
+
+      // Reset all playing animations and button labels
+      document.querySelectorAll('.audio-playing').forEach(el => {
+        el.classList.remove('audio-playing');
+      });
+      document.querySelectorAll('[id^="labelPlayAll-"]').forEach(el => {
+        el.innerText = 'เล่นครบ (Play All)';
+      });
+      document.querySelectorAll('[id^="btnPlayAll-"]').forEach(el => {
+        el.classList.remove('bg-blue-600', 'text-white');
+        el.classList.add('bg-slate-200/80', 'text-slate-700');
+      });
+      document.querySelectorAll('[id^="btnTablePlayAll-"]').forEach(el => {
+        el.innerText = '▶ ทั้งหมด';
+        el.classList.remove('bg-amber-600', 'bg-red-600');
+        el.classList.add('bg-blue-600');
+      });
+    }
+
+    // Low-level clip player that does NOT interfere with sequence state
+    function playClip(url, text, onComplete) {
+      if (audioEngine === 'hd') {
+        const audio = new Audio(url);
+        audio.playbackRate = currentSpeed;
+        currentAudio = audio;
+
+        audio.onended = () => {
+          currentAudio = null;
+          if (onComplete) onComplete();
+        };
+
+        audio.onerror = (e) => {
+          console.warn('Audio file error, falling back to Web Speech:', url, e);
+          playSystemSpeech(text, onComplete);
+        };
+
+        const p = audio.play();
+        if (p !== undefined) {
+          p.catch(err => {
+            console.warn('Play promise rejected, falling back to Web Speech:', err);
+            playSystemSpeech(text, onComplete);
+          });
+        }
+      } else {
+        playSystemSpeech(text, onComplete);
+      }
+    }
+
+    function playSystemSpeech(cleanText, onComplete) {
+      if (!synth) {
+        if (onComplete) onComplete();
+        return;
+      }
+      synth.cancel();
+      const utter = new SpeechSynthesisUtterance(cleanText);
+      utter.rate = currentSpeed;
+      utter.lang = 'en-US';
+      utter.onend = () => {
+        if (onComplete) onComplete();
+      };
+      utter.onerror = () => {
+        if (onComplete) onComplete();
+      };
+      synth.speak(utter);
+    }
+
+    // Play a single audio clip (Vocab, Ex1, or Ex2)
+    function playAudioDirect(id, type, btnElement, onEndCallback) {
+      stopAllAudio();
+
+      if (btnElement) {
+        singleAudioBtn = btnElement;
+        btnElement.classList.add('audio-playing');
+      }
+
+      const item = RAW_DATA.find(x => x.id === id);
+      if (!item) return;
+
+      const text = type === 'vocab' ? item.vocab : (type === 'ex1' ? item.ex1_en : item.ex2_en);
+      const url = `audio/${type}_${id}.mp3`;
+
+      playClip(url, text, () => {
+        if (btnElement) btnElement.classList.remove('audio-playing');
+        singleAudioBtn = null;
+        if (onEndCallback) onEndCallback();
+      });
+    }
+
+    // --- SEQUENTIAL PLAY ALL (VOCAB -> EX1 -> EX2) ---
+    function playAllSequential(id, triggerBtn) {
+      // If currently playing THIS item, clicking acts as STOP
+      if (sequenceActiveId === id) {
+        stopAllAudio();
+        return;
+      }
+
+      stopAllAudio();
+      sequenceActiveId = id;
+
+      const item = RAW_DATA.find(x => x.id === id);
+      if (!item) return;
+
+      // Update Play All button state
+      const playAllBtn = triggerBtn || document.getElementById(`btnPlayAll-${id}`);
+      const labelEl = document.getElementById(`labelPlayAll-${id}`);
+      if (labelEl) labelEl.innerText = 'กำลังเล่น... ■ หยุด';
+      if (playAllBtn) {
+        if (triggerBtn && triggerBtn.id && triggerBtn.id.startsWith('btnTablePlayAll-')) {
+          triggerBtn.innerText = '■ หยุด';
+          triggerBtn.classList.remove('bg-blue-600');
+          triggerBtn.classList.add('bg-amber-600');
+        } else {
+          playAllBtn.classList.remove('bg-slate-200/80', 'text-slate-700');
+          playAllBtn.classList.add('bg-blue-600', 'text-white');
+        }
+      }
+
+      const isFc = (typeof currentView !== 'undefined' ? currentView : 'grid') === 'flashcard';
+      const steps = [
+        { type: 'vocab', url: `audio/vocab_${id}.mp3`, text: item.vocab, btn: isFc ? document.getElementById('btnFcVocab') : document.getElementById(`btnVocab-${id}`) },
+        { type: 'ex1',   url: `audio/ex1_${id}.mp3`,   text: item.ex1_en, btn: isFc ? document.getElementById('btnFcEx1') : document.getElementById(`btnEx1-${id}`) },
+        { type: 'ex2',   url: `audio/ex2_${id}.mp3`,   text: item.ex2_en, btn: isFc ? document.getElementById('btnFcEx2') : document.getElementById(`btnEx2-${id}`) }
+      ];
+
+      let currentStepIdx = 0;
+
+      function runStep() {
+        // If user stopped or started another audio, abort immediately
+        if (sequenceActiveId !== id) return;
+
+        // If completed all steps
+        if (currentStepIdx >= steps.length) {
+          stopAllAudio();
+          return;
+        }
+
+        const step = steps[currentStepIdx];
+
+        // Clear highlight on previous button
+        if (currentStepIdx > 0 && steps[currentStepIdx - 1].btn) {
+          steps[currentStepIdx - 1].btn.classList.remove('audio-playing');
+        }
+
+        // Highlight current step button
+        if (step.btn) {
+          step.btn.classList.add('audio-playing');
+        }
+
+        playClip(step.url, step.text, () => {
+          if (step.btn) step.btn.classList.remove('audio-playing');
+          if (sequenceActiveId !== id) return;
+
+          currentStepIdx++;
+          // Pause 400ms between sentences for natural rhythm
+          sequenceTimeoutId = setTimeout(runStep, 400);
+        });
+      }
+
+      runStep();
+    }
+  </script>
+</body>
+</html>
