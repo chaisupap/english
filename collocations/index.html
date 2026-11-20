@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="th" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>100 Common Verb Collocations — Interactive & Responsive Web Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Prompt:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Prompt', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', 'Prompt', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+    .audio-playing {
+      animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+      background-color: #2563eb !important;
+      color: #ffffff !important;
+    }
+    @keyframes pulse-ring {
+      0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.6); }
+      70% { box-shadow: 0 0 0 8px rgba(37, 99, 235, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+    }
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+    .transform-style-3d {
+      transform-style: preserve-3d;
+    }
+    .backface-hidden {
+      backface-visibility: hidden;
+    }
+    .rotate-y-180 {
+      transform: rotateY(180deg);
+    }
+    .hl-teal {
+      color: #0f766e;
+      font-weight: 700;
+      background-color: #ccfbf1;
+      padding: 0 4px;
+      border-radius: 4px;
+    }
+    .hl-orange {
+      color: #c2410c;
+      font-weight: 700;
+      background-color: #ffedd5;
+      padding: 0 4px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="h-screen bg-slate-50 text-slate-800 flex flex-col antialiased selection:bg-brand-500 selection:text-white overflow-hidden">
+
+  <!-- TOP HEADER (Deep Navy & Blue) -->
+  <header class="bg-gradient-to-r from-slate-950 via-slate-900 to-blue-950 text-white shadow-md z-40 border-b border-slate-800 shrink-0">
+    <div class="px-4 sm:px-6 py-2.5">
+      <div class="flex items-center justify-between gap-3">
+        
+        <!-- Left: Mobile Menu Trigger + Brand & Title -->
+        <div class="flex items-center space-x-3">
+          <button onclick="openMobileSidebar()" class="md:hidden p-2 rounded-xl bg-blue-900/60 hover:bg-blue-800 text-blue-200 hover:text-white border border-blue-400/30 flex items-center space-x-1.5 text-xs font-bold transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/></svg>
+            <span>หมวดหมู่</span>
+          </button>
+
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center shadow-md shadow-blue-500/30 flex-shrink-0">
+            <span class="text-xs font-black tracking-tight text-white">COLLOC</span>
+          </div>
+          <div>
+            <div class="flex items-center space-x-2">
+              <h1 class="text-base sm:text-lg font-extrabold tracking-tight text-white">100 Common Verb Collocations</h1>
+              <span class="px-2 py-0.5 text-[10px] font-bold bg-blue-500/20 text-blue-300 border border-blue-400/30 rounded-full hidden sm:inline-flex items-center space-x-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
+                <span>100 คอลโลเคชันกริยาเอกลักษณ์</span>
+              </span>
+              <span class="px-2 py-0.5 text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 rounded-full hidden md:inline-flex items-center space-x-1">
+                <span>10 แผ่นเอกสารต้นฉบับ (100 รายการ)</span>
+              </span>
+            </div>
+            <p class="text-xs text-blue-200/90 hidden lg:block">คู่มือรวบรวมคอลโลเคชันกริยายอดนิยม 100 คำ • สัทอักษรสากล AmE IPA • ตัวอย่างประโยค 2 บริบท (200 ประโยค) • ระบบเสียง Edge-TTS Studio HD</p>
+          </div>
+        </div>
+
+        <!-- Right Controls: Audio Engine, Speed & View Mode -->
+        <div class="flex items-center flex-wrap gap-2 justify-end">
+          
+          <!-- Audio Engine Selector Button -->
+          <button id="audioEngineToggleBtn" onclick="toggleAudioEngine()" class="flex items-center space-x-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 hover:bg-emerald-500/30 transition-all shadow-sm" title="คลิกเพื่อสลับระหว่างเสียง Studio HD กับเสียงสังเคราะห์ระบบ">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span id="audioEngineLabel">🌟 Studio HD</span>
+          </button>
+
+          <!-- Speed Selector -->
+          <div class="flex items-center bg-slate-800/80 rounded-xl p-1 border border-slate-700 text-xs">
+            <span class="text-slate-400 px-2 font-medium hidden sm:inline">ความเร็ว:</span>
+            <select onchange="setSpeed(this.value)" class="bg-transparent text-white font-bold focus:outline-none cursor-pointer pr-1">
+              <option value="0.75" class="bg-slate-900 text-white">0.75x</option>
+              <option value="0.85" class="bg-slate-900 text-white" selected>0.85x</option>
+              <option value="1.0" class="bg-slate-900 text-white">1.0x</option>
+              <option value="1.1" class="bg-slate-900 text-white">1.1x</option>
+              <option value="1.25" class="bg-slate-900 text-white">1.25x</option>
+            </select>
+          </div>
+
+          <!-- View Mode Switcher -->
+          <div class="flex items-center bg-slate-800/90 rounded-xl p-1 border border-slate-700 text-xs">
+            <button onclick="setViewMode('grid')" class="view-btn px-2.5 sm:px-3 py-1 rounded-lg transition-all bg-blue-600 text-white font-bold" data-view="grid" title="มุมมองการ์ด">
+              Cards
+            </button>
+            <button onclick="setViewMode('table')" class="view-btn px-2.5 sm:px-3 py-1 rounded-lg transition-all text-slate-300 hover:text-white font-medium" data-view="table" title="มุมมองตาราง">
+              Table
+            </button>
+            <button onclick="setViewMode('flashcard')" class="view-btn px-2.5 sm:px-3 py-1 rounded-lg transition-all text-slate-300 hover:text-white font-medium" data-view="flashcard" title="การ์ดฝึกจำ 3D">
+              Flashcards
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- APP BODY (2-COLUMN: SIDEBAR + MAIN WORKSPACE) -->
+  <div class="flex-1 flex overflow-hidden relative">
+
+    <!-- Mobile Backdrop -->
+    <div id="mobileBackdrop" onclick="closeMobileSidebar()" class="fixed inset-0 bg-slate-950/60 z-40 md:hidden hidden transition-opacity"></div>
+
+    <!-- 1. LEFT SIDEBAR (Category Groups & Search) -->
+    <aside id="sidebar" class="fixed md:static inset-y-0 left-0 z-50 md:z-20 w-72 sm:w-80 bg-white border-r border-slate-200 flex flex-col transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out shrink-0 shadow-2xl md:shadow-none h-full">
+      
+      <!-- Sidebar Header -->
+      <div class="p-4 border-b border-slate-100 flex items-center justify-between bg-slate-50/70">
+        <div class="flex items-center space-x-2">
+          <div class="w-2.5 h-2.5 rounded-full bg-blue-600"></div>
+          <span class="text-xs font-bold uppercase tracking-wider text-slate-700">หมวดหมู่คอลโลเคชันกริยา (Verb Collocations)</span>
+        </div>
+        <button onclick="closeMobileSidebar()" class="md:hidden p-1.5 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-200">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Category Filter List -->
+      <div class="flex-1 overflow-y-auto custom-scrollbar p-3 space-y-1">
+        
+        <!-- All Button -->
+        <button onclick="setCategoryFilter('ALL')" id="cat-ALL" class="cat-btn w-full text-left px-3 py-2.5 rounded-xl text-xs font-bold transition flex items-center justify-between bg-blue-50 text-blue-700 border border-blue-200 shadow-sm">
+          <div class="flex items-center space-x-2">
+            <span>📚</span>
+            <span>คำศัพท์ทั้งหมด (All Words)</span>
+          </div>
+          <span id="allCountBadge" class="text-[11px] font-mono bg-blue-200/60 text-blue-800 px-2 py-0.5 rounded-full font-extrabold">100</span>
+        </button>
+
+        <!-- Bookmarks Button -->
+        <button onclick="setCategoryFilter('FAVORITES')" id="cat-FAVORITES" class="cat-btn w-full text-left px-3 py-2.5 rounded-xl text-xs font-bold transition flex items-center justify-between text-slate-600 hover:bg-slate-100 border border-transparent">
+          <div class="flex items-center space-x-2">
+            <span class="text-amber-500">⭐</span>
+            <span>รายการโปรด (Bookmarks)</span>
+          </div>
+          <span id="favCountBadge" class="text-[11px] font-mono bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full font-extrabold">0</span>
+        </button>
+
+        <!-- Mastered Button -->
+        <button onclick="setCategoryFilter('MASTERED')" id="cat-MASTERED" class="cat-btn w-full text-left px-3 py-2.5 rounded-xl text-xs font-bold transition flex items-center justify-between text-slate-600 hover:bg-slate-100 border border-transparent">
+          <div class="flex items-center space-x-2">
+            <span class="text-emerald-500">🎓</span>
+            <span>จดจำได้แล้ว (Mastered)</span>
+          </div>
+          <span id="masteredCountBadge" class="text-[11px] font-mono bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-extrabold">0</span>
+        </button>
+
+        <div class="pt-3 pb-1 px-2 text-[10px] font-bold text-slate-400 uppercase tracking-wider">จำแนกตามกลุ่มกริยาหลัก (10 Verb Families)</div>
+
+        <!-- Emotion Category Items -->
+        <div id="categoryButtonsContainer" class="space-y-1">
+          <!-- Populated by JS -->
+        </div>
+
+      </div>
+
+      <!-- Quick Summary Footer in Sidebar -->
+      <div class="p-3 border-t border-slate-100 bg-slate-50 text-xs text-slate-500 flex items-center justify-between">
+        <span>คลังคอลโลเคชันกริยาภาษาอังกฤษ</span>
+        <span class="font-bold text-slate-700">100 คำ / 200 ตัวอย่าง</span>
+      </div>
+
+    </aside>
+
+    <!-- 2. MAIN CONTENT AREA -->
+    <main class="flex-1 flex flex-col min-w-0 bg-slate-50 overflow-hidden">
+      
+      <!-- SEARCH & FILTER TOOLBAR -->
+      <div class="bg-white border-b border-slate-200/80 p-3 sm:px-6 sm:py-3.5 shrink-0 shadow-sm">
+        <div class="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
+          
+          <!-- Search Input -->
+          <div class="relative flex-1">
+            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            </div>
+            <input type="text" id="searchInput" oninput="handleSearch(this.value)" placeholder="ค้นหาคอลโลเคชัน, คำกริยา, คำแปลไทย, สัทอักษร หรือคำในประโยคตัวอย่าง..." class="w-full pl-10 pr-10 py-2 rounded-xl text-xs sm:text-sm bg-slate-50 border border-slate-300 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+            <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+          </div>
+
+          <!-- Active Filter Badge & Status -->
+          <div class="flex items-center space-x-2 shrink-0">
+            <span id="activeFilterPill" class="px-3 py-1.5 rounded-xl bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold flex items-center space-x-1.5">
+              <span>กลุ่ม: คำศัพท์ทั้งหมด</span>
+              <span id="filteredCountBadge" class="bg-blue-600 text-white text-[10px] px-1.5 py-0.2 rounded-full font-mono">201</span>
+            </span>
+          </div>
+
+        </div>
+
+        <!-- A-Z Alphabet Jumper -->
+        <div class="mt-2.5 pt-2 border-t border-slate-100 flex items-center space-x-1 overflow-x-auto custom-scrollbar text-[11px] font-bold text-slate-500 py-0.5" id="alphabetContainer">
+          <!-- Populated by JS -->
+        </div>
+
+      </div>
+
+      <!-- VIEW CONTAINER (Grid / Table / Flashcard) -->
+      <div class="flex-1 overflow-y-auto custom-scrollbar p-3 sm:p-6" id="viewContainer">
+        
+        <!-- 1. GRID CARDS VIEW -->
+        <div id="gridView" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- 2. TABLE VIEW -->
+        <div id="tableView" class="hidden bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+          <div class="overflow-x-auto custom-scrollbar">
+            <table class="w-full text-left text-xs sm:text-sm">
+              <thead class="bg-slate-900 text-white font-bold border-b border-slate-800">
+                <tr>
+                  <th class="py-3 px-3 text-center w-12">#</th>
+                  <th class="py-3 px-4 w-48">คำศัพท์ & สัทอักษร & ความหมาย</th>
+                  <th class="py-3 px-4">ตัวอย่างที่ 1 (Daily Life Context)</th>
+                  <th class="py-3 px-4">ตัวอย่างที่ 2 (Workplace Context)</th>
+                  <th class="py-3 px-3 text-center w-28">ฟังเสียง</th>
+                </tr>
+              </thead>
+              <tbody id="tableBody" class="divide-y divide-slate-100 text-slate-700">
+                <!-- Populated by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 3. FLASHCARD VIEW -->
+        <div id="flashcardView" class="hidden flex flex-col items-center justify-center min-h-[500px] py-4">
+          
+          <div class="w-full max-w-xl perspective-1000">
+            <!-- 3D Card Inner -->
+            <div id="flashcardInner" onclick="flipFlashcard()" class="w-full min-h-[380px] bg-white rounded-3xl border border-slate-200 shadow-xl p-6 sm:p-8 cursor-pointer transform-style-3d transition-transform duration-500 relative flex flex-col justify-between">
+              
+              <!-- Front Face -->
+              <div id="fcFront" class="flex flex-col justify-between h-full backface-hidden">
+                <div class="flex items-center justify-between">
+                  <span id="fcNumber" class="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-blue-50 text-blue-700 border border-blue-200">#1</span>
+                  <span id="fcCategory" class="text-xs font-bold px-2.5 py-1 rounded-full bg-slate-100 text-slate-600">adj.</span>
+                </div>
+                
+                <div class="text-center my-auto py-8">
+                  <h2 id="fcWord" class="text-3xl sm:text-4xl font-extrabold text-blue-950 mb-2 tracking-tight">Kind</h2>
+                  <p id="fcIpa" class="text-sm sm:text-base font-mono text-cyan-700 font-semibold mb-4">/kaɪnd/</p>
+                  <button onclick="playFcAudio(event)" class="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md transition">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                    <span>ฟังเสียงคำศัพท์</span>
+                  </button>
+                </div>
+
+                <div class="text-center text-xs text-slate-400 font-medium">
+                  💡 คลิกที่การ์ด หรือกด Spacebar เพื่อพลิกดูความหมายและตัวอย่างประโยค
+                </div>
+              </div>
+
+              <!-- Back Face -->
+              <div id="fcBack" class="hidden flex flex-col justify-between h-full backface-hidden">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+                  <div class="flex items-baseline space-x-2">
+                    <span id="fcBackTitle" class="text-base font-bold text-blue-950">Kind</span>
+                    <span id="fcBackIpa" class="text-xs font-mono text-cyan-700 font-semibold">/kaɪnd/</span>
+                  </div>
+                  <span id="fcBackCategory" class="text-xs font-bold px-2 py-0.5 rounded-md bg-blue-50 text-blue-700">adj.</span>
+                </div>
+
+                <div class="my-auto py-3 space-y-3">
+                  <div class="text-center font-bold text-base text-slate-800" id="fcMeaning">
+                    ใจดี, มีเมตตา, โอบอ้อมอารี
+                  </div>
+
+                  <!-- S1 -->
+                  <div class="p-3 rounded-xl bg-teal-50/60 border border-teal-100">
+                    <div class="flex items-start justify-between gap-2">
+                      <div class="text-xs sm:text-sm text-slate-800 leading-relaxed font-medium" id="fcS1">
+                        1. She is <span class="hl-teal">kind</span> to everyone.
+                      </div>
+                      <button id="btnFcEx1" onclick="playFcS1(event)" class="shrink-0 p-1.5 rounded-lg bg-teal-600 text-white hover:bg-teal-700 transition" title="ฟังเสียงประโยคที่ 1">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                      </button>
+                    </div>
+                    <p id="fcTh1" class="text-xs text-slate-500 mt-1 pl-4">• เธอมีน้ำใจและใจดีกับทุกคน</p>
+                  </div>
+
+                  <!-- S2 -->
+                  <div class="p-3 rounded-xl bg-orange-50/60 border border-orange-100">
+                    <div class="flex items-start justify-between gap-2">
+                      <div class="text-xs sm:text-sm text-slate-800 leading-relaxed font-medium" id="fcS2">
+                        2. Our team lead is always <span class="hl-orange">kind</span> and supportive.
+                      </div>
+                      <button id="btnFcEx2" onclick="playFcS2(event)" class="shrink-0 p-1.5 rounded-lg bg-orange-600 text-white hover:bg-orange-700 transition" title="ฟังเสียงประโยคที่ 2">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                      </button>
+                    </div>
+                    <p id="fcTh2" class="text-xs text-slate-500 mt-1 pl-4">• หัวหน้าทีมของเราใจดีและคอยให้การสนับสนุนเสมอ</p>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between text-xs text-slate-400 font-medium pt-2 border-t border-slate-100">
+                  <span>กดปุ่มลำโพงเพื่อฟังเสียงแต่ละประโยค</span>
+                  <button onclick="playFcSequence(event)" class="text-blue-600 hover:underline font-bold flex items-center space-x-1">
+                    <span>▶ เล่นครบ (Play All)</span>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Flashcard Controls -->
+          <div class="flex items-center space-x-3 mt-6">
+            <button onclick="prevFlashcard()" class="p-3 rounded-2xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 shadow-sm transition" title="ก่อนหน้า (ลูกศรซ้าย)">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+
+            <span id="fcProgress" class="text-xs font-mono font-bold px-3 py-1.5 rounded-xl bg-slate-200/80 text-slate-700">1 / 201</span>
+
+            <button onclick="nextFlashcard()" class="p-3 rounded-2xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 shadow-sm transition" title="ถัดไป (ลูกศรขวา)">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+
+            <button onclick="shuffleFlashcards()" class="p-3 rounded-2xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 shadow-sm transition ml-2 flex items-center space-x-1.5 text-xs font-bold" title="สุ่มลำดับคำศัพท์">
+              <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+              <span class="hidden sm:inline">สุ่มคำ</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- EMBEDDED MASTER DATA & APPLICATION SCRIPT -->
+  <script>
+    const RAW_DATA = [{"id": 1, "vocab": "make a decision", "ipa": "/meɪk ə dɪˈsɪʒ.ən/", "pos": "verb collocations", "short_def_en": "decide something", "thai_vocab": "ตัดสินใจ, ทำการตัดสินใจ", "category_id": "MAKE_VERB", "category_label": "หมวด Make (การสร้าง การตัดสินใจ & ผลลัพธ์)", "source_slots": [{"sheet": "01", "slot": 1, "label": "Sheet 01 (#1)"}], "ex1_en": "She made a decision quickly.", "ex1_hl": "made a decision", "ex1_th": "เธอตัดสินใจอย่างรวดเร็ว", "ex2_en": "After weighing all the pros and cons, the board decided to make a decision by Friday.", "ex2_hl": "make a decision", "ex2_th": "หลังจากชั่งน้ำหนักข้อดีข้อเสียทั้งหมดแล้ว คณะกรรมการจึงตัดสินใจว่าจะสรุปการตัดสินใจภายในวันศุกร์นี้"}, {"id": 2, "vocab": "make a mistake", "ipa": "/meɪk ə mɪˈsteɪk/", "pos": "verb collocations", "short_def_en": "do something incorrectly", "thai_vocab": "ทำผิดพลาด, ทำเรื่องผิดพลาด", "category_id": "MAKE_VERB", "category_label": "หมวด Make (การสร้าง การตัดสินใจ & ผลลัพธ์)", "source_slots": [{"sheet": "01", "slot": 2, "label": "Sheet 01 (#2)"}], "ex1_en": "Everyone makes mistakes.", "ex1_hl": "makes mistakes", "ex1_th": "ทุกคนย่อมเคยทำผิดพลาดกันได้ทั้งนั้น", "ex2_en": "It is completely normal to make a mistake when learning a new foreign language.", "ex2_hl": "make a mistake", "ex2_th": "ถือเป็นเรื่องปกติอย่างยิ่งที่จะทำผิดพลาดเมื่อกำลังเรียนรู้ภาษาต่างประเทศภาษาใหม่"}, {"id": 3, "vocab": "make progress", "ipa": "/meɪk ˈprɑː.ɡres/", "pos": "verb collocations", "short_def_en": "improve", "thai_vocab": "ก้าวหน้า, พัฒนาดีขึ้น", "category_id": "MAKE_VERB", "category_label": "หมวด Make (การสร้าง การตัดสินใจ & ผลลัพธ์)", "source_slots": [{"sheet": "01", "slot": 3, "label": "Sheet 01 (#3)"}], "ex1_en": "He is making good progress.", "ex1_hl": "making good progress", "ex1_th": "เขากำลังก้าวหน้าไปได้ด้วยดี", "ex2_en": "Our development team is starting to make progress on the new mobile app design.", "ex2_hl": "make progress", "ex2_th": "ทีมพัฒนาของเรากำลังเริ่มมีความก้าวหน้าในการออกแบบแอปพลิเคชันมือถือตัวใหม่"}, {"id": 4, "vocab": "make an effort", "ipa": "/meɪk ən ˈef.ɚt/", "pos": "verb collocations", "short_def_en": "try hard", "thai_vocab": "พยายาม, ทุ่มเทความพยายาม", "category_id": "MAKE_VERB", "category_label": "หมวด Make (การสร้าง การตัดสินใจ & ผลลัพธ์)", "source_slots": [{"sheet": "01", "slot": 4, "label": "Sheet 01 (#4)"}], "ex1_en": "Please make an effort to improve.", "ex1_hl": "make an effort", "ex1_th": "กรุณาพยายามตั้งใจปรับปรุงให้ดียิ่งขึ้น", "ex2_en": "You need to make an effort if you want to master English grammar.", "ex2_hl": "make an effort", "ex2_th": "คุณต้องทุ่มเทความพยายามหากคุณต้องการเชี่ยวชาญไวยากรณ์ภาษาอังกฤษ"}, {"id": 5, "vocab": "make a plan", "ipa": "/meɪk ə plæn/", "pos": "verb collocations", "short_def_en": "prepare what to do", "thai_vocab": "วางแผน, จัดเตรียมแผนการ", "category_id": "MAKE_VERB", "category_label": "หมวด Make (การสร้าง การตัดสินใจ & ผลลัพธ์)", "source_slots": [{"sheet": "01", "slot": 5, "label": "Sheet 01 (#5)"}], "ex1_en": "We made a plan for the trip.", "ex1_hl": "made a plan", "ex1_th": "พวกเราได้วางแผนสำหรับการเดินทางทริปนี้แล้ว", "ex2_en": "Let's sit down and make a plan before launching the advertising campaign.", "ex2_hl": "make a plan", "ex2_th": "พวกเรามานั่งคุยและวางแผนกันให้รอบคอบก่อนที่จะเริ่มเปิดตัวแคมเปญโฆษณา"}, {"id": 6, "vocab": "make a choice", "ipa": "/meɪk ə tʃɔɪs/", "pos": "verb collocations", "short_def_en": "choose", "thai_vocab": "ตัดสินใจเลือก, เลือกทางเลือก", "category_id": "MAKE_VERB", "category_label": "หมวด Make (การสร้าง การตัดสินใจ & ผลลัพธ์)", "source_slots": [{"sheet": "01", "slot": 6, "label": "Sheet 01 (#6)"}], "ex1_en": "You have to make a choice.", "ex1_hl": "make a choice", "ex1_th": "คุณจำเป็นต้องตัดสินใจเลือกแล้ว", "ex2_en": "Graduating seniors must make a choice between entering graduate school and starting work.", "ex2_hl": "make a choice", "ex2_th": "นักศึกษาชั้นปีสุดท้ายต้องตัดสินใจเลือกระหว่างการศึกษาต่อระดับปริญญาโทหรือเริ่มเข้าทำงาน"}, {"id": 7, "vocab": "make a promise", "ipa": "/meɪk ə ˈprɑː.mɪs/", "pos": "verb collocations", "short_def_en": "promise something", "thai_vocab": "ให้สัญญา, ให้คำมั่นสัญญา", "category_id": "MAKE_VERB", "category_label": "หมวด Make (การสร้าง การตัดสินใจ & ผลลัพธ์)", "source_slots": [{"sheet": "01", "slot": 7, "label": "Sheet 01 (#7)"}], "ex1_en": "She made a promise to help me.", "ex1_hl": "made a promise", "ex1_th": "เธอได้ให้สัญญาว่าจะช่วยเหลือฉัน", "ex2_en": "Never make a promise that you know you cannot fulfill in the future.", "ex2_hl": "make a promise", "ex2_th": "อย่าได้ให้สัญญาที่คุณรู้อยู่แก่ใจว่าจะไม่สามารถทำตามสัญญาได้ในอนาคต"}, {"id": 8, "vocab": "make money", "ipa": "/meɪk ˈmʌn.i/", "pos": "verb collocations", "short_def_en": "earn money", "thai_vocab": "หาเงิน, ทำเงิน, สร้างรายได้", "category_id": "MAKE_VERB", "category_label": "หมวด Make (การสร้าง การตัดสินใจ & ผลลัพธ์)", "source_slots": [{"sheet": "01", "slot": 8, "label": "Sheet 01 (#8)"}], "ex1_en": "He wants to make more money.", "ex1_hl": "make more money", "ex1_th": "เขาต้องการหาเงินให้ได้มากขึ้น", "ex2_en": "Investing wisely in dividend stocks is one reliable way to make money over time.", "ex2_hl": "make money", "ex2_th": "การลงทุนอย่างชาญฉลาดในหุ้นปันผลเป็นวิธีที่เชื่อถือได้วิธีหนึ่งในการสร้างรายได้ในระยะยาว"}, {"id": 9, "vocab": "make friends", "ipa": "/meɪk frendz/", "pos": "verb collocations", "short_def_en": "become friends", "thai_vocab": "ผูกมิตร, ทำความรู้จักเพื่อนใหม่", "category_id": "MAKE_VERB", "category_label": "หมวด Make (การสร้าง การตัดสินใจ & ผลลัพธ์)", "source_slots": [{"sheet": "01", "slot": 9, "label": "Sheet 01 (#9)"}], "ex1_en": "She easily makes friends.", "ex1_hl": "makes friends", "ex1_th": "เธอผูกมิตรกับผู้อื่นได้ง่ายมาก", "ex2_en": "Joining student clubs is an enjoyable way to make friends during your first semester.", "ex2_hl": "make friends", "ex2_th": "การเข้าร่วมชมรมนักศึกษาเป็นวิธีที่สนุกสนานในการหาเพื่อนใหม่ในช่วงเปิดเทอมแรก"}, {"id": 10, "vocab": "make a difference", "ipa": "/meɪk ə ˈdɪf.ɚ.əns/", "pos": "verb collocations", "short_def_en": "have an important effect", "thai_vocab": "สร้างความแตกต่าง, ก่อให้เกิดผลลัพธ์ที่ดี", "category_id": "MAKE_VERB", "category_label": "หมวด Make (การสร้าง การตัดสินใจ & ผลลัพธ์)", "source_slots": [{"sheet": "01", "slot": 10, "label": "Sheet 01 (#10)"}], "ex1_en": "Your help can make a difference.", "ex1_hl": "make a difference", "ex1_th": "ความช่วยเหลือของคุณสามารถสร้างความแตกต่างที่มีคุณค่าได้", "ex2_en": "Every volunteer contribution can make a difference in supporting disaster victims.", "ex2_hl": "make a difference", "ex2_th": "การมีส่วนร่วมของอาสาสมัครทุกคนสามารถสร้างความเปลี่ยนแปลงที่ดีในการช่วยเหลือผู้ประสบภัย"}, {"id": 11, "vocab": "take a break", "ipa": "/teɪk ə breɪk/", "pos": "verb collocations", "short_def_en": "rest briefly", "thai_vocab": "พักเบรก, หยุดพักชั่วคราว", "category_id": "TAKE_VERB", "category_label": "หมวด Take (การกระทำ การรับ & การมีส่วนร่วม)", "source_slots": [{"sheet": "02", "slot": 1, "label": "Sheet 02 (#11)"}], "ex1_en": "Let's take a break.", "ex1_hl": "take a break", "ex1_th": "พวกเราพักเบรกกันสักครู่เถอะ", "ex2_en": "After studying for three consecutive hours, it is healthy to take a break and stretch.", "ex2_hl": "take a break", "ex2_th": "หลังจากอ่านหนังสือติดต่อกันสามชั่วโมง การหยุดพักเบรกและยืดเส้นยืดสายถือเป็นเรื่องดีต่อสุขภาพ"}, {"id": 12, "vocab": "take a seat", "ipa": "/teɪk ə siːt/", "pos": "verb collocations", "short_def_en": "sit down", "thai_vocab": "นั่งลง, เชิญนั่ง", "category_id": "TAKE_VERB", "category_label": "หมวด Take (การกระทำ การรับ & การมีส่วนร่วม)", "source_slots": [{"sheet": "02", "slot": 2, "label": "Sheet 02 (#12)"}], "ex1_en": "Please take a seat.", "ex1_hl": "take a seat", "ex1_th": "กรุณานั่งลงก่อนครับ/ค่ะ", "ex2_en": "The receptionist politely invited the client to take a seat in the lounge.", "ex2_hl": "take a seat", "ex2_th": "พนักงานต้อนรับได้เชื้อเชิญให้ลูกค้านั่งลงพักผ่อนในห้องรับรองอย่างสุภาพ"}, {"id": 13, "vocab": "take a shower", "ipa": "/teɪk ə ˈʃaʊ.ɚ/", "pos": "verb collocations", "short_def_en": "wash under a shower", "thai_vocab": "อาบน้ำ (แบบฝักบัว)", "category_id": "TAKE_VERB", "category_label": "หมวด Take (การกระทำ การรับ & การมีส่วนร่วม)", "source_slots": [{"sheet": "02", "slot": 3, "label": "Sheet 02 (#13)"}], "ex1_en": "I take a shower every morning.", "ex1_hl": "take a shower", "ex1_th": "ฉันอาบน้ำทุกๆ เช้า", "ex2_en": "I always prefer to take a shower right after completing an intense workout session.", "ex2_hl": "take a shower", "ex2_th": "ฉันชอบที่จะอาบน้ำทันทีหลังจากออกกำลังกายอย่างหนักเสร็จสิ้น"}, {"id": 14, "vocab": "take a chance", "ipa": "/teɪk ə tʃæns/", "pos": "verb collocations", "short_def_en": "accept a risk", "thai_vocab": "กล้าเสี่ยง, ลองเสี่ยงดู", "category_id": "TAKE_VERB", "category_label": "หมวด Take (การกระทำ การรับ & การมีส่วนร่วม)", "source_slots": [{"sheet": "02", "slot": 4, "label": "Sheet 02 (#14)"}], "ex1_en": "Sometimes you must take a chance.", "ex1_hl": "take a chance", "ex1_th": "บางครั้งคุณก็จำเป็นต้องกล้าเสี่ยงดูสักตั้ง", "ex2_en": "Entrepreneurs often have to take a chance on untested business ideas to succeed.", "ex2_hl": "take a chance", "ex2_th": "ผู้ประกอบการมักจะต้องกล้าเสี่ยงกับแนวคิดทางธุรกิจที่ยังไม่เคยผ่านการทดสอบเพื่อที่จะประสบความสำเร็จ"}, {"id": 15, "vocab": "take notes", "ipa": "/teɪk noʊts/", "pos": "verb collocations", "short_def_en": "write important points", "thai_vocab": "จดบันทึก, เลกเชอร์ข้อความสำคัญ", "category_id": "TAKE_VERB", "category_label": "หมวด Take (การกระทำ การรับ & การมีส่วนร่วม)", "source_slots": [{"sheet": "02", "slot": 5, "label": "Sheet 02 (#15)"}], "ex1_en": "Students should take notes.", "ex1_hl": "take notes", "ex1_th": "นักเรียนควรจดบันทึกประเด็นสำคัญไว้", "ex2_en": "Be attentive and take notes during the seminar so that you can review them later.", "ex2_hl": "take notes", "ex2_th": "จงตั้งใจฟังและจดบันทึกในระหว่างการสัมมนาเพื่อที่คุณจะได้นำกลับมาทบทวนในภายหลัง"}, {"id": 16, "vocab": "take responsibility", "ipa": "/teɪk rɪˌspɑːn.səˈbɪl.ə.t̬i/", "pos": "verb collocations", "short_def_en": "accept responsibility", "thai_vocab": "รับผิดชอบ, ยืดอกยอมรับผิดชอบ", "category_id": "TAKE_VERB", "category_label": "หมวด Take (การกระทำ การรับ & การมีส่วนร่วม)", "source_slots": [{"sheet": "02", "slot": 6, "label": "Sheet 02 (#16)"}], "ex1_en": "He took responsibility for the mistake.", "ex1_hl": "took responsibility", "ex1_th": "เขายืดอกรับผิดชอบต่อความผิดพลาดนั้น", "ex2_en": "A dependable leader will always take responsibility rather than blaming team members.", "ex2_hl": "take responsibility", "ex2_th": "ผู้นำที่พึ่งพาได้จะยอมรับผิดชอบเสมอมากกว่าที่จะโยนความผิดให้สมาชิกในทีม"}, {"id": 17, "vocab": "take action", "ipa": "/teɪk ˈæk.ʃən/", "pos": "verb collocations", "short_def_en": "do something to solve a problem", "thai_vocab": "ลงมือปฏิบัติการ, ดำเนินมาตรการ", "category_id": "TAKE_VERB", "category_label": "หมวด Take (การกระทำ การรับ & การมีส่วนร่วม)", "source_slots": [{"sheet": "02", "slot": 7, "label": "Sheet 02 (#17)"}], "ex1_en": "We must take action now.", "ex1_hl": "take action", "ex1_th": "พวกเราต้องลงมือปฏิบัติการในทันที", "ex2_en": "Environmental groups urge authorities to take action against illegal industrial dumping.", "ex2_hl": "take action", "ex2_th": "กลุ่มอนุรักษ์สิ่งแวดล้อมกระตุ้นให้เจ้าหน้าที่ดำเนินมาตรการต่อการลักลอบทิ้งกากอุตสาหกรรมอย่างเด็ดขาด"}, {"id": 18, "vocab": "take part", "ipa": "/teɪk pɑːrt/", "pos": "verb collocations", "short_def_en": "participate", "thai_vocab": "เข้าร่วม, มีส่วนร่วม", "category_id": "TAKE_VERB", "category_label": "หมวด Take (การกระทำ การรับ & การมีส่วนร่วม)", "source_slots": [{"sheet": "02", "slot": 8, "label": "Sheet 02 (#18)"}], "ex1_en": "She took part in the competition.", "ex1_hl": "took part", "ex1_th": "เธอได้เข้าร่วมในการแข่งขันครั้งนั้น", "ex2_en": "Over fifty local businesses decided to take part in this year's regional trade expo.", "ex2_hl": "take part", "ex2_th": "ธุรกิจในท้องถิ่นกว่าห้าสิบแห่งตัดสินใจเข้าร่วมในงานแสดงสินค้าประจำภูมิภาคของปีนี้"}, {"id": 19, "vocab": "take a look", "ipa": "/teɪk ə lʊk/", "pos": "verb collocations", "short_def_en": "look at something", "thai_vocab": "ลองดู, ชำเลืองดู, ตรวจสอบดู", "category_id": "TAKE_VERB", "category_label": "หมวด Take (การกระทำ การรับ & การมีส่วนร่วม)", "source_slots": [{"sheet": "02", "slot": 9, "label": "Sheet 02 (#19)"}], "ex1_en": "Take a look at this picture.", "ex1_hl": "Take a look", "ex1_th": "ลองดูภาพถ่ายภาพนี้สิ", "ex2_en": "Could you please take a look at my research draft and provide some feedback?", "ex2_hl": "take a look", "ex2_th": "คุณช่วยกรุณาตรวจดูฉบับร่างงานวิจัยของฉันและให้ข้อคิดเห็นหน่อยได้ไหม"}, {"id": 20, "vocab": "take care", "ipa": "/teɪk ker/", "pos": "verb collocations", "short_def_en": "be careful / look after", "thai_vocab": "ดูแลตัวเอง, ระมัดระวัง, ดูแลเอาใจใส่", "category_id": "TAKE_VERB", "category_label": "หมวด Take (การกระทำ การรับ & การมีส่วนร่วม)", "source_slots": [{"sheet": "02", "slot": 10, "label": "Sheet 02 (#20)"}], "ex1_en": "Take care on your way home.", "ex1_hl": "Take care", "ex1_th": "ดูแลตัวเองดีๆ ระหว่างเดินทางกลับบ้านนะ", "ex2_en": "He had to take care of his younger brother while their parents were away.", "ex2_hl": "take care", "ex2_th": "เขาต้องดูแลน้องชายของเขาในขณะที่พ่อแม่ไม่อยู่บ้าน"}, {"id": 21, "vocab": "have breakfast", "ipa": "/hæv ˈbrek.fəst/", "pos": "verb collocations", "short_def_en": "eat the morning meal", "thai_vocab": "รับประทานอาหารเช้า, กินข้าวเช้า", "category_id": "HAVE_VERB", "category_label": "หมวด Have (กิจวัตร ประสบการณ์ & ความรู้สึก)", "source_slots": [{"sheet": "03", "slot": 1, "label": "Sheet 03 (#21)"}], "ex1_en": "I have breakfast at 8 a.m.", "ex1_hl": "have breakfast", "ex1_th": "ฉันรับประทานอาหารเช้าตอนแปดโมงเช้า", "ex2_en": "Doctors emphasize that you should always have breakfast to fuel your morning concentration.", "ex2_hl": "have breakfast", "ex2_th": "แพทย์เน้นย้ำว่าคุณควรรับประทานอาหารเช้าเสมอเพื่อเติมพลังให้แก่สมาธิในช่วงเช้าของคุณ"}, {"id": 22, "vocab": "have lunch", "ipa": "/hæv lʌntʃ/", "pos": "verb collocations", "short_def_en": "eat the midday meal", "thai_vocab": "รับประทานอาหารกลางวัน, ทานมื้อเที่ยง", "category_id": "HAVE_VERB", "category_label": "หมวด Have (กิจวัตร ประสบการณ์ & ความรู้สึก)", "source_slots": [{"sheet": "03", "slot": 2, "label": "Sheet 03 (#22)"}], "ex1_en": "We had lunch together.", "ex1_hl": "had lunch", "ex1_th": "พวกเราได้รับประทานอาหารกลางวันด้วยกัน", "ex2_en": "Let's meet at noon to have lunch at the casual diner around the corner.", "ex2_hl": "have lunch", "ex2_th": "พวกเรานัดเจอกันตอนเที่ยงเพื่อทานมื้อกลางวันที่ร้านอาหารสบายๆ ตรงหัวมุมถนนกันเถอะ"}, {"id": 23, "vocab": "have dinner", "ipa": "/hæv ˈdɪn.ɚ/", "pos": "verb collocations", "short_def_en": "eat the evening meal", "thai_vocab": "รับประทานอาหารค่ำ, ทานมื้อเย็น", "category_id": "HAVE_VERB", "category_label": "หมวด Have (กิจวัตร ประสบการณ์ & ความรู้สึก)", "source_slots": [{"sheet": "03", "slot": 3, "label": "Sheet 03 (#23)"}], "ex1_en": "They had dinner at home.", "ex1_hl": "had dinner", "ex1_th": "พวกเขารับประทานอาหารค่ำกันที่บ้าน", "ex2_en": "Our entire family gathers to have dinner together every Sunday evening.", "ex2_hl": "have dinner", "ex2_th": "สมาชิกทุกคนในครอบครัวของเราจะมารวมตัวกันเพื่อรับประทานอาหารค่ำในทุกค่ำคืนวันอาทิตย์"}, {"id": 24, "vocab": "have a rest", "ipa": "/hæv ə rest/", "pos": "verb collocations", "short_def_en": "rest", "thai_vocab": "พักผ่อน, เอนกายพัก", "category_id": "HAVE_VERB", "category_label": "หมวด Have (กิจวัตร ประสบการณ์ & ความรู้สึก)", "source_slots": [{"sheet": "03", "slot": 4, "label": "Sheet 03 (#24)"}], "ex1_en": "You should have a rest.", "ex1_hl": "have a rest", "ex1_th": "คุณควรจะพักผ่อนเสียหน่อยนะ", "ex2_en": "You seem utterly exhausted after the cross-country hike; sit on the porch and have a rest.", "ex2_hl": "have a rest", "ex2_th": "คุณดูเหนื่อยล้ามากหลังจากเดินเขาข้ามจังหวัด มานั่งที่เฉลียงแล้วพักผ่อนสักหน่อยเถอะ"}, {"id": 25, "vocab": "have a chat", "ipa": "/hæv ə tʃæt/", "pos": "verb collocations", "short_def_en": "talk informally", "thai_vocab": "พูดคุยสนทนา, คุยเล่นกัน", "category_id": "HAVE_VERB", "category_label": "หมวด Have (กิจวัตร ประสบการณ์ & ความรู้สึก)", "source_slots": [{"sheet": "03", "slot": 5, "label": "Sheet 03 (#25)"}], "ex1_en": "We had a chat after class.", "ex1_hl": "had a chat", "ex1_th": "พวกเราได้พูดคุยสนทนากันหลังเลิกเรียน", "ex2_en": "Drop by my office tomorrow so we can have a chat about your career development plans.", "ex2_hl": "have a chat", "ex2_th": "แวะมาที่ห้องทำงานของผมพรุ่งนี้สิ เราจะได้พูดคุยกันเกี่ยวกับแผนพัฒนาสายอาชีพของคุณ"}, {"id": 26, "vocab": "have fun", "ipa": "/hæv fʌn/", "pos": "verb collocations", "short_def_en": "enjoy yourself", "thai_vocab": "สนุกสนาน, เพลิดเพลิน", "category_id": "HAVE_VERB", "category_label": "หมวด Have (กิจวัตร ประสบการณ์ & ความรู้สึก)", "source_slots": [{"sheet": "03", "slot": 6, "label": "Sheet 03 (#26)"}], "ex1_en": "The children had fun at the park.", "ex1_hl": "had fun", "ex1_th": "พวกเด็กๆ สนุกสนานกันมากที่สวนสาธารณะ", "ex2_en": "We hope all the participants have fun while competing in the friendly coding challenge.", "ex2_hl": "have fun", "ex2_th": "เราหวังว่าผู้เข้าร่วมทุกคนจะได้รับความสนุกสนานระหว่างการแข่งขันแก้โจทย์เขียนโปรแกรมกระชับมิตรนี้"}, {"id": 27, "vocab": "have a problem", "ipa": "/hæv ə ˈprɑː.bləm/", "pos": "verb collocations", "short_def_en": "experience a difficulty", "thai_vocab": "มีปัญหา, เผชิญอุปสรรค", "category_id": "HAVE_VERB", "category_label": "หมวด Have (กิจวัตร ประสบการณ์ & ความรู้สึก)", "source_slots": [{"sheet": "03", "slot": 7, "label": "Sheet 03 (#27)"}], "ex1_en": "We have a problem with the machine.", "ex1_hl": "have a problem", "ex1_th": "พวกเราพบปัญหากับเครื่องจักรเครื่องนี้", "ex2_en": "If you have a problem logging in to the portal, contact customer support immediately.", "ex2_hl": "have a problem", "ex2_th": "หากคุณพบปัญหาในการเข้าสู่ระบบพอร์ทัล โปรดติดต่อฝ่ายบริการลูกค้าทันที"}, {"id": 28, "vocab": "have an idea", "ipa": "/hæv ən aɪˈdiː.ə/", "pos": "verb collocations", "short_def_en": "think of something", "thai_vocab": "เกิดความคิด, มีความคิดขึ้นมา", "category_id": "HAVE_VERB", "category_label": "หมวด Have (กิจวัตร ประสบการณ์ & ความรู้สึก)", "source_slots": [{"sheet": "03", "slot": 8, "label": "Sheet 03 (#28)"}], "ex1_en": "I have an idea.", "ex1_hl": "have an idea", "ex1_th": "ฉันเกิดความคิดดีๆ ขึ้นมาแล้ว", "ex2_en": "The graphic designer seemed to have an idea that completely solved the brand identity dilemma.", "ex2_hl": "have an idea", "ex2_th": "นักออกแบบกราฟิกดูเหมือนจะเกิดแนวคิดที่สามารถคลี่คลายปัญหาเอกลักษณ์ของแบรนด์ได้อย่างสมบูรณ์แบบ"}, {"id": 29, "vocab": "have a dream", "ipa": "/hæv ə driːm/", "pos": "verb collocations", "short_def_en": "experience or possess a dream", "thai_vocab": "ฝัน, มีความฝันอันแรงกล้า", "category_id": "HAVE_VERB", "category_label": "หมวด Have (กิจวัตร ประสบการณ์ & ความรู้สึก)", "source_slots": [{"sheet": "03", "slot": 9, "label": "Sheet 03 (#29)"}], "ex1_en": "She had a strange dream.", "ex1_hl": "had a strange dream", "ex1_th": "เธอฝันประหลาดเมื่อคืนนี้", "ex2_en": "Many young athletes have a dream of representing their nation on the Olympic podium.", "ex2_hl": "have a dream", "ex2_th": "นักกีฬาเยาวชนจำนวนมากต่างมีความฝันที่จะได้เป็นตัวแทนประเทศชาติก้าวขึ้นสู่โพเดียมโอลิมปิก"}, {"id": 30, "vocab": "have a good time", "ipa": "/hæv ə ɡʊd taɪm/", "pos": "verb collocations", "short_def_en": "enjoy yourself", "thai_vocab": "สนุกสนานเพลิดเพลิน, มีช่วงเวลาที่ดี", "category_id": "HAVE_VERB", "category_label": "หมวด Have (กิจวัตร ประสบการณ์ & ความรู้สึก)", "source_slots": [{"sheet": "03", "slot": 10, "label": "Sheet 03 (#30)"}], "ex1_en": "We had a good time at the party.", "ex1_hl": "had a good time", "ex1_th": "พวกเราสนุกสนานเพลิดเพลินกันมากในงานปาร์ตี้", "ex2_en": "All the wedding guests appeared to have a good time dancing to the live jazz band.", "ex2_hl": "have a good time", "ex2_th": "แขกเหรื่อทุกคนในงานแต่งงานต่างดูมีความสุขและเพลิดเพลินกับการเต้นรำไปตามเสียงเพลงแจ๊สสด"}, {"id": 31, "vocab": "do homework", "ipa": "/duː ˈhoʊm.wɝːk/", "pos": "verb collocations", "short_def_en": "complete schoolwork", "thai_vocab": "ทำการบ้าน", "category_id": "DO_VERB", "category_label": "หมวด Do (งาน กิจกรรม & การกระทำ)", "source_slots": [{"sheet": "04", "slot": 1, "label": "Sheet 04 (#31)"}], "ex1_en": "He does his homework every evening.", "ex1_hl": "does his homework", "ex1_th": "เขาทำการบ้านทุกๆ เย็น", "ex2_en": "Parents should encourage children to do homework in a quiet and well-lit study area.", "ex2_hl": "do homework", "ex2_th": "ผู้ปกครองควรสนับสนุนให้เด็กๆ ทำการบ้านในมุมหนังสือที่เงียบสงบและมีแสงสว่างเพียงพอ"}, {"id": 32, "vocab": "do housework", "ipa": "/duː ˈhaʊs.wɝːk/", "pos": "verb collocations", "short_def_en": "complete household tasks", "thai_vocab": "ทำงานบ้าน", "category_id": "DO_VERB", "category_label": "หมวด Do (งาน กิจกรรม & การกระทำ)", "source_slots": [{"sheet": "04", "slot": 2, "label": "Sheet 04 (#32)"}], "ex1_en": "We do housework on Sunday.", "ex1_hl": "do housework", "ex1_th": "พวกเราทำงานบ้านกันในวันอาทิตย์", "ex2_en": "Couples who share the responsibility to do housework often report happier relationships.", "ex2_hl": "do housework", "ex2_th": "คู่รักที่แบ่งปันหน้าที่รับผิดชอบในการทำงานบ้านร่วมกันมักจะมีความสัมพันธ์ที่อบอุ่นและมีความสุขยิ่งขึ้น"}, {"id": 33, "vocab": "do exercise", "ipa": "/duː ˈek.sɚ.saɪz/", "pos": "verb collocations", "short_def_en": "exercise physically", "thai_vocab": "ออกกำลังกาย", "category_id": "DO_VERB", "category_label": "หมวด Do (งาน กิจกรรม & การกระทำ)", "source_slots": [{"sheet": "04", "slot": 3, "label": "Sheet 04 (#33)"}], "ex1_en": "She does exercise every morning.", "ex1_hl": "does exercise", "ex1_th": "เธอออกกำลังกายทุกๆ เช้า", "ex2_en": "It is essential for office workers to do exercise regularly to counter long hours of sitting.", "ex2_hl": "do exercise", "ex2_th": "เป็นเรื่องจำเป็นอย่างยิ่งสำหรับพนักงานออฟฟิศที่จะออกกำลังกายสม่ำเสมอเพื่อชดเชยการนั่งทำงานติดต่อกันเป็นเวลานาน"}, {"id": 34, "vocab": "do business", "ipa": "/duː ˈbɪz.nɪs/", "pos": "verb collocations", "short_def_en": "conduct business", "thai_vocab": "ทำธุรกิจ, ดำเนินธุรกิจ", "category_id": "DO_VERB", "category_label": "หมวด Do (งาน กิจกรรม & การกระทำ)", "source_slots": [{"sheet": "04", "slot": 4, "label": "Sheet 04 (#34)"}], "ex1_en": "Our company does business abroad.", "ex1_hl": "does business", "ex1_th": "บริษัทของเราดำเนินธุรกิจในต่างประเทศ", "ex2_en": "Establishing mutual trust is paramount when you do business with international partners.", "ex2_hl": "do business", "ex2_th": "การสร้างความไว้วางใจซึ่งกันและกันเป็นสิ่งสำคัญสูงสุดเมื่อคุณดำเนินธุรกิจร่วมกับพันธมิตรระดับนานาชาติ"}, {"id": 35, "vocab": "do research", "ipa": "/duː rɪˈsɝːtʃ/", "pos": "verb collocations", "short_def_en": "investigate systematically", "thai_vocab": "ทำวิจัย, ค้นคว้าหาข้อมูล", "category_id": "DO_VERB", "category_label": "หมวด Do (งาน กิจกรรม & การกระทำ)", "source_slots": [{"sheet": "04", "slot": 5, "label": "Sheet 04 (#35)"}], "ex1_en": "Scientists do research on diseases.", "ex1_hl": "do research", "ex1_th": "เหล่านักวิทยาศาสตร์ทำการศึกษาวิจัยเกี่ยวกับโรคภัยต่างๆ", "ex2_en": "Before buying a used car, make sure to do research on its accident and maintenance history.", "ex2_hl": "do research", "ex2_th": "ก่อนที่จะซื้อรถมือสอง ต้องแน่ใจว่าคุณได้ค้นคว้าหาข้อมูลประวัติอุบัติเหตุและการบำรุงรักษาอย่างรอบคอบ"}, {"id": 36, "vocab": "do your best", "ipa": "/duː jʊr best/", "pos": "verb collocations", "short_def_en": "try as hard as possible", "thai_vocab": "ทำอย่างสุดความสามารถ, ทำให้ดีที่สุด", "category_id": "DO_VERB", "category_label": "หมวด Do (งาน กิจกรรม & การกระทำ)", "source_slots": [{"sheet": "04", "slot": 6, "label": "Sheet 04 (#36)"}], "ex1_en": "Just do your best.", "ex1_hl": "do your best", "ex1_th": "เพียงแค่ทำให้ดีที่สุดก็พอ", "ex2_en": "Regardless of the exam's difficulty, go into the test hall and do your best.", "ex2_hl": "do your best", "ex2_th": "ไม่ว่าข้อสอบจะยากเพียงใดก็ตาม จงเดินเข้าห้องสอบด้วยความมั่นใจและทำให้สุดความสามารถของคุณ"}, {"id": 37, "vocab": "do a favour", "ipa": "/duː ə ˈfeɪ.vɚ/", "pos": "verb collocations", "short_def_en": "help someone", "thai_vocab": "ช่วยเหลือ, สงเคราะห์ช่วยเหลือ (favour / favor)", "category_id": "DO_VERB", "category_label": "หมวด Do (งาน กิจกรรม & การกระทำ)", "source_slots": [{"sheet": "04", "slot": 7, "label": "Sheet 04 (#37)"}], "ex1_en": "Can you do me a favour?", "ex1_hl": "do me a favour", "ex1_th": "คุณช่วยสงเคราะห์ช่วยเหลือฉันหน่อยได้ไหม", "ex2_en": "Could you do me a favor and watch my luggage while I step away to buy a coffee?", "ex2_hl": "do me a favor", "ex2_th": "คุณช่วยสงเคราะห์ดูสัมภาระให้ฉันสักครู่ได้ไหม ในระหว่างที่ฉันเดินไปซื้อกาแฟ"}, {"id": 38, "vocab": "do damage", "ipa": "/duː ˈdæm.ɪdʒ/", "pos": "verb collocations", "short_def_en": "cause harm", "thai_vocab": "สร้างความเสียหาย, ก่อความเสียหาย", "category_id": "DO_VERB", "category_label": "หมวด Do (งาน กิจกรรม & การกระทำ)", "source_slots": [{"sheet": "04", "slot": 8, "label": "Sheet 04 (#38)"}], "ex1_en": "The storm did serious damage.", "ex1_hl": "did serious damage", "ex1_th": "พายุลูกนั้นก่อให้เกิดความเสียหายร้ายแรง", "ex2_en": "Spreading false rumors on the internet can do damage to someone's personal and professional life.", "ex2_hl": "do damage", "ex2_th": "การเผยแพร่ข่าวลือที่เป็นเท็จบนอินเทอร์เน็ตอาจสร้างความเสียหายต่อชีวิตส่วนตัวและหน้าที่การงานของผู้อื่นได้"}, {"id": 39, "vocab": "do a job", "ipa": "/duː ə dʒɑːb/", "pos": "verb collocations", "short_def_en": "perform work", "thai_vocab": "ทำงาน, ปฏิบัติงาน", "category_id": "DO_VERB", "category_label": "หมวด Do (งาน กิจกรรม & การกระทำ)", "source_slots": [{"sheet": "04", "slot": 9, "label": "Sheet 04 (#39)"}], "ex1_en": "He did a good job.", "ex1_hl": "did a good job", "ex1_th": "เขาปฏิบัติงานชิ้นนี้ได้ดีมาก", "ex2_en": "The skilled mechanic managed to do a job that restored the vintage sports car to perfection.", "ex2_hl": "do a job", "ex2_th": "ช่างเครื่องผู้ชำนาญการสามารถปฏิบัติงานบูรณะรถสปอร์ตโบราณจนกลับมาสมบูรณ์แบบได้อย่างยอดเยี่ยม"}, {"id": 40, "vocab": "do the shopping", "ipa": "/duː ðə ˈʃɑː.pɪŋ/", "pos": "verb collocations", "short_def_en": "buy household goods", "thai_vocab": "ซื้อของใช้เข้าบ้าน, จับจ่ายซื้อของ", "category_id": "DO_VERB", "category_label": "หมวด Do (งาน กิจกรรม & การกระทำ)", "source_slots": [{"sheet": "04", "slot": 10, "label": "Sheet 04 (#40)"}], "ex1_en": "I usually do the shopping on Saturday.", "ex1_hl": "do the shopping", "ex1_th": "ฉันมักจะไปจับจ่ายซื้อของใช้ในวันเสาร์", "ex2_en": "We prepared a detailed grocery list before heading downtown to do the shopping.", "ex2_hl": "do the shopping", "ex2_th": "พวกเราเตรียมรายการของที่จะซื้ออย่างละเอียดก่อนที่จะมุ่งหน้าเข้าไปซื้อของใช้ในตัวเมือง"}, {"id": 41, "vocab": "get ready", "ipa": "/ɡet ˈred.i/", "pos": "verb collocations", "short_def_en": "prepare yourself", "thai_vocab": "เตรียมตัวให้พร้อม, เตรียมพร้อม", "category_id": "GET_VERB", "category_label": "หมวด Get (การเปลี่ยนแปลง การได้รับ & สภาวะ)", "source_slots": [{"sheet": "05", "slot": 1, "label": "Sheet 05 (#41)"}], "ex1_en": "Get ready for school.", "ex1_hl": "Get ready", "ex1_th": "เตรียมตัวให้พร้อมสำหรับไปโรงเรียนได้แล้ว", "ex2_en": "Please give me fifteen minutes to get ready before we head out to the airport.", "ex2_hl": "get ready", "ex2_th": "โปรดให้เวลาฉันเตรียมตัวสักสิบห้านาทีก่อนที่พวกเราจะออกเดินทางไปยังสนามบิน"}, {"id": 42, "vocab": "get married", "ipa": "/ɡet ˈmer.id/", "pos": "verb collocations", "short_def_en": "marry", "thai_vocab": "แต่งงาน, สมรส", "category_id": "GET_VERB", "category_label": "หมวด Get (การเปลี่ยนแปลง การได้รับ & สภาวะ)", "source_slots": [{"sheet": "05", "slot": 2, "label": "Sheet 05 (#42)"}], "ex1_en": "They got married last year.", "ex1_hl": "got married", "ex1_th": "พวกเขาแต่งงานกันเมื่อปีที่แล้ว", "ex2_en": "The young couple decided to get married in an intimate garden ceremony surrounded by close friends.", "ex2_hl": "get married", "ex2_th": "คู่รักหนุ่มสาวตัดสินใจจัดพิธีแต่งงานอย่างอบอุ่นในสวนท่ามกลางเพื่อนสนิท"}, {"id": 43, "vocab": "get dressed", "ipa": "/ɡet drest/", "pos": "verb collocations", "short_def_en": "put on clothes", "thai_vocab": "แต่งตัว, สวมใส่เสื้อผ้า", "category_id": "GET_VERB", "category_label": "หมวด Get (การเปลี่ยนแปลง การได้รับ & สภาวะ)", "source_slots": [{"sheet": "05", "slot": 3, "label": "Sheet 05 (#43)"}], "ex1_en": "He got dressed quickly.", "ex1_hl": "got dressed", "ex1_th": "เขาแต่งตัวอย่างรวดเร็ว", "ex2_en": "She woke up late and had to get dressed in less than five minutes.", "ex2_hl": "get dressed", "ex2_th": "เธอตื่นสายและต้องรีบแต่งตัวให้เสร็จภายในเวลาไม่ถึงห้านาที"}, {"id": 44, "vocab": "get permission", "ipa": "/ɡet pɚˈmɪʃ.ən/", "pos": "verb collocations", "short_def_en": "receive approval", "thai_vocab": "ได้รับอนุญาต, ขออนุมัติผ่าน", "category_id": "GET_VERB", "category_label": "หมวด Get (การเปลี่ยนแปลง การได้รับ & สภาวะ)", "source_slots": [{"sheet": "05", "slot": 4, "label": "Sheet 05 (#44)"}], "ex1_en": "You need to get permission first.", "ex1_hl": "get permission", "ex1_th": "คุณจำเป็นต้องได้รับอนุญาตก่อนเป็นอันดับแรก", "ex2_en": "Employees must get permission from the supervisor before taking unscheduled leave.", "ex2_hl": "get permission", "ex2_th": "พนักงานต้องได้รับอนุญาตจากหัวหน้างานก่อนที่จะลางานนอกตารางที่กำหนด"}, {"id": 45, "vocab": "get a job", "ipa": "/ɡet ə dʒɑːb/", "pos": "verb collocations", "short_def_en": "obtain employment", "thai_vocab": "ได้งานทำ, หางานทำได้", "category_id": "GET_VERB", "category_label": "หมวด Get (การเปลี่ยนแปลง การได้รับ & สภาวะ)", "source_slots": [{"sheet": "05", "slot": 5, "label": "Sheet 05 (#45)"}], "ex1_en": "She got a job in Delhi.", "ex1_hl": "got a job", "ex1_th": "เธอได้งานทำที่เดลีแล้ว", "ex2_en": "After submitting dozens of resumes, he finally managed to get a job as a junior data analyst.", "ex2_hl": "get a job", "ex2_th": "หลังจากส่งใบสมัครงานไปหลายสิบแห่ง ในที่สุดเขาก็ได้งานทำในตำแหน่งนักวิเคราะห์ข้อมูลระดับเริ่มต้น"}, {"id": 46, "vocab": "get a chance", "ipa": "/ɡet ə tʃæns/", "pos": "verb collocations", "short_def_en": "receive an opportunity", "thai_vocab": "ได้รับโอกาส, มีโอกาส", "category_id": "GET_VERB", "category_label": "หมวด Get (การเปลี่ยนแปลง การได้รับ & สภาวะ)", "source_slots": [{"sheet": "05", "slot": 6, "label": "Sheet 05 (#46)"}], "ex1_en": "I hope I get a chance to visit.", "ex1_hl": "get a chance", "ex1_th": "ฉันหวังว่าฉันจะมีโอกาสได้ไปเยือนสักครั้ง", "ex2_en": "If you get a chance to study abroad on a scholarship, you should seize it without hesitation.", "ex2_hl": "get a chance", "ex2_th": "หากคุณได้รับโอกาสไปศึกษาต่อต่างประเทศด้วยทุนการศึกษา คุณควรคว้าโอกาสนั้นไว้โดยไม่ต้องลังเล"}, {"id": 47, "vocab": "get better", "ipa": "/ɡet ˈbet̬.ɚ/", "pos": "verb collocations", "short_def_en": "improve", "thai_vocab": "ดีขึ้น, พัฒนาขึ้น, หายป่วย", "category_id": "GET_VERB", "category_label": "หมวด Get (การเปลี่ยนแปลง การได้รับ & สภาวะ)", "source_slots": [{"sheet": "05", "slot": 7, "label": "Sheet 05 (#47)"}], "ex1_en": "His English is getting better.", "ex1_hl": "getting better", "ex1_th": "ภาษาอังกฤษของเขาพัฒนาดีขึ้นเรื่อยๆ", "ex2_en": "With consistent daily practice and listening exercises, your pronunciation will definitely get better.", "ex2_hl": "get better", "ex2_th": "ด้วยการฝึกฝนและฟังภาษาอังกฤษทุกวันอย่างสม่ำเสมอ การออกเสียงของคุณจะพัฒนาดีขึ้นอย่างแน่นอน"}, {"id": 48, "vocab": "get lost", "ipa": "/ɡet lɔːst/", "pos": "verb collocations", "short_def_en": "lose one's way", "thai_vocab": "หลงทาง", "category_id": "GET_VERB", "category_label": "หมวด Get (การเปลี่ยนแปลง การได้รับ & สภาวะ)", "source_slots": [{"sheet": "05", "slot": 8, "label": "Sheet 05 (#48)"}], "ex1_en": "We got lost in the city.", "ex1_hl": "got lost", "ex1_th": "พวกเราหลงทางในตัวเมือง", "ex2_en": "Always keep a navigation app on your phone so you do not get lost while traveling in Venice.", "ex2_hl": "get lost", "ex2_th": "จงเปิดแอปนำทางติดตัวไว้เสมอเพื่อที่คุณจะได้ไม่หลงทางระหว่างท่องเที่ยวในเมืองเวนิส"}, {"id": 49, "vocab": "get angry", "ipa": "/ɡet ˈæŋ.ɡri/", "pos": "verb collocations", "short_def_en": "become angry", "thai_vocab": "โกรธ, มีอารมณ์โมโห", "category_id": "GET_VERB", "category_label": "หมวด Get (การเปลี่ยนแปลง การได้รับ & สภาวะ)", "source_slots": [{"sheet": "05", "slot": 9, "label": "Sheet 05 (#49)"}], "ex1_en": "Don't get angry easily.", "ex1_hl": "get angry", "ex1_th": "อย่าได้มีอารมณ์โกรธง่ายจนเกินไป", "ex2_en": "It is important to stay professional and avoid getting angry during heated workplace debates.", "ex2_hl": "getting angry", "ex2_th": "เป็นเรื่องสำคัญอย่างยิ่งที่ต้องรักษาความเป็นมืออาชีพและหลีกเลี่ยงการโมโหวีนในระหว่างการถกเถียงในที่ทำงาน"}, {"id": 50, "vocab": "get involved", "ipa": "/ɡet ɪnˈvɑːlvd/", "pos": "verb collocations", "short_def_en": "participate in something", "thai_vocab": "เข้ามามีส่วนร่วม, มีบทบาทเกี่ยวข้อง", "category_id": "GET_VERB", "category_label": "หมวด Get (การเปลี่ยนแปลง การได้รับ & สภาวะ)", "source_slots": [{"sheet": "05", "slot": 10, "label": "Sheet 05 (#50)"}], "ex1_en": "She wants to get involved in community service.", "ex1_hl": "get involved", "ex1_th": "เธอต้องการเข้ามามีส่วนร่วมในงานบริการชุมชน", "ex2_en": "University students are encouraged to get involved in local volunteer environmental campaigns.", "ex2_hl": "get involved", "ex2_th": "นักศึกษาในมหาวิทยาลัยได้รับการสนับสนุนให้เข้ามามีส่วนร่วมในแคมเปญอนุรักษ์สิ่งแวดล้อมของชุมชน"}, {"id": 51, "vocab": "give advice", "ipa": "/ɡɪv ədˈvaɪs/", "pos": "verb collocations", "short_def_en": "offer recommendations", "thai_vocab": "ให้คำแนะนำ, ให้คำปรึกษา", "category_id": "GIVE_VERB", "category_label": "หมวด Give (การให้ การสื่อสาร & ความช่วยเหลือ)", "source_slots": [{"sheet": "06", "slot": 1, "label": "Sheet 06 (#51)"}], "ex1_en": "She gave me good advice.", "ex1_hl": "gave me good advice", "ex1_th": "เธอได้ให้คำแนะนำที่ดีเยี่ยมแก่ฉัน", "ex2_en": "Experienced mentors can give advice on navigating complex career transitions successfully.", "ex2_hl": "give advice", "ex2_th": "ผู้ให้คำปรึกษาที่มีประสบการณ์สามารถให้คำแนะนำเกี่ยวกับการเปลี่ยนผ่านสายอาชีพที่ซับซ้อนให้ประสบความสำเร็จได้"}, {"id": 52, "vocab": "give permission", "ipa": "/ɡɪv pɚˈmɪʃ.ən/", "pos": "verb collocations", "short_def_en": "allow something", "thai_vocab": "อนุญาต, ให้ความยินยอม", "category_id": "GIVE_VERB", "category_label": "หมวด Give (การให้ การสื่อสาร & ความช่วยเหลือ)", "source_slots": [{"sheet": "06", "slot": 2, "label": "Sheet 06 (#52)"}], "ex1_en": "The manager gave permission for the leave.", "ex1_hl": "gave permission", "ex1_th": "ผู้จัดการได้อนุญาตสำหรับการลางานนั้นแล้ว", "ex2_en": "The school principal agreed to give permission for the astronomy club's overnight camp.", "ex2_hl": "give permission", "ex2_th": "ผู้อำนวยการโรงเรียนตกลงที่จะอนุญาตให้ชมรมดาราศาสตร์จัดค่ายพักแรมดูดาวค้างคืนได้"}, {"id": 53, "vocab": "give a speech", "ipa": "/ɡɪv ə spiːtʃ/", "pos": "verb collocations", "short_def_en": "deliver a formal address", "thai_vocab": "กล่าวสุนทรพจน์, กล่าวปราศรัย", "category_id": "GIVE_VERB", "category_label": "หมวด Give (การให้ การสื่อสาร & ความช่วยเหลือ)", "source_slots": [{"sheet": "06", "slot": 3, "label": "Sheet 06 (#53)"}], "ex1_en": "The principal gave an inspiring speech.", "ex1_hl": "gave an inspiring speech", "ex1_th": "ครูใหญ่ได้กล่าวสุนทรพจน์ที่สร้างแรงบันดาลใจ", "ex2_en": "The guest speaker was invited to give a speech at the university's commencement ceremony.", "ex2_hl": "give a speech", "ex2_th": "วิทยากรรับเชิญได้รับเกียรติให้ขึ้นกล่าวสุนทรพจน์ในพิธีประสาทปริญญาบัตรของมหาวิทยาลัย"}, {"id": 54, "vocab": "give an example", "ipa": "/ɡɪv ən ɪɡˈzæm.pəl/", "pos": "verb collocations", "short_def_en": "provide an illustration", "thai_vocab": "ยกตัวอย่าง, ให้ตัวอย่างประกอบ", "category_id": "GIVE_VERB", "category_label": "หมวด Give (การให้ การสื่อสาร & ความช่วยเหลือ)", "source_slots": [{"sheet": "06", "slot": 4, "label": "Sheet 06 (#54)"}], "ex1_en": "Can you give an example?", "ex1_hl": "give an example", "ex1_th": "คุณช่วยยกตัวอย่างหน่อยได้ไหม", "ex2_en": "To help students grasp the abstract theory, the professor took a moment to give an example.", "ex2_hl": "give an example", "ex2_th": "เพื่อช่วยให้นักศึกษาเข้าใจทฤษฎีเชิงนามธรรม ศาสตราจารย์จึงหยุดเพื่อยกตัวอย่างให้เห็นภาพชัดเจน"}, {"id": 55, "vocab": "give a reason", "ipa": "/ɡɪv ə ˈriː.zən/", "pos": "verb collocations", "short_def_en": "explain why", "thai_vocab": "ให้เหตุผล, ชี้แจงเหตุผล", "category_id": "GIVE_VERB", "category_label": "หมวด Give (การให้ การสื่อสาร & ความช่วยเหลือ)", "source_slots": [{"sheet": "06", "slot": 5, "label": "Sheet 06 (#55)"}], "ex1_en": "He gave a reason for being late.", "ex1_hl": "gave a reason", "ex1_th": "เขาได้ชี้แจงเหตุผลสำหรับการมาสาย", "ex2_en": "The manager asked the contractor to give a reason for the unexpected project delay.", "ex2_hl": "give a reason", "ex2_th": "ผู้จัดการได้ขอให้ผู้รับเหมาให้เหตุผลสำหรับความล่าช้าของโครงการที่ไม่คาดคิด"}, {"id": 56, "vocab": "give a warning", "ipa": "/ɡɪv ə ˈwɔːr.nɪŋ/", "pos": "verb collocations", "short_def_en": "warn someone", "thai_vocab": "ออกคำเตือน, ตักเตือน", "category_id": "GIVE_VERB", "category_label": "หมวด Give (การให้ การสื่อสาร & ความช่วยเหลือ)", "source_slots": [{"sheet": "06", "slot": 6, "label": "Sheet 06 (#56)"}], "ex1_en": "The police gave a warning to the driver.", "ex1_hl": "gave a warning", "ex1_th": "เจ้าหน้าที่ตำรวจได้ว่ากล่าวตักเตือนคนขับรถรายนั้น", "ex2_en": "Lifeguards blew their whistles to give a warning about dangerous rip currents near the shore.", "ex2_hl": "give a warning", "ex2_th": "เจ้าหน้าที่ดูแลความปลอดภัยชายหาดเป่านกหวีดเพื่อส่งสัญญาณเตือนเกี่ยวกับกระแสน้ำดูดที่เป็นอันตรายใกล้ชายฝั่ง"}, {"id": 57, "vocab": "give support", "ipa": "/ɡɪv səˈpɔːrt/", "pos": "verb collocations", "short_def_en": "help or encourage", "thai_vocab": "ให้การสนับสนุน, ให้ความช่วยเหลือและกำลังใจ", "category_id": "GIVE_VERB", "category_label": "หมวด Give (การให้ การสื่อสาร & ความช่วยเหลือ)", "source_slots": [{"sheet": "06", "slot": 7, "label": "Sheet 06 (#57)"}], "ex1_en": "Friends should give support to each other.", "ex1_hl": "give support", "ex1_th": "เพื่อนๆ ควรมอบการสนับสนุนและกำลังใจให้แก่กันและกัน", "ex2_en": "The government launched a dedicated financial relief fund to give support to small businesses.", "ex2_hl": "give support", "ex2_th": "รัฐบาลได้เปิดตัวกองทุนเยียวยาทางการเงินเพื่อมอบการสนับสนุนแก่ธุรกิจขนาดเล็ก"}, {"id": 58, "vocab": "give a hand", "ipa": "/ɡɪv ə hænd/", "pos": "verb collocations", "short_def_en": "help someone", "thai_vocab": "ยื่นมือเข้าช่วย, ช่วยเหลือ", "category_id": "GIVE_VERB", "category_label": "หมวด Give (การให้ การสื่อสาร & ความช่วยเหลือ)", "source_slots": [{"sheet": "06", "slot": 8, "label": "Sheet 06 (#58)"}], "ex1_en": "Can you give me a hand?", "ex1_hl": "give me a hand", "ex1_th": "คุณช่วยยื่นมือมาช่วยฉันหน่อยได้ไหม", "ex2_en": "Would you mind coming over to give a hand with moving this heavy wooden dining table?", "ex2_hl": "give a hand", "ex2_th": "คุณจะรังเกียจไหมถ้าจะเดินมาช่วยยื่นมือช่วยยกโต๊ะอาหารไม้ตัวหนักตัวนี้สักครู่"}, {"id": 59, "vocab": "give an answer", "ipa": "/ɡɪv ən ˈæn.sɚ/", "pos": "verb collocations", "short_def_en": "answer", "thai_vocab": "ให้คำตอบ, ตอบคำถาม", "category_id": "GIVE_VERB", "category_label": "หมวด Give (การให้ การสื่อสาร & ความช่วยเหลือ)", "source_slots": [{"sheet": "06", "slot": 9, "label": "Sheet 06 (#59)"}], "ex1_en": "Please give an answer.", "ex1_hl": "give an answer", "ex1_th": "กรุณาให้คำตอบด้วยครับ/ค่ะ", "ex2_en": "The spokesperson promised to give an answer to the journalists' questions at tomorrow's press briefing.", "ex2_hl": "give an answer", "ex2_th": "โฆษกสัญญาว่าจะให้คำตอบต่อข้อซักถามของผู้สื่อข่าวในการแถลงข่าววันพรุ่งนี้"}, {"id": 60, "vocab": "give a presentation", "ipa": "/ɡɪv ə ˌprez.ənˈteɪ.ʃən/", "pos": "verb collocations", "short_def_en": "present information formally", "thai_vocab": "นำเสนองาน, บรรยายนำเสนอ", "category_id": "GIVE_VERB", "category_label": "หมวด Give (การให้ การสื่อสาร & ความช่วยเหลือ)", "source_slots": [{"sheet": "06", "slot": 10, "label": "Sheet 06 (#60)"}], "ex1_en": "She gave a presentation in class.", "ex1_hl": "gave a presentation", "ex1_th": "เธอได้นำเสนองานในชั้นเรียน", "ex2_en": "Our lead analyst will give a presentation on upcoming market trends at the annual summit.", "ex2_hl": "give a presentation", "ex2_th": "หัวหน้านักวิเคราะห์ของเราจะนำเสนองานเกี่ยวกับแนวโน้มตลาดที่จะเกิดขึ้นในการประชุมสุดยอดประจำปี"}, {"id": 61, "vocab": "pay attention", "ipa": "/peɪ əˈten.ʃən/", "pos": "verb collocations", "short_def_en": "concentrate", "thai_vocab": "ตั้งใจฟัง, ใส่ใจ, มีสมาธิจดจ่อ", "category_id": "PAY_KEEP_VERB", "category_label": "หมวด Pay & Keep (การใส่ใจ ชำระ & รักษาคำมั่น)", "source_slots": [{"sheet": "07", "slot": 1, "label": "Sheet 07 (#61)"}], "ex1_en": "Please pay attention in class.", "ex1_hl": "pay attention", "ex1_th": "กรุณาตั้งใจฟังและใส่ใจในชั้นเรียนด้วย", "ex2_en": "Motorists must pay attention to sudden changes in weather and road surface conditions.", "ex2_hl": "pay attention", "ex2_th": "ผู้ขับขี่รถยนต์ต้องใส่ใจต่อความเปลี่ยนแปลงอย่างฉับพลันของสภาพอากาศและสภาพผิวจราจร"}, {"id": 62, "vocab": "pay a fine", "ipa": "/peɪ ə faɪn/", "pos": "verb collocations", "short_def_en": "pay a penalty", "thai_vocab": "จ่ายค่าปรับ, ชำระค่าปรับ", "category_id": "PAY_KEEP_VERB", "category_label": "หมวด Pay & Keep (การใส่ใจ ชำระ & รักษาคำมั่น)", "source_slots": [{"sheet": "07", "slot": 2, "label": "Sheet 07 (#62)"}], "ex1_en": "He had to pay a fine.", "ex1_hl": "pay a fine", "ex1_th": "เขาต้องจ่ายค่าปรับ", "ex2_en": "If you park in a reserved disabled spot without a permit, you will have to pay a fine.", "ex2_hl": "pay a fine", "ex2_th": "หากคุณจอดรถในที่จอดรถคนพิการโดยไม่มีใบอนุญาต คุณจะต้องชำระค่าปรับ"}, {"id": 63, "vocab": "pay a bill", "ipa": "/peɪ ə bɪl/", "pos": "verb collocations", "short_def_en": "pay money owed", "thai_vocab": "ชำระบิล, จ่ายค่าน้ำ/ค่าไฟ/หนี้สิน", "category_id": "PAY_KEEP_VERB", "category_label": "หมวด Pay & Keep (การใส่ใจ ชำระ & รักษาคำมั่น)", "source_slots": [{"sheet": "07", "slot": 3, "label": "Sheet 07 (#63)"}], "ex1_en": "I need to pay the electricity bill.", "ex1_hl": "pay the electricity bill", "ex1_th": "ฉันจำเป็นต้องชำระบิลค่าไฟฟ้า", "ex2_en": "Mobile banking apps make it straightforward to pay a bill with just a few quick taps.", "ex2_hl": "pay a bill", "ex2_th": "แอปพลิเคชันธนาคารบนมือถือช่วยให้การชำระบิลเป็นเรื่องง่ายดายเพียงแตะหน้าจอไม่กี่ครั้ง"}, {"id": 64, "vocab": "pay a visit", "ipa": "/peɪ ə ˈvɪz.ɪt/", "pos": "verb collocations", "short_def_en": "visit someone or a place", "thai_vocab": "แวะไปเยี่ยมเยียน, ไปเยือน", "category_id": "PAY_KEEP_VERB", "category_label": "หมวด Pay & Keep (การใส่ใจ ชำระ & รักษาคำมั่น)", "source_slots": [{"sheet": "07", "slot": 4, "label": "Sheet 07 (#64)"}], "ex1_en": "We paid a visit to our grandparents.", "ex1_hl": "paid a visit", "ex1_th": "พวกเราได้แวะไปเยี่ยมคุณปู่คุณย่ามา", "ex2_en": "While traveling through Kyoto, we made sure to pay a visit to the historic Golden Pavilion.", "ex2_hl": "pay a visit", "ex2_th": "ในระหว่างเดินทางผ่านเมืองเกียวโต พวกเราไม่พลาดที่จะแวะไปเยือนวัดศาลาทองคำอันทรงคุณค่าทางประวัติศาสตร์"}, {"id": 65, "vocab": "pay respect", "ipa": "/peɪ rɪˈspekt/", "pos": "verb collocations", "short_def_en": "show respect", "thai_vocab": "แสดงความเคารพ, แสดงความคารวะ/ไว้อาลัย", "category_id": "PAY_KEEP_VERB", "category_label": "หมวด Pay & Keep (การใส่ใจ ชำระ & รักษาคำมั่น)", "source_slots": [{"sheet": "07", "slot": 5, "label": "Sheet 07 (#65)"}], "ex1_en": "People came to pay their respects.", "ex1_hl": "pay their respects", "ex1_th": "ผู้คนเดินทางมาร่วมแสดงความเคารพและความไว้อาลัย", "ex2_en": "Citizens queued quietly outside the monument to pay respect to the revered founding father.", "ex2_hl": "pay respect", "ex2_th": "ประชาชนยืนเข้าแถวอย่างสงบนิ่งนอกอนุสรณ์สถานเพื่อแสดงความเคารพต่อบิดาผู้ก่อตั้งประเทศผู้เป็นที่เคารพรัก"}, {"id": 66, "vocab": "keep a promise", "ipa": "/kiːp ə ˈprɑː.mɪs/", "pos": "verb collocations", "short_def_en": "do what you promised", "thai_vocab": "รักษาคำมั่นสัญญา, ทำตามสัญญา", "category_id": "PAY_KEEP_VERB", "category_label": "หมวด Pay & Keep (การใส่ใจ ชำระ & รักษาคำมั่น)", "source_slots": [{"sheet": "07", "slot": 6, "label": "Sheet 07 (#66)"}], "ex1_en": "Always keep your promises.", "ex1_hl": "keep your promises", "ex1_th": "จงรักษาคำมั่นสัญญาที่คุณให้ไว้เสมอ", "ex2_en": "A person of high integrity will always strive to keep a promise, even when circumstances get tough.", "ex2_hl": "keep a promise", "ex2_th": "บุคคลที่มีความซื่อสัตย์สุจริตสูงจะพยายามรักษาคำมั่นสัญญาไว้เสมอ แม้ในยามที่สถานการณ์จะยากลำบากก็ตาม"}, {"id": 67, "vocab": "keep a secret", "ipa": "/kiːp ə ˈsiː.krət/", "pos": "verb collocations", "short_def_en": "not reveal information", "thai_vocab": "เก็บความลับ, รักษาความลับ", "category_id": "PAY_KEEP_VERB", "category_label": "หมวด Pay & Keep (การใส่ใจ ชำระ & รักษาคำมั่น)", "source_slots": [{"sheet": "07", "slot": 7, "label": "Sheet 07 (#67)"}], "ex1_en": "Can you keep a secret?", "ex1_hl": "keep a secret", "ex1_th": "เธอช่วยเก็บเรื่องนี้เป็นความลับได้ไหม", "ex2_en": "I only shared the surprise anniversary details with Maria because I knew she could keep a secret.", "ex2_hl": "keep a secret", "ex2_th": "ฉันบอกรายละเอียดงานฉลองครบรอบเซอร์ไพรส์กับมาเรียเพียงคนเดียว เพราะฉันรู้ดีว่าเธอเก็บความลับอยู่"}, {"id": 68, "vocab": "keep calm", "ipa": "/kiːp kɑːm/", "pos": "verb collocations", "short_def_en": "remain calm", "thai_vocab": "รักษาความสงบ, ใจเย็นๆ, ตั้งสติ", "category_id": "PAY_KEEP_VERB", "category_label": "หมวด Pay & Keep (การใส่ใจ ชำระ & รักษาคำมั่น)", "source_slots": [{"sheet": "07", "slot": 8, "label": "Sheet 07 (#68)"}], "ex1_en": "Keep calm during the exam.", "ex1_hl": "Keep calm", "ex1_th": "รักษาความสงบและใจเย็นๆ ในระหว่างการสอบ", "ex2_en": "In the event of an earthquake, it is essential to keep calm and shelter under a sturdy table.", "ex2_hl": "keep calm", "ex2_th": "ในกรณีที่เกิดแผ่นดินไหว เป็นสิ่งสำคัญยิ่งที่จะต้องตั้งสติตั้งมั่นใจเย็นและหลบอยู่ใต้โต๊ะที่แข็งแรง"}, {"id": 69, "vocab": "keep in touch", "ipa": "/kiːp ɪn tʌtʃ/", "pos": "verb collocations", "short_def_en": "remain in contact", "thai_vocab": "ติดต่อกันไว้, ไม่ขาดการติดต่อ", "category_id": "PAY_KEEP_VERB", "category_label": "หมวด Pay & Keep (การใส่ใจ ชำระ & รักษาคำมั่น)", "source_slots": [{"sheet": "07", "slot": 9, "label": "Sheet 07 (#69)"}], "ex1_en": "Let's keep in touch.", "ex1_hl": "keep in touch", "ex1_th": "พวกเราติดต่อกันไว้เรื่อยๆ นะ", "ex2_en": "Despite moving across continents, the former classmates managed to keep in touch via group chat.", "ex2_hl": "keep in touch", "ex2_th": "แม้จะต้องย้ายไปอยู่คนละทวีป อดีตเพื่อนร่วมชั้นก็ยังคงสามารถติดต่อสื่อสารกันผ่านกลุ่มแชทได้อย่างต่อเนื่อง"}, {"id": 70, "vocab": "keep a record", "ipa": "/kiːp ə ˈrek.ɚd/", "pos": "verb collocations", "short_def_en": "maintain written information", "thai_vocab": "เก็บบันทึกข้อมูล, ทำบันทึกหลักฐาน", "category_id": "PAY_KEEP_VERB", "category_label": "หมวด Pay & Keep (การใส่ใจ ชำระ & รักษาคำมั่น)", "source_slots": [{"sheet": "07", "slot": 10, "label": "Sheet 07 (#70)"}], "ex1_en": "Keep a record of your expenses.", "ex1_hl": "Keep a record", "ex1_th": "จงเก็บบันทึกข้อมูลรายจ่ายของคุณไว้อย่างสม่ำเสมอ", "ex2_en": "Medical laboratories are strictly required to keep a record of all patient specimen results.", "ex2_hl": "keep a record", "ex2_th": "ห้องปฏิบัติการทางการแพทย์มีข้อกำหนดอย่างเคร่งครัดให้ต้องเก็บบันทึกผลการตรวจตัวอย่างของผู้ป่วยทุกราย"}, {"id": 71, "vocab": "catch a bus", "ipa": "/kætʃ ə bʌs/", "pos": "verb collocations", "short_def_en": "get a bus in time", "thai_vocab": "ขึ้นรถเมล์ทัน, นั่งรถประจำทาง", "category_id": "CATCH_SAVE_SPEND_VERB", "category_label": "หมวด Catch, Save & Spend (เวลา เงิน & โอกาส)", "source_slots": [{"sheet": "08", "slot": 1, "label": "Sheet 08 (#71)"}], "ex1_en": "I caught the bus at 8 a.m.", "ex1_hl": "caught the bus", "ex1_th": "ฉันขึ้นรถเมล์ทันเที่ยวตอนแปดโมงเช้า", "ex2_en": "If we hurry across the crosswalk, we will easily catch a bus heading downtown.", "ex2_hl": "catch a bus", "ex2_th": "หากพวกเรารีบข้ามทางม้าลาย พวกเราก็จะขึ้นรถเมล์ที่มุ่งหน้าเข้าตัวเมืองได้ทันอย่างสบายๆ"}, {"id": 72, "vocab": "catch a train", "ipa": "/kætʃ ə treɪn/", "pos": "verb collocations", "short_def_en": "get a train in time", "thai_vocab": "ขึ้นรถไฟทัน, นั่งรถไฟ", "category_id": "CATCH_SAVE_SPEND_VERB", "category_label": "หมวด Catch, Save & Spend (เวลา เงิน & โอกาส)", "source_slots": [{"sheet": "08", "slot": 2, "label": "Sheet 08 (#72)"}], "ex1_en": "We need to catch the train.", "ex1_hl": "catch the train", "ex1_th": "พวกเราต้องรีบไปขึ้นรถไฟให้ทัน", "ex2_en": "Commuters sprinted along platform four hoping to catch a train before departure.", "ex2_hl": "catch a train", "ex2_th": "ผู้โดยสารวิ่งเร่งฝีเท้าไปตามชานชาลาที่สี่ด้วยความหวังว่าจะขึ้นรถไฟให้ทันก่อนขบวนจะเคลื่อนตัว"}, {"id": 73, "vocab": "catch a cold", "ipa": "/kætʃ ə koʊld/", "pos": "verb collocations", "short_def_en": "become ill with a cold", "thai_vocab": "เป็นหวัด, ติดหวัด", "category_id": "CATCH_SAVE_SPEND_VERB", "category_label": "หมวด Catch, Save & Spend (เวลา เงิน & โอกาส)", "source_slots": [{"sheet": "08", "slot": 3, "label": "Sheet 08 (#73)"}], "ex1_en": "He caught a cold last week.", "ex1_hl": "caught a cold", "ex1_th": "เขาเป็นหวัดเมื่อสัปดาห์ที่แล้ว", "ex2_en": "Wear a warm jacket during chilly autumn evenings so that you do not catch a cold.", "ex2_hl": "catch a cold", "ex2_th": "สวมแจ็กเก็ตอุ่นๆ ในยามค่ำคืนฤดูใบไม้ร่วงที่อากาศหนาวเย็นเพื่อที่คุณจะไม่เป็นหวัด"}, {"id": 74, "vocab": "catch fire", "ipa": "/kætʃ ˈfaɪ.ɚ/", "pos": "verb collocations", "short_def_en": "begin burning", "thai_vocab": "ติดไฟ, ลุกไหม้", "category_id": "CATCH_SAVE_SPEND_VERB", "category_label": "หมวด Catch, Save & Spend (เวลา เงิน & โอกาส)", "source_slots": [{"sheet": "08", "slot": 4, "label": "Sheet 08 (#74)"}], "ex1_en": "The building caught fire.", "ex1_hl": "caught fire", "ex1_th": "อาคารหลังนั้นเกิดติดไฟลุกไหม้ขึ้น", "ex2_en": "Dry pine straw and fallen twigs can catch fire rapidly under scorching desert heat.", "ex2_hl": "catch fire", "ex2_th": "ฟางสนแห้งและกิ่งไม้ร่วงสามารถติดไฟลุกไหม้ได้อย่างรวดเร็วภายใต้ความร้อนระอุของทะเลทราย"}, {"id": 75, "vocab": "catch someone's attention", "ipa": "/kætʃ ˈsʌm.wʌnz əˈten.ʃən/", "pos": "verb collocations", "short_def_en": "attract attention", "thai_vocab": "ดึงดูดความสนใจ, สะดุดตา", "category_id": "CATCH_SAVE_SPEND_VERB", "category_label": "หมวด Catch, Save & Spend (เวลา เงิน & โอกาส)", "source_slots": [{"sheet": "08", "slot": 5, "label": "Sheet 08 (#75)"}], "ex1_en": "The headline caught my attention.", "ex1_hl": "caught my attention", "ex1_th": "พาดหัวข่าวนั้นดึงดูดความสนใจของฉันได้ทันที", "ex2_en": "The vibrant neon window sign was designed specifically to catch someone's attention from afar.", "ex2_hl": "catch someone's attention", "ex2_th": "ป้ายนีออนสีสดใสหน้าร้านได้รับการออกแบบมาโดยเฉพาะเพื่อดึงดูดความสนใจของผู้คนจากระยะไกล"}, {"id": 76, "vocab": "save time", "ipa": "/seɪv taɪm/", "pos": "verb collocations", "short_def_en": "use less time", "thai_vocab": "ประหยัดเวลา, ลดเวลาลง", "category_id": "CATCH_SAVE_SPEND_VERB", "category_label": "หมวด Catch, Save & Spend (เวลา เงิน & โอกาส)", "source_slots": [{"sheet": "08", "slot": 6, "label": "Sheet 08 (#76)"}], "ex1_en": "This method saves time.", "ex1_hl": "saves time", "ex1_th": "วิธีการนี้ช่วยประหยัดเวลาได้อย่างมาก", "ex2_en": "Booking train tickets online in advance will save time when you arrive at the crowded station.", "ex2_hl": "save time", "ex2_th": "การจองตั๋วรถไฟทางออนไลน์ล่วงหน้าจะช่วยประหยัดเวลาเมื่อคุณเดินทางไปถึงสถานีที่ผู้คนแออัด"}, {"id": 77, "vocab": "save money", "ipa": "/seɪv ˈmʌn.i/", "pos": "verb collocations", "short_def_en": "keep money for future use", "thai_vocab": "ประหยัดเงิน, เก็บออมเงิน", "category_id": "CATCH_SAVE_SPEND_VERB", "category_label": "หมวด Catch, Save & Spend (เวลา เงิน & โอกาส)", "source_slots": [{"sheet": "08", "slot": 7, "label": "Sheet 08 (#77)"}], "ex1_en": "I am saving money for a laptop.", "ex1_hl": "saving money", "ex1_th": "ฉันกำลังเก็บออมเงินเพื่อซื้อแล็ปท็อปเครื่องใหม่", "ex2_en": "Cooking healthy meals at home is one of the easiest ways to save money each month.", "ex2_hl": "save money", "ex2_th": "การทำอาหารเพื่อสุขภาพรับประทานเองที่บ้านเป็นวิธีที่ง่ายที่สุดวิธีหนึ่งในการประหยัดเงินในแต่ละเดือน"}, {"id": 78, "vocab": "save energy", "ipa": "/seɪv ˈen.ɚ.dʒi/", "pos": "verb collocations", "short_def_en": "use less energy", "thai_vocab": "ประหยัดพลังงาน, ถนอมพลังงาน", "category_id": "CATCH_SAVE_SPEND_VERB", "category_label": "หมวด Catch, Save & Spend (เวลา เงิน & โอกาส)", "source_slots": [{"sheet": "08", "slot": 8, "label": "Sheet 08 (#78)"}], "ex1_en": "Switch off the lights to save energy.", "ex1_hl": "save energy", "ex1_th": "ปิดไฟเพื่อช่วยประหยัดพลังงาน", "ex2_en": "Installing smart thermostats throughout the facility helps the company save energy significantly.", "ex2_hl": "save energy", "ex2_th": "การติดตั้งเทอร์โมสตัทอัจฉริยะทั่วทั้งอาคารช่วยให้บริษัทประหยัดพลังงานได้อย่างมีนัยสำคัญ"}, {"id": 79, "vocab": "spend time", "ipa": "/spend taɪm/", "pos": "verb collocations", "short_def_en": "use time doing something", "thai_vocab": "ใช้เวลา, สละเวลา", "category_id": "CATCH_SAVE_SPEND_VERB", "category_label": "หมวด Catch, Save & Spend (เวลา เงิน & โอกาส)", "source_slots": [{"sheet": "08", "slot": 9, "label": "Sheet 08 (#79)"}], "ex1_en": "She spends time reading.", "ex1_hl": "spends time reading", "ex1_th": "เธอใช้เวลาไปกับการอ่านหนังสือ", "ex2_en": "Busy parents should always make an effort to spend time outdoors with their young children.", "ex2_hl": "spend time", "ex2_th": "ผู้ปกครองที่มีภารกิจรัดตัวควรพยายามหาโอกาสใช้เวลากลางแจ้งร่วมกับลูกๆ วัยเด็กอยู่เสมอ"}, {"id": 80, "vocab": "spend money", "ipa": "/spend ˈmʌn.i/", "pos": "verb collocations", "short_def_en": "use money to buy or pay", "thai_vocab": "ใช้จ่ายเงิน, ใช้เงิน", "category_id": "CATCH_SAVE_SPEND_VERB", "category_label": "หมวด Catch, Save & Spend (เวลา เงิน & โอกาส)", "source_slots": [{"sheet": "08", "slot": 10, "label": "Sheet 08 (#80)"}], "ex1_en": "Don't spend too much money.", "ex1_hl": "spend too much money", "ex1_th": "อย่าได้ใช้จ่ายเงินมากจนเกินตัว", "ex2_en": "Prudent shoppers compare prices across various platforms before they spend money on electronics.", "ex2_hl": "spend money", "ex2_th": "ผู้ซื้อที่รอบคอบจะเปรียบเทียบราคาจากหลายแพลตฟอร์มก่อนที่จะใช้เงินซื้ออุปกรณ์อิเล็กทรอนิกส์"}, {"id": 81, "vocab": "break a rule", "ipa": "/breɪk ə ruːl/", "pos": "verb collocations", "short_def_en": "disobey a rule", "thai_vocab": "ละเมิดกฎ, ฝ่าฝืนกฎระเบียบ", "category_id": "BREAK_REACH_MEET_VERB", "category_label": "หมวด Break, Reach & Meet (เป้าหมาย กฎเกณฑ์ & มาตรฐาน)", "source_slots": [{"sheet": "09", "slot": 1, "label": "Sheet 09 (#81)"}], "ex1_en": "He broke the rule.", "ex1_hl": "broke the rule", "ex1_th": "เขาได้ฝ่าฝืนกฎระเบียบ", "ex2_en": "Students who break a rule repeatedly may face formal disciplinary suspension from school.", "ex2_hl": "break a rule", "ex2_th": "นักเรียนที่ฝ่าฝืนกฎระเบียบซ้ำแล้วซ้ำเล่าอาจต้องเผชิญกับมาตรการลงโทษพักการเรียนจากทางโรงเรียน"}, {"id": 82, "vocab": "break a promise", "ipa": "/breɪk ə ˈprɑː.mɪs/", "pos": "verb collocations", "short_def_en": "fail to keep a promise", "thai_vocab": "ผิดสัญญา, ตระบัดสัตย์", "category_id": "BREAK_REACH_MEET_VERB", "category_label": "หมวด Break, Reach & Meet (เป้าหมาย กฎเกณฑ์ & มาตรฐาน)", "source_slots": [{"sheet": "09", "slot": 2, "label": "Sheet 09 (#82)"}], "ex1_en": "Never break a promise.", "ex1_hl": "break a promise", "ex1_th": "อย่าได้ผิดคำมั่นสัญญาเป็นอันขาด", "ex2_en": "Trust is fragile and easily destroyed when you break a promise made to a dear friend.", "ex2_hl": "break a promise", "ex2_th": "ความไว้วางใจนั้นเปราะบางและถูกทำลายได้ง่ายเมื่อคุณผิดสัญญาที่เคยให้ไว้กับเพื่อนสนิท"}, {"id": 83, "vocab": "break a record", "ipa": "/breɪk ə ˈrek.ɚd/", "pos": "verb collocations", "short_def_en": "perform better than a previous record", "thai_vocab": "ทำลายสถิติ, สร้างสถิติใหม่เหนือกว่าเดิม", "category_id": "BREAK_REACH_MEET_VERB", "category_label": "หมวด Break, Reach & Meet (เป้าหมาย กฎเกณฑ์ & มาตรฐาน)", "source_slots": [{"sheet": "09", "slot": 3, "label": "Sheet 09 (#83)"}], "ex1_en": "She broke the world record.", "ex1_hl": "broke the world record", "ex1_th": "เธอทำลายสถิติโลกได้สำเร็จ", "ex2_en": "Through relentless conditioning, the young sprinter managed to break a record in the 100-meter dash.", "ex2_hl": "break a record", "ex2_th": "ด้วยการฝึกซ้อมร่างกายอย่างไม่หยุดยั้ง นักวิ่งระยะสั้นดาวรุ่งสามารถทำลายสถิติในการวิ่ง 100 เมตรได้สำเร็จ"}, {"id": 84, "vocab": "break the news", "ipa": "/breɪk ðə nuːz/", "pos": "verb collocations", "short_def_en": "tell important news", "thai_vocab": "แจ้งข่าวสำคัญ, บอกข่าว (มักเป็นข่าวร้ายหรือข่าวใหญ่)", "category_id": "BREAK_REACH_MEET_VERB", "category_label": "หมวด Break, Reach & Meet (เป้าหมาย กฎเกณฑ์ & มาตรฐาน)", "source_slots": [{"sheet": "09", "slot": 4, "label": "Sheet 09 (#84)"}], "ex1_en": "I had to break the news to him.", "ex1_hl": "break the news", "ex1_th": "ฉันจำเป็นต้องแจ้งข่าวสำคัญนั้นให้เขาทราบ", "ex2_en": "The compassionate physician sat with the patient's family to break the news gently.", "ex2_hl": "break the news", "ex2_th": "แพทย์ผู้มีเมตตาจิตได้นั่งลงเคียงข้างครอบครัวของผู้ป่วยเพื่อบอกข่าวสำคัญอย่างนุ่มนวลและเห็นอกเห็นใจ"}, {"id": 85, "vocab": "reach a decision", "ipa": "/riːtʃ ə dɪˈsɪʒ.ən/", "pos": "verb collocations", "short_def_en": "finally decide", "thai_vocab": "ได้ข้อสรุปในการตัดสินใจ, ตัดสินใจได้ในที่สุด", "category_id": "BREAK_REACH_MEET_VERB", "category_label": "หมวด Break, Reach & Meet (เป้าหมาย กฎเกณฑ์ & มาตรฐาน)", "source_slots": [{"sheet": "09", "slot": 5, "label": "Sheet 09 (#85)"}], "ex1_en": "We reached a decision after discussion.", "ex1_hl": "reached a decision", "ex1_th": "พวกเราได้ข้อสรุปในการตัดสินใจหลังจากการหารือกัน", "ex2_en": "After hours of deliberation, the judicial jury was finally able to reach a decision.", "ex2_hl": "reach a decision", "ex2_th": "หลังจากพิจารณาหารือกันนานหลายชั่วโมง ในที่สุดคณะลูกขุนก็สามารถได้ข้อสรุปในการตัดสินใจได้"}, {"id": 86, "vocab": "reach an agreement", "ipa": "/riːtʃ ən əˈɡriː.mənt/", "pos": "verb collocations", "short_def_en": "agree", "thai_vocab": "บรรลุข้อตกลง, ทำความตกลงร่วมกัน", "category_id": "BREAK_REACH_MEET_VERB", "category_label": "หมวด Break, Reach & Meet (เป้าหมาย กฎเกณฑ์ & มาตรฐาน)", "source_slots": [{"sheet": "09", "slot": 6, "label": "Sheet 09 (#86)"}], "ex1_en": "Both sides reached an agreement.", "ex1_hl": "reached an agreement", "ex1_th": "คู่สัญญาทั้งสองฝ่ายได้บรรลุข้อตกลงร่วมกัน", "ex2_en": "Diplomats worked throughout the night to reach an agreement on cross-border tariff reductions.", "ex2_hl": "reach an agreement", "ex2_th": "เหล่านักการทูตทำงานเจรจาตลอดทั้งคืนเพื่อบรรลุข้อตกลงเรื่องการลดภาษีศุลกากรข้ามพรมแดน"}, {"id": 87, "vocab": "reach a goal", "ipa": "/riːtʃ ə ɡoʊl/", "pos": "verb collocations", "short_def_en": "achieve an objective", "thai_vocab": "บรรลุเป้าหมาย, ไปถึงเป้าหมาย", "category_id": "BREAK_REACH_MEET_VERB", "category_label": "หมวด Break, Reach & Meet (เป้าหมาย กฎเกณฑ์ & มาตรฐาน)", "source_slots": [{"sheet": "09", "slot": 7, "label": "Sheet 09 (#87)"}], "ex1_en": "Hard work helps you reach your goals.", "ex1_hl": "reach your goals", "ex1_th": "การทำงานหนักและความมุ่งมั่นช่วยให้คุณบรรลุเป้าหมายได้", "ex2_en": "Setting clear daily milestones makes it much easier to stay motivated and reach a goal.", "ex2_hl": "reach a goal", "ex2_th": "การกำหนดเป้าหมายย่อยในแต่ละวันอย่างชัดเจนช่วยให้รักษาแรงบันดาลใจและบรรลุเป้าหมายได้ง่ายขึ้นมาก"}, {"id": 88, "vocab": "meet a deadline", "ipa": "/miːt ə ˈded.laɪn/", "pos": "verb collocations", "short_def_en": "finish by the required time", "thai_vocab": "ส่งงานทันกำหนด, ทันเส้นตาย", "category_id": "BREAK_REACH_MEET_VERB", "category_label": "หมวด Break, Reach & Meet (เป้าหมาย กฎเกณฑ์ & มาตรฐาน)", "source_slots": [{"sheet": "09", "slot": 8, "label": "Sheet 09 (#88)"}], "ex1_en": "We must meet the deadline.", "ex1_hl": "meet the deadline", "ex1_th": "พวกเราต้องส่งงานให้ทันตามกำหนดเวลา", "ex2_en": "Our engineering staff put in overtime all week to meet a deadline set by the executive board.", "ex2_hl": "meet a deadline", "ex2_th": "ทีมวิศวกรของเราทำงานล่วงเวลาตลอดทั้งสัปดาห์เพื่อให้ส่งงานทันตามกำหนดเวลาที่คณะกรรมการบริหารกำหนด"}, {"id": 89, "vocab": "meet a requirement", "ipa": "/miːt ə rɪˈkwaɪr.mənt/", "pos": "verb collocations", "short_def_en": "satisfy a condition", "thai_vocab": "ตรงตามข้อกำหนด, มีคุณสมบัติครบตามเกณฑ์", "category_id": "BREAK_REACH_MEET_VERB", "category_label": "หมวด Break, Reach & Meet (เป้าหมาย กฎเกณฑ์ & มาตรฐาน)", "source_slots": [{"sheet": "09", "slot": 9, "label": "Sheet 09 (#89)"}], "ex1_en": "You must meet the requirements.", "ex1_hl": "meet the requirements", "ex1_th": "คุณจะต้องมีคุณสมบัติครบถ้วนตามข้อกำหนด", "ex2_en": "All candidates must meet a requirement of holding an accredited bachelor's degree in engineering.", "ex2_hl": "meet a requirement", "ex2_th": "ผู้สมัครทุกคนต้องมีคุณสมบัติครบตามข้อกำหนดในการสำเร็จการศึกษาระดับปริญญาตรีด้านวิศวกรรมศาสตร์ที่ได้รับการรับรอง"}, {"id": 90, "vocab": "meet expectations", "ipa": "/miːt ˌek.spekˈteɪ.ʃənz/", "pos": "verb collocations", "short_def_en": "perform as expected", "thai_vocab": "เป็นไปตามความคาดหวัง, ตอบสนองความคาดหวัง", "category_id": "BREAK_REACH_MEET_VERB", "category_label": "หมวด Break, Reach & Meet (เป้าหมาย กฎเกณฑ์ & มาตรฐาน)", "source_slots": [{"sheet": "09", "slot": 10, "label": "Sheet 09 (#90)"}], "ex1_en": "The product met our expectations.", "ex1_hl": "met our expectations", "ex1_th": "ผลิตภัณฑ์ชิ้นนี้มีคุณภาพตรงตามความคาดหวังของเรา", "ex2_en": "The resort staff went above and beyond to meet expectations and ensure a memorable stay.", "ex2_hl": "meet expectations", "ex2_th": "พนักงานรีสอร์ตทุ่มเททำงานเกินความคาดหมายเพื่อตอบสนองความคาดหวังและสร้างความประทับใจที่น่าจดจำ"}, {"id": 91, "vocab": "set a goal", "ipa": "/set ə ɡoʊl/", "pos": "verb collocations", "short_def_en": "choose an objective", "thai_vocab": "ตั้งเป้าหมาย, กำหนดเป้าหมาย", "category_id": "SET_RAISE_SOLVE_WIN_VERB", "category_label": "หมวด Set, Raise, Solve & Win (การแก้ปัญหา & ความสำเร็จ)", "source_slots": [{"sheet": "10", "slot": 1, "label": "Sheet 10 (#91)"}], "ex1_en": "Set a goal and work toward it.", "ex1_hl": "Set a goal", "ex1_th": "จงตั้งเป้าหมายแล้วมุ่งมั่นลงมือทำเพื่อเป้าหมายนั้น", "ex2_en": "At the start of the academic year, every student should set a goal for personal growth.", "ex2_hl": "set a goal", "ex2_th": "ในช่วงต้นปีการศึกษา นักเรียนทุกคนควรตั้งเป้าหมายสำหรับการเติบโตและพัฒนาการของตนเอง"}, {"id": 92, "vocab": "set an example", "ipa": "/set ən ɪɡˈzæm.pəl/", "pos": "verb collocations", "short_def_en": "behave as a model for others", "thai_vocab": "เป็นแบบอย่าง, วางตัวเป็นตัวอย่างที่ดี", "category_id": "SET_RAISE_SOLVE_WIN_VERB", "category_label": "หมวด Set, Raise, Solve & Win (การแก้ปัญหา & ความสำเร็จ)", "source_slots": [{"sheet": "10", "slot": 2, "label": "Sheet 10 (#92)"}], "ex1_en": "Teachers should set a good example.", "ex1_hl": "set a good example", "ex1_th": "คุณครูควรปฏิบัติตนเป็นแบบอย่างที่ดี", "ex2_en": "Older siblings have a natural opportunity to set an example of kindness and discipline at home.", "ex2_hl": "set an example", "ex2_th": "พี่คนโตมีโอกาสตามธรรมชาติในการเป็นแบบอย่างแห่งความมีน้ำใจและมีระเบียบวินัยภายในบ้าน"}, {"id": 93, "vocab": "set a date", "ipa": "/set ə deɪt/", "pos": "verb collocations", "short_def_en": "choose a date", "thai_vocab": "กำหนดวัน, นัดหมายวันเวลา", "category_id": "SET_RAISE_SOLVE_WIN_VERB", "category_label": "หมวด Set, Raise, Solve & Win (การแก้ปัญหา & ความสำเร็จ)", "source_slots": [{"sheet": "10", "slot": 3, "label": "Sheet 10 (#93)"}], "ex1_en": "They set a date for the meeting.", "ex1_hl": "set a date", "ex1_th": "พวกเขากำหนดวันเวลานัดหมายสำหรับการประชุมแล้ว", "ex2_en": "The organizing committee will convene tomorrow to set a date for the upcoming film festival.", "ex2_hl": "set a date", "ex2_th": "คณะกรรมการจัดงานจะประชุมกันในวันพรุ่งนี้เพื่อกำหนดวันจัดงานเทศกาลภาพยนตร์ที่กำลังจะมาถึง"}, {"id": 94, "vocab": "set a record", "ipa": "/set ə ˈrek.ɚd/", "pos": "verb collocations", "short_def_en": "establish a new record", "thai_vocab": "สร้างสถิติใหม่, บันทึกสถิติใหม่", "category_id": "SET_RAISE_SOLVE_WIN_VERB", "category_label": "หมวด Set, Raise, Solve & Win (การแก้ปัญหา & ความสำเร็จ)", "source_slots": [{"sheet": "10", "slot": 4, "label": "Sheet 10 (#94)"}], "ex1_en": "The athlete set a new record.", "ex1_hl": "set a new record", "ex1_th": "นักกีฬาคนนี้ได้สร้างสถิติใหม่ขึ้นมา", "ex2_en": "The innovative solar car managed to set a record for continuous zero-emission driving distance.", "ex2_hl": "set a record", "ex2_th": "รถยนต์พลังงานแสงอาทิตย์สุดล้ำสามารถสร้างสถิติใหม่สำหรับระยะทางการขับขี่แบบไร้มลพิษอย่างต่อเนื่อง"}, {"id": 95, "vocab": "raise a question", "ipa": "/reɪz ə ˈkwes.tʃən/", "pos": "verb collocations", "short_def_en": "bring up a question", "thai_vocab": "ตั้งคำถาม, ยกประเด็นคำถามขึ้นมา", "category_id": "SET_RAISE_SOLVE_WIN_VERB", "category_label": "หมวด Set, Raise, Solve & Win (การแก้ปัญหา & ความสำเร็จ)", "source_slots": [{"sheet": "10", "slot": 5, "label": "Sheet 10 (#95)"}], "ex1_en": "She raised an important question.", "ex1_hl": "raised an important question", "ex1_th": "เธอได้ตั้งคำถามประเด็นสำคัญขึ้นมา", "ex2_en": "The sudden discrepancy in budget calculations will certainly raise a question during the audit.", "ex2_hl": "raise a question", "ex2_th": "ความคลาดเคลื่อนอย่างกะทันหันในการคำนวณงบประมาณจะยกประเด็นคำถามขึ้นมาอย่างแน่นอนในระหว่างการตรวจสอบ"}, {"id": 96, "vocab": "raise awareness", "ipa": "/reɪz əˈwer.nəs/", "pos": "verb collocations", "short_def_en": "increase public knowledge", "thai_vocab": "รณรงค์สร้างความตระหนักรู้, ปลูกจิตสำนึก", "category_id": "SET_RAISE_SOLVE_WIN_VERB", "category_label": "หมวด Set, Raise, Solve & Win (การแก้ปัญหา & ความสำเร็จ)", "source_slots": [{"sheet": "10", "slot": 6, "label": "Sheet 10 (#96)"}], "ex1_en": "The campaign raises awareness about pollution.", "ex1_hl": "raises awareness", "ex1_th": "แคมเปญนี้ช่วยรณรงค์สร้างความตระหนักรู้เกี่ยวกับปัญหามลพิษ", "ex2_en": "Non-profit organizations work tirelessly to raise awareness of endangered wildlife habitats.", "ex2_hl": "raise awareness", "ex2_th": "องค์กรไม่แสวงหาผลกำไรทำงานอย่างไม่เหน็ดเหนื่อยเพื่อสร้างความตระหนักรู้เกี่ยวกับถิ่นที่อยู่อาศัยของสัตว์ป่าที่ใกล้สูญพันธุ์"}, {"id": 97, "vocab": "raise money", "ipa": "/reɪz ˈmʌn.i/", "pos": "verb collocations", "short_def_en": "collect money", "thai_vocab": "ระดมทุน, หาเงินบริจาค/เข้าโครงการ", "category_id": "SET_RAISE_SOLVE_WIN_VERB", "category_label": "หมวด Set, Raise, Solve & Win (การแก้ปัญหา & ความสำเร็จ)", "source_slots": [{"sheet": "10", "slot": 7, "label": "Sheet 10 (#97)"}], "ex1_en": "They raised money for charity.", "ex1_hl": "raised money", "ex1_th": "พวกเขาระดมทุนหาเงินเพื่อการกุศล", "ex2_en": "The local community organized a weekend marathon to raise money for children's hospital equipment.", "ex2_hl": "raise money", "ex2_th": "ชุมชนในท้องถิ่นได้จัดงานวิ่งมาราธอนช่วงวันหยุดสุดสัปดาห์เพื่อระดมทุนซื้ออุปกรณ์การแพทย์สำหรับโรงพยาบาลเด็ก"}, {"id": 98, "vocab": "solve a problem", "ipa": "/sɑːlv ə ˈprɑː.bləm/", "pos": "verb collocations", "short_def_en": "find a solution", "thai_vocab": "แก้ปัญหา, แก้ไขปัญหา", "category_id": "SET_RAISE_SOLVE_WIN_VERB", "category_label": "หมวด Set, Raise, Solve & Win (การแก้ปัญหา & ความสำเร็จ)", "source_slots": [{"sheet": "10", "slot": 8, "label": "Sheet 10 (#98)"}], "ex1_en": "We need to solve this problem.", "ex1_hl": "solve this problem", "ex1_th": "พวกเราต้องร่วมมือกันแก้ปัญหานี้ให้ได้", "ex2_en": "Engineers often use collaborative brainstorm sessions to solve a problem that appears intractable.", "ex2_hl": "solve a problem", "ex2_th": "วิศวกรมักจะใช้การระดมสมองร่วมกันเพื่อแก้ไขปัญหาที่ดูเหมือนจะจัดการได้ยากยิ่ง"}, {"id": 99, "vocab": "win a prize", "ipa": "/wɪn ə praɪz/", "pos": "verb collocations", "short_def_en": "receive a prize by succeeding", "thai_vocab": "ได้รับรางวัล, ชนะรางวัล", "category_id": "SET_RAISE_SOLVE_WIN_VERB", "category_label": "หมวด Set, Raise, Solve & Win (การแก้ปัญหา & ความสำเร็จ)", "source_slots": [{"sheet": "10", "slot": 9, "label": "Sheet 10 (#99)"}], "ex1_en": "She won a prize in the competition.", "ex1_hl": "won a prize", "ex1_th": "เธอได้รับรางวัลจากการแข่งขันนั้น", "ex2_en": "His short documentary on renewable energy managed to win a prize at the prestigious film festival.", "ex2_hl": "win a prize", "ex2_th": "สารคดีสั้นของเขาเกี่ยวกับพลังงานหมุนเวียนสามารถชนะรางวัลในเทศกาลภาพยนตร์อันทรงเกียรติได้"}, {"id": 100, "vocab": "lose weight", "ipa": "/luːz weɪt/", "pos": "verb collocations", "short_def_en": "reduce body weight", "thai_vocab": "ลดน้ำหนัก", "category_id": "SET_RAISE_SOLVE_WIN_VERB", "category_label": "หมวด Set, Raise, Solve & Win (การแก้ปัญหา & ความสำเร็จ)", "source_slots": [{"sheet": "10", "slot": 10, "label": "Sheet 10 (#100)"}], "ex1_en": "He wants to lose weight.", "ex1_hl": "lose weight", "ex1_th": "เขาต้องการลดน้ำหนักตัว", "ex2_en": "Combining a wholesome balanced diet with regular cardiovascular exercise helps you lose weight safely.", "ex2_hl": "lose weight", "ex2_th": "การรับประทานอาหารที่มีคุณค่าทางโภชนาการควบคู่กับการออกกำลังกายแบบคาร์ดิโออย่างสม่ำเสมอจะช่วยให้คุณลดน้ำหนักได้อย่างปลอดภัย"}];
+
+      const CATEGORIES = [
+        {"id": "ALL", "label": "คอลโลเคชันทั้งหมด", "icon": "📚"},
+        {"id": "FAVORITES", "label": "รายการที่บันทึก", "icon": "⭐"},
+        {"id": "MASTERED", "label": "จดจำได้แล้ว", "icon": "🎓"},
+        {"id": "MAKE_VERB", "label": "หมวด Make (สร้าง & ผลลัพธ์)", "icon": "🛠️"},
+        {"id": "TAKE_VERB", "label": "หมวด Take (กระทำ & รับผิดชอบ)", "icon": "⏱️"},
+        {"id": "HAVE_VERB", "label": "หมวด Have (กิจวัตร & ประสบการณ์)", "icon": "☕"},
+        {"id": "DO_VERB", "label": "หมวด Do (งาน & กิจกรรม)", "icon": "📝"},
+        {"id": "GET_VERB", "label": "หมวด Get (เปลี่ยนแปลง & สภาวะ)", "icon": "🚀"},
+        {"id": "GIVE_VERB", "label": "หมวด Give (การให้ & การสื่อสาร)", "icon": "🤝"},
+        {"id": "PAY_KEEP_VERB", "label": "หมวด Pay & Keep (ใส่ใจ & สัญญา)", "icon": "💼"},
+        {"id": "CATCH_SAVE_SPEND_VERB", "label": "หมวด Catch, Save & Spend (เวลา & เงิน)", "icon": "⏳"},
+        {"id": "BREAK_REACH_MEET_VERB", "label": "หมวด Break, Reach & Meet (กฎเกณฑ์ & เป้าหมาย)", "icon": "🎯"},
+        {"id": "SET_RAISE_SOLVE_WIN_VERB", "label": "หมวด Set, Raise, Solve & Win (ความสำเร็จ)", "icon": "🏆"}
+      ];
+
+      // Calculate Category Counts
+    const CAT_COUNTS = {};
+    RAW_DATA.forEach(d => {
+      CAT_COUNTS[d.category_id] = (CAT_COUNTS[d.category_id] || 0) + 1;
+    });
+
+    // Application State
+    let filteredData = [...RAW_DATA];
+    let currentCategory = 'ALL';
+    let currentLetter = 'ALL';
+    let searchQuery = '';
+    let currentView = 'grid'; // 'grid' | 'table' | 'flashcard'
+    let currentSpeed = 0.85;
+    let audioEngine = 'hd'; // 'hd' | 'system'
+    let favorites = new Set(JSON.parse(localStorage.getItem('colloc_favs_v1') || '[]'));
+    let mastered = new Set(JSON.parse(localStorage.getItem('colloc_mastered_v1') || '[]'));
+
+    // Robust Audio Playback References
+    let currentAudio = null;
+    let sequenceActiveId = null;
+    let sequenceTimeoutId = null;
+    let singleAudioBtn = null;
+
+    // Flashcard State
+    let fcIndex = 0;
+    let fcFlipped = false;
+    let fcShuffledList = [...RAW_DATA];
+
+    // Speech Synthesis
+    const synth = window.speechSynthesis;
+
+    // --- INITIALIZATION ---
+    window.addEventListener('DOMContentLoaded', () => {
+      renderSidebarCategories();
+      renderAlphabetJumper();
+      updateBadges();
+      applyFilters();
+
+      // Keyboard navigation for Flashcards
+      document.addEventListener('keydown', (e) => {
+        if (currentView === 'flashcard') {
+          if (e.code === 'Space') {
+            e.preventDefault();
+            flipFlashcard();
+          } else if (e.code === 'ArrowRight') {
+            nextFlashcard();
+          } else if (e.code === 'ArrowLeft') {
+            prevFlashcard();
+          }
+        }
+      });
+    });
+
+    // --- RENDER SIDEBAR & CONTROLS ---
+    function renderSidebarCategories() {
+      const container = document.getElementById('categoryButtonsContainer');
+      if (!container) return;
+
+      const emotionCats = CATEGORIES.filter(c => !['ALL', 'FAVORITES', 'MASTERED'].includes(c.id));
+      container.innerHTML = emotionCats.map(cat => {
+        const count = CAT_COUNTS[cat.id] || 0;
+        return `
+          <button onclick="setCategoryFilter('${cat.id}')" id="cat-${cat.id}" class="cat-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold transition flex items-center justify-between text-slate-600 hover:bg-slate-100 border border-transparent">
+            <div class="flex items-center space-x-2 truncate">
+              <span>${cat.icon}</span>
+              <span class="truncate">${cat.label}</span>
+            </div>
+            <span class="text-[11px] font-mono bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded-full font-bold">${count}</span>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function renderAlphabetJumper() {
+      const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+      const container = document.getElementById('alphabetContainer');
+      if (!container) return;
+
+      let html = `
+        <span class="text-slate-400 mr-1 shrink-0">ตัวอักษร:</span>
+        <button onclick="setLetterFilter('ALL')" class="letter-btn px-2 py-0.5 rounded-md bg-blue-600 text-white font-extrabold shrink-0" data-letter="ALL">ALL</button>
+      `;
+
+      letters.forEach(letter => {
+        html += `
+          <button onclick="setLetterFilter('${letter}')" class="letter-btn px-1.5 py-0.5 rounded-md hover:bg-slate-200 shrink-0" data-letter="${letter}">${letter}</button>
+        `;
+      });
+
+      container.innerHTML = html;
+    }
+
+    // --- VIEW SWITCHING ---
+    function setViewMode(mode) {
+      currentView = mode;
+      document.querySelectorAll('.view-btn').forEach(b => {
+        if (b.getAttribute('data-view') === mode) {
+          b.className = 'view-btn px-2.5 sm:px-3 py-1 rounded-lg transition-all bg-blue-600 text-white font-bold';
+        } else {
+          b.className = 'view-btn px-2.5 sm:px-3 py-1 rounded-lg transition-all text-slate-300 hover:text-white font-medium';
+        }
+      });
+
+      const gv = document.getElementById('gridView');
+      const tv = document.getElementById('tableView');
+      const fv = document.getElementById('flashcardView');
+
+      if (mode === 'grid') {
+        gv.classList.remove('hidden');
+        tv.classList.add('hidden');
+        fv.classList.add('hidden');
+        renderGridCards();
+      } else if (mode === 'table') {
+        gv.classList.add('hidden');
+        tv.classList.remove('hidden');
+        fv.classList.add('hidden');
+        renderTable();
+      } else if (mode === 'flashcard') {
+        gv.classList.add('hidden');
+        tv.classList.add('hidden');
+        fv.classList.remove('hidden');
+        updateFlashcardUI();
+      }
+    }
+
+    // --- FILTERING & SEARCH ---
+    function setCategoryFilter(catId) {
+      currentCategory = catId;
+      closeMobileSidebar();
+
+      document.querySelectorAll('.cat-btn').forEach(b => {
+        b.className = 'cat-btn w-full text-left px-3 py-2.5 rounded-xl text-xs font-bold transition flex items-center justify-between text-slate-600 hover:bg-slate-100 border border-transparent';
+      });
+
+      const activeBtn = document.getElementById(`cat-${catId}`);
+      if (activeBtn) {
+        activeBtn.className = 'cat-btn w-full text-left px-3 py-2.5 rounded-xl text-xs font-bold transition flex items-center justify-between bg-blue-50 text-blue-700 border border-blue-200 shadow-sm';
+      }
+
+      applyFilters();
+    }
+
+    function clearCategoryFilter(e) {
+      if (e) e.stopPropagation();
+      setCategoryFilter('ALL');
+    }
+
+    function setLetterFilter(letter) {
+      currentLetter = letter;
+      document.querySelectorAll('.letter-btn').forEach(b => {
+        if (b.getAttribute('data-letter') === letter) {
+          b.className = 'letter-btn px-2 py-0.5 rounded-md bg-blue-600 text-white font-extrabold shrink-0';
+        } else {
+          b.className = 'letter-btn px-1.5 py-0.5 rounded-md hover:bg-slate-200 shrink-0';
+        }
+      });
+      applyFilters();
+    }
+
+    function handleSearch(val) {
+      searchQuery = val.trim().toLowerCase();
+      document.getElementById('clearSearchBtn').classList.toggle('hidden', searchQuery === '');
+      applyFilters();
+    }
+
+    function clearSearch() {
+      document.getElementById('searchInput').value = '';
+      searchQuery = '';
+      document.getElementById('clearSearchBtn').classList.add('hidden');
+      applyFilters();
+    }
+
+    function clearCategoryFilter(e) {
+      if (e) e.stopPropagation();
+      setCategoryFilter('ALL');
+    }
+
+    function applyFilters() {
+      filteredData = RAW_DATA.filter(item => {
+        // Category
+        if (currentCategory === 'FAVORITES' && !favorites.has(item.id)) return false;
+        if (currentCategory === 'MASTERED' && !mastered.has(item.id)) return false;
+        if (!['ALL', 'FAVORITES', 'MASTERED'].includes(currentCategory) && item.category_id !== currentCategory) return false;
+
+        // Letter
+        if (currentLetter !== 'ALL' && !item.vocab.toUpperCase().startsWith(currentLetter)) return false;
+
+        // Search Query
+        if (searchQuery) {
+          const q = searchQuery;
+          const matchV = item.vocab.toLowerCase().includes(q);
+          const matchTh = (item.thai_vocab || '').toLowerCase().includes(q);
+          const matchIpa = (item.ipa || '').toLowerCase().includes(q);
+          const matchS1 = (item.ex1_en || '').toLowerCase().includes(q) || (item.ex1_th || '').toLowerCase().includes(q);
+          const matchS2 = (item.ex2_en || '').toLowerCase().includes(q) || (item.ex2_th || '').toLowerCase().includes(q);
+          const matchId = ('#' + item.id).includes(q);
+          if (!matchV && !matchTh && !matchIpa && !matchS1 && !matchS2 && !matchId) return false;
+        }
+
+        return true;
+      });
+
+      // Update Filter Pill Label
+      const pill = document.getElementById('activeFilterPill');
+      if (pill) {
+        let catLabel = 'คำศัพท์ทั้งหมด';
+        const isFiltered = currentCategory !== 'ALL';
+
+        if (currentCategory === 'FAVORITES') catLabel = 'รายการโปรด';
+        else if (currentCategory === 'MASTERED') catLabel = 'จดจำได้แล้ว';
+        else if (currentCategory !== 'ALL') {
+          const catObj = CATEGORIES.find(c => c.id === currentCategory);
+          if (catObj) catLabel = catObj.label;
+        }
+
+        if (isFiltered) {
+          pill.className = 'px-2.5 py-1.5 rounded-xl bg-blue-100/90 border border-blue-300 text-blue-900 text-xs font-bold flex items-center space-x-1.5 shadow-2xs transition-all';
+          pill.innerHTML = `
+            <button id="clearCategoryBtn" onclick="clearCategoryFilter(event)" class="w-4 h-4 rounded-full bg-blue-200/90 hover:bg-rose-500 hover:text-white text-blue-800 flex items-center justify-center transition shrink-0 shadow-2xs cursor-pointer mr-0.5" title="ยกเลิกการเลือกกลุ่ม (กลับไปแสดงทั้งหมด)">
+              <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <span>กลุ่ม: ${catLabel}</span>
+            <span id="filteredCountBadge" class="bg-blue-600 text-white text-[10px] px-1.5 py-0.2 rounded-full font-mono">${filteredData.length}</span>
+          `;
+        } else {
+          pill.className = 'px-3 py-1.5 rounded-xl bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold flex items-center space-x-1.5 transition-all';
+          pill.innerHTML = `
+            <span>กลุ่ม: ${catLabel}</span>
+            <span id="filteredCountBadge" class="bg-blue-600 text-white text-[10px] px-1.5 py-0.2 rounded-full font-mono">${filteredData.length}</span>
+          `;
+        }
+      }
+
+      // Re-render active view
+      if (currentView === 'grid') renderGridCards();
+      else if (currentView === 'table') renderTable();
+      else if (currentView === 'flashcard') {
+        fcShuffledList = [...filteredData];
+        fcIndex = 0;
+        updateFlashcardUI();
+      }
+    }
+
+    function updateBadges() {
+      document.getElementById('allCountBadge').innerText = RAW_DATA.length;
+      document.getElementById('favCountBadge').innerText = favorites.size;
+      document.getElementById('masteredCountBadge').innerText = mastered.size;
+    }
+
+    // --- FAVORITES & MASTERED ---
+    function toggleFavorite(id, e) {
+      if (e) e.stopPropagation();
+      if (favorites.has(id)) favorites.delete(id);
+      else favorites.add(id);
+      localStorage.setItem('colloc_favs_v1', JSON.stringify([...favorites]));
+      updateBadges();
+
+      if (currentCategory === 'FAVORITES') applyFilters();
+      else if (currentView === 'grid') renderGridCards();
+    }
+
+    function toggleMastered(id, e) {
+      if (e) e.stopPropagation();
+      if (mastered.has(id)) mastered.delete(id);
+      else mastered.add(id);
+      localStorage.setItem('colloc_mastered_v1', JSON.stringify([...mastered]));
+      updateBadges();
+
+      if (currentCategory === 'MASTERED') applyFilters();
+      else if (currentView === 'grid') renderGridCards();
+    }
+
+    // --- TEXT HIGHLIGHTER ---
+    function highlightWord(text, hlWord, cssClass) {
+      if (!hlWord || !text) return text;
+      const regex = new RegExp(`\\b(${hlWord})\\b`, 'gi');
+      return text.replace(regex, `<span class="${cssClass}">$1</span>`);
+    }
+
+    // --- RENDER 1: GRID CARDS (EXACT MATCH TO prepositionalPhrases/index.html) ---
+    function renderGridCards() {
+      const container = document.getElementById('gridView');
+      if (!container) return;
+
+      if (filteredData.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full py-16 text-center text-slate-400">
+            <svg class="w-12 h-12 mx-auto mb-3 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <p class="font-bold text-sm">ไม่พบรายการคอลโลเคชันที่ตรงกับเงื่อนไขการค้นหา</p>
+            <p class="text-xs mt-1">ลองเปลี่ยนคำค้นหา หรือคลิกดู "คำศัพท์ทั้งหมด"</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filteredData.map(item => {
+        const isFav = favorites.has(item.id);
+        const isMastered = mastered.has(item.id);
+
+        const s1_html = highlightWord(item.ex1_en, item.ex1_hl || item.vocab, 'hl-teal');
+        const s2_html = highlightWord(item.ex2_en, item.ex2_hl || item.vocab, 'hl-orange');
+
+        return `
+          <div id="card-${item.id}" class="bg-white rounded-2xl border border-slate-200/90 hover:border-blue-400/60 shadow-sm hover:shadow-md transition-all flex flex-col justify-between overflow-hidden group">
+            
+            <!-- Card Header -->
+            <div class="p-4 pb-2 border-b border-slate-100 bg-slate-50/50">
+              <div class="flex items-center justify-between mb-1.5">
+                <div class="flex items-center space-x-2">
+                  <span class="text-xs font-mono font-bold px-2 py-0.5 rounded-lg bg-blue-100/70 text-blue-800">#${item.id}</span>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-200/80 text-slate-700">${item.category_label || item.pos || 'adj.'}</span>
+                </div>
+                <div class="flex items-center space-x-1">
+                  <!-- Mastered Checkbox -->
+                  <button onclick="toggleMastered(${item.id}, event)" class="p-1 rounded-lg text-slate-300 hover:text-emerald-500 transition" title="${isMastered ? 'ยกเลิกการจดจำ' : 'ทำเครื่องหมายว่าจดจำได้แล้ว'}">
+                    <svg class="w-5 h-5 ${isMastered ? 'text-emerald-500 fill-emerald-100' : 'fill-none'}" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  </button>
+                  <!-- Favorite Bookmark -->
+                  <button onclick="toggleFavorite(${item.id}, event)" class="p-1 rounded-lg text-slate-300 hover:text-amber-500 transition" title="${isFav ? 'ลบออกจากรายการโปรด' : 'บันทึกเป็นรายการโปรด'}">
+                    <svg class="w-5 h-5 ${isFav ? 'text-amber-400 fill-amber-400' : 'fill-none'}" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Vocab Title & Meaning + AUDIO BUTTON AT END OF VOCAB (USER REQUIREMENT) -->
+              <div class="flex items-center justify-between gap-2">
+                <div>
+                  <h3 class="text-lg font-extrabold text-blue-950 tracking-tight group-hover:text-blue-600 transition-colors">
+                    ${item.vocab} <span class="text-xs font-mono text-cyan-700 font-semibold">${item.ipa || ''}</span>
+                  </h3>
+                  <p class="text-xs font-bold text-slate-600 mt-0.5">(${item.thai_vocab || ''})</p>
+                </div>
+                <button id="btnVocab-${item.id}" onclick="playAudioDirect(${item.id}, 'vocab', this)" class="p-2 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white transition shadow-sm shrink-0" title="ฟังเสียงคำศัพท์">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Card Sentences: PLAY ICONS AT END OF EACH SENTENCE (USER REQUIREMENT) -->
+            <div class="p-4 space-y-3 flex-1 flex flex-col justify-center">
+              
+              <!-- S1 (Daily Life Context) -->
+              <div id="boxEx1-${item.id}" class="p-2.5 rounded-xl bg-teal-50/50 border border-teal-100">
+                <div class="flex items-start justify-between gap-2">
+                  <div class="text-xs text-slate-800 leading-relaxed font-medium">
+                    <span class="font-bold text-teal-800">1.</span> ${s1_html}
+                  </div>
+                  <button id="btnEx1-${item.id}" onclick="playAudioDirect(${item.id}, 'ex1', this)" class="shrink-0 p-1 rounded-lg text-teal-700 hover:bg-teal-200/60 transition" title="ฟังเสียงประโยค 1">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                  </button>
+                </div>
+                <p class="text-[11px] text-slate-500 mt-1 pl-3.5">• ${item.ex1_th || ''}</p>
+              </div>
+
+              <!-- S2 (Workplace Context) -->
+              <div id="boxEx2-${item.id}" class="p-2.5 rounded-xl bg-orange-50/50 border border-orange-100">
+                <div class="flex items-start justify-between gap-2">
+                  <div class="text-xs text-slate-800 leading-relaxed font-medium">
+                    <span class="font-bold text-orange-800">2.</span> ${s2_html}
+                  </div>
+                  <button id="btnEx2-${item.id}" onclick="playAudioDirect(${item.id}, 'ex2', this)" class="shrink-0 p-1 rounded-lg text-orange-700 hover:bg-orange-200/60 transition" title="ฟังเสียงประโยค 2">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                  </button>
+                </div>
+                <p class="text-[11px] text-slate-500 mt-1 pl-3.5">• ${item.ex2_th || ''}</p>
+              </div>
+
+            </div>
+
+            <!-- Card Footer: PLAY-ALL PLACED AT VERY BOTTOM (USER REQUIREMENT) -->
+            <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs">
+              <span class="text-[11px] text-slate-400 font-medium">เล่นคำศัพท์และประโยค</span>
+              <button id="btnPlayAll-${item.id}" onclick="playAllSequential(${item.id}, this)" class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-xl bg-slate-200/80 hover:bg-blue-600 hover:text-white text-slate-700 font-bold transition shadow-xs" title="เล่นคำศัพท์และประโยคทั้ง 2 ต่อเนื่อง">
+                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/></svg>
+                <span id="labelPlayAll-${item.id}">เล่นครบ (Play All)</span>
+              </button>
+            </div>
+
+          </div>
+        `;
+      }).join('');
+    }
+
+    // --- RENDER 2: TABLE VIEW ---
+    function renderTable() {
+      const tbody = document.getElementById('tableBody');
+      if (!tbody) return;
+
+      if (filteredData.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" class="py-12 text-center text-slate-400">ไม่พบรายการที่ตรงกับเงื่อนไข</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = filteredData.map(item => {
+        const s1_html = highlightWord(item.ex1_en, item.ex1_hl || item.vocab, 'hl-teal');
+        const s2_html = highlightWord(item.ex2_en, item.ex2_hl || item.vocab, 'hl-orange');
+
+        return `
+          <tr class="hover:bg-slate-50/80 transition-colors">
+            <td class="py-3 px-3 text-center font-mono font-bold text-slate-400">#${item.id}</td>
+            <td class="py-3 px-4">
+              <div class="font-extrabold text-blue-900">${item.vocab} <span class="text-xs font-mono text-cyan-700">[${item.ipa || ''}]</span></div>
+              <div class="text-xs text-slate-500 mt-0.5">${item.thai_vocab || ''}</div>
+            </td>
+            <td class="py-3 px-4">
+              <div class="leading-relaxed">${s1_html}</div>
+              <div class="text-xs text-slate-500 mt-0.5">• ${item.ex1_th || ''}</div>
+            </td>
+            <td class="py-3 px-4">
+              <div class="leading-relaxed">${s2_html}</div>
+              <div class="text-xs text-slate-500 mt-0.5">• ${item.ex2_th || ''}</div>
+            </td>
+            <td class="py-3 px-3 text-center">
+              <div class="flex items-center justify-center space-x-1.5">
+                <button id="btnTablePlayAll-${item.id}" onclick="playAllSequential(${item.id}, this)" class="px-2 py-1 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition" title="เล่นครบ">
+                  ▶ ทั้งหมด
+                </button>
+                <button onclick="playAudioDirect(${item.id}, 'vocab', this)" class="p-1.5 rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white transition" title="ฟังเฉพาะคำศัพท์">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                </button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    // --- RENDER 3: 3D FLASHCARD VIEW ---
+    function updateFlashcardUI() {
+      if (!fcShuffledList.length) return;
+      if (fcIndex >= fcShuffledList.length) fcIndex = 0;
+      const item = fcShuffledList[fcIndex];
+
+      fcFlipped = false;
+      document.getElementById('fcFront').classList.remove('hidden');
+      document.getElementById('fcBack').classList.add('hidden');
+      document.getElementById('flashcardInner').classList.remove('rotate-y-180');
+
+      document.getElementById('fcNumber').innerText = `#${item.id}`;
+      document.getElementById('fcCategory').innerText = item.category_label || item.pos || 'adj.';
+      document.getElementById('fcWord').innerText = item.vocab;
+      document.getElementById('fcIpa').innerText = item.ipa || '';
+
+      document.getElementById('fcBackTitle').innerText = item.vocab;
+      document.getElementById('fcBackIpa').innerText = item.ipa || '';
+      document.getElementById('fcBackCategory').innerText = item.category_label || item.pos || 'adj.';
+      document.getElementById('fcMeaning').innerText = item.thai_vocab || '';
+
+      const s1_html = highlightWord(item.ex1_en, item.ex1_hl || item.vocab, 'hl-teal');
+      const s2_html = highlightWord(item.ex2_en, item.ex2_hl || item.vocab, 'hl-orange');
+
+      document.getElementById('fcS1').innerHTML = `1. ${s1_html}`;
+      document.getElementById('fcTh1').innerText = `• ${item.ex1_th || ''}`;
+      document.getElementById('fcS2').innerHTML = `2. ${s2_html}`;
+      document.getElementById('fcTh2').innerText = `• ${item.ex2_th || ''}`;
+
+      document.getElementById('fcProgress').innerText = `${fcIndex + 1} / ${fcShuffledList.length}`;
+    }
+
+    function flipFlashcard() {
+      fcFlipped = !fcFlipped;
+      const inner = document.getElementById('flashcardInner');
+      const front = document.getElementById('fcFront');
+      const back = document.getElementById('fcBack');
+
+      if (fcFlipped) {
+        inner.classList.add('rotate-y-180');
+        setTimeout(() => {
+          front.classList.add('hidden');
+          back.classList.remove('hidden');
+        }, 200);
+      } else {
+        inner.classList.remove('rotate-y-180');
+        setTimeout(() => {
+          front.classList.remove('hidden');
+          back.classList.add('hidden');
+        }, 200);
+      }
+    }
+
+    function nextFlashcard() {
+      stopAllAudio();
+      if (fcIndex < fcShuffledList.length - 1) fcIndex++;
+      else fcIndex = 0;
+      updateFlashcardUI();
+    }
+
+    function prevFlashcard() {
+      stopAllAudio();
+      if (fcIndex > 0) fcIndex--;
+      else fcIndex = fcShuffledList.length - 1;
+      updateFlashcardUI();
+    }
+
+    function shuffleFlashcards() {
+      stopAllAudio();
+      fcShuffledList.sort(() => Math.random() - 0.5);
+      fcIndex = 0;
+      updateFlashcardUI();
+    }
+
+    function playFcAudio(e) {
+      if (e) e.stopPropagation();
+      const item = fcShuffledList[fcIndex];
+      if (item) playAudioDirect(item.id, 'vocab');
+    }
+
+    function playFcS1(e) {
+      if (e) e.stopPropagation();
+      const item = fcShuffledList[fcIndex];
+      if (item) playAudioDirect(item.id, 'ex1', document.getElementById('btnFcEx1'));
+    }
+
+    function playFcS2(e) {
+      if (e) e.stopPropagation();
+      const item = fcShuffledList[fcIndex];
+      if (item) playAudioDirect(item.id, 'ex2', document.getElementById('btnFcEx2'));
+    }
+
+    function playFcSequence(e) {
+      if (e) e.stopPropagation();
+      const item = fcShuffledList[fcIndex];
+      if (!item) return;
+      if (!fcFlipped) flipFlashcard();
+      playAllSequential(item.id);
+    }
+
+    // --- MOBILE SIDEBAR DRAWER ---
+    function openMobileSidebar() {
+      document.getElementById('sidebar').classList.remove('-translate-x-full');
+      document.getElementById('mobileBackdrop').classList.remove('hidden');
+    }
+
+    function closeMobileSidebar() {
+      document.getElementById('sidebar').classList.add('-translate-x-full');
+      document.getElementById('mobileBackdrop').classList.add('hidden');
+    }
+
+    // --- ROBUST AUDIO ENGINE ---
+    function setSpeed(rate) {
+      currentSpeed = parseFloat(rate);
+      if (currentAudio) currentAudio.playbackRate = currentSpeed;
+    }
+
+    function toggleAudioEngine() {
+      audioEngine = audioEngine === 'hd' ? 'system' : 'hd';
+      const label = document.getElementById('audioEngineLabel');
+      if (audioEngine === 'hd') {
+        label.innerText = '🌟 Studio HD';
+      } else {
+        label.innerText = '🔊 เสียงระบบ';
+      }
+    }
+
+    function stopAllAudio() {
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+        currentAudio = null;
+      }
+      if (synth) {
+        synth.cancel();
+      }
+      if (sequenceTimeoutId) {
+        clearTimeout(sequenceTimeoutId);
+        sequenceTimeoutId = null;
+      }
+      sequenceActiveId = null;
+
+      // Reset all playing animations and button labels
+      document.querySelectorAll('.audio-playing').forEach(el => {
+        el.classList.remove('audio-playing');
+      });
+      document.querySelectorAll('[id^="labelPlayAll-"]').forEach(el => {
+        el.innerText = 'เล่นครบ (Play All)';
+      });
+      document.querySelectorAll('[id^="btnPlayAll-"]').forEach(el => {
+        el.classList.remove('bg-blue-600', 'text-white');
+        el.classList.add('bg-slate-200/80', 'text-slate-700');
+      });
+      document.querySelectorAll('[id^="btnTablePlayAll-"]').forEach(el => {
+        el.innerText = '▶ ทั้งหมด';
+        el.classList.remove('bg-amber-600', 'bg-red-600');
+        el.classList.add('bg-blue-600');
+      });
+    }
+
+    // Low-level clip player that does NOT interfere with sequence state
+    function playClip(url, text, onComplete) {
+      if (audioEngine === 'hd') {
+        const audio = new Audio(url);
+        audio.playbackRate = currentSpeed;
+        currentAudio = audio;
+
+        audio.onended = () => {
+          currentAudio = null;
+          if (onComplete) onComplete();
+        };
+
+        audio.onerror = (e) => {
+          console.warn('Audio file error, falling back to Web Speech:', url, e);
+          playSystemSpeech(text, onComplete);
+        };
+
+        const p = audio.play();
+        if (p !== undefined) {
+          p.catch(err => {
+            console.warn('Play promise rejected, falling back to Web Speech:', err);
+            playSystemSpeech(text, onComplete);
+          });
+        }
+      } else {
+        playSystemSpeech(text, onComplete);
+      }
+    }
+
+    function playSystemSpeech(cleanText, onComplete) {
+      if (!synth) {
+        if (onComplete) onComplete();
+        return;
+      }
+      synth.cancel();
+      const utter = new SpeechSynthesisUtterance(cleanText);
+      utter.rate = currentSpeed;
+      utter.lang = 'en-US';
+      utter.onend = () => {
+        if (onComplete) onComplete();
+      };
+      utter.onerror = () => {
+        if (onComplete) onComplete();
+      };
+      synth.speak(utter);
+    }
+
+    // Play a single audio clip (Vocab, Ex1, or Ex2)
+    function playAudioDirect(id, type, btnElement, onEndCallback) {
+      stopAllAudio();
+
+      if (btnElement) {
+        singleAudioBtn = btnElement;
+        btnElement.classList.add('audio-playing');
+      }
+
+      const item = RAW_DATA.find(x => x.id === id);
+      if (!item) return;
+
+      const text = type === 'vocab' ? item.vocab : (type === 'ex1' ? item.ex1_en : item.ex2_en);
+      const url = `audio/${type}_${id}.mp3`;
+
+      playClip(url, text, () => {
+        if (btnElement) btnElement.classList.remove('audio-playing');
+        singleAudioBtn = null;
+        if (onEndCallback) onEndCallback();
+      });
+    }
+
+    // --- SEQUENTIAL PLAY ALL (VOCAB -> EX1 -> EX2) ---
+    function playAllSequential(id, triggerBtn) {
+      // If currently playing THIS item, clicking acts as STOP
+      if (sequenceActiveId === id) {
+        stopAllAudio();
+        return;
+      }
+
+      stopAllAudio();
+      sequenceActiveId = id;
+
+      const item = RAW_DATA.find(x => x.id === id);
+      if (!item) return;
+
+      // Update Play All button state
+      const playAllBtn = triggerBtn || document.getElementById(`btnPlayAll-${id}`);
+      const labelEl = document.getElementById(`labelPlayAll-${id}`);
+      if (labelEl) labelEl.innerText = 'กำลังเล่น... ■ หยุด';
+      if (playAllBtn) {
+        if (triggerBtn && triggerBtn.id && triggerBtn.id.startsWith('btnTablePlayAll-')) {
+          triggerBtn.innerText = '■ หยุด';
+          triggerBtn.classList.remove('bg-blue-600');
+          triggerBtn.classList.add('bg-amber-600');
+        } else {
+          playAllBtn.classList.remove('bg-slate-200/80', 'text-slate-700');
+          playAllBtn.classList.add('bg-blue-600', 'text-white');
+        }
+      }
+
+      const isFc = (typeof currentView !== 'undefined' ? currentView : 'grid') === 'flashcard';
+      const steps = [
+        { type: 'vocab', url: `audio/vocab_${id}.mp3`, text: item.vocab, btn: isFc ? document.getElementById('btnFcVocab') : document.getElementById(`btnVocab-${id}`) },
+        { type: 'ex1',   url: `audio/ex1_${id}.mp3`,   text: item.ex1_en, btn: isFc ? document.getElementById('btnFcEx1') : document.getElementById(`btnEx1-${id}`) },
+        { type: 'ex2',   url: `audio/ex2_${id}.mp3`,   text: item.ex2_en, btn: isFc ? document.getElementById('btnFcEx2') : document.getElementById(`btnEx2-${id}`) }
+      ];
+
+      let currentStepIdx = 0;
+
+      function runStep() {
+        // If user stopped or started another audio, abort immediately
+        if (sequenceActiveId !== id) return;
+
+        // If completed all steps
+        if (currentStepIdx >= steps.length) {
+          stopAllAudio();
+          return;
+        }
+
+        const step = steps[currentStepIdx];
+
+        // Clear highlight on previous button
+        if (currentStepIdx > 0 && steps[currentStepIdx - 1].btn) {
+          steps[currentStepIdx - 1].btn.classList.remove('audio-playing');
+        }
+
+        // Highlight current step button
+        if (step.btn) {
+          step.btn.classList.add('audio-playing');
+        }
+
+        playClip(step.url, step.text, () => {
+          if (step.btn) step.btn.classList.remove('audio-playing');
+          if (sequenceActiveId !== id) return;
+
+          currentStepIdx++;
+          // Pause 400ms between sentences for natural rhythm
+          sequenceTimeoutId = setTimeout(runStep, 400);
+        });
+      }
+
+      runStep();
+    }
+  </script>
+</body>
+</html>
