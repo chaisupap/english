@@ -1,0 +1,3049 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="artifact-type" content="dashboard">
+  <meta name="design-style" content="briefing">
+  <title>คู่มือไวยากรณ์ภาษาอังกฤษเชิงโต้ตอบ — Interactive English Grammar Dashboard</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Noto+Sans+Thai:wght@400;500;600;700&family=Noto+Serif+Thai:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@1.43.0/dist/umd/lucide.min.js"></script>
+
+  <style>
+    :root {
+      color-scheme: light;
+
+      /* Briefing style tokens */
+      --background: #faf9f5;
+      --surface-container-low: #ffffff;
+      --surface-container: #f1efe8;
+      --surface-container-high: #e6e2d6;
+
+      --on-surface: #17181a;
+      --on-surface-variant: #56585c;
+
+      --outline: #17181a;
+      --outline-variant: #dedad0;
+
+      --primary: #17181a;
+      --on-primary: #faf9f5;
+      --primary-container: #f2b705;
+      --on-primary-container: #17181a;
+      --secondary: #1f4e5f;
+      --secondary-soft: #e7f0f3;
+      --tertiary: #785008;
+      --tertiary-soft: #f5e6c4;
+      --error: #b42318;
+      --error-soft: #fbeae8;
+      --on-error: #ffffff;
+
+      /* Data series */
+      --data-1: #1f4e5f;
+      --data-2: #d99000;
+      --data-3: #2b6e52;
+      --data-4: #b84a39;
+      --data-context: #c4bfb2;
+
+      /* Semantic */
+      --positive: #2b6e52;
+      --positive-soft: #e6f2ec;
+      --warning: #9a6700;
+      --focus: #1f4e5f;
+
+      /* Fonts: Thai families listed first for non-Latin legibility */
+      --font-headline: 'Noto Serif Thai', 'Source Serif 4', serif;
+      --font-body: 'Noto Sans Thai', 'Plus Jakarta Sans', sans-serif;
+      --font-label: 'Geist Mono', 'Noto Sans Thai', monospace;
+
+      /* Shape */
+      --rounded: 0.25rem;
+      --rounded-lg: 0.375rem;
+      --rounded-full: 0.25rem;
+
+      /* Effects */
+      --section-rule: 1.5px solid var(--outline);
+      --card-border: 1px solid var(--outline-variant);
+      --badge-radius: 2px;
+      --heading-tracking: -0.015em;
+      --label-tracking: 0.06em;
+      --drawer-shadow: 0 18px 42px rgba(23, 24, 26, 0.18);
+      --backdrop-scrim: rgba(23, 24, 26, 0.48);
+
+      /* Dashboard Type Scale */
+      --display-size: clamp(1.75rem, 1.35rem + 1.3vw, 2.375rem);
+      --headline-size: clamp(1.25rem, 1.08rem + 0.6vw, 1.5625rem);
+      --subhead-size: clamp(1.0625rem, 1rem + 0.25vw, 1.2rem);
+      --body-size: clamp(0.9375rem, 0.91rem + 0.15vw, 1rem);
+      --label-size: 0.75rem;
+
+      /* Spacing scale */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+
+      /* Motion */
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+      --dur-micro: 120ms;
+      --dur-short: 220ms;
+      --dur-long: 420ms;
+    }
+
+    /* Base reset */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    html, body {
+      overflow-x: clip;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background);
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+      line-height: 1.65;
+    }
+    header { position: static !important; }
+    button, input, select, textarea { font-family: inherit; }
+
+    /* Focus rings */
+    :focus-visible {
+      outline: 2.5px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    /* Shell layout: sticky left sidebar + main dashboard workspace */
+    .app-shell {
+      display: grid;
+      grid-template-columns: 276px minmax(0, 1fr);
+      gap: var(--space-xl);
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: var(--space-lg);
+      align-items: start;
+    }
+    .app-shell * { min-width: 0; }
+
+    /* Mobile top bar (hidden on desktop) */
+    .mobile-bar {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      background: var(--surface-container-low);
+      border-bottom: var(--section-rule);
+      padding: var(--space-sm) var(--space-md);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+    }
+    .mobile-brand {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      font-weight: 700;
+      font-size: 0.9375rem;
+      color: var(--on-surface);
+    }
+
+    /* Side Navigation Bar */
+    .side-nav {
+      position: sticky;
+      top: var(--space-lg);
+      background: var(--surface-container);
+      border-top: 3px solid var(--outline);
+      border-right: var(--card-border);
+      border-bottom: var(--card-border);
+      border-left: var(--card-border);
+      border-radius: 0 0 var(--rounded-lg) var(--rounded-lg);
+      padding: var(--space-lg) var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      max-height: calc(100vh - var(--space-xl));
+      overflow-y: auto;
+    }
+    .side-nav-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      border-bottom: 1px solid var(--outline-variant);
+      padding-bottom: var(--space-sm);
+    }
+    .side-nav-title {
+      font-family: var(--font-headline);
+      font-size: 1.0625rem;
+      font-weight: 700;
+      margin: var(--space-xs) 0 0 0;
+      line-height: 1.3;
+    }
+    .drawer-close-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      min-width: 44px;
+      min-height: 44px;
+      border: var(--card-border);
+      background: var(--surface-container-low);
+      color: var(--on-surface);
+      border-radius: var(--rounded);
+      cursor: pointer;
+    }
+    .nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+    .nav-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      min-height: 44px;
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: var(--rounded);
+      text-decoration: none;
+      color: var(--on-surface);
+      font-size: 0.9rem;
+      font-weight: 500;
+      border-left: 3px solid transparent;
+      transition: background-color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out);
+    }
+    .nav-link:hover {
+      background: var(--surface-container-high);
+    }
+    .nav-link.is-active {
+      background: var(--surface-container-low);
+      border-left-color: var(--secondary);
+      font-weight: 700;
+      color: var(--secondary);
+      box-shadow: inset 0 0 0 1px var(--outline-variant);
+    }
+    .nav-link-main {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+    .nav-idx {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 600;
+      color: var(--on-surface-variant);
+      min-width: 1.4rem;
+    }
+    .nav-link.is-active .nav-idx {
+      color: var(--secondary);
+    }
+    .nav-done-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--outline-variant);
+      flex-shrink: 0;
+    }
+    .nav-done-dot.is-done {
+      background: var(--positive);
+    }
+
+    /* Sidebar Progress & Audio Widget */
+    .side-widget {
+      background: var(--surface-container-low);
+      border: var(--card-border);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-sm) var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .side-widget-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--secondary);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .progress-track {
+      height: 8px;
+      background: var(--surface-container-high);
+      border-radius: var(--rounded);
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--positive);
+      transition: width var(--dur-short) var(--ease-out);
+    }
+
+    .drawer-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--backdrop-scrim);
+      z-index: 45;
+    }
+    .drawer-backdrop.is-open { display: block; }
+
+    /* Main Column */
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2xl);
+      padding-bottom: var(--space-2xl);
+    }
+
+    /* Briefing Dossier Header & Section Bar */
+    .dossier-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      border-bottom: var(--section-rule);
+      padding-bottom: var(--space-sm);
+      margin-bottom: var(--space-md);
+    }
+    .dossier-bar-left {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+    .dossier-pill {
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+      font-family: var(--font-label);
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: var(--label-tracking);
+      text-transform: uppercase;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--badge-radius);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .dossier-meta {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      color: var(--on-surface-variant);
+      letter-spacing: var(--label-tracking);
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      font-family: var(--font-headline);
+      font-size: var(--display-size);
+      font-weight: 700;
+      line-height: 1.18;
+      letter-spacing: var(--heading-tracking);
+      margin: 0;
+      color: var(--on-surface);
+    }
+    .hero-standfirst {
+      font-size: var(--subhead-size);
+      font-weight: 600;
+      color: var(--secondary);
+      margin: var(--space-sm) 0 0 0;
+      max-width: 68ch;
+      line-height: 1.5;
+    }
+
+    .section-block {
+      scroll-margin-top: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+    .section-heading-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-md);
+    }
+    .section-title {
+      font-family: var(--font-headline);
+      font-size: var(--headline-size);
+      font-weight: 700;
+      line-height: 1.25;
+      margin: 0;
+      color: var(--on-surface);
+    }
+    .section-standfirst {
+      font-size: 0.98rem;
+      font-weight: 500;
+      color: var(--secondary);
+      margin: var(--space-xs) 0 0 0;
+      max-width: 66ch;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-xs);
+      min-height: 44px;
+      padding: 0.5rem 0.95rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      border-radius: var(--rounded);
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: background-color var(--dur-micro) var(--ease-out), transform var(--dur-micro) var(--ease-out);
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: var(--on-primary);
+    }
+    .btn-primary:hover { background: var(--secondary); }
+    .btn-secondary {
+      background: var(--surface-container-low);
+      color: var(--on-surface);
+      border-color: var(--outline-variant);
+    }
+    .btn-secondary:hover { background: var(--surface-container); }
+    .btn-secondary.is-active, .btn-filter.is-active {
+      background: var(--secondary);
+      color: var(--on-primary);
+      border-color: var(--secondary);
+    }
+    .btn-done.is-checked {
+      background: var(--positive-soft);
+      color: var(--positive);
+      border-color: var(--positive);
+    }
+    .btn-sm {
+      min-height: 44px;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.8125rem;
+    }
+    .btn-icon {
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0.4rem;
+    }
+
+    /* Summary KPI Grid & Cards */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr));
+      gap: var(--space-md);
+    }
+    .figure-card {
+      background: var(--surface-container-low);
+      border: var(--card-border);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md) var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+    .figure-card .index-num {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 600;
+      color: var(--secondary);
+      text-transform: uppercase;
+      letter-spacing: var(--label-tracking);
+    }
+    .figure-card .value {
+      font-family: var(--font-headline);
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1.1;
+      font-variant-numeric: lining-nums tabular-nums;
+      color: var(--on-surface);
+    }
+    .figure-card .caption {
+      font-size: 0.875rem;
+      color: var(--on-surface-variant);
+      margin: 0;
+    }
+
+    /* Controls Bar (Search + Voice Settings) */
+    .controls-panel {
+      background: var(--surface-container-low);
+      border: var(--card-border);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md) var(--space-lg);
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) auto;
+      gap: var(--space-md);
+      align-items: end;
+    }
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+    .field-label {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--on-surface);
+    }
+    .field-input, .field-select {
+      min-height: 44px;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded);
+      background: var(--background);
+      color: var(--on-surface);
+      font-size: 0.9rem;
+      width: 100%;
+    }
+    .field-select {
+      padding-right: 2rem;
+    }
+    .speed-group {
+      display: flex;
+      gap: var(--space-xs);
+      flex-wrap: wrap;
+    }
+
+    /* Audio Play Button & IPA Pronunciation Chip */
+    .example-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      background: var(--background);
+      border: var(--card-border);
+      border-left: 3px solid var(--secondary);
+      border-radius: var(--rounded);
+      padding: var(--space-sm) var(--space-md);
+    }
+    .example-text-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+    .en-sentence {
+      font-family: 'Plus Jakarta Sans', var(--font-body);
+      font-weight: 600;
+      font-size: 0.96rem;
+      color: var(--on-surface);
+      line-height: 1.45;
+    }
+    .th-translation {
+      font-size: 0.84rem;
+      color: var(--on-surface-variant);
+    }
+    .audio-play-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0 0.65rem;
+      border-radius: var(--rounded);
+      border: 1px solid var(--outline-variant);
+      background: var(--surface-container-low);
+      color: var(--secondary);
+      cursor: pointer;
+      flex-shrink: 0;
+      font-size: 0.78rem;
+      font-weight: 600;
+      transition: background-color var(--dur-micro) var(--ease-out), color var(--dur-micro) var(--ease-out);
+    }
+    .audio-play-btn:hover {
+      background: var(--secondary-soft);
+      border-color: var(--secondary);
+    }
+    .audio-play-btn.is-speaking {
+      background: var(--secondary);
+      color: var(--on-primary);
+      border-color: var(--secondary);
+    }
+
+    /* Vocabulary IPA Chips */
+    .vocab-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+    .vocab-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      background: var(--surface-container-low);
+      border: var(--card-border);
+      border-radius: var(--rounded);
+      padding: 0.25rem 0.35rem 0.25rem 0.65rem;
+    }
+    .vocab-word {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--on-surface);
+    }
+    .vocab-ipa {
+      font-family: 'Plus Jakarta Sans', 'Geist Mono', monospace;
+      font-size: 0.82rem;
+      color: var(--tertiary);
+      background: var(--tertiary-soft);
+      padding: 0.1rem 0.4rem;
+      border-radius: var(--badge-radius);
+    }
+    .vocab-th {
+      font-size: 0.8rem;
+      color: var(--on-surface-variant);
+    }
+
+    /* Cards & Grids */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+      gap: var(--space-md);
+    }
+    .grammar-card {
+      background: var(--surface-container-low);
+      border: var(--card-border);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md) var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .grammar-card-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      border-bottom: 1px solid var(--outline-variant);
+      padding-bottom: var(--space-sm);
+    }
+    .grammar-card-title {
+      font-family: var(--font-headline);
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin: 0;
+      color: var(--on-surface);
+    }
+    .tag-chip {
+      display: inline-flex;
+      align-items: center;
+      background: var(--tertiary-soft);
+      color: var(--tertiary);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: var(--rounded);
+      white-space: nowrap;
+    }
+    .tag-chip--petrol {
+      background: var(--secondary-soft);
+      color: var(--secondary);
+    }
+
+    /* Interactive Sentence Builder / Breakdown */
+    .pattern-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .sentence-breakdown {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      padding: var(--space-md);
+      background: var(--surface-container);
+      border-radius: var(--rounded-lg);
+      border-top: var(--section-rule);
+    }
+    .slot-box {
+      background: var(--surface-container-low);
+      border: var(--card-border);
+      border-radius: var(--rounded);
+      padding: var(--space-sm) var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+    .slot-role {
+      font-family: var(--font-label);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--secondary);
+      text-transform: uppercase;
+      letter-spacing: var(--label-tracking);
+    }
+    .slot-word {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--on-surface);
+    }
+    .slot-desc {
+      font-size: 0.78rem;
+      color: var(--on-surface-variant);
+    }
+
+    /* Interactive Word Spotter */
+    .spotter-tokens {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+      align-items: center;
+    }
+    .token-btn {
+      min-height: 44px;
+      padding: 0.35rem 0.75rem;
+      border: 1px solid var(--outline-variant);
+      background: var(--surface-container-low);
+      color: var(--on-surface);
+      border-radius: var(--rounded);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+    .token-btn:hover { background: var(--surface-container); }
+    .token-btn.is-selected {
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+      border-color: var(--outline);
+    }
+
+    /* Tense Matrix & SVG Timeline */
+    .tense-matrix-wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+      gap: var(--space-lg);
+      align-items: start;
+    }
+    .tense-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-xs);
+    }
+    .tense-col-head {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 700;
+      text-align: center;
+      padding: var(--space-xs);
+      background: var(--surface-container);
+      border-bottom: var(--section-rule);
+      color: var(--on-surface);
+      text-transform: uppercase;
+    }
+    .tense-cell-btn {
+      min-height: 56px;
+      padding: var(--space-xs) var(--space-sm);
+      border: var(--card-border);
+      border-radius: var(--rounded);
+      background: var(--surface-container-low);
+      color: var(--on-surface);
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.1rem;
+      transition: background-color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out);
+    }
+    .tense-cell-btn:hover { background: var(--surface-container); }
+    .tense-cell-btn.is-selected {
+      background: var(--secondary);
+      color: var(--on-primary);
+      border-color: var(--secondary);
+    }
+    .tense-cell-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .tense-cell-formula {
+      font-family: var(--font-label);
+      font-size: 0.68rem;
+      opacity: 0.85;
+    }
+    .timeline-box {
+      background: var(--background);
+      border: var(--card-border);
+      border-radius: var(--rounded);
+      padding: var(--space-sm) var(--space-md);
+    }
+
+    /* Collapsible Detail Panels */
+    details.detail-panel {
+      background: var(--surface-container);
+      border-top: var(--section-rule);
+      border-right: var(--card-border);
+      border-bottom: var(--card-border);
+      border-left: var(--card-border);
+      border-radius: 0 0 var(--rounded-lg) var(--rounded-lg);
+      overflow: hidden;
+    }
+    details.detail-panel summary {
+      list-style: none;
+      cursor: pointer;
+      min-height: 48px;
+      padding: var(--space-sm) var(--space-md);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      font-weight: 700;
+      color: var(--on-surface);
+      user-select: none;
+    }
+    details.detail-panel summary::-webkit-details-marker { display: none; }
+    details.detail-panel summary:hover { background: var(--surface-container-high); }
+    .detail-chevron {
+      transition: transform var(--dur-short) var(--ease-out);
+      flex-shrink: 0;
+    }
+    details.detail-panel[open] .detail-chevron {
+      transform: rotate(180deg);
+    }
+    .detail-body {
+      background: var(--surface-container-low);
+      border-top: var(--card-border);
+      padding: var(--space-md) var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    /* Clean Briefing Tables */
+    .table-scroll {
+      overflow-x: auto;
+      background: var(--surface-container-low);
+      border: var(--card-border);
+      border-radius: var(--rounded-lg);
+    }
+    table.briefing-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    .briefing-table th {
+      text-align: left;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--surface-container);
+      border-bottom: var(--section-rule);
+      font-weight: 700;
+      color: var(--on-surface);
+      white-space: nowrap;
+    }
+    .briefing-table td {
+      padding: var(--space-sm) var(--space-md);
+      border-bottom: 1px solid var(--outline-variant);
+      vertical-align: top;
+    }
+    .briefing-table tr:last-child td { border-bottom: none; }
+
+    /* Interactive SVA Quiz Cards */
+    .sva-quiz-item {
+      background: var(--surface-container-low);
+      border: var(--card-border);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .sva-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+    .sva-feedback {
+      font-size: 0.875rem;
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--rounded);
+      display: none;
+    }
+    .sva-feedback.is-correct {
+      display: block;
+      background: var(--positive-soft);
+      color: var(--positive);
+      border-left: 3px solid var(--positive);
+    }
+    .sva-feedback.is-wrong {
+      display: block;
+      background: var(--error-soft);
+      color: var(--error);
+      border-left: 3px solid var(--error);
+    }
+
+    /* Search Result Banner */
+    .search-results-box {
+      background: var(--surface-container-low);
+      border: var(--card-border);
+      border-left: 4px solid var(--primary-container);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md) var(--space-lg);
+      display: none;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .search-results-box.is-visible { display: flex; }
+
+    /* Toast / Inline Audio Status */
+    .audio-status-pill {
+      font-family: var(--font-label);
+      font-size: 0.75rem;
+      color: var(--secondary);
+      background: var(--secondary-soft);
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--rounded);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 960px) {
+      .mobile-bar { display: flex; }
+      .app-shell {
+        grid-template-columns: 1fr;
+        padding: var(--space-md);
+        gap: var(--space-lg);
+      }
+      .side-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: min(310px, 86vw);
+        max-height: 100vh;
+        z-index: 50;
+        border-radius: 0;
+        box-shadow: var(--drawer-shadow);
+        transform: translateX(-105%);
+        transition: transform var(--dur-short) var(--ease-out);
+      }
+      .side-nav.is-open {
+        transform: translateX(0);
+      }
+      .drawer-close-btn { display: inline-flex; }
+      .controls-panel {
+        grid-template-columns: 1fr;
+      }
+      .tense-matrix-wrap {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .app-shell {
+        padding: var(--space-sm);
+      }
+      .figure-card, .grammar-card, .controls-panel {
+        padding: var(--space-md);
+      }
+      .tense-grid {
+        grid-template-columns: 1fr;
+      }
+      .example-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .audio-play-btn {
+        align-self: flex-end;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Mobile Top Navigation Bar -->
+  <div class="mobile-bar">
+    <button type="button" class="btn btn-secondary btn-icon" id="mobile-menu-open" aria-label="เปิดเมนูนำทางหัวข้อไวยากรณ์" onclick="toggleMobileDrawer(true)">
+      <i data-lucide="menu" aria-hidden="true"></i>
+    </button>
+    <div class="mobile-brand">
+      <span class="dossier-pill">GRAMMAR</span>
+      <span>คู่มือแกรมม่าร์ฉบับสมบูรณ์</span>
+    </div>
+    <span class="audio-status-pill" id="mobile-progress-pill">0/6</span>
+  </div>
+
+  <div class="drawer-backdrop" id="drawer-backdrop" onclick="toggleMobileDrawer(false)"></div>
+
+  <div class="app-shell">
+    <!-- Responsive Sticky Side Navigation Bar -->
+    <aside class="side-nav" id="side-nav" aria-label="เมนูหลักหัวข้อไวยากรณ์ภาษาอังกฤษ">
+      <div class="side-nav-header">
+        <div>
+          <span class="dossier-pill">EN-US AUDIO + IPA</span>
+          <h2 class="side-nav-title">สารบัญไวยากรณ์อังกฤษ</h2>
+        </div>
+        <button type="button" class="drawer-close-btn" id="mobile-menu-close" aria-label="ปิดเมนูนำทาง" onclick="toggleMobileDrawer(false)">
+          <i data-lucide="x" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <nav aria-label="หมวดหมู่ไวยากรณ์">
+        <ul class="nav-list" id="side-nav-list">
+          <li>
+            <a href="#overview" class="nav-link is-active" data-section="overview" onclick="handleNavClick(event, 'overview')">
+              <span class="nav-link-main"><span class="nav-idx">00</span><span>ภาพรวม &amp; ตั้งค่าเสียง</span></span>
+            </a>
+          </li>
+          <li>
+            <a href="#sentence-structure" class="nav-link" data-section="sentence-structure" onclick="handleNavClick(event, 'sentence-structure')">
+              <span class="nav-link-main"><span class="nav-idx">01</span><span>โครงสร้างประโยค</span></span>
+              <span class="nav-done-dot" id="dot-sentence-structure" title="สถานะการทบทวน"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#parts-of-speech" class="nav-link" data-section="parts-of-speech" onclick="handleNavClick(event, 'parts-of-speech')">
+              <span class="nav-link-main"><span class="nav-idx">02</span><span>ชนิดของคำ (8 POS)</span></span>
+              <span class="nav-done-dot" id="dot-parts-of-speech" title="สถานะการทบทวน"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#sv-agreement" class="nav-link" data-section="sv-agreement" onclick="handleNavClick(event, 'sv-agreement')">
+              <span class="nav-link-main"><span class="nav-idx">03</span><span>Subject-Verb Agreement</span></span>
+              <span class="nav-done-dot" id="dot-sv-agreement" title="สถานะการทบทวน"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#tenses" class="nav-link" data-section="tenses" onclick="handleNavClick(event, 'tenses')">
+              <span class="nav-link-main"><span class="nav-idx">04</span><span>12 Tenses &amp; เส้นเวลา</span></span>
+              <span class="nav-done-dot" id="dot-tenses" title="สถานะการทบทวน"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#clauses" class="nav-link" data-section="clauses" onclick="handleNavClick(event, 'clauses')">
+              <span class="nav-link-main"><span class="nav-idx">05</span><span>อนุประโยค (Clauses)</span></span>
+              <span class="nav-done-dot" id="dot-clauses" title="สถานะการทบทวน"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#conjunctions" class="nav-link" data-section="conjunctions" onclick="handleNavClick(event, 'conjunctions')">
+              <span class="nav-link-main"><span class="nav-idx">06</span><span>คำสันธาน (Conjunctions)</span></span>
+              <span class="nav-done-dot" id="dot-conjunctions" title="สถานะการทบทวน"></span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Study Progress Widget -->
+      <div class="side-widget">
+        <div class="side-widget-label">
+          <span>ความคืบหน้าการทบทวน</span>
+          <span id="sidebar-progress-text">0 / 6 บท</span>
+        </div>
+        <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="6" aria-valuenow="0" id="progress-bar-wrap">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:var(--space-xs);">
+          <span style="font-size:0.78rem; color:var(--on-surface-variant);" id="drill-score-summary">แบบฝึกหัด: 0/6 ข้อ</span>
+          <button type="button" class="btn btn-secondary btn-sm" id="reset-progress-btn" onclick="handleResetProgress(this)">รีเซ็ต</button>
+        </div>
+      </div>
+
+      <!-- Active Speech Engine Info -->
+      <div class="side-widget">
+        <div class="side-widget-label">
+          <span>ระบบเสียงอ่าน (EN-US)</span>
+          <i data-lucide="volume-2" aria-hidden="true" style="width:16px;height:16px;"></i>
+        </div>
+        <div style="font-size:0.78rem; color:var(--on-surface-variant);" id="active-voice-label">กำลังตรวจหาเสียง en-US ที่เป็นธรรมชาติ…</div>
+      </div>
+    </aside>
+
+    <!-- Main Dashboard Workspace -->
+    <main class="main-content">
+
+      <!-- SECTION 00: OVERVIEW & AUDIO CONTROLS -->
+      <section id="overview" class="section-block">
+        <header>
+          <div class="dossier-bar">
+            <div class="dossier-bar-left">
+              <span class="dossier-pill">GRAMMAR DOSSIER</span>
+              <span class="dossier-meta">THAI-ENGLISH REFERENCE • IPA + EN-US SPEECH</span>
+            </div>
+            <span class="audio-status-pill" id="speech-status-badge">พร้อมเล่นเสียง en-US</span>
+          </div>
+          <h1 class="hero-title">แดชบอร์ดสรุปไวยากรณ์ภาษาอังกฤษฉบับสมบูรณ์</h1>
+          <p class="hero-standfirst">
+            สำรวจหลักแกรมม่าร์ตั้งแต่พื้นฐานจนถึงขั้นสูง พร้อมแผนภาพเส้นเวลา 12 Tenses ตัวอย่างประโยคแบบโต้ตอบ สัทอักษร IPA และเสียงอ่านสำเนียงอเมริกัน (en-US) ที่เป็นธรรมชาติ
+          </p>
+        </header>
+
+        <!-- Summary KPI Cards -->
+        <div class="kpi-grid">
+          <div class="figure-card">
+            <span class="index-num">01 • CORE MODULES</span>
+            <span class="value">6</span>
+            <p class="caption">หมวดหลักจากโครงสร้างประโยคถึงคำสันธาน</p>
+          </div>
+          <div class="figure-card">
+            <span class="index-num">02 • VERB MATRIX</span>
+            <span class="value">12</span>
+            <p class="caption">Tenses พร้อมเส้นเวลาอดีต-ปัจจุบัน-อนาคต</p>
+          </div>
+          <div class="figure-card">
+            <span class="index-num">03 • WORD CLASSES</span>
+            <span class="value">8</span>
+            <p class="caption">Parts of Speech พร้อมคำศัพท์และ IPA</p>
+          </div>
+          <div class="figure-card">
+            <span class="index-num">04 • PRONUNCIATION</span>
+            <span class="value">EN-US</span>
+            <p class="caption">กดปุ่มลำโพงหลังประโยคหรือคำศัพท์เพื่อฟังทันที</p>
+          </div>
+        </div>
+
+        <!-- Interactive Search & Audio Voice Controls -->
+        <div class="controls-panel" aria-label="ค้นหาหัวข้อไวยากรณ์และตั้งค่าเสียง">
+          <div class="field-group">
+            <label class="field-label" for="grammar-search">ค้นหาคำศัพท์ IPA กฎไวยากรณ์ หรือคำเชื่อม</label>
+            <input type="search" id="grammar-search" class="field-input" placeholder="เช่น present perfect, because, relative clause, noun…" oninput="handleSearch(this.value)">
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="voice-select">เลือกเสียงเจ้าของภาษา (US English)</label>
+            <select id="voice-select" class="field-select" onchange="handleVoiceChange(this.value)">
+              <option value="">กำลังโหลดรายชื่อเสียง en-US…</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <span class="field-label">ความเร็วเสียงพูด</span>
+            <div class="speed-group" role="group" aria-label="ปรับความเร็วเสียงพูด">
+              <button type="button" class="btn btn-secondary btn-sm speed-btn" data-rate="0.78" onclick="setSpeechRate(0.78, this)">0.78x ช้า</button>
+              <button type="button" class="btn btn-secondary btn-sm speed-btn is-active" data-rate="0.95" onclick="setSpeechRate(0.95, this)">0.95x ปกติ</button>
+              <button type="button" class="btn btn-secondary btn-sm speed-btn" data-rate="1.15" onclick="setSpeechRate(1.15, this)">1.15x เร็ว</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Search Output Container -->
+        <div class="search-results-box" id="search-results-box" aria-live="polite">
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:var(--space-sm);">
+            <strong id="search-results-count">ผลการค้นหา</strong>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="clearSearch()">ล้างคำค้นหา</button>
+          </div>
+          <div id="search-results-list" class="card-grid"></div>
+        </div>
+      </section>
+
+      <!-- SECTION 01: SENTENCE STRUCTURE -->
+      <section id="sentence-structure" class="section-block">
+        <div class="dossier-bar">
+          <div class="dossier-bar-left">
+            <span class="dossier-pill">SECTION 01</span>
+            <span class="dossier-meta">FOUNDATIONS • SENTENCE STRUCTURE</span>
+          </div>
+          <button type="button" class="btn btn-secondary btn-sm btn-done" data-done-btn="sentence-structure" onclick="toggleSectionDone('sentence-structure')">
+            <i data-lucide="check-circle-2" aria-hidden="true" style="width:16px;height:16px;"></i>
+            <span>ทำเครื่องหมายว่าทบทวนแล้ว</span>
+          </button>
+        </div>
+
+        <div class="section-heading-row">
+          <div>
+            <h2 class="section-title">01. โครงสร้างประโยคภาษาอังกฤษ (Sentence Structure)</h2>
+            <p class="section-standfirst">หัวใจของประโยคภาษาอังกฤษที่สมบูรณ์คือต้องมี <strong>Subject (ประธาน)</strong> และ <strong>Finite Verb (กริยาแท้)</strong> เสมอ</p>
+          </div>
+        </div>
+
+        <!-- Key Terms with IPA + Audio -->
+        <div class="vocab-strip" aria-label="คำศัพท์หมวดโครงสร้างประโยคพร้อมสัทอักษร IPA">
+          <div class="vocab-chip">
+            <span class="vocab-word">Subject</span>
+            <span class="vocab-ipa">/ˈsʌb.dʒɪkt/</span>
+            <span class="vocab-th">ประธาน</span>
+            <button type="button" class="audio-play-btn" aria-label="ฟังเสียงคำว่า Subject" data-speak="Subject" onclick="speakButton(this)">
+              <i data-lucide="volume-2" aria-hidden="true" style="width:16px;height:16px;"></i>
+            </button>
+          </div>
+          <div class="vocab-chip">
+            <span class="vocab-word">Predicate</span>
+            <span class="vocab-ipa">/ˈpred.ɪ.kət/</span>
+            <span class="vocab-th">ภาคแสดง</span>
+            <button type="button" class="audio-play-btn" aria-label="ฟังเสียงคำว่า Predicate" data-speak="Predicate" onclick="speakButton(this)">
+              <i data-lucide="volume-2" aria-hidden="true" style="width:16px;height:16px;"></i>
+            </button>
+          </div>
+          <div class="vocab-chip">
+            <span class="vocab-word">Object</span>
+            <span class="vocab-ipa">/ˈɒb.dʒɪkt/</span>
+            <span class="vocab-th">กรรม</span>
+            <button type="button" class="audio-play-btn" aria-label="ฟังเสียงคำว่า Object" data-speak="Object" onclick="speakButton(this)">
+              <i data-lucide="volume-2" aria-hidden="true" style="width:16px;height:16px;"></i>
+            </button>
+          </div>
+          <div class="vocab-chip">
+            <span class="vocab-word">Complement</span>
+            <span class="vocab-ipa">/ˈkɒm.plɪ.mənt/</span>
+            <span class="vocab-th">ส่วนเติมเต็ม</span>
+            <button type="button" class="audio-play-btn" aria-label="ฟังเสียงคำว่า Complement" data-speak="Complement" onclick="speakButton(this)">
+              <i data-lucide="volume-2" aria-hidden="true" style="width:16px;height:16px;"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Interactive 5 Sentence Patterns Explorer -->
+        <div class="grammar-card">
+          <div class="grammar-card-head">
+            <div>
+              <h3 class="grammar-card-title">ตัวสำรวจโครงสร้างประโยคพื้นฐาน 5 รูปแบบ (5 Basic Patterns)</h3>
+              <p style="margin:0.2rem 0 0 0; font-size:0.875rem; color:var(--on-surface-variant);">เลือกรูปแบบเพื่อดูการแยกองค์ประกอบทีละส่วนและฟังเสียงอ่าน</p>
+            </div>
+            <span class="tag-chip tag-chip--petrol">Interactive Builder</span>
+          </div>
+
+          <div class="pattern-tabs" id="pattern-tabs" role="tablist" aria-label="เลือกรูปแบบประโยค 5 แบบ">
+            <button type="button" class="btn btn-secondary btn-sm is-active" data-pattern="0" onclick="selectSentencePattern(0)">1. S + V</button>
+            <button type="button" class="btn btn-secondary btn-sm" data-pattern="1" onclick="selectSentencePattern(1)">2. S + V + O</button>
+            <button type="button" class="btn btn-secondary btn-sm" data-pattern="2" onclick="selectSentencePattern(2)">3. S + V + C</button>
+            <button type="button" class="btn btn-secondary btn-sm" data-pattern="3" onclick="selectSentencePattern(3)">4. S + V + IO + DO</button>
+            <button type="button" class="btn btn-secondary btn-sm" data-pattern="4" onclick="selectSentencePattern(4)">5. S + V + O + OC</button>
+          </div>
+
+          <div id="pattern-detail-output" style="display:flex; flex-direction:column; gap:var(--space-md);"></div>
+        </div>
+
+        <!-- 4 Sentence Types by Structure -->
+        <div class="card-grid">
+          <div class="grammar-card">
+            <div class="grammar-card-head">
+              <h3 class="grammar-card-title">Simple Sentence (ความเดียว)</h3>
+              <span class="tag-chip">1 IC</span>
+            </div>
+            <p style="margin:0; font-size:0.9rem;">มีอนุประโยคอิสระ (Independent Clause) เพียง 1 ชุด อาจมีประธานหรือกริยามากกว่า 1 ตัวได้แต่ยังอยู่บนแกนความคิดเดียว</p>
+            <div class="example-row">
+              <div class="example-text-wrap">
+                <span class="en-sentence">The train arrives at seven o'clock every morning.</span>
+                <span class="th-translation">รถไฟมาถึงเวลาเจ็ดโมงตรงทุกเช้า</span>
+              </div>
+              <button type="button" class="audio-play-btn" aria-label="ฟังเสียงอ่านประโยค" data-speak="The train arrives at seven o'clock every morning." onclick="speakButton(this)">
+                <i data-lucide="play" aria-hidden="true" style="width:16px;height:16px;"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="grammar-card">
+            <div class="grammar-card-head">
+              <h3 class="grammar-card-title">Compound Sentence (ความรวม)</h3>
+              <span class="tag-chip">IC + FANBOYS + IC</span>
+            </div>
+            <p style="margin:0; font-size:0.9rem;">เชื่อมประโยคสมบูรณ์ 2 ประโยคเข้าด้วยกันด้วย <code>, + FANBOYS</code> หรือเครื่องหมายอัฒภาค (<code>;</code>)</p>
+            <div class="example-row">
+              <div class="example-text-wrap">
+                <span class="en-sentence">She studied hard, so she passed the final exam.</span>
+                <span class="th-translation">เธอตั้งใจเรียนอย่างหนัก ดังนั้นเธอจึงสอบปลายภาคผ่าน</span>
+              </div>
+              <button type="button" class="audio-play-btn" aria-label="ฟังเสียงอ่านประโยค" data-speak="She studied hard, so she passed the final exam." onclick="speakButton(this)">
+                <i data-lucide="play" aria-hidden="true" style="width:16px;height:16px;"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="grammar-card">
+            <div class="grammar-card-head">
+              <h3 class="grammar-card-title">Complex Sentence (ความซ้อน)</h3>
+              <span class="tag-chip">1 IC + 1+ DC</span>
+            </div>
+            <p style="margin:0; font-size:0.9rem;">มีประโยคหลัก 1 ประโยค และประโยคย่อย (Dependent Clause) อย่างน้อย 1 ประโยคเชื่อมด้วย Subordinator</p>
+            <div class="example-row">
+              <div class="example-text-wrap">
+                <span class="en-sentence">Although it rained heavily, they continued the match.</span>
+                <span class="th-translation">แม้ว่าฝนจะตกหนัก พวกเขาก็ยังคงแข่งต่อ</span>
+              </div>
+              <button type="button" class="audio-play-btn" aria-label="ฟังเสียงอ่านประโยค" data-speak="Although it rained heavily, they continued the match." onclick="speakButton(this)">
+                <i data-lucide="play" aria-hidden="true" style="width:16px;height:16px;"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <details class="detail-panel">
+          <summary>
+            <span>รายละเอียดเพิ่มเติม: ข้อแตกต่างระหว่าง Phrase (วลี) กับ Clause (อนุประโยค) และการเรียงส่วนขยาย (MPT)</span>
+            <i data-lucide="chevron-down" class="detail-chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="detail-body">
+            <p style="margin:0;"><strong>1. Phrase (วลี):</strong> กลุ่มคำที่ทำหน้าที่ร่วมกันแต่ <strong>ไม่มี</strong> คู่ Subject + Finite Verb เช่น <em>in the library</em> (Prepositional Phrase), <em>running fast</em> (Participial Phrase)</p>
+            <p style="margin:0;"><strong>2. ลำดับส่วนขยายท้ายประโยค (Manner → Place → Time):</strong> หากมีคำบอกอาการ สถานที่ และเวลาพร้อมกัน ให้เรียงตามลำดับ <strong>อาการ + สถานที่ + เวลา</strong></p>
+            <div class="example-row">
+              <div class="example-text-wrap">
+                <span class="en-sentence">He spoke clearly in the conference room yesterday.</span>
+                <span class="th-translation">เขาพูดอย่างชัดเจน (Manner) ในห้องประชุม (Place) เมื่อวานนี้ (Time)</span>
+              </div>
+              <button type="button" class="audio-play-btn" aria-label="ฟังเสียงอ่านประโยค" data-speak="He spoke clearly in the conference room yesterday." onclick="speakButton(this)">
+                <i data-lucide="play" aria-hidden="true" style="width:16px;height:16px;"></i>
+              </button>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      <!-- SECTION 02: PARTS OF SPEECH -->
+      <section id="parts-of-speech" class="section-block">
+        <div class="dossier-bar">
+          <div class="dossier-bar-left">
+            <span class="dossier-pill">SECTION 02</span>
+            <span class="dossier-meta">WORD CLASSES • 8 PARTS OF SPEECH</span>
+          </div>
+          <button type="button" class="btn btn-secondary btn-sm btn-done" data-done-btn="parts-of-speech" onclick="toggleSectionDone('parts-of-speech')">
+            <i data-lucide="check-circle-2" aria-hidden="true" style="width:16px;height:16px;"></i>
+            <span>ทำเครื่องหมายว่าทบทวนแล้ว</span>
+          </button>
+        </div>
+
+        <div class="section-heading-row">
+          <div>
+            <h2 class="section-title">02. ชนิดของคำทั้ง 8 ประเภท (Parts of Speech)</h2>
+            <p class="section-standfirst">เข้าใจหน้าที่ของคำแต่ละชนิดในประโยค พร้อมคำอ่าน IPA และเสียงอ่านเจ้าของภาษาทุกหมวด</p>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:var(--space-xs);" role="group" aria-label="กรองชนิดของคำ">
+            <button type="button" class="btn btn-secondary btn-sm btn-filter is-active" data-pos-filter="all" onclick="filterPOS('all', this)">ทั้งหมด (8)</button>
+            <button type="button" class="btn btn-secondary btn-sm btn-filter" data-pos-filter="content" onclick="filterPOS('content', this)">คำเนื้อหาหลัก (4)</button>
+            <button type="button" class="btn btn-secondary btn-sm btn-filter" data-pos-filter="function" onclick="filterPOS('function', this)">คำขยายและเชื่อม (4)</button>
+          </div>
+        </div>
+
+        <div class="card-grid" id="pos-grid"></div>
+
+        <!-- Interactive Word Function Spotter -->
+        <div class="grammar-card">
+          <div class="grammar-card-head">
+            <div>
+              <h3 class="grammar-card-title">ทดลองวิเคราะห์ชนิดของคำในประโยค (Word Function Spotter)</h3>
+              <p style="margin:0.2rem 0 0 0; font-size:0.875rem; color:var(--on-surface-variant);">คลิกที่คำแต่ละคำเพื่อดูหน้าที่ทางไวยากรณ์ สัทอักษร IPA และฟังเสียงอ่านเฉพาะคำ</p>
+            </div>
+            <button type="button" class="audio-play-btn" aria-label="ฟังเสียงอ่านทั้งประโยค" data-speak="Wow! The clever student quickly solved a difficult problem." onclick="speakButton(this)">
+              <i data-lucide="volume-2" aria-hidden="true" style="width:16px;height:16px;"></i>
+              <span>ฟังทั้งประโยค</span>
+            </button>
+          </div>
+          <div class="spotter-tokens" id="spotter-tokens"></div>
+          <div id="spotter-detail" class="sentence-breakdown" style="margin-top:var(--space-xs);"></div>
+        </div>
+
+        <details class="detail-panel">
+          <summary>
+            <span>รายละเอียดเพิ่มเติม: ลำดับการเรียง Adjective หลายตัว (OSASCOMP) และตำแหน่งของ Adverb</span>
+            <i data-lucide="chevron-down" class="detail-chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="detail-body">
+            <p style="margin:0;"><strong>ลำดับ Adjective หน้าคำนาม (OSASCOMP):</strong> Opinion (ความเห็น) → Size (ขนาด) → Age (อายุ) → Shape (รูปทรง) → Color (สี) → Origin (ที่มา) → Material (วัสดุ) → Purpose (จุดประสงค์)</p>
+            <div class="example-row">
+              <div class="example-text-wrap">
+                <span class="en-sentence">She bought a lovely small antique round brown Italian wooden jewelry box.</span>
+                <span class="th-translation">เธอซื้อกล่องใส่เครื่องประดับไม้สไตล์อิตาลีสีน้ำตาลทรงกลมโบราณขนาดเล็กที่น่ารักหนึ่งใบ</span>
+              </div>
+              <button type="button" class="audio-play-btn" aria-label="ฟังเสียงอ่านประโยค" data-speak="She bought a lovely small antique round brown Italian wooden jewelry box." onclick="speakButton(this)">
+                <i data-lucide="play" aria-hidden="true" style="width:16px;height:16px;"></i>
+              </button>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      <!-- SECTION 03: SUBJECT-VERB AGREEMENT -->
+      <section id="sv-agreement" class="section-block">
+        <div class="dossier-bar">
+          <div class="dossier-bar-left">
+            <span class="dossier-pill">SECTION 03</span>
+            <span class="dossier-meta">AGREEMENT RULES • SINGULAR VS PLURAL</span>
+          </div>
+          <button type="button" class="btn btn-secondary btn-sm btn-done" data-done-btn="sv-agreement" onclick="toggleSectionDone('sv-agreement')">
+            <i data-lucide="check-circle-2" aria-hidden="true" style="width:16px;height:16px;"></i>
+            <span>ทำเครื่องหมายว่าทบทวนแล้ว</span>
+          </button>
+        </div>
+
+        <div class="section-heading-row">
+          <div>
+            <h2 class="section-title">03. ความสอดคล้องของประธานและกริยา (Subject-Verb Agreement)</h2>
+            <p class="section-standfirst">กฎการผันกริยาให้ตรงกับพจน์ของประธาน ทั้งกรณีพื้นฐาน คำเชื่อมพิเศษ และคำสรรพนามไม่ชี้เฉพาะ</p>
+          </div>
+        </div>
+
+        <div class="vocab-strip">
+          <div class="vocab-chip">
+            <span class="vocab-word">Agreement</span>
+            <span class="vocab-ipa">/əˈɡriː.mənt/</span>
+            <span class="vocab-th">ความสอดคล้อง</span>
+            <button type="button" class="audio-play-btn" aria-label="ฟังเสียงคำว่า Agreement" data-speak="Agreement" onclick="speakButton(this)">
+              <i data-lucide="volume-2" aria-hidden="true" style="width:16px;height:16px;"></i>
+            </button>
+          </div>
+          <div class="vocab-chip">
+            <span class="vocab-word">Singular</span>
+            <span class="vocab-ipa">/ˈsɪŋ.ɡjə.lər/</span>
+            <span class="vocab-th">เอกพจน์</span>
+            <button type="button" class="audio-play-btn" aria-label="ฟังเสียงคำว่า Singular" data-speak="Singular" onclick="speakButton(this)">
+              <i data-lucide="volume-2" aria-hidden="true" style="width:16px;height:16px;"></i>
+            </button>
+          </div>
+          <div class="vocab-chip">
+            <span class="vocab-word">Plural</span>
+            <span class="vocab-ipa">/ˈplʊr.əl/</span>
+            <span class="vocab-th">พหูพจน์</span>
+            <button type="button" class="audio-play-btn" aria-label="ฟังเสียงคำว่า Plural" data-speak="Plural" onclick="speakButton(this)">
+              <i data-lucide="volume-2" aria-hidden="true" style="width:16px;height:16px;"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="card-grid">
+          <div class="grammar-card">
+            <div class="grammar-card-head">
+              <h3 class="grammar-card-title">1. คำเชื่อมที่ยึดประธานตัวหน้า vs. ตัวหลัง</h3>
+              <span class="tag-chip">Proximity Rule</span>
+            </div>
+            <p style="margin:0; font-size:0.9rem;">
+              • <strong>ยึดประธานตัวหน้า:</strong> <code>with, together with, along with, as well as, including</code><br>
+              • <strong>ยึดประธานตัวหลัง (ใกล้กริยาสุด):</strong> <code>or, either...or, neither...nor, not only...but also</code>
+            </p>
+            <div class="example-row">
+              <div class="example-text-wrap">
+                <span class="en-sentence">The manager, along with his assistants, is attending the summit.</span>
+                <span class="th-translation">ผู้จัดการพร้อมด้วยผู้ช่วยของเขากำลังเข้าร่วมการประชุม (ยึด The manager)</span>
+              </div>
+              <button type="button" class="audio-play-btn" aria-label="ฟังเสียงอ่านประโยค" data-speak="The manager, along with his assistants, is attending the summit." onclick="speakButton(this)">
+                <i data-lucide="play" aria-hidden="true" style="width:16px;height:16px;"></i>
+              </button>
+            </div>
+            <div class="example-row">
+              <div class="example-text-wrap">
+                <span class="en-sentence">Neither the teacher nor the students were informed early.</span>
+                <span class="th-translation">ทั้งครูและนักเรียนต่างก็ไม่ได้รับแจ้งล่วงหน้า (ยึด students)</span>
+              </div>
+              <button type="button" class="audio-play-btn" aria-label="ฟังเสียงอ่านประโยค" data-speak="Neither the teacher nor the students were informed early." onclick="speakButton(this)">
+                <i data-lucide="play" aria-hidden="true" style="width:16px;height:16px;"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="grammar-card">
+            <div class="grammar-card-head">
+              <h3 class="grammar-card-title">2. Indefinite Pronouns &amp; SANAM</h3>
+              <span class="tag-chip">High-Yield Rule</span>
+            </div>
+            <p style="margin:0; font-size:0.9rem;">
+              • <strong>เอกพจน์เสมอ:</strong> <code>each, every, everyone, somebody, anything, neither, either</code><br>
+              • <strong>พหูพจน์เสมอ:</strong> <code>both, few, many, several</code><br>
+              • <strong>SANAM (Some, Any, None, All, Most) + of:</strong> ผันตามคำนามหลัง <code>of</code>
+            </p>
+            <div class="example-row">
+              <div class="example-text-wrap">
+                <span class="en-sentence">Everyone in this department has a clear responsibility.</span>
+                <span class="th-translation">ทุกคนในแผนกนี้ต่างมีความรับผิดชอบที่ชัดเจน</span>
+              </div>
+              <button type="button" class="audio-play-btn" aria-label="ฟังเสียงอ่านประโยค" data-speak="Everyone in this department has a clear responsibility." onclick="speakButton(this)">
+                <i data-lucide="play" aria-hidden="true" style="width:16px;height:16px;"></i>
+              </button>
+            </div>
+            <div class="example-row">
+              <div class="example-text-wrap">
+                <span class="en-sentence">Most of the water has evaporated, and most of the apples are ripe.</span>
+                <span class="th-translation">น้ำส่วนใหญ่ระเหยไปแล้ว (water นับไม่ได้) และแอปเปิลส่วนใหญ่สุกแล้ว (apples พหูพจน์)</span>
+              </div>
+              <button type="button" class="audio-play-btn" aria-label="ฟังเสียงอ่านประโยค" data-speak="Most of the water has evaporated, and most of the apples are ripe." onclick="speakButton(this)">
+                <i data-lucide="play" aria-hidden="true" style="width:16px;height:16px;"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="grammar-card">
+            <div class="grammar-card-head">
+              <h3 class="grammar-card-title">3. A number of vs. The number of</h3>
+              <span class="tag-chip">Exam Favorite</span>
+            </div>
+            <p style="margin:0; font-size:0.9rem;">
+              • <code>A number of + นามพหูพจน์</code> = จำนวนมาก (กริยา <strong>พหูพจน์</strong>)<br>
+              • <code>The number of + นามพหูพจน์</code> = จำนวนของ... (กริยา <strong>เอกพจน์</strong>)<br>
+              • จำนวนเงิน ระยะทาง เวลา ชื่อวิชา (<code>Physics</code>, <code>News</code>) = กริยา <strong>เอกพจน์</strong>
+            </p>
+            <div class="example-row">
+              <div class="example-text-wrap">
+                <span class="en-sentence">A number of applicants are waiting, while the number of seats is limited.</span>
+                <span class="th-translation">ผู้สมัครจำนวนมากกำลังรออยู่ ขณะที่จำนวนที่นั่งมีจำกัด</span>
+              </div>
+              <button type="button" class="audio-play-btn" aria-label="ฟังเสียงอ่านประโยค" data-speak="A number of applicants are waiting, while the number of seats is limited." onclick="speakButton(this)">
+                <i data-lucide="play" aria-hidden="true" style="width:16px;height:16px;"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive S-V Agreement Quick Drill -->
+        <div class="grammar-card">
+          <div class="grammar-card-head">
+            <div>
+              <h3 class="grammar-card-title">แบบฝึกหัดทดสอบความแม่นยำ (S-V Agreement Interactive Drill)</h3>
+              <p style="margin:0.2rem 0 0 0; font-size:0.875rem; color:var(--on-surface-variant);">เลือกกริยาที่ถูกต้องเพื่อดูคำอธิบายภาษาไทยและฟังเสียงประโยคที่สมบูรณ์</p>
+            </div>
+            <span class="tag-chip tag-chip--petrol" id="sva-score-badge">คะแนน: 0 / 6</span>
+          </div>
+          <div class="card-grid" id="sva-quiz-grid"></div>
+        </div>
+      </section>
+
+      <!-- SECTION 04: 12 TENSES -->
+      <section id="tenses" class="section-block">
+        <div class="dossier-bar">
+          <div class="dossier-bar-left">
+            <span class="dossier-pill">SECTION 04</span>
+            <span class="dossier-meta">TIME &amp; ASPECT • 12 ENGLISH TENSES</span>
+          </div>
+          <button type="button" class="btn btn-secondary btn-sm btn-done" data-done-btn="tenses" onclick="toggleSectionDone('tenses')">
+            <i data-lucide="check-circle-2" aria-hidden="true" style="width:16px;height:16px;"></i>
+            <span>ทำเครื่องหมายว่าทบทวนแล้ว</span>
+          </button>
+        </div>
+
+        <div class="section-heading-row">
+          <div>
+            <h2 class="section-title">04. กาลทั้ง 12 และแผนภาพเส้นเวลา (12 Tenses &amp; Timeline Visualizer)</h2>
+            <p class="section-standfirst">คลิกเลือก Tense ในตาราง 3 ช่วงเวลา × 4 ลักษณะเหตุการณ์ เพื่อแสดงจุดเวลาบนเส้น Timeline โครงสร้าง และเสียงอ่าน</p>
+          </div>
+        </div>
+
+        <div class="vocab-strip">
+          <div class="vocab-chip">
+            <span class="vocab-word">Habitual</span>
+            <span class="vocab-ipa">/həˈbɪtʃ.u.əl/</span>
+            <span class="vocab-th">ทำเป็นประจำ</span>
+            <button type="button" class="audio-play-btn" aria-label="ฟังเสียงคำว่า Habitual" data-speak="Habitual" onclick="speakButton(this)">
+              <i data-lucide="volume-2" aria-hidden="true" style="width:16px;height:16px;"></i>
+            </button>
+          </div>
+          <div class="vocab-chip">
+            <span class="vocab-word">Continuous</span>
+            <span class="vocab-ipa">/kənˈtɪn.ju.əs/</span>
+            <span class="vocab-th">กำลังดำเนินอยู่</span>
+            <button type="button" class="audio-play-btn" aria-label="ฟังเสียงคำว่า Continuous" data-speak="Continuous" onclick="speakButton(this)">
+              <i data-lucide="volume-2" aria-hidden="true" style="width:16px;height:16px;"></i>
+            </button>
+          </div>
+          <div class="vocab-chip">
+            <span class="vocab-word">Simultaneous</span>
+            <span class="vocab-ipa">/ˌsaɪ.məlˈteɪ.ni.əs/</span>
+            <span class="vocab-th">เกิดขึ้นพร้อมกัน</span>
+            <button type="button" class="audio-play-btn" aria-label="ฟังเสียงคำว่า Simultaneous" data-speak="Simultaneous" onclick="speakButton(this)">
+              <i data-lucide="volume-2" aria-hidden="true" style="width:16px;height:16px;"></i>
+            </button>
+          </div>
+          <div class="vocab-chip">
+            <span class="vocab-word">Chronological</span>
+            <span class="vocab-ipa">/ˌkrɒn.əˈlɒdʒ.ɪ.kəl/</span>
+            <span class="vocab-th">เรียงตามลำดับเวลา</span>
+            <button type="button" class="audio-play-btn" aria-label="ฟังเสียงคำว่า Chronological" data-speak="Chronological" onclick="speakButton(this)">
+              <i data-lucide="volume-2" aria-hidden="true" style="width:16px;height:16px;"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="tense-matrix-wrap">
+          <!-- 12 Tense Matrix Selector -->
+          <div class="grammar-card">
+            <div class="grammar-card-head">
+              <h3 class="grammar-card-title">ตารางเลือกทั้ง 12 Tenses</h3>
+              <span class="tag-chip">3 Times × 4 Aspects</span>
+            </div>
+            <div class="tense-grid" id="tense-matrix-grid">
+              <div class="tense-col-head">PAST (อดีต)</div>
+              <div class="tense-col-head">PRESENT (ปัจจุบัน)</div>
+              <div class="tense-col-head">FUTURE (อนาคต)</div>
+            </div>
+          </div>
+
+          <!-- Active Tense Timeline & Detail Panel -->
+          <div class="grammar-card" id="tense-inspector-panel" aria-live="polite"></div>
+        </div>
+
+        <details class="detail-panel">
+          <summary>
+            <span>รายละเอียดเพิ่มเติม: เปรียบเทียบ Tense คู่สับสนยอดฮิต (Past Simple vs. Present Perfect / Will vs. Be going to)</span>
+            <i data-lucide="chevron-down" class="detail-chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="detail-body">
+            <div class="table-scroll">
+              <table class="briefing-table">
+                <thead>
+                  <tr>
+                    <th>คู่เปรียบเทียบ</th>
+                    <th>ความต่างหลัก</th>
+                    <th>คำบอกเวลา (Markers)</th>
+                    <th>ตัวอย่างเปรียบเทียบ</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Past Simple</strong> vs.<br><strong>Present Perfect</strong></td>
+                    <td>Past Simple จบสิ้นในอดีตและระบุเวลาชัดเจน; Present Perfect ต่อเนื่องถึงปัจจุบันหรือเน้นผลลัพธ์โดยไม่ระบุเวลาเจาะจง</td>
+                    <td><code>yesterday, ago, in 2020</code> vs. <code>since, for, yet, already, ever</code></td>
+                    <td>
+                      <div class="example-row" style="margin-bottom:0.4rem;">
+                        <span class="en-sentence">I lived in Chiang Mai in 2022.</span>
+                        <button type="button" class="audio-play-btn" aria-label="ฟังเสียงประโยค" data-speak="I lived in Chiang Mai in 2022." onclick="speakButton(this)"><i data-lucide="play" aria-hidden="true" style="width:16px;height:16px;"></i></button>
+                      </div>
+                      <div class="example-row">
+                        <span class="en-sentence">I have lived in Chiang Mai since 2022.</span>
+                        <button type="button" class="audio-play-btn" aria-label="ฟังเสียงประโยค" data-speak="I have lived in Chiang Mai since 2022." onclick="speakButton(this)"><i data-lucide="play" aria-hidden="true" style="width:16px;height:16px;"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Will</strong> vs.<br><strong>Be going to</strong></td>
+                    <td><code>will</code> ใช้เมื่อตัดสินใจฉับพลันหรือคาดเดาจากความเห็น; <code>be going to</code> ใช้กับแผนที่วางไว้แล้วหรือมีหลักฐานเห็นชัด</td>
+                    <td><code>I think, probably</code> vs. <code>Look at those clouds!</code></td>
+                    <td>
+                      <div class="example-row">
+                        <span class="en-sentence">Look at those dark clouds! It is going to rain soon.</span>
+                        <button type="button" class="audio-play-btn" aria-label="ฟังเสียงประโยค" data-speak="Look at those dark clouds! It is going to rain soon." onclick="speakButton(this)"><i data-lucide="play" aria-hidden="true" style="width:16px;height:16px;"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      <!-- SECTION 05: CLAUSES -->
+      <section id="clauses" class="section-block">
+        <div class="dossier-bar">
+          <div class="dossier-bar-left">
+            <span class="dossier-pill">SECTION 05</span>
+            <span class="dossier-meta">SUBORDINATION • CLAUSES &amp; CONDITIONALS</span>
+          </div>
+          <button type="button" class="btn btn-secondary btn-sm btn-done" data-done-btn="clauses" onclick="toggleSectionDone('clauses')">
+            <i data-lucide="check-circle-2" aria-hidden="true" style="width:16px;height:16px;"></i>
+            <span>ทำเครื่องหมายว่าทบทวนแล้ว</span>
+          </button>
+        </div>
+
+        <div class="section-heading-row">
+          <div>
+            <h2 class="section-title">05. อนุประโยค (Clauses) และประโยคเงื่อนไข</h2>
+            <p class="section-standfirst">แยกแยะอนุประโยคย่อย 3 ชนิด (Noun, Adjective, Adverb Clauses) พร้อมกฎการลดรูปและ If-Clauses ทั้ง 4 แบบ</p>
+          </div>
+        </div>
+
+        <div class="vocab-strip">
+          <div class="vocab-chip">
+            <span class="vocab-word">Independent</span>
+            <span class="vocab-ipa">/ˌɪn.dɪˈpen.dənt/</span>
+            <span class="vocab-th">อิสระ/ประโยคหลัก</span>
+            <button type="button" class="audio-play-btn" aria-label="ฟังเสียงคำว่า Independent" data-speak="Independent" onclick="speakButton(this)">
+              <i data-lucide="volume-2" aria-hidden="true" style="width:16px;height:16px;"></i>
+            </button>
+          </div>
+          <div class="vocab-chip">
+            <span class="vocab-word">Relative Clause</span>
+            <span class="vocab-ipa">/ˈrel.ə.tɪv klɔːz/</span>
+            <span class="vocab-th">คุณานุประโยค</span>
+            <button type="button" class="audio-play-btn" aria-label="ฟังเสียงคำว่า Relative Clause" data-speak="Relative Clause" onclick="speakButton(this)">
+              <i data-lucide="volume-2" aria-hidden="true" style="width:16px;height:16px;"></i>
+            </button>
+          </div>
+          <div class="vocab-chip">
+            <span class="vocab-word">Hypothetical</span>
+            <span class="vocab-ipa">/ˌhaɪ.pəˈθet.ɪ.kəl/</span>
+            <span class="vocab-th">สมมติขึ้น</span>
+            <button type="button" class="audio-play-btn" aria-label="ฟังเสียงคำว่า Hypothetical" data-speak="Hypothetical" onclick="speakButton(this)">
+              <i data-lucide="volume-2" aria-hidden="true" style="width:16px;height:16px;"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="card-grid">
+          <div class="grammar-card">
+            <div class="grammar-card-head">
+              <h3 class="grammar-card-title">1. Noun Clause (นามานุประโยค)</h3>
+              <span class="tag-chip">ทำหน้าที่เหมือน Noun</span>
+            </div>
+            <p style="margin:0; font-size:0.9rem;">ทำหน้าที่เป็น ประธาน กรรม หรือส่วนเติมเต็ม มักนำหน้าด้วย <code>that, what, whether, if, why, how</code> โดยเรียงคำเป็น <strong>บอกเล่า (S + V)</strong> เสมอ</p>
+            <div class="example-row">
+              <div class="example-text-wrap">
+                <span class="en-sentence">What you explained yesterday makes complete sense now.</span>
+                <span class="th-translation">สิ่งที่คุณอธิบายเมื่อวานนี้สมเหตุสมผลทั้งหมดแล้วตอนนี้ (เป็นประธาน)</span>
+              </div>
+              <button type="button" class="audio-play-btn" aria-label="ฟังเสียงประโยค" data-speak="What you explained yesterday makes complete sense now." onclick="speakButton(this)">
+                <i data-lucide="play" aria-hidden="true" style="width:16px;height:16px;"></i>
+              </button>
+            </div>
+            <div class="example-row">
+              <div class="example-text-wrap">
+                <span class="en-sentence">Could you tell me where the nearest subway station is?</span>
+                <span class="th-translation">คุณช่วยบอกฉันได้ไหมว่าสถานีรถไฟใต้ดินที่ใกล้ที่สุดอยู่ที่ไหน (สังเกต ...station is ไม่ใช่ is the...)</span>
+              </div>
+              <button type="button" class="audio-play-btn" aria-label="ฟังเสียงประโยค" data-speak="Could you tell me where the nearest subway station is?" onclick="speakButton(this)">
+                <i data-lucide="play" aria-hidden="true" style="width:16px;height:16px;"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="grammar-card">
+            <div class="grammar-card-head">
+              <h3 class="grammar-card-title">2. Adjective / Relative Clause</h3>
+              <span class="tag-chip">ขยายคำนาม</span>
+            </div>
+            <p style="margin:0; font-size:0.9rem;">ขยายคำนามที่อยู่ข้างหน้าด้วย <code>who, whom, whose, which, that, where, when</code></p>
+            <p style="margin:0; font-size:0.85rem; color:var(--on-surface-variant);"><strong>ข้อควรจำ Comma:</strong> Non-defining (ให้ข้อมูลเสริม หลังชื่อเฉพาะ) มีเครื่องหมายจุลภาค <code>, ...,</code> และ <strong>ห้ามใช้ that</strong></p>
+            <div class="example-row">
+              <div class="example-text-wrap">
+                <span class="en-sentence">The engineer who designed this bridge won an award.</span>
+                <span class="th-translation">วิศวกรผู้ออกแบบสะพานนี้ได้รับรางวัล (Defining — ชี้เฉพาะ)</span>
+              </div>
+              <button type="button" class="audio-play-btn" aria-label="ฟังเสียงประโยค" data-speak="The engineer who designed this bridge won an award." onclick="speakButton(this)">
+                <i data-lucide="play" aria-hidden="true" style="width:16px;height:16px;"></i>
+              </button>
+            </div>
+            <div class="example-row">
+              <div class="example-text-wrap">
+                <span class="en-sentence">Bangkok, which is the capital of Thailand, is vibrant at night.</span>
+                <span class="th-translation">กรุงเทพฯ ซึ่งเป็นเมืองหลวงของไทย มีชีวิตชีวาในยามค่ำคืน (Non-defining)</span>
+              </div>
+              <button type="button" class="audio-play-btn" aria-label="ฟังเสียงประโยค" data-speak="Bangkok, which is the capital of Thailand, is vibrant at night." onclick="speakButton(this)">
+                <i data-lucide="play" aria-hidden="true" style="width:16px;height:16px;"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="grammar-card">
+            <div class="grammar-card-head">
+              <h3 class="grammar-card-title">3. Adverb Clause (วิเศษณานุประโยค)</h3>
+              <span class="tag-chip">ขยายกริยา/ประโยค</span>
+            </div>
+            <p style="margin:0; font-size:0.9rem;">บอกเวลา (<code>when, while, before</code>), เหตุผล (<code>because, since</code>), เงื่อนไข (<code>if, unless</code>), และความขัดแย้ง (<code>although, even though</code>)</p>
+            <div class="example-row">
+              <div class="example-text-wrap">
+                <span class="en-sentence">Unless you back up your files, you might lose important data.</span>
+                <span class="th-translation">เว้นแต่คุณจะสำรองไฟล์ไว้ คุณอาจสูญเสียข้อมูลสำคัญได้</span>
+              </div>
+              <button type="button" class="audio-play-btn" aria-label="ฟังเสียงประโยค" data-speak="Unless you back up your files, you might lose important data." onclick="speakButton(this)">
+                <i data-lucide="play" aria-hidden="true" style="width:16px;height:16px;"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <details class="detail-panel">
+          <summary>
+            <span>รายละเอียดเพิ่มเติม: If-Clauses (Conditional Types 0–3) และการลดรูปอนุประโยค (Clause Reduction)</span>
+            <i data-lucide="chevron-down" class="detail-chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="detail-body">
+            <div class="table-scroll">
+              <table class="briefing-table">
+                <thead>
+                  <tr>
+                    <th>ประเภท</th>
+                    <th>โครงสร้าง</th>
+                    <th>การใช้งาน</th>
+                    <th>ตัวอย่างพร้อมเสียงอ่าน</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Type 0</strong></td>
+                    <td><code>If + V1, V1</code></td>
+                    <td>ความจริงทางธรรมชาติ / วิทยาศาสตร์</td>
+                    <td>
+                      <div class="example-row">
+                        <span class="en-sentence">If you heat ice, it melts.</span>
+                        <button type="button" class="audio-play-btn" aria-label="ฟังเสียงประโยค" data-speak="If you heat ice, it melts." onclick="speakButton(this)"><i data-lucide="play" aria-hidden="true" style="width:16px;height:16px;"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Type 1</strong></td>
+                    <td><code>If + V1, will + V.inf</code></td>
+                    <td>เป็นไปได้จริงในปัจจุบันหรืออนาคต</td>
+                    <td>
+                      <div class="example-row">
+                        <span class="en-sentence">If we leave now, we will catch the bus.</span>
+                        <button type="button" class="audio-play-btn" aria-label="ฟังเสียงประโยค" data-speak="If we leave now, we will catch the bus." onclick="speakButton(this)"><i data-lucide="play" aria-hidden="true" style="width:16px;height:16px;"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Type 2</strong></td>
+                    <td><code>If + V2 (were), would + V.inf</code></td>
+                    <td>สมมติตรงข้ามความจริงในปัจจุบัน</td>
+                    <td>
+                      <div class="example-row">
+                        <span class="en-sentence">If I were you, I would accept that offer.</span>
+                        <button type="button" class="audio-play-btn" aria-label="ฟังเสียงประโยค" data-speak="If I were you, I would accept that offer." onclick="speakButton(this)"><i data-lucide="play" aria-hidden="true" style="width:16px;height:16px;"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Type 3</strong></td>
+                    <td><code>If + had V3, would have V3</code></td>
+                    <td>สมมติย้อนอดีต (แก้ไขอดีตไม่ได้แล้ว)</td>
+                    <td>
+                      <div class="example-row">
+                        <span class="en-sentence">If she had arrived earlier, she would have met the director.</span>
+                        <button type="button" class="audio-play-btn" aria-label="ฟังเสียงประโยค" data-speak="If she had arrived earlier, she would have met the director." onclick="speakButton(this)"><i data-lucide="play" aria-hidden="true" style="width:16px;height:16px;"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p style="margin:0;"><strong>การลดรูป Relative Clause (Participle Reduction):</strong> ตัด Relative Pronoun + Verb to be ออก แล้วคงรูป <strong>V-ing</strong> เมื่อทำกริยาเอง (Active) หรือ <strong>V3</strong> เมื่อถูกกระทำ (Passive) เช่น <em>The book written (which was written) in 1995 is still popular.</em></p>
+          </div>
+        </details>
+      </section>
+
+      <!-- SECTION 06: CONJUNCTIONS -->
+      <section id="conjunctions" class="section-block">
+        <div class="dossier-bar">
+          <div class="dossier-bar-left">
+            <span class="dossier-pill">SECTION 06</span>
+            <span class="dossier-meta">COHESION &amp; LINKING • CONJUNCTIONS</span>
+          </div>
+          <button type="button" class="btn btn-secondary btn-sm btn-done" data-done-btn="conjunctions" onclick="toggleSectionDone('conjunctions')">
+            <i data-lucide="check-circle-2" aria-hidden="true" style="width:16px;height:16px;"></i>
+            <span>ทำเครื่องหมายว่าทบทวนแล้ว</span>
+          </button>
+        </div>
+
+        <div class="section-heading-row">
+          <div>
+            <h2 class="section-title">06. คำสันธานและการเชื่อมความ (Conjunctions)</h2>
+            <p class="section-standfirst">เชื่อมประโยคและโครงสร้างคู่ขนานอย่างสละสลวย พร้อมแยกแยะคำสันธาน (+ Clause) กับคำบุพบท (+ Noun Phrase)</p>
+          </div>
+        </div>
+
+        <div class="vocab-strip">
+          <div class="vocab-chip">
+            <span class="vocab-word">Conjunction</span>
+            <span class="vocab-ipa">/kənˈdʒʌŋk.ʃən/</span>
+            <span class="vocab-th">คำสันธาน</span>
+            <button type="button" class="audio-play-btn" aria-label="ฟังเสียงคำว่า Conjunction" data-speak="Conjunction" onclick="speakButton(this)">
+              <i data-lucide="volume-2" aria-hidden="true" style="width:16px;height:16px;"></i>
+            </button>
+          </div>
+          <div class="vocab-chip">
+            <span class="vocab-word">Parallelism</span>
+            <span class="vocab-ipa">/ˈpær.ə.lel.ɪ.zəm/</span>
+            <span class="vocab-th">โครงสร้างคู่ขนาน</span>
+            <button type="button" class="audio-play-btn" aria-label="ฟังเสียงคำว่า Parallelism" data-speak="Parallelism" onclick="speakButton(this)">
+              <i data-lucide="volume-2" aria-hidden="true" style="width:16px;height:16px;"></i>
+            </button>
+          </div>
+          <div class="vocab-chip">
+            <span class="vocab-word">Contrast</span>
+            <span class="vocab-ipa">/ˈkɒn.trɑːst/</span>
+            <span class="vocab-th">ความขัดแย้ง</span>
+            <button type="button" class="audio-play-btn" aria-label="ฟังเสียงคำว่า Contrast" data-speak="Contrast" onclick="speakButton(this)">
+              <i data-lucide="volume-2" aria-hidden="true" style="width:16px;height:16px;"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="card-grid">
+          <div class="grammar-card">
+            <div class="grammar-card-head">
+              <h3 class="grammar-card-title">1. Coordinating (FANBOYS)</h3>
+              <span class="tag-chip">ระดับเท่ากัน</span>
+            </div>
+            <p style="margin:0; font-size:0.9rem;">
+              <strong>F</strong>or (เพราะ) • <strong>A</strong>nd (และ) • <strong>N</strong>or (และไม่) • <strong>B</strong>ut (แต่) • <strong>O</strong>r (หรือ) • <strong>Y</strong>et (แต่ทว่า) • <strong>S</strong>o (ดังนั้น)
+            </p>
+            <div class="example-row">
+              <div class="example-text-wrap">
+                <span class="en-sentence">The deadline was tight, yet the team delivered flawless work.</span>
+                <span class="th-translation">กำหนดส่งกระชั้นชิดมาก แต่ทว่าทีมงานก็ส่งมอบงานที่ไร้ที่ติได้</span>
+              </div>
+              <button type="button" class="audio-play-btn" aria-label="ฟังเสียงประโยค" data-speak="The deadline was tight, yet the team delivered flawless work." onclick="speakButton(this)">
+                <i data-lucide="play" aria-hidden="true" style="width:16px;height:16px;"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="grammar-card">
+            <div class="grammar-card-head">
+              <h3 class="grammar-card-title">2. Correlative (คำสันธานคู่ขนาน)</h3>
+              <span class="tag-chip">Parallelism</span>
+            </div>
+            <p style="margin:0; font-size:0.9rem;">
+              <code>both A and B</code> • <code>either A or B</code> • <code>neither A nor B</code> • <code>not only A but also B</code> • <code>so + adj/adv + that</code> vs. <code>such + (a/an) adj + noun + that</code>
+            </p>
+            <p style="margin:0; font-size:0.85rem; color:var(--on-surface-variant);">คำหลัง A และ B ต้องเป็นชนิดเดียวกันเสมอ (N คู่ N, V คู่ V, Phrase คู่ Phrase)</p>
+            <div class="example-row">
+              <div class="example-text-wrap">
+                <span class="en-sentence">Not only did she write the script, but she also directed the film.</span>
+                <span class="th-translation">เธอไม่เพียงแต่เขียนบทเท่านั้น แต่ยังกำกับภาพยนตร์ด้วย (Inversion เมื่อขึ้นต้นประโยค)</span>
+              </div>
+              <button type="button" class="audio-play-btn" aria-label="ฟังเสียงประโยค" data-speak="Not only did she write the script, but she also directed the film." onclick="speakButton(this)">
+                <i data-lucide="play" aria-hidden="true" style="width:16px;height:16px;"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Conjunction Contrast Explorer (+ Clause vs + Noun Phrase) -->
+        <div class="grammar-card">
+          <div class="grammar-card-head">
+            <div>
+              <h3 class="grammar-card-title">ตารางเปรียบเทียบจุดออกสอบบ่อย: + Clause (S + V) vs. + Noun Phrase / V-ing</h3>
+              <p style="margin:0.2rem 0 0 0; font-size:0.875rem; color:var(--on-surface-variant);">เลือกความหมายเพื่อเทียบคู่คำเชื่อมที่ใช้ต่างโครงสร้างกัน</p>
+            </div>
+            <div style="display:flex; gap:var(--space-xs); flex-wrap:wrap;">
+              <button type="button" class="btn btn-secondary btn-sm is-active" data-conj="reason" onclick="selectConjunctionGroup('reason', this)">เหตุผล (Reason)</button>
+              <button type="button" class="btn btn-secondary btn-sm" data-conj="contrast" onclick="selectConjunctionGroup('contrast', this)">ขัดแย้ง (Contrast)</button>
+              <button type="button" class="btn btn-secondary btn-sm" data-conj="time" onclick="selectConjunctionGroup('time', this)">เวลา (Time)</button>
+            </div>
+          </div>
+          <div id="conjunction-compare-output" class="card-grid"></div>
+        </div>
+      </section>
+
+      <footer style="border-top:var(--section-rule); padding-top:var(--space-md); color:var(--on-surface-variant); font-size:0.85rem; display:flex; flex-wrap:wrap; justify-content:space-between; gap:var(--space-sm);">
+        <span>เรียบเรียงจากเอกสารประกอบการเรียนไวยากรณ์ภาษาอังกฤษ "สรุปแกรมม่าร์.pdf"</span>
+        <span>เสียงอ่านภาษาอังกฤษใช้ Web Speech API (en-US) ของเบราว์เซอร์</span>
+      </footer>
+
+    </main>
+  </div>
+
+  <api-shim></api-shim>
+  <script>
+    // =========================================================================
+    // DATA DEFINITIONS (All template literals use backticks for apostrophe safety)
+    // =========================================================================
+
+    const SENTENCE_PATTERNS = [
+      {
+        code: `S + V`,
+        title: `Subject + Intransitive Verb (กริยาไม่ต้องการกรรม)`,
+        explanation: `กริยาสมบูรณ์ในตัวเอง ไม่ต้องมีกรรมมารับ สามารถจบประโยคได้เลยหรือต่อด้วยส่วนขยายบอกเวลา/สถานที่`,
+        slots: [
+          { role: `Subject`, word: `The sun`, desc: `ประธาน (คำนามเอกพจน์)` },
+          { role: `Intransitive Verb`, word: `rises`, desc: `กริยาแท้ (เติม -s ตามประธาน)` },
+          { role: `Modifier (Place)`, word: `in the east.`, desc: `วลีบุพบทบอกสถานที่` }
+        ],
+        sentence: `The sun rises in the east.`,
+        th: `ดวงอาทิตย์ขึ้นทางทิศตะวันออก`
+      },
+      {
+        code: `S + V + O`,
+        title: `Subject + Transitive Verb + Direct Object (กริยาต้องการกรรม)`,
+        explanation: `กริยาที่ต้องมีกรรม (Object) มารับเพื่อทำให้ความหมายครบถ้วน`,
+        slots: [
+          { role: `Subject`, word: `Our team`, desc: `ประธาน` },
+          { role: `Transitive Verb`, word: `reviewed`, desc: `กริยาสกรรม (อดีตกาล)` },
+          { role: `Direct Object`, word: `the annual report.`, desc: `กรรมตรง (รายงานประจำปี)` }
+        ],
+        sentence: `Our team reviewed the annual report.`,
+        th: `ทีมของเราตรวจสอบรายงานประจำปีเรียบร้อยแล้ว`
+      },
+      {
+        code: `S + V + C`,
+        title: `Subject + Linking Verb + Subject Complement (กริยาเชื่อม + ส่วนเติมเต็มประธาน)`,
+        explanation: `กริยาเชื่อม (be, seem, become, look, feel, taste) ทำหน้าที่เชื่อมประธานกับคำคุณศัพท์ (Adj) หรือคำนาม (Noun) เพื่ออธิบายลักษณะของประธาน`,
+        slots: [
+          { role: `Subject`, word: `Her explanation`, desc: `ประธาน` },
+          { role: `Linking Verb`, word: `sounds`, desc: `กริยาเชื่อม` },
+          { role: `Subject Complement`, word: `very reasonable.`, desc: `คุณศัพท์ขยายประธาน` }
+        ],
+        sentence: `Her explanation sounds very reasonable.`,
+        th: `คำอธิบายของเธอฟังดูสมเหตุสมผลมาก`
+      },
+      {
+        code: `S + V + IO + DO`,
+        title: `Subject + Verb + Indirect Object + Direct Object (กรรมรอง + กรรมตรง)`,
+        explanation: `กริยาอย่าง give, send, teach, offer, show รับกรรม 2 ตัว: กรรมรอง (บุคคลผู้รับ) และกรรมตรง (สิ่งของ)`,
+        slots: [
+          { role: `Subject`, word: `The professor`, desc: `ประธาน` },
+          { role: `Verb`, word: `sent`, desc: `กริยาแท้` },
+          { role: `Indirect Object`, word: `the students`, desc: `กรรมรอง (ผู้รับ)` },
+          { role: `Direct Object`, word: `a practice guide.`, desc: `กรรมตรง (สิ่งที่ส่ง)` }
+        ],
+        sentence: `The professor sent the students a practice guide.`,
+        th: `ศาสตราจารย์ส่งคู่มือฝึกหัดให้แก่นักศึกษา`
+      },
+      {
+        code: `S + V + O + OC`,
+        title: `Subject + Verb + Object + Object Complement (กรรม + ส่วนเติมเต็มกรรม)`,
+        explanation: `คำหรือวลีที่ตามหลังกรรมเพื่อบอกว่ากรรมกลายเป็นอะไรหรือมีสภาพอย่างไร (make, call, consider, elect, name)`,
+        slots: [
+          { role: `Subject`, word: `The committee`, desc: `ประธาน` },
+          { role: `Verb`, word: `elected`, desc: `กริยาแท้` },
+          { role: `Object`, word: `Dr. Lee`, desc: `กรรมตรง` },
+          { role: `Object Complement`, word: `chairperson.`, desc: `คำนามเติมเต็มกรรม` }
+        ],
+        sentence: `The committee elected Dr. Lee chairperson.`,
+        th: `คณะกรรมการเลือก ดร. ลี เป็นประธาน`
+      }
+    ];
+
+    const POS_ITEMS = [
+      {
+        id: `noun`,
+        group: `content`,
+        word: `Noun`,
+        ipa: `/naʊn/`,
+        thName: `คำนาม`,
+        summary: `ใช้เรียกคน สัตว์ สิ่งของ สถานที่ และความคิด แบ่งเป็น Countable (นับได้) และ Uncountable (นับไม่ได้)`,
+        tip: `นามนับไม่ได้ เช่น information, advice, equipment ห้ามเติม s/es และไม่ใช้กับ a/an`,
+        sentence: `Accurate information helps leaders make better decisions.`,
+        th: `ข้อมูลที่ถูกต้องช่วยให้ผู้นำตัดสินใจได้ดียิ่งขึ้น`
+      },
+      {
+        id: `pronoun`,
+        group: `function`,
+        word: `Pronoun`,
+        ipa: `/ˈproʊ.naʊn/`,
+        thName: `คำสรรพนาม`,
+        summary: `ใช้แทนคำนามเพื่อลดการพูดซ้ำ เช่น Subject (I, they), Object (me, them), Possessive (mine), Reflexive (myself)`,
+        tip: `ระหว่างคำบุพบท (between you and me) ต้องใช้รูป Object Pronoun เสมอ`,
+        sentence: `She prepared the presentation by herself before noon.`,
+        th: `เธอเตรียมงานนำเสนอด้วยตัวเองก่อนเวลาเที่ยง`
+      },
+      {
+        id: `verb`,
+        group: `content`,
+        word: `Verb`,
+        ipa: `/vɜːrb/`,
+        thName: `คำกริยา`,
+        summary: `บอกการกระทำหรือสภาวะ แบ่งเป็น Action Verb, Linking Verb และ Auxiliary/Modal Verb (can, must, should)`,
+        tip: `หลัง Modal Verbs (can, could, may, might, must, will, should) ต้องตามด้วย V.infinitive ไม่ผัน`,
+        sentence: `Applicants must submit their portfolios before Friday.`,
+        th: `ผู้สมัครต้องส่งแฟ้มสะสมผลงานก่อนวันศุกร์`
+      },
+      {
+        id: `adjective`,
+        group: `content`,
+        word: `Adjective`,
+        ipa: `/ˈædʒ.ɪk.tɪv/`,
+        thName: `คำคุณศัพท์`,
+        summary: `ขยายคำนามหรือสรรพนาม วางได้ทั้งหน้าคำนาม (a bright idea) และหลัง Linking Verb (the idea is bright)`,
+        tip: `V-ing (interesting = น่า...) ต่างจาก V3 (interested = รู้สึก...)`,
+        sentence: `The museum displays remarkable ancient artifacts.`,
+        th: `พิพิธภัณฑ์จัดแสดงโบราณวัตถุอันน่าทึ่ง`
+      },
+      {
+        id: `adverb`,
+        group: `content`,
+        word: `Adverb`,
+        ipa: `/ˈæd.vɜːrb/`,
+        thName: `คำกริยาวิเศษณ์`,
+        summary: `ขยาย Verb, Adjective, Adverb ด้วยกันเอง หรือทั้งประโยค มักลงท้ายด้วย -ly (แต่ fast, hard, well มีรูปพิเศษ)`,
+        tip: `Adverb of Frequency (always, usually, never) วางหน้ากริยาแท้ แต่หลัง Verb to be`,
+        sentence: `The system automatically saves your progress every minute.`,
+        th: `ระบบบันทึกความคืบหน้าของคุณโดยอัตโนมัติทุกนาที`
+      },
+      {
+        id: `preposition`,
+        group: `function`,
+        word: `Preposition`,
+        ipa: `/ˌprep.əˈzɪʃ.ən/`,
+        thName: `คำบุพบท`,
+        summary: `เชื่อมคำนาม/คำกริยา-ing เพื่อบอกตำแหน่ง เวลา ทิศทาง เช่น in, on, at, despite, during`,
+        tip: `เวลา: at + โมง/จุดเวลา, on + วัน/วันที่, in + เดือน/ปี/ฤดู`,
+        sentence: `The workshop begins at nine o'clock on Monday morning.`,
+        th: `เวิร์กชอปเริ่มเวลาเก้าโมงตรงในเช้าวันจันทร์`
+      },
+      {
+        id: `conjunction`,
+        group: `function`,
+        word: `Conjunction`,
+        ipa: `/kənˈdʒʌŋk.ʃən/`,
+        thName: `คำสันธาน`,
+        summary: `เชื่อมคำ วลี หรืออนุประโยคเข้าด้วยกัน เช่น and, but, because, although, neither...nor`,
+        tip: `although ตามด้วยประโยค (S+V) ส่วน despite ตามด้วยคำนาม/V-ing`,
+        sentence: `We stayed indoors because the storm grew stronger.`,
+        th: `พวกเราอยู่ภายในอาคารเพราะพายุทวีความรุนแรงขึ้น`
+      },
+      {
+        id: `interjection`,
+        group: `function`,
+        word: `Interjection`,
+        ipa: `/ˌɪn.tərˈdʒek.ʃən/`,
+        thName: `คำอุทาน`,
+        summary: `คำสั้น ๆ ที่แสดงอารมณ์ ความประหลาดใจ หรือการตอบรับอย่างฉับพลัน มักตามด้วยเครื่องหมายอัศเจรีย์ (!)`,
+        tip: `ไม่มีความสัมพันธ์ทางโครงสร้างไวยากรณ์กับส่วนที่เหลือของประโยค`,
+        sentence: `Oh! I completely forgot to bring my umbrella today.`,
+        th: `โอ้! ฉันลืมพกร่มมาวันนี้เสียสนิทเลย`
+      }
+    ];
+
+    const SPOTTER_TOKENS = [
+      { word: `Wow!`, pos: `Interjection`, ipa: `/waʊ/`, role: `คำอุทานแสดงความประหลาดใจ` },
+      { word: `The`, pos: `Article (Determiner)`, ipa: `/ðə/`, role: `คำนำหน้านามชี้เฉพาะ` },
+      { word: `clever`, pos: `Adjective`, ipa: `/ˈklev.ər/`, role: `คำคุณศัพท์ขยายคำนาม student` },
+      { word: `student`, pos: `Noun`, ipa: `/ˈstjuː.dənt/`, role: `คำนามทำหน้าที่ประธาน` },
+      { word: `quickly`, pos: `Adverb`, ipa: `/ˈkwɪk.li/`, role: `คำกริยาวิเศษณ์ขยายกริยา solved` },
+      { word: `solved`, pos: `Verb`, ipa: `/sɒlvd/`, role: `คำกริยาแท้อดีตกาล` },
+      { word: `a`, pos: `Article (Determiner)`, ipa: `/ə/`, role: `คำนำหน้านามไม่ชี้เฉพาะ` },
+      { word: `difficult`, pos: `Adjective`, ipa: `/ˈdɪf.ɪ.kəlt/`, role: `คำคุณศัพท์ขยายคำนาม problem` },
+      { word: `problem.`, pos: `Noun`, ipa: `/ˈprɒb.ləm/`, role: `คำนามทำหน้าที่กรรมตรง` }
+    ];
+
+    const SVA_QUIZ = [
+      {
+        id: `q1`,
+        prompt: `The CEO, together with two vice presidents, ___ arriving shortly.`,
+        options: [`is`, `are`],
+        answer: `is`,
+        explain: `คำเชื่อม together with ยึดประธานตัวหน้าคือ The CEO (เอกพจน์) จึงใช้ is`,
+        full: `The CEO, together with two vice presidents, is arriving shortly.`
+      },
+      {
+        id: `q2`,
+        prompt: `Neither the driver nor the passengers ___ injured in the incident.`,
+        options: [`was`, `were`],
+        answer: `were`,
+        explain: `Neither...nor ยึดประธานตัวที่อยู่ใกล้กริยาที่สุดคือ passengers (พหูพจน์) จึงใช้ were`,
+        full: `Neither the driver nor the passengers were injured in the incident.`
+      },
+      {
+        id: `q3`,
+        prompt: `Each of the research papers ___ checked for accuracy.`,
+        options: [`was`, `were`],
+        answer: `was`,
+        explain: `Each เป็นสรรพนามเอกพจน์เสมอ (แม้ตามด้วย of + นามพหูพจน์) จึงใช้ was`,
+        full: `Each of the research papers was checked for accuracy.`
+      },
+      {
+        id: `q4`,
+        prompt: `The number of international visitors ___ increased by twelve percent.`,
+        options: [`has`, `have`],
+        answer: `has`,
+        explain: `The number of หมายถึง "จำนวนของ..." เป็นเอกพจน์เสมอ ใช้ has`,
+        full: `The number of international visitors has increased by twelve percent.`
+      },
+      {
+        id: `q5`,
+        prompt: `Three hours of daily practice ___ essential for fluency.`,
+        options: [`is`, `are`],
+        answer: `is`,
+        explain: `ระยะเวลา 3 ชั่วโมงมองเป็นหน่วยเวลาเดียวกัน จึงถือเป็นเอกพจน์ ใช้ is`,
+        full: `Three hours of daily practice is essential for fluency.`
+      },
+      {
+        id: `q6`,
+        prompt: `Some of the software ___ still compatible with older devices.`,
+        options: [`is`, `are`],
+        answer: `is`,
+        explain: `Some of (กลุ่ม SANAM) ดูที่คำนามหลัง of คือ software ซึ่งเป็นคำนามนับไม่ได้ จึงใช้ is`,
+        full: `Some of the software is still compatible with older devices.`
+      }
+    ];
+
+    const TENSES_DATA = [
+      // Row 1: Simple
+      {
+        id: `past-simple`,
+        time: `past`,
+        aspect: `Simple`,
+        name: `Past Simple`,
+        formula: `S + V2`,
+        thUse: `เหตุการณ์ที่เกิดขึ้นและจบลงอย่างสมบูรณ์ในอดีต โดยมีเวลาที่ชัดเจน`,
+        markers: `yesterday, last week, two days ago, in 2019`,
+        example: `We launched the updated curriculum last September.`,
+        exampleTh: `เราเปิดตัวหลักสูตรฉบับปรับปรุงเมื่อเดือนกันยายนปีที่แล้ว`,
+        neg: `We did not launch the updated curriculum last year.`,
+        viz: { type: `point`, x: 24, label: `จบในอดีต` }
+      },
+      {
+        id: `present-simple`,
+        time: `present`,
+        aspect: `Simple`,
+        name: `Present Simple`,
+        formula: `S + V1 (s/es)`,
+        thUse: `ข้อเท็จจริงทั่วไป กฎธรรมชาติ นิสัยที่ทำเป็นประจำ หรือตารางเวลาตายตัว`,
+        markers: `always, usually, every day, on Mondays`,
+        example: `Water boils at one hundred degrees Celsius.`,
+        exampleTh: `น้ำเดือดที่อุณหภูมิหนึ่งร้อยองศาเซลเซียส`,
+        neg: `Does the library open on Sundays?`,
+        viz: { type: `habit`, points: [25, 50, 75], label: `จริงเสมอ / ประจำ` }
+      },
+      {
+        id: `future-simple`,
+        time: `future`,
+        aspect: `Simple`,
+        name: `Future Simple`,
+        formula: `S + will + V.inf`,
+        thUse: `การตัดสินใจ ณ ขณะพูด คำสัญญา หรือการคาดการณ์อนาคต`,
+        markers: `tomorrow, next month, soon, in the future`,
+        example: `I will send you the summary notes right after the meeting.`,
+        exampleTh: `ฉันจะส่งโน้ตสรุปให้คุณทันทีหลังจบการประชุม`,
+        neg: `She will not attend the afternoon session.`,
+        viz: { type: `point`, x: 78, label: `เกิดขึ้นในอนาคต` }
+      },
+      // Row 2: Continuous
+      {
+        id: `past-cont`,
+        time: `past`,
+        aspect: `Continuous`,
+        name: `Past Continuous`,
+        formula: `S + was/were + V-ing`,
+        thUse: `กำลังกระทำอยู่ ณ จุดเวลาหนึ่งในอดีต หรือกำลังทำอยู่แล้วมี Past Simple เข้ามาแทรก`,
+        markers: `at 8 p.m. yesterday, while, when, as`,
+        example: `They were reviewing the draft when the power went out.`,
+        exampleTh: `พวกเขากำลังตรวจร่างเอกสารอยู่ตอนที่ไฟฟ้าดับ`,
+        neg: `I was not sleeping at midnight yesterday.`,
+        viz: { type: `span`, x1: 14, x2: 34, interrupt: 28, label: `กำลังทำในอดีต + แทรก` }
+      },
+      {
+        id: `present-cont`,
+        time: `present`,
+        aspect: `Continuous`,
+        name: `Present Continuous`,
+        formula: `S + is/am/are + V-ing`,
+        thUse: `กำลังเกิดขึ้นในขณะที่พูด กำลังเปลี่ยนแปลงในช่วงนี้ หรือแผนที่นัดหมายไว้แน่นอน`,
+        markers: `now, right now, at the moment, currently`,
+        example: `The students are practicing pronunciation in the language lab.`,
+        exampleTh: `นักศึกษากำลังฝึกออกเสียงอยู่ในห้องปฏิบัติการภาษา`,
+        neg: `He is not working from the office today.`,
+        viz: { type: `span`, x1: 42, x2: 58, label: `กำลังเกิดขึ้นตอนนี้` }
+      },
+      {
+        id: `future-cont`,
+        time: `future`,
+        aspect: `Continuous`,
+        name: `Future Continuous`,
+        formula: `S + will be + V-ing`,
+        thUse: `จะกำลังดำเนินอยู่ ณ จุดเวลาที่ระบุชัดเจนในอนาคต`,
+        markers: `at this time tomorrow, at 10 a.m. next Monday`,
+        example: `At this time tomorrow, we will be flying over Tokyo.`,
+        exampleTh: `เวลานี้ของวันพรุ่งนี้ พวกเราจะกำลังบินอยู่เหนือกรุงโตเกียว`,
+        neg: `Will you be using the projector at two o'clock?`,
+        viz: { type: `span`, x1: 70, x2: 88, label: `จะกำลังทำ ณ จุดอนาคต` }
+      },
+      // Row 3: Perfect
+      {
+        id: `past-perf`,
+        time: `past`,
+        aspect: `Perfect`,
+        name: `Past Perfect`,
+        formula: `S + had + V3`,
+        thUse: `เหตุการณ์ที่เกิดและจบลง "ก่อน" อีกเหตุการณ์หนึ่งในอดีต (Past Simple)`,
+        markers: `before, after, by the time, already (คู่กับ V2)`,
+        example: `By the time we arrived at the station, the train had already left.`,
+        exampleTh: `ตอนที่พวกเราไปถึงสถานี รถไฟได้ออกไปแล้วก่อนหน้านั้น`,
+        neg: `She had never seen snow before moving to Canada.`,
+        viz: { type: `before`, x1: 14, x2: 34, label: `เกิดก่อนอีกเหตุการณ์อดีต` }
+      },
+      {
+        id: `present-perf`,
+        time: `present`,
+        aspect: `Perfect`,
+        name: `Present Perfect`,
+        formula: `S + has/have + V3`,
+        thUse: `เริ่มในอดีตและต่อเนื่องถึงปัจจุบัน เคยมีประสบการณ์ หรือเพิ่งจบลงและยังมีผลถึงปัจจุบัน`,
+        markers: `since, for, already, yet, just, ever, so far`,
+        example: `She has taught English grammar for more than ten years.`,
+        exampleTh: `เธอสอนไวยากรณ์ภาษาอังกฤษมานานกว่าสิบปีแล้ว (ปัจจุบันยังสอนอยู่)`,
+        neg: `Have you finished reading the grammar summary yet?`,
+        viz: { type: `bridge`, x1: 24, x2: 50, label: `อดีตเชื่อมถึงปัจจุบัน` }
+      },
+      {
+        id: `future-perf`,
+        time: `future`,
+        aspect: `Perfect`,
+        name: `Future Perfect`,
+        formula: `S + will have + V3`,
+        thUse: `เหตุการณ์ที่จะทำ "เสร็จสมบูรณ์แล้ว" ก่อนจุดเวลาหนึ่งในอนาคต`,
+        markers: `by + เวลาอนาคต, by the end of, before + V1`,
+        example: `By next month, I will have completed all twelve grammar units.`,
+        exampleTh: `ภายในเดือนหน้า ฉันจะเรียนครบทั้ง 12 บทเสร็จเรียบร้อยแล้ว`,
+        neg: `The team will not have finalized the budget by Friday.`,
+        viz: { type: `before`, x1: 66, x2: 86, label: `เสร็จสมบูรณ์ก่อนจุดอนาคต` }
+      },
+      // Row 4: Perfect Continuous
+      {
+        id: `past-perf-cont`,
+        time: `past`,
+        aspect: `Perfect Continuous`,
+        name: `Past Perfect Cont.`,
+        formula: `S + had been + V-ing`,
+        thUse: `เน้นความต่อเนื่องของเหตุการณ์ที่ทำมาตลอดก่อนจะถึงอีกเหตุการณ์ในอดีต`,
+        markers: `for + ระยะเวลา + before/when + V2`,
+        example: `He had been waiting for an hour before the bus finally came.`,
+        exampleTh: `เขารอคอยอย่างต่อเนื่องมาเป็นเวลาหนึ่งชั่วโมงก่อนที่รถเมล์จะมาถึงในที่สุด`,
+        neg: `They had not been practicing long when it started to snow.`,
+        viz: { type: `bridge`, x1: 12, x2: 34, label: `ต่อเนื่องจนถึงจุดอดีต` }
+      },
+      {
+        id: `present-perf-cont`,
+        time: `present`,
+        aspect: `Perfect Continuous`,
+        name: `Present Perfect Cont.`,
+        formula: `S + has/have been + V-ing`,
+        thUse: `เริ่มในอดีตและยังคงดำเนินต่อเนื่องมาจนถึงวินาทีนี้ (เน้นความต่อเนื่องของเวลา)`,
+        markers: `since, for, all morning, all day`,
+        example: `We have been working on this project since early morning.`,
+        exampleTh: `พวกเราทำโปรเจกต์นี้อย่างต่อเนื่องมาตั้งแต่เช้าตรู่ (ตอนนี้ยังทำอยู่)`,
+        neg: `How long have you been learning English?`,
+        viz: { type: `bridge`, x1: 22, x2: 54, label: `ต่อเนื่องจากอดีตผ่านปัจจุบัน` }
+      },
+      {
+        id: `future-perf-cont`,
+        time: `future`,
+        aspect: `Perfect Continuous`,
+        name: `Future Perfect Cont.`,
+        formula: `S + will have been + V-ing`,
+        thUse: `เน้นระยะเวลาที่ทำต่อเนื่องไปจนครบจำนวนหนึ่ง ณ จุดเวลาในอนาคต`,
+        markers: `by + เวลาอนาคต + for + ระยะเวลา`,
+        example: `By December, they will have been living in Bangkok for five years.`,
+        exampleTh: `เมื่อถึงเดือนธันวาคม พวกเขาจะอาศัยอยู่ในกรุงเทพฯ ต่อเนื่องครบห้าปีพอดี`,
+        neg: `She will have been studying for three hours by noon.`,
+        viz: { type: `bridge`, x1: 42, x2: 86, label: `ต่อเนื่องครบระยะเวลาในอนาคต` }
+      }
+    ];
+
+    const CONJUNCTION_GROUPS = {
+      reason: [
+        {
+          type: `Subordinating Conjunction (+ S + V)`,
+          words: `because, since, as`,
+          rule: `ตามด้วยอนุประโยคที่มีประธานและกริยาแท้ครบถ้วน`,
+          en: `We postponed the outdoor trip because the weather was severe.`,
+          th: `เราเลื่อนทริปกลางแจ้งออกไปเพราะสภาพอากาศรุนแรง`
+        },
+        {
+          type: `Preposition (+ Noun Phrase / V-ing)`,
+          words: `because of, due to, owing to`,
+          rule: `ตามด้วยคำนาม วลีนาม หรือ V-ing เท่านั้น ห้ามมีกริยาแท้ตามหลัง`,
+          en: `We postponed the outdoor trip because of the severe weather.`,
+          th: `เราเลื่อนทริปกลางแจ้งออกไปเนื่องจากสภาพอากาศที่รุนแรง`
+        }
+      ],
+      contrast: [
+        {
+          type: `Subordinating Conjunction (+ S + V)`,
+          words: `although, though, even though`,
+          rule: `ตามด้วยประโยคสมบูรณ์ (S + V) และห้ามใส่คำว่า but ตามในประโยคหลักอีก`,
+          en: `Although the test was challenging, many students scored well.`,
+          th: `แม้ว่าข้อสอบจะท้าทาย แต่นักศึกษาหลายคนก็ทำคะแนนได้ดี`
+        },
+        {
+          type: `Preposition (+ Noun Phrase / V-ing)`,
+          words: `despite, in spite of`,
+          rule: `ตามด้วยคำนาม วลีนาม หรือ V-ing (หรือ despite the fact that + S + V)`,
+          en: `Despite the challenging test, many students scored well.`,
+          th: `แม้จะเจอข้อสอบที่ท้าทาย แต่นักศึกษาหลายคนก็ทำคะแนนได้ดี`
+        }
+      ],
+      time: [
+        {
+          type: `Subordinating Conjunction (+ S + V)`,
+          words: `while, when, as`,
+          rule: `ตามด้วยอนุประโยคบอกเวลา เช่น while + Past Continuous`,
+          en: `While I was reading the guide, my phone rang.`,
+          th: `ขณะที่ฉันกำลังอ่านคู่มืออยู่ โทรศัพท์ของฉันก็ดังขึ้น`
+        },
+        {
+          type: `Preposition (+ Noun Phrase)`,
+          words: `during`,
+          rule: `ตามด้วยคำนามบอกช่วงเวลา (the flight, the summer, the meeting) ห้ามตามด้วย S + V`,
+          en: `Please silence your phone during the presentation.`,
+          th: `กรุณาปิดเสียงโทรศัพท์ระหว่างการนำเสนอ`
+        }
+      ]
+    };
+
+    // Searchable Index across all grammar rules and IPA terms
+    const SEARCH_INDEX = [
+      { title: `5 Basic Sentence Patterns (S+V, S+V+O, S+V+C)`, section: `sentence-structure`, keywords: `sentence structure subject predicate object complement pattern` },
+      { title: `Simple, Compound & Complex Sentences`, section: `sentence-structure`, keywords: `simple compound complex fanboys independent dependent clause` },
+      { title: `8 Parts of Speech & OSASCOMP Adjective Order`, section: `parts-of-speech`, keywords: `noun pronoun verb adjective adverb preposition conjunction interjection osascomp` },
+      { title: `Subject-Verb Agreement: Along with vs. Neither...nor`, section: `sv-agreement`, keywords: `subject verb agreement singular plural neither nor either or along with` },
+      { title: `SANAM & A number of vs. The number of`, section: `sv-agreement`, keywords: `sanam everyone each a number of the number of indefinite pronoun` },
+      { title: `12 Tenses Timeline & Formula Matrix`, section: `tenses`, keywords: `past present future simple continuous perfect v1 v2 v3 since for already` },
+      { title: `Past Simple vs. Present Perfect & Be going to`, section: `tenses`, keywords: `present perfect past simple will be going to markers` },
+      { title: `Noun, Adjective (Relative) & Adverb Clauses`, section: `clauses`, keywords: `clause noun relative who which that where non-defining comma` },
+      { title: `If-Clauses (Conditionals Type 0, 1, 2, 3)`, section: `clauses`, keywords: `if clause conditional were would have reduction` },
+      { title: `Conjunctions: FANBOYS, Parallelism & Because vs. Because of`, section: `conjunctions`, keywords: `conjunction fanboys parallelism although despite because of during while` }
+    ];
+
+    // =========================================================================
+    // APP STATE & PERSISTENCE (notebookAppApi)
+    // =========================================================================
+
+    const appState = {
+      reviewedSections: [],
+      drillAnswers: {},
+      selectedVoiceName: ``,
+      speechRate: 0.95,
+      activePattern: 0,
+      activeTenseId: `present-perf`,
+      activeSpotterIdx: 3
+    };
+
+    let availableEnUsVoices = [];
+    let currentSpeakBtn = null;
+
+    async function persistState() {
+      if (window.notebookAppApi && typeof window.notebookAppApi.setAppState === `function`) {
+        try {
+          await window.notebookAppApi.setAppState({
+            reviewedSections: appState.reviewedSections,
+            drillAnswers: appState.drillAnswers,
+            selectedVoiceName: appState.selectedVoiceName,
+            speechRate: appState.speechRate
+          });
+        } catch (err) {
+          // Safe fallback if host rejects transient write
+        }
+      }
+    }
+
+    // =========================================================================
+    // SPEECH SYNTHESIS (Natural en-US Voice Ranking)
+    // =========================================================================
+
+    function rankUsVoice(voice) {
+      const lang = (voice.lang || ``).toLowerCase();
+      const name = (voice.name || ``).toLowerCase();
+      let score = 0;
+
+      if (lang === `en-us` || lang === `en_us`) score += 100;
+      else if (lang.startsWith(`en`)) score += 20;
+      else return -1;
+
+      if (name.includes(`natural`) || name.includes(`neural`)) score += 60;
+      if (name.includes(`google us english`)) score += 55;
+      if (name.includes(`aria`) || name.includes(`jenny`) || name.includes(`guy`) || name.includes(`ava`) || name.includes(`samantha`) || name.includes(`allison`)) score += 45;
+      if (name.includes(`premium`) || name.includes(`enhanced`)) score += 35;
+      if (voice.localService === false) score += 15;
+      return score;
+    }
+
+    function populateVoiceSelector() {
+      const selectEl = document.getElementById(`voice-select`);
+      const activeLabel = document.getElementById(`active-voice-label`);
+      const badgeEl = document.getElementById(`speech-status-badge`);
+
+      if (!(`speechSynthesis` in window)) {
+        if (selectEl) selectEl.innerHTML = `<option value="">เบราว์เซอร์ไม่รองรับเสียงสังเคราะห์</option>`;
+        if (activeLabel) activeLabel.textContent = `อุปกรณ์นี้ไม่รองรับ Web Speech API`;
+        if (badgeEl) badgeEl.textContent = `ไม่รองรับเสียงในอุปกรณ์นี้`;
+        return;
+      }
+
+      const rawVoices = window.speechSynthesis.getVoices() || [];
+      const ranked = rawVoices
+        .map(v => ({ voice: v, score: rankUsVoice(v) }))
+        .filter(item => item.score > 0)
+        .sort((a, b) => b.score - a.score);
+
+      availableEnUsVoices = ranked.map(r => r.voice);
+
+      if (!selectEl) return;
+      if (availableEnUsVoices.length === 0) {
+        selectEl.innerHTML = `<option value="">เสียงมาตรฐาน en-US ของระบบ</option>`;
+        if (activeLabel) activeLabel.textContent = `ใช้เสียงมาตรฐาน en-US ของระบบ`;
+        return;
+      }
+
+      selectEl.innerHTML = availableEnUsVoices.map(v => {
+        const tag = v.lang || `en-US`;
+        return `<option value="${escapeHtml(v.name)}">${escapeHtml(v.name)} (${escapeHtml(tag)})</option>`;
+      }).join(``);
+
+      const savedMatch = availableEnUsVoices.find(v => v.name === appState.selectedVoiceName);
+      const chosen = savedMatch || availableEnUsVoices[0];
+      appState.selectedVoiceName = chosen.name;
+      selectEl.value = chosen.name;
+      if (activeLabel) activeLabel.textContent = `เสียงที่เลือก: ${chosen.name}`;
+    }
+
+    function speakText(text, btnEl) {
+      if (!(`speechSynthesis` in window)) {
+        const badge = document.getElementById(`speech-status-badge`);
+        if (badge) badge.textContent = `ไม่รองรับ Speech Synthesis`;
+        return;
+      }
+
+      window.speechSynthesis.cancel();
+      if (currentSpeakBtn) {
+        currentSpeakBtn.classList.remove(`is-speaking`);
+      }
+
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = `en-US`;
+      utterance.rate = appState.speechRate || 0.95;
+      utterance.pitch = 1.0;
+
+      const selected = availableEnUsVoices.find(v => v.name === appState.selectedVoiceName);
+      if (selected) utterance.voice = selected;
+
+      if (btnEl) {
+        currentSpeakBtn = btnEl;
+        btnEl.classList.add(`is-speaking`);
+      }
+
+      const badge = document.getElementById(`speech-status-badge`);
+      if (badge) badge.textContent = `กำลังอ่าน: "${text.slice(0, 28)}${text.length > 28 ? `…` : ``}"`;
+
+      utterance.onend = function () {
+        if (btnEl) btnEl.classList.remove(`is-speaking`);
+        if (badge) badge.textContent = `พร้อมเล่นเสียง en-US`;
+      };
+      utterance.onerror = function () {
+        if (btnEl) btnEl.classList.remove(`is-speaking`);
+        if (badge) badge.textContent = `พร้อมเล่นเสียง en-US`;
+      };
+
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function speakButton(btnEl) {
+      if (!btnEl) return;
+      const text = btnEl.getAttribute(`data-speak`);
+      if (text) speakText(text, btnEl);
+    }
+
+    function handleVoiceChange(voiceName) {
+      appState.selectedVoiceName = voiceName;
+      const activeLabel = document.getElementById(`active-voice-label`);
+      if (activeLabel && voiceName) activeLabel.textContent = `เสียงที่เลือก: ${voiceName}`;
+      persistState();
+      speakText(`American English pronunciation ready.`, null);
+    }
+
+    function setSpeechRate(rate, btnEl) {
+      appState.speechRate = rate;
+      document.querySelectorAll(`.speed-btn`).forEach(b => b.classList.remove(`is-active`));
+      if (btnEl) btnEl.classList.add(`is-active`);
+      persistState();
+    }
+
+    // =========================================================================
+    // RENDERERS FOR INTERACTIVE SECTIONS
+    // =========================================================================
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, `&amp;`)
+        .replace(/</g, `&lt;`)
+        .replace(/>/g, `&gt;`)
+        .replace(/"/g, `&quot;`);
+    }
+
+    function selectSentencePattern(idx) {
+      appState.activePattern = idx;
+      document.querySelectorAll(`#pattern-tabs [data-pattern]`).forEach(btn => {
+        btn.classList.toggle(`is-active`, Number(btn.getAttribute(`data-pattern`)) === idx);
+      });
+
+      const pattern = SENTENCE_PATTERNS[idx];
+      const out = document.getElementById(`pattern-detail-output`);
+      if (!out || !pattern) return;
+
+      const slotsHtml = pattern.slots.map(s => `
+        <div class="slot-box">
+          <span class="slot-role">${escapeHtml(s.role)}</span>
+          <span class="slot-word">${escapeHtml(s.word)}</span>
+          <span class="slot-desc">${escapeHtml(s.desc)}</span>
+        </div>
+      `).join(``);
+
+      out.innerHTML = `
+        <div>
+          <strong style="color:var(--secondary);">${escapeHtml(pattern.code)}</strong> — <strong>${escapeHtml(pattern.title)}</strong>
+          <p style="margin:0.25rem 0 0 0; font-size:0.9rem;">${escapeHtml(pattern.explanation)}</p>
+        </div>
+        <div class="sentence-breakdown">${slotsHtml}</div>
+        <div class="example-row">
+          <div class="example-text-wrap">
+            <span class="en-sentence">${escapeHtml(pattern.sentence)}</span>
+            <span class="th-translation">${escapeHtml(pattern.th)}</span>
+          </div>
+          <button type="button" class="audio-play-btn" aria-label="ฟังเสียงอ่านตัวอย่างโครงสร้างประโยค" data-speak="${escapeHtml(pattern.sentence)}" onclick="speakButton(this)">
+            <i data-lucide="play" aria-hidden="true" style="width:16px;height:16px;"></i>
+            <span>ฟังเสียง</span>
+          </button>
+        </div>
+      `;
+      refreshIcons();
+    }
+
+    function renderPOSCards(filterGroup) {
+      const grid = document.getElementById(`pos-grid`);
+      if (!grid) return;
+      const items = filterGroup === `all` ? POS_ITEMS : POS_ITEMS.filter(i => i.group === filterGroup);
+
+      grid.innerHTML = items.map(item => `
+        <article class="grammar-card">
+          <div class="grammar-card-head">
+            <div>
+              <h3 class="grammar-card-title">${escapeHtml(item.word)} (${escapeHtml(item.thName)})</h3>
+              <div style="display:flex; align-items:center; gap:var(--space-xs); margin-top:0.25rem;">
+                <span class="vocab-ipa">${escapeHtml(item.ipa)}</span>
+                <button type="button" class="audio-play-btn" style="min-height:36px; min-width:36px; padding:0.25rem 0.5rem;" aria-label="ฟังเสียงคำว่า ${escapeHtml(item.word)}" data-speak="${escapeHtml(item.word)}" onclick="speakButton(this)">
+                  <i data-lucide="volume-2" aria-hidden="true" style="width:15px;height:15px;"></i>
+                </button>
+              </div>
+            </div>
+            <span class="tag-chip">${item.group === `content` ? `Content` : `Function`}</span>
+          </div>
+          <p style="margin:0; font-size:0.9rem;">${escapeHtml(item.summary)}</p>
+          <p style="margin:0; font-size:0.82rem; color:var(--secondary); background:var(--secondary-soft); padding:0.4rem 0.6rem; border-radius:var(--rounded);">
+            <strong>จุดสังเกต:</strong> ${escapeHtml(item.tip)}
+          </p>
+          <div class="example-row">
+            <div class="example-text-wrap">
+              <span class="en-sentence">${escapeHtml(item.sentence)}</span>
+              <span class="th-translation">${escapeHtml(item.th)}</span>
+            </div>
+            <button type="button" class="audio-play-btn" aria-label="ฟังเสียงอ่านตัวอย่าง" data-speak="${escapeHtml(item.sentence)}" onclick="speakButton(this)">
+              <i data-lucide="play" aria-hidden="true" style="width:16px;height:16px;"></i>
+            </button>
+          </div>
+        </article>
+      `).join(``);
+      refreshIcons();
+    }
+
+    function filterPOS(group, btnEl) {
+      document.querySelectorAll(`[data-pos-filter]`).forEach(b => b.classList.remove(`is-active`));
+      if (btnEl) btnEl.classList.add(`is-active`);
+      renderPOSCards(group);
+    }
+
+    function renderSpotter(selectedIdx) {
+      appState.activeSpotterIdx = selectedIdx;
+      const tokensWrap = document.getElementById(`spotter-tokens`);
+      const detailWrap = document.getElementById(`spotter-detail`);
+      if (!tokensWrap || !detailWrap) return;
+
+      tokensWrap.innerHTML = SPOTTER_TOKENS.map((t, i) => `
+        <button type="button" class="token-btn ${i === selectedIdx ? `is-selected` : ``}" onclick="renderSpotter(${i})">${escapeHtml(t.word)}</button>
+      `).join(``);
+
+      const tok = SPOTTER_TOKENS[selectedIdx];
+      const cleanWord = tok.word.replace(/[.!?,]/g, ``);
+      detailWrap.innerHTML = `
+        <div class="slot-box" style="flex:1;">
+          <span class="slot-role">คำที่เลือก</span>
+          <div style="display:flex; align-items:center; gap:var(--space-sm); flex-wrap:wrap;">
+            <span class="slot-word">${escapeHtml(cleanWord)}</span>
+            <span class="vocab-ipa">${escapeHtml(tok.ipa)}</span>
+            <button type="button" class="audio-play-btn" aria-label="ฟังเสียงคำว่า ${escapeHtml(cleanWord)}" data-speak="${escapeHtml(cleanWord)}" onclick="speakButton(this)">
+              <i data-lucide="volume-2" aria-hidden="true" style="width:16px;height:16px;"></i>
+            </button>
+          </div>
+        </div>
+        <div class="slot-box" style="flex:1;">
+          <span class="slot-role">Part of Speech</span>
+          <span class="slot-word" style="color:var(--secondary);">${escapeHtml(tok.pos)}</span>
+        </div>
+        <div class="slot-box" style="flex:1.4;">
+          <span class="slot-role">หน้าที่ในประโยค</span>
+          <span style="font-size:0.9rem;">${escapeHtml(tok.role)}</span>
+        </div>
+      `;
+      refreshIcons();
+    }
+
+    function renderSVAQuiz() {
+      const grid = document.getElementById(`sva-quiz-grid`);
+      if (!grid) return;
+
+      grid.innerHTML = SVA_QUIZ.map((q, idx) => {
+        const chosen = appState.drillAnswers[q.id];
+        const isAnswered = Boolean(chosen);
+        const isCorrect = chosen === q.answer;
+        const blanked = q.prompt.replace(`___`, `<strong style="color:var(--secondary); border-bottom:2px solid var(--secondary); padding:0 0.35rem;">${chosen || `___`}</strong>`);
+
+        return `
+          <div class="sva-quiz-item">
+            <div style="font-family:var(--font-label); font-size:0.75rem; color:var(--on-surface-variant);">QUESTION 0${idx + 1}</div>
+            <div class="en-sentence">${blanked}</div>
+            <div class="sva-options">
+              ${q.options.map(opt => `
+                <button type="button" class="btn btn-secondary btn-sm ${chosen === opt ? `is-active` : ``}" onclick="answerSVA('${q.id}', '${opt}')">${escapeHtml(opt)}</button>
+              `).join(``)}
+              ${isAnswered ? `
+                <button type="button" class="audio-play-btn" aria-label="ฟังเสียงประโยคที่ถูกต้อง" data-speak="${escapeHtml(q.full)}" onclick="speakButton(this)">
+                  <i data-lucide="play" aria-hidden="true" style="width:15px;height:15px;"></i>
+                  <span>ฟังเฉลย</span>
+                </button>
+              ` : ``}
+            </div>
+            <div class="sva-feedback ${isAnswered ? (isCorrect ? `is-correct` : `is-wrong`) : ``}">
+              <strong>${isCorrect ? `ถูกต้อง:` : `ลองดูอีกครั้ง:`}</strong> ${escapeHtml(q.explain)}
+            </div>
+          </div>
+        `;
+      }).join(``);
+
+      updateProgressUI();
+      refreshIcons();
+    }
+
+    function answerSVA(qid, choice) {
+      appState.drillAnswers[qid] = choice;
+      renderSVAQuiz();
+      persistState();
+    }
+
+    function buildTimelineSVG(tense) {
+      const v = tense.viz;
+      let markSvg = ``;
+
+      if (v.type === `point`) {
+        markSvg = `<circle cx="${v.x}%" cy="38" r="7" fill="var(--primary-container)" stroke="var(--on-surface)" stroke-width="2" />`;
+      } else if (v.type === `habit`) {
+        markSvg = v.points.map(px => `<circle cx="${px}%" cy="38" r="5" fill="var(--secondary)" />`).join(``);
+      } else if (v.type === `span`) {
+        const w = v.x2 - v.x1;
+        markSvg = `
+          <rect x="${v.x1}%" y="30" width="${w}%" height="16" rx="8" fill="var(--secondary-soft)" stroke="var(--secondary)" stroke-width="2" />
+          ${v.interrupt ? `<line x1="${v.interrupt}%" y1="18" x2="${v.interrupt}%" y2="56" stroke="var(--data-4)" stroke-width="2.5" /><circle cx="${v.interrupt}%" cy="38" r="4.5" fill="var(--data-4)" />` : ``}
+        `;
+      } else if (v.type === `before`) {
+        markSvg = `
+          <circle cx="${v.x1}%" cy="38" r="7" fill="var(--primary-container)" stroke="var(--on-surface)" stroke-width="2" />
+          <line x1="${v.x1}%" y1="38" x2="${v.x2}%" y2="38" stroke="var(--secondary)" stroke-width="2.5" stroke-dasharray="4 3" />
+          <circle cx="${v.x2}%" cy="38" r="5.5" fill="var(--surface-container-low)" stroke="var(--secondary)" stroke-width="2" />
+        `;
+      } else if (v.type === `bridge`) {
+        const w = v.x2 - v.x1;
+        markSvg = `
+          <rect x="${v.x1}%" y="32" width="${w}%" height="12" rx="6" fill="var(--primary-container)" stroke="var(--on-surface)" stroke-width="1.5" />
+          <circle cx="${v.x1}%" cy="38" r="4.5" fill="var(--on-surface)" />
+          <circle cx="${v.x2}%" cy="38" r="5.5" fill="var(--secondary)" />
+        `;
+      }
+
+      return `
+        <div class="timeline-box">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.25rem;">
+            <span style="font-family:var(--font-label); font-size:0.72rem; font-weight:700; color:var(--secondary);">TIMELINE VISUALIZER</span>
+            <span class="tag-chip">${escapeHtml(v.label)}</span>
+          </div>
+          <svg viewBox="0 0 400 76" width="100%" height="76" role="img" aria-label="แผนภาพเส้นเวลาของ ${escapeHtml(tense.name)}">
+            <!-- Base axis -->
+            <line x1="20" y1="38" x2="380" y2="38" stroke="var(--outline-variant)" stroke-width="2" />
+            <!-- NOW vertical marker at center -->
+            <line x1="200" y1="14" x2="200" y2="58" stroke="var(--outline)" stroke-width="1.5" stroke-dasharray="3 3" />
+            <!-- Dynamic Event Graphic -->
+            ${markSvg}
+            <!-- Axis Labels -->
+            <text x="20" y="70" fill="var(--on-surface-variant)" font-size="11" font-family="Geist Mono, monospace">PAST (อดีต)</text>
+            <text x="200" y="70" text-anchor="middle" fill="var(--on-surface)" font-size="11" font-weight="700" font-family="Geist Mono, monospace">NOW (ปัจจุบัน)</text>
+            <text x="380" y="70" text-anchor="end" fill="var(--on-surface-variant)" font-size="11" font-family="Geist Mono, monospace">FUTURE (อนาคต)</text>
+          </svg>
+        </div>
+      `;
+    }
+
+    function renderTenseMatrix() {
+      const grid = document.getElementById(`tense-matrix-grid`);
+      if (!grid) return;
+
+      // Preserve the 3 column headers, append the 12 buttons
+      const heads = `
+        <div class="tense-col-head">PAST (อดีต)</div>
+        <div class="tense-col-head">PRESENT (ปัจจุบัน)</div>
+        <div class="tense-col-head">FUTURE (อนาคต)</div>
+      `;
+
+      const cells = TENSES_DATA.map(t => `
+        <button type="button" class="tense-cell-btn ${t.id === appState.activeTenseId ? `is-selected` : ``}" onclick="selectTense('${t.id}')">
+          <span class="tense-cell-name">${escapeHtml(t.name)}</span>
+          <span class="tense-cell-formula">${escapeHtml(t.formula)}</span>
+        </button>
+      `).join(``);
+
+      grid.innerHTML = heads + cells;
+    }
+
+    function selectTense(tenseId) {
+      appState.activeTenseId = tenseId;
+      renderTenseMatrix();
+
+      const tense = TENSES_DATA.find(t => t.id === tenseId) || TENSES_DATA[0];
+      const panel = document.getElementById(`tense-inspector-panel`);
+      if (!panel) return;
+
+      panel.innerHTML = `
+        <div class="grammar-card-head">
+          <div>
+            <span class="tag-chip tag-chip--petrol">${escapeHtml(tense.time.toUpperCase())} • ${escapeHtml(tense.aspect)}</span>
+            <h3 class="grammar-card-title" style="margin-top:0.35rem;">${escapeHtml(tense.name)}</h3>
+          </div>
+          <code style="background:var(--surface-container); padding:0.3rem 0.6rem; border-radius:var(--rounded); font-family:var(--font-label); font-weight:700; font-size:0.85rem;">${escapeHtml(tense.formula)}</code>
+        </div>
+        ${buildTimelineSVG(tense)}
+        <p style="margin:0; font-size:0.94rem;"><strong>การใช้งาน:</strong> ${escapeHtml(tense.thUse)}</p>
+        <p style="margin:0; font-size:0.86rem; color:var(--on-surface-variant);"><strong>คำบอกเวลา (Time Markers):</strong> <code>${escapeHtml(tense.markers)}</code></p>
+        <div class="example-row">
+          <div class="example-text-wrap">
+            <span class="en-sentence">${escapeHtml(tense.example)}</span>
+            <span class="th-translation">${escapeHtml(tense.exampleTh)}</span>
+          </div>
+          <button type="button" class="audio-play-btn" aria-label="ฟังเสียงตัวอย่าง ${escapeHtml(tense.name)}" data-speak="${escapeHtml(tense.example)}" onclick="speakButton(this)">
+            <i data-lucide="play" aria-hidden="true" style="width:16px;height:16px;"></i>
+            <span>ฟังเสียง</span>
+          </button>
+        </div>
+        <div class="example-row" style="border-left-color:var(--data-2);">
+          <div class="example-text-wrap">
+            <span class="en-sentence">${escapeHtml(tense.neg)}</span>
+            <span class="th-translation">ตัวอย่างรูปปฏิเสธ / คำถาม</span>
+          </div>
+          <button type="button" class="audio-play-btn" aria-label="ฟังเสียงรูปปฏิเสธหรือคำถาม" data-speak="${escapeHtml(tense.neg)}" onclick="speakButton(this)">
+            <i data-lucide="play" aria-hidden="true" style="width:16px;height:16px;"></i>
+          </button>
+        </div>
+      `;
+      refreshIcons();
+    }
+
+    function selectConjunctionGroup(groupKey, btnEl) {
+      document.querySelectorAll(`[data-conj]`).forEach(b => b.classList.remove(`is-active`));
+      if (btnEl) btnEl.classList.add(`is-active`);
+
+      const out = document.getElementById(`conjunction-compare-output`);
+      const items = CONJUNCTION_GROUPS[groupKey] || [];
+      if (!out) return;
+
+      out.innerHTML = items.map(item => `
+        <div class="sentence-breakdown" style="flex-direction:column; gap:var(--space-sm);">
+          <span class="slot-role">${escapeHtml(item.type)}</span>
+          <div style="font-family:var(--font-label); font-weight:700; font-size:0.95rem; color:var(--on-surface);">${escapeHtml(item.words)}</div>
+          <p style="margin:0; font-size:0.88rem; color:var(--on-surface-variant);">${escapeHtml(item.rule)}</p>
+          <div class="example-row">
+            <div class="example-text-wrap">
+              <span class="en-sentence">${escapeHtml(item.en)}</span>
+              <span class="th-translation">${escapeHtml(item.th)}</span>
+            </div>
+            <button type="button" class="audio-play-btn" aria-label="ฟังเสียงประโยค" data-speak="${escapeHtml(item.en)}" onclick="speakButton(this)">
+              <i data-lucide="play" aria-hidden="true" style="width:16px;height:16px;"></i>
+            </button>
+          </div>
+        </div>
+      `).join(``);
+      refreshIcons();
+    }
+
+    // =========================================================================
+    // NAVIGATION, SCROLLSPY, SEARCH & PROGRESS TRACKER
+    // =========================================================================
+
+    function toggleMobileDrawer(open) {
+      const nav = document.getElementById(`side-nav`);
+      const backdrop = document.getElementById(`drawer-backdrop`);
+      if (nav) nav.classList.toggle(`is-open`, open);
+      if (backdrop) backdrop.classList.toggle(`is-open`, open);
+    }
+
+    function handleNavClick(event, sectionId) {
+      event.preventDefault();
+      toggleMobileDrawer(false);
+      setActiveNavLink(sectionId);
+      const target = document.getElementById(sectionId);
+      if (target) {
+        target.scrollIntoView({ behavior: `smooth`, block: `start` });
+      }
+    }
+
+    function setActiveNavLink(sectionId) {
+      document.querySelectorAll(`#side-nav-list .nav-link`).forEach(link => {
+        link.classList.toggle(`is-active`, link.getAttribute(`data-section`) === sectionId);
+      });
+    }
+
+    function initScrollSpy() {
+      const sectionIds = [`overview`, `sentence-structure`, `parts-of-speech`, `sv-agreement`, `tenses`, `clauses`, `conjunctions`];
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setActiveNavLink(entry.target.id);
+          }
+        });
+      }, { rootMargin: `-15% 0px -65% 0px`, threshold: 0.05 });
+
+      sectionIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) observer.observe(el);
+      });
+    }
+
+    function toggleSectionDone(sectionId) {
+      const idx = appState.reviewedSections.indexOf(sectionId);
+      if (idx === -1) appState.reviewedSections.push(sectionId);
+      else appState.reviewedSections.splice(idx, 1);
+
+      updateProgressUI();
+      persistState();
+    }
+
+    function updateProgressUI() {
+      const totalSections = 6;
+      const doneCount = appState.reviewedSections.length;
+      const pct = Math.round((doneCount / totalSections) * 100);
+
+      const textEl = document.getElementById(`sidebar-progress-text`);
+      const fillEl = document.getElementById(`progress-fill`);
+      const barWrap = document.getElementById(`progress-bar-wrap`);
+      const mobilePill = document.getElementById(`mobile-progress-pill`);
+
+      if (textEl) textEl.textContent = `${doneCount} / ${totalSections} บท`;
+      if (fillEl) fillEl.style.width = `${pct}%`;
+      if (barWrap) barWrap.setAttribute(`aria-valuenow`, String(doneCount));
+      if (mobilePill) mobilePill.textContent = `${doneCount}/${totalSections}`;
+
+      [`sentence-structure`, `parts-of-speech`, `sv-agreement`, `tenses`, `clauses`, `conjunctions`].forEach(sec => {
+        const isDone = appState.reviewedSections.includes(sec);
+        const dot = document.getElementById(`dot-${sec}`);
+        const btn = document.querySelector(`[data-done-btn="${sec}"]`);
+        if (dot) dot.classList.toggle(`is-done`, isDone);
+        if (btn) {
+          btn.classList.toggle(`is-checked`, isDone);
+          const span = btn.querySelector(`span`);
+          if (span) span.textContent = isDone ? `ทบทวนเรียบร้อยแล้ว` : `ทำเครื่องหมายว่าทบทวนแล้ว`;
+        }
+      });
+
+      const correctCount = SVA_QUIZ.filter(q => appState.drillAnswers[q.id] === q.answer).length;
+      const drillSummary = document.getElementById(`drill-score-summary`);
+      const svaBadge = document.getElementById(`sva-score-badge`);
+      if (drillSummary) drillSummary.textContent = `แบบฝึกหัด: ${correctCount}/${SVA_QUIZ.length} ข้อ`;
+      if (svaBadge) svaBadge.textContent = `คะแนน: ${correctCount} / ${SVA_QUIZ.length}`;
+    }
+
+    function handleResetProgress(btn) {
+      if (btn.dataset.armed !== `true`) {
+        btn.dataset.armed = `true`;
+        btn.textContent = `ยืนยันรีเซ็ต?`;
+        return;
+      }
+      btn.dataset.armed = `false`;
+      btn.textContent = `รีเซ็ต`;
+      appState.reviewedSections = [];
+      appState.drillAnswers = {};
+      renderSVAQuiz();
+      updateProgressUI();
+      persistState();
+    }
+
+    function handleSearch(query) {
+      const q = (query || ``).trim().toLowerCase();
+      const box = document.getElementById(`search-results-box`);
+      const list = document.getElementById(`search-results-list`);
+      const count = document.getElementById(`search-results-count`);
+      if (!box || !list || !count) return;
+
+      if (!q) {
+        box.classList.remove(`is-visible`);
+        return;
+      }
+
+      const matches = SEARCH_INDEX.filter(item =>
+        item.title.toLowerCase().includes(q) || item.keywords.toLowerCase().includes(q)
+      );
+
+      box.classList.add(`is-visible`);
+      count.textContent = `พบ ${matches.length} หัวข้อที่ตรงกับ "${query.trim()}"`;
+
+      if (matches.length === 0) {
+        list.innerHTML = `<p style="margin:0; color:var(--on-surface-variant);">ไม่พบหัวข้อที่ค้นหา ลองคำเช่น <em>tense</em>, <em>noun</em>, <em>clause</em>, <em>despite</em></p>`;
+        return;
+      }
+
+      list.innerHTML = matches.map(m => `
+        <button type="button" class="btn btn-secondary" style="justify-content:space-between; text-align:left;" onclick="jumpToSection('${m.section}')">
+          <span>${escapeHtml(m.title)}</span>
+          <i data-lucide="arrow-right" aria-hidden="true" style="width:16px;height:16px;"></i>
+        </button>
+      `).join(``);
+      refreshIcons();
+    }
+
+    function jumpToSection(sectionId) {
+      const el = document.getElementById(sectionId);
+      if (el) el.scrollIntoView({ behavior: `smooth`, block: `start` });
+      setActiveNavLink(sectionId);
+    }
+
+    function clearSearch() {
+      const input = document.getElementById(`grammar-search`);
+      if (input) input.value = ``;
+      handleSearch(``);
+    }
+
+    function refreshIcons() {
+      if (window.lucide && typeof window.lucide.createIcons === `function`) {
+        window.lucide.createIcons();
+      }
+    }
+
+    // =========================================================================
+    // INITIALIZATION
+    // =========================================================================
+
+    async function initDashboard() {
+      if (window.notebookAppApi && typeof window.notebookAppApi.getAppState === `function`) {
+        try {
+          const saved = await window.notebookAppApi.getAppState();
+          if (saved && typeof saved === `object`) {
+            if (Array.isArray(saved.reviewedSections)) appState.reviewedSections = saved.reviewedSections;
+            if (saved.drillAnswers && typeof saved.drillAnswers === `object`) appState.drillAnswers = saved.drillAnswers;
+            if (typeof saved.selectedVoiceName === `string`) appState.selectedVoiceName = saved.selectedVoiceName;
+            if (typeof saved.speechRate === `number`) appState.speechRate = saved.speechRate;
+          }
+        } catch (err) {
+          // Proceed with clean defaults if state retrieval fails
+        }
+      }
+
+      // Restore speed button visual state
+      document.querySelectorAll(`.speed-btn`).forEach(btn => {
+        btn.classList.toggle(`is-active`, Number(btn.getAttribute(`data-rate`)) === appState.speechRate);
+      });
+
+      selectSentencePattern(0);
+      renderPOSCards(`all`);
+      renderSpotter(3);
+      renderSVAQuiz();
+      selectTense(`present-perf`);
+      selectConjunctionGroup(`reason`, document.querySelector(`[data-conj="reason"]`));
+      updateProgressUI();
+      initScrollSpy();
+
+      populateVoiceSelector();
+      if (`speechSynthesis` in window) {
+        window.speechSynthesis.onvoiceschanged = populateVoiceSelector;
+      }
+
+      document.addEventListener(`keydown`, function (e) {
+        if (e.key === `Escape`) toggleMobileDrawer(false);
+      });
+
+      refreshIcons();
+
+      if (window.notebookAppApi && typeof window.notebookAppApi.notifyAppReady === `function`) {
+        window.notebookAppApi.notifyAppReady();
+      }
+    }
+
+    document.addEventListener(`DOMContentLoaded`, initDashboard);
+  </script>
+</body>
+</html>
